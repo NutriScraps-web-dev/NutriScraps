@@ -61,12 +61,23 @@ Open the `server` and `client` in separate VSCode workspaces or open the combine
 
 ### Purpose
 
-2-5 sentences describing what the system does
+Some of the hardest decisions we make are those that we have to make everyday, multiple times. One such decision is, what should I make for dinner tonight? To tackle this problem we have created the CookingApp (Temp name). The cooking app will help you choose recipes based on what ingredients you have or which ingredients you would like to mix together to create something new. You can also see what recipes other people have created in their own kitchen. 
 
 ### Pages
 
-- Home: 1-3 sentences describing what the page displays and what a user can do
-- Shopping cart: ...
+Login Page :users can choose to continue as a guest or  they can login using email and password or they can register for a new account. If the user chooses not to login, some features will not be available to them. 
+
+Home page: Users can see the most liked recipes of the week/month, navbar to navigate to other pages such as “Chopping Board”, Recipes, About Us, Contact Us, Profile
+
+Profile: Users can edit their personal information such as Name, last name, email, password, favorite cuisine, etc. 
+
+About Us: Page about the group, mainly just for viewing
+
+Contact Us: Users can ask for support if they face any difficulties with the website
+
+Chopping Board: Users can create a dish they want using a virtual chopping board. They will simply drag the ingredients they would like to use onto a chopping board. The system will search for recipes that correspond to the ingredients placed by the user onto the chopping board. 
+
+Recipe: Displays a multitude of recipes provided by the system and the users. Recipes provided by the system have a special badge to show that the recipes have been provided by professionals, recipes made by users can be liked by other users to show that the recipes are popular and delicious. Users can also choose to share their own recipes, they will have a  predesigned form which they can fill. Recipes can be shared with pictures to make them more appealing. 
 
 ### Entity-Relationship (ER) Diagram
 
