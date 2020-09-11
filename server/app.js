@@ -7,6 +7,8 @@ var cors = require('cors');
 var history = require('connect-history-api-fallback');
 
 const authRouter = require('./routes/auth');
+const session = require('express-session');
+const mongodbSessionStore = require('connect-mongodb-session')(session);
 
 // Variables
 var mongoURI =
@@ -37,6 +39,20 @@ app.use(morgan('dev'));
 // Enable cross-origin resource sharing for frontend must be registered before api
 app.options('*', cors());
 app.use(cors());
+
+const sessionStore = new mongodbSessionStore({
+  uri: mongoURI,
+  collection: 'session',
+});
+
+app.use(
+  session({
+    secret: 'this is supposed to be very long',
+    resave: false,
+    saveUninitialized: false,
+    store: sessionStore,
+  })
+);
 
 // Import routes
 app.get('/api', function (req, res) {

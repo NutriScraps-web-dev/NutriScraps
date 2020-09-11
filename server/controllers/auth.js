@@ -10,7 +10,7 @@ exports.getLogin = (req, res, next) => {
     .catch((err) => {
       console.log(err);
       res
-        .status(404)
+        .status(401)
         .json({ message: 'User Does Not Exist' })
         .redirect('/login');
     });
@@ -22,7 +22,7 @@ exports.postLogin = (req, res, next) => {
   User.findOne({ username: username }).then((user) => {
     if (!user) {
       return res
-        .status(404)
+        .status(401)
         .json({ message: 'User not Found' })
         .redirect('/login');
     }
@@ -42,6 +42,9 @@ exports.postLogin = (req, res, next) => {
         res.redirect('/login');
       });
   });
+
+  req.session.isLoggedIn = true;
+  req.session.user = user;
 };
 exports.getSignup = (req, res, next) => {};
 
