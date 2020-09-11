@@ -39,6 +39,10 @@ const userSchema = new Schema({
     required: false,
     default: 'I am Too Shy to Have Profile Picture',
   },
+  roleId: {
+    type: Schema.Types.ObjectId,
+    ref: 'Role',
+  },
 });
 
 module.exports = mongoose.model('User', userSchema);

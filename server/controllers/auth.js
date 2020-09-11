@@ -8,16 +8,21 @@ exports.postLogin = (req, res, next) => {
   const password = req.body.password;
   User.findOne({ username: username }).then((user) => {
     if (!user) {
-      return res.status(406).redirect('/login');
+      return res
+        .status(404)
+        .json({ message: 'User not Found' })
+        .redirect('/login');
     }
     bcrypt
       .compare(password, user.password)
       .then((doMatch) => {
         if (doMatch) {
-          //comeback here to change the redirection
-          return res.status(200).redirect('/someWhere');
+          return res.status(200).json(user);
         }
-        res.status(406).redirect('/login');
+        res
+          .status(406)
+          .json({ message: 'Wrong Password, Try Again' })
+          .redirect('/login');
       })
       .catch((err) => {
         console.log(err);
@@ -38,8 +43,11 @@ exports.postSignup = (req, res, next) => {
   const bio = req.body.bio;
   const profilePic = req.body.profilePic;
 
-  if (password === confirmPassword) {
-    res.status(409).redirect('/signup');
+  if (password !== confirmPassword) {
+    res
+      .status(409)
+      .json({ message: 'Passwords does NOT Match' })
+      .redirect('/signup');
   } else {
     return bcrypt
       .hash(password, 12)
@@ -59,7 +67,7 @@ exports.postSignup = (req, res, next) => {
         return user.save();
       })
       .then((result) => {
-        res.status(200).redirect('/login');
+        res.status(200).json(result);
       })
       .catch((err) => {
         console.log(err);

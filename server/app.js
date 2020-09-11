@@ -10,7 +10,8 @@ const authRouter = require('./routes/auth');
 
 // Variables
 var mongoURI =
-  process.env.MONGODB_URI || 'mongodb://localhost:27017/nutriScraps';
+  process.env.MONGODB_URI ||
+  'mongodb+srv://idreesGu:mongodb12345@cluster0.drfwp.mongodb.net/nutriScraps?retryWrites=true&w=majority';
 var port = process.env.PORT || 3000;
 
 // Connect to MongoDB
