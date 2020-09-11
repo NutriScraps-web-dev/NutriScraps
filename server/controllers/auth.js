@@ -1,7 +1,20 @@
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 
-exports.getLogin = (req, res, next) => {};
+exports.getLogin = (req, res, next) => {
+  const username = req.params.username;
+  User.findOne({ username: username })
+    .then((user) => {
+      res.status(200).json(user);
+    })
+    .catch((err) => {
+      console.log(err);
+      res
+        .status(404)
+        .json({ message: 'User Does Not Exist' })
+        .redirect('/login');
+    });
+};
 
 exports.postLogin = (req, res, next) => {
   const username = req.body.username;
@@ -42,6 +55,7 @@ exports.postSignup = (req, res, next) => {
   const country = req.body.country;
   const bio = req.body.bio;
   const profilePic = req.body.profilePic;
+  const role = req.body.role;
 
   if (password !== confirmPassword) {
     res
@@ -63,6 +77,7 @@ exports.postSignup = (req, res, next) => {
           country: country,
           bio: bio,
           profilePic: profilePic,
+          role: role,
         });
         return user.save();
       })

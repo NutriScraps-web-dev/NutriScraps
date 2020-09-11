@@ -39,7 +39,7 @@ const userSchema = new Schema({
     required: false,
     default: 'I am Too Shy to Have Profile Picture',
   },
-  roleId: {
+  role: {
     type: Schema.Types.ObjectId,
     ref: 'Role',
   },
