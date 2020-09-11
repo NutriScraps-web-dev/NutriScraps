@@ -3,6 +3,28 @@ const bcrypt = require('bcryptjs');
 
 exports.getLogin = (req, res, next) => {};
 
+exports.postLogin = (req, res, next) => {
+  const username = req.body.username;
+  const password = req.body.password;
+  User.findOne({ username: username }).then((user) => {
+    if (!user) {
+      return res.status(406).redirect('/login');
+    }
+    bcrypt
+      .compare(password, user.password)
+      .then((doMatch) => {
+        if (doMatch) {
+          //comeback here to change the redirection
+          return res.status(200).redirect('/someWhere');
+        }
+        res.status(406).redirect('/login');
+      })
+      .catch((err) => {
+        console.log(err);
+        res.redirect('/login');
+      });
+  });
+};
 exports.getSignup = (req, res, next) => {};
 
 exports.postSignup = (req, res, next) => {
