@@ -40,8 +40,7 @@ const userSchema = new Schema({
     default: 'I would rather not have Profile Picture',
   },
   role: {
-    type: String,
-    default: 'user',
+    type: Schema.Types.ObjectId,
     ref: 'Role',
   },
 });
