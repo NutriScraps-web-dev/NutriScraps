@@ -8,11 +8,16 @@ exports.getLogin = (req, res, next) => {
       if (user) {
         res.status(202).json(user);
       } else {
-        res.status(401).json({ message: 'User Does Not Exist' });
+        const error = new Error('User Does Not Exist');
+        error.statusCode = 401;
+        throw error;
       }
     })
     .catch((err) => {
-      console.log(err);
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
     });
 };
 
@@ -21,7 +26,9 @@ exports.postLogin = (req, res, next) => {
   const password = req.body.password;
   User.findOne({ username: username }).then((user) => {
     if (!user) {
-      return res.status(401).json({ message: 'Invalid Email or Password' });
+      const error = new Error('Invalid Email or Password');
+      error.statusCode = 401;
+      throw error;
     }
     bcrypt
       .compare(password, user.password)
@@ -29,18 +36,25 @@ exports.postLogin = (req, res, next) => {
         if (doMatch) {
           return res.status(200).json(user);
         }
-        res
-          .status(406)
-          .json({ message: 'Invalid Email or Password, Try Again' });
+        const error = new Error('Invalid Email or Password');
+        error.statusCode = 401;
+        throw error;
       })
       .catch((err) => {
-        console.log(err);
+        if (!err.statusCode) {
+          err.statusCode = 500;
+        }
+        next(err);
       });
   });
 };
-exports.getSignup = (req, res, next) => {};
 
 exports.postSignup = (req, res, next) => {
+  if (!req.file) {
+    const error = new Error('No profile picture provided');
+    error.statusCode = 422;
+    throw error;
+  }
   const firstName = req.body.name.firstName;
   const lastName = req.body.name.lastName;
   const email = req.body.email;
@@ -49,7 +63,7 @@ exports.postSignup = (req, res, next) => {
   const username = req.body.username;
   const country = req.body.country;
   const bio = req.body.bio;
-  const profilePic = req.body.profilePic;
+  const profilePic = req.file.path.replace('\\', '/');
   const role = req.body.role;
 
   if (password !== confirmPassword) {
@@ -86,15 +100,13 @@ exports.postSignup = (req, res, next) => {
             res.status(201).json(result);
           })
           .catch((err) => {
-            console.log(err);
+            if (!err.statusCode) {
+              err.statusCode = 500;
+            }
+            next(err);
           });
       }
     }
   );
 };
-exports.postLogout = (req, res, next) => {
-  req.session.destroy((err) => {
-    console.log(err);
-    res.status(200).json({ message: ' You are Logged Out' });
-  });
-};
+exports.postLogout = (req, res, next) => {};

@@ -6,8 +6,32 @@ var path = require('path');
 var cors = require('cors');
 var history = require('connect-history-api-fallback');
 
+const multer = require('multer');
+const uuidv4 = require('uuid/v4');
+
 const authRouter = require('./routes/auth');
 const userRouter = require('./routes/user');
+
+const fileStorage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'images');
+  },
+  filename: function (req, file, cb) {
+    cb(null, uuidv4());
+  },
+});
+
+const fileFilter = (req, file, cb) => {
+  if (
+    file.mimetype === 'image/png' ||
+    file.mimetype === 'image/jpg' ||
+    file.mimetype === 'image/jpeg'
+  ) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
 
 // Variables
 var mongoURI =
@@ -39,6 +63,11 @@ app.use(morgan('dev'));
 app.options('*', cors());
 app.use(cors());
 
+app.use(
+  multer({ storage: fileStorage, fileFilter: fileFilter }).single('image')
+);
+app.use(express.static(path.join(__dirname, 'images')));
+
 // Import routes
 app.get('/api', function (req, res) {
   res.json({ message: 'Welcome to your DIT341 backend ExpressJS project!' });
@@ -62,6 +91,13 @@ app.use(express.static(client));
 
 // Error handler (i.e., when exception is thrown) must be registered last
 var env = app.get('env');
+app.use((err, req, res, next) => {
+  console.log(err);
+  const status = error.statusCode || 500;
+  const message = error.message;
+  res.status(status).json({ message: message });
+});
+
 // eslint-disable-next-line no-unused-vars
 app.use(function (err, req, res, next) {
   console.error(err.stack);
