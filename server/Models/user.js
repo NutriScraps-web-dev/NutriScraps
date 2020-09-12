@@ -37,10 +37,11 @@ const userSchema = new Schema({
   profilePic: {
     type: String,
     required: false,
-    default: 'I am Too Shy to Have Profile Picture',
+    default: 'I would rather not have Profile Picture',
   },
   role: {
-    type: Schema.Types.ObjectId,
+    type: String,
+    default: 'user',
     ref: 'Role',
   },
 });

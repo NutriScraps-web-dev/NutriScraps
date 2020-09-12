@@ -7,8 +7,7 @@ var cors = require('cors');
 var history = require('connect-history-api-fallback');
 
 const authRouter = require('./routes/auth');
-const session = require('express-session');
-const mongodbSessionStore = require('connect-mongodb-session')(session);
+const userRouter = require('./routes/user');
 
 // Variables
 var mongoURI =
@@ -40,26 +39,13 @@ app.use(morgan('dev'));
 app.options('*', cors());
 app.use(cors());
 
-const sessionStore = new mongodbSessionStore({
-  uri: mongoURI,
-  collection: 'session',
-});
-
-app.use(
-  session({
-    secret: 'this is supposed to be very long',
-    resave: false,
-    saveUninitialized: false,
-    store: sessionStore,
-  })
-);
-
 // Import routes
 app.get('/api', function (req, res) {
   res.json({ message: 'Welcome to your DIT341 backend ExpressJS project!' });
 });
 
 app.use(authRouter);
+app.use(userRouter);
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {

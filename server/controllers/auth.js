@@ -5,14 +5,14 @@ exports.getLogin = (req, res, next) => {
   const username = req.params.username;
   User.findOne({ username: username })
     .then((user) => {
-      res.status(200).json(user);
+      if (user) {
+        res.status(202).json(user);
+      } else {
+        res.status(401).json({ message: 'User Does Not Exist' });
+      }
     })
     .catch((err) => {
       console.log(err);
-      res
-        .status(401)
-        .json({ message: 'User Does Not Exist' })
-        .redirect('/login');
     });
 };
 
@@ -21,10 +21,7 @@ exports.postLogin = (req, res, next) => {
   const password = req.body.password;
   User.findOne({ username: username }).then((user) => {
     if (!user) {
-      return res
-        .status(401)
-        .json({ message: 'User not Found' })
-        .redirect('/login');
+      return res.status(401).json({ message: 'Invalid Email or Password' });
     }
     bcrypt
       .compare(password, user.password)
@@ -34,17 +31,12 @@ exports.postLogin = (req, res, next) => {
         }
         res
           .status(406)
-          .json({ message: 'Wrong Password, Try Again' })
-          .redirect('/login');
+          .json({ message: 'Invalid Email or Password, Try Again' });
       })
       .catch((err) => {
         console.log(err);
-        res.redirect('/login');
       });
   });
-
-  req.session.isLoggedIn = true;
-  req.session.user = user;
 };
 exports.getSignup = (req, res, next) => {};
 
@@ -61,35 +53,48 @@ exports.postSignup = (req, res, next) => {
   const role = req.body.role;
 
   if (password !== confirmPassword) {
-    res
-      .status(409)
-      .json({ message: 'Passwords does NOT Match' })
-      .redirect('/signup');
-  } else {
-    return bcrypt
-      .hash(password, 12)
-      .then((hashedPassword) => {
-        const user = new User({
-          name: {
-            firstName: firstName,
-            lastName: lastName,
-          },
-          username: username,
-          email: email,
-          password: hashedPassword,
-          country: country,
-          bio: bio,
-          profilePic: profilePic,
-          role: role,
-        });
-        return user.save();
-      })
-      .then((result) => {
-        res.status(200).json(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    return res.status(409).json({ error: 'Passwords does NOT Match' });
   }
+  User.findOne({ $or: [{ username: username }, { email: email }] }).then(
+    (userDoc) => {
+      if (userDoc) {
+        if (userDoc.username === username) {
+          return res.status(403).json({ error: 'Username Already Exist' });
+        } else {
+          return res.status(403).json({ error: 'Email Already Exist' });
+        }
+      } else {
+        return bcrypt
+          .hash(password, 12)
+          .then((hashedPassword) => {
+            const user = new User({
+              name: {
+                firstName: firstName,
+                lastName: lastName,
+              },
+              username: username,
+              email: email,
+              password: hashedPassword,
+              country: country,
+              bio: bio,
+              profilePic: profilePic,
+              role: role,
+            });
+            return user.save();
+          })
+          .then((result) => {
+            res.status(201).json(result);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    }
+  );
 };
-exports.postLogout = (req, res, next) => {};
+exports.postLogout = (req, res, next) => {
+  req.session.destroy((err) => {
+    console.log(err);
+    res.status(200).json({ message: ' You are Logged Out' });
+  });
+};
