@@ -12,6 +12,7 @@ const { v4: uuidv4 } = require('uuid');
 
 const authRouter = require('./routes/auth');
 const userRouter = require('./routes/user');
+const roleRouter = require('./routes/role');
 
 const fileStorage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -76,6 +77,7 @@ app.get('/api', function (req, res) {
 
 app.use(authRouter);
 app.use(userRouter);
+app.use('/role', roleRouter);
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {
