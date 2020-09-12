@@ -1,5 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
+const { validationResult } = require('express-validator/check');
+const jwt = require('jsonwebtoken');
 
 exports.getLogin = (req, res, next) => {
   const username = req.params.username;
@@ -24,21 +26,30 @@ exports.getLogin = (req, res, next) => {
 exports.postLogin = (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
+  let foundUser;
   User.findOne({ username: username }).then((user) => {
     if (!user) {
       const error = new Error('Invalid Email or Password');
       error.statusCode = 401;
       throw error;
     }
+    foundUser = user;
     bcrypt
       .compare(password, user.password)
       .then((doMatch) => {
-        if (doMatch) {
-          return res.status(200).json(user);
+        if (!doMatch) {
+          const error = new Error('Invalid Email or Password');
+          error.statusCode = 401;
+          throw error;
         }
-        const error = new Error('Invalid Email or Password');
-        error.statusCode = 401;
-        throw error;
+        const token = jwt.sign(
+          { email: foundUser.email, userId: foundUser._id.toString() },
+          'thisIsSupposedToBeVeryLongForSecurityReasons',
+          { expiresIn: '1h' }
+        );
+        res
+          .status(200)
+          .json({ token: token, userId: foundUser._id.toString() });
       })
       .catch((err) => {
         if (!err.statusCode) {
@@ -50,6 +61,13 @@ exports.postLogin = (req, res, next) => {
 };
 
 exports.postSignup = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const error = new Error('invalid data');
+    error.statusCode = 422;
+    error.data = errors.array();
+    throw error;
+  }
   if (!req.file) {
     const error = new Error('No profile picture provided');
     error.statusCode = 422;
@@ -109,4 +127,5 @@ exports.postSignup = (req, res, next) => {
     }
   );
 };
+
 exports.postLogout = (req, res, next) => {};

@@ -7,7 +7,8 @@ var cors = require('cors');
 var history = require('connect-history-api-fallback');
 
 const multer = require('multer');
-const uuidv4 = require('uuid/v4');
+//const uuidv4 = require('uuid/v4');
+const { v4: uuidv4 } = require('uuid');
 
 const authRouter = require('./routes/auth');
 const userRouter = require('./routes/user');
