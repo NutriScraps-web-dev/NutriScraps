@@ -6,5 +6,6 @@ const isAdmin = require('../middleware/isAdmin');
 const router = express.Router();
 
 router.get('/allusers', isAuth, isAdmin, adminController.getAllUsers);
+router.delete('/allusers/:id', isAuth, isAdmin, adminController.deleteUser);
 
 module.exports = router;
