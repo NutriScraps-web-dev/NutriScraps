@@ -9,6 +9,7 @@ var history = require('connect-history-api-fallback');
 const authRouter = require('./routes/auth');
 const userRouter = require('./routes/user');
 const roleRouter = require('./routes/role');
+const adminRouter = require('./routes/admin');
 
 // Variables
 var mongoURI =
@@ -48,6 +49,7 @@ app.get('/api', function (req, res) {
 app.use('/users', authRouter);
 app.use('/user', userRouter);
 app.use('/admins', roleRouter);
+app.use('/admins', adminRouter);
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {
