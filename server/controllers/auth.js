@@ -66,6 +66,7 @@ exports.postSignup = (req, res, next) => {
   const roleType = req.body.roleType;
 
   let userRole;
+  let _user;
 
   Role.findOne({ role: roleType })
     .then((roleDoc) => {
@@ -111,10 +112,18 @@ exports.postSignup = (req, res, next) => {
               roleId: userRole,
               roleType: roleType,
             });
+            _user = user;
             return user.save();
           })
           .then((result) => {
-            res.status(201).json(result);
+            return Role.findOne({ role: roleType });
+          })
+          .then((role) => {
+            role.users.push(_user);
+            return role.save();
+          })
+          .then((result) => {
+            res.status(201).json(_user);
           })
           .catch((err) => {
             if (!err.statusCode) {
