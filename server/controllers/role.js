@@ -2,6 +2,7 @@ const Role = require('../models/role');
 
 exports.createRoles = (req, res, next) => {
   const roleName = req.body.role;
+  const description = req.body.description;
   Role.findOne({ role: roleName })
     .then((roleDoc) => {
       if (roleDoc) {
@@ -9,6 +10,7 @@ exports.createRoles = (req, res, next) => {
       }
       const role = new Role({
         role: roleName,
+        description: description,
       });
       return role.save();
     })

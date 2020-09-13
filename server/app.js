@@ -6,34 +6,9 @@ var path = require('path');
 var cors = require('cors');
 var history = require('connect-history-api-fallback');
 
-const multer = require('multer');
-//const uuidv4 = require('uuid/v4');
-const { v4: uuidv4 } = require('uuid');
-
 const authRouter = require('./routes/auth');
 const userRouter = require('./routes/user');
 const roleRouter = require('./routes/role');
-
-const fileStorage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'images');
-  },
-  filename: function (req, file, cb) {
-    cb(null, uuidv4());
-  },
-});
-
-const fileFilter = (req, file, cb) => {
-  if (
-    file.mimetype === 'image/png' ||
-    file.mimetype === 'image/jpg' ||
-    file.mimetype === 'image/jpeg'
-  ) {
-    cb(null, true);
-  } else {
-    cb(null, false);
-  }
-};
 
 // Variables
 var mongoURI =
@@ -65,19 +40,14 @@ app.use(morgan('dev'));
 app.options('*', cors());
 app.use(cors());
 
-app.use(
-  multer({ storage: fileStorage, fileFilter: fileFilter }).single('image')
-);
-app.use('/images', express.static(path.join(__dirname, 'images')));
-
 // Import routes
 app.get('/api', function (req, res) {
   res.json({ message: 'Welcome to your DIT341 backend ExpressJS project!' });
 });
 
-app.use(authRouter);
-app.use(userRouter);
-app.use('/role', roleRouter);
+app.use('/users', authRouter);
+app.use('/users', userRouter);
+app.use('/admins', roleRouter);
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {

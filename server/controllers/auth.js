@@ -4,26 +4,6 @@ const { validationResult } = require('express-validator/check');
 const jwt = require('jsonwebtoken');
 const Role = require('../models/role');
 
-exports.getLogin = (req, res, next) => {
-  const username = req.params.username;
-  User.findOne({ username: username })
-    .then((user) => {
-      if (user) {
-        res.status(202).json(user);
-      } else {
-        const error = new Error('User Does Not Exist');
-        error.statusCode = 401;
-        throw error;
-      }
-    })
-    .catch((err) => {
-      if (!err.statusCode) {
-        err.statusCode = 500;
-      }
-      next(err);
-    });
-};
-
 exports.postLogin = (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
@@ -44,13 +24,19 @@ exports.postLogin = (req, res, next) => {
           throw error;
         }
         const token = jwt.sign(
-          { email: foundUser.email, userId: foundUser._id.toString() },
+          {
+            email: foundUser.email,
+            userId: foundUser._id.toString(),
+            userRole: foundUser.roleType,
+          },
           'thisIsSupposedToBeVeryLongForSecurityReasons',
           { expiresIn: '1h' }
         );
-        res
-          .status(200)
-          .json({ token: token, userId: foundUser._id.toString() });
+        res.status(200).json({
+          token: token,
+          userId: foundUser._id.toString(),
+          userRole: foundUser.roleType,
+        });
       })
       .catch((err) => {
         if (!err.statusCode) {
@@ -69,11 +55,6 @@ exports.postSignup = (req, res, next) => {
     error.data = errors.array();
     throw error;
   }
-  if (!req.file) {
-    const error = new Error('No profile picture provided');
-    error.statusCode = 422;
-    throw error;
-  }
   const firstName = req.body.name.firstName;
   const lastName = req.body.name.lastName;
   const email = req.body.email;
@@ -82,12 +63,10 @@ exports.postSignup = (req, res, next) => {
   const username = req.body.username;
   const country = req.body.country;
   const bio = req.body.bio;
-  const profilePic = req.file.path.replace('\\', '/');
   const roleType = req.body.roleType;
-  //const roleId = req.body.roleId;
 
   let userRole;
-  console.log(roleType);
+
   Role.findOne({ role: roleType })
     .then((roleDoc) => {
       if (!roleDoc) {
@@ -129,7 +108,6 @@ exports.postSignup = (req, res, next) => {
               password: hashedPassword,
               country: country,
               bio: bio,
-              profilePic: profilePic,
               roleId: userRole,
             });
             return user.save();
@@ -147,5 +125,3 @@ exports.postSignup = (req, res, next) => {
     }
   );
 };
-
-exports.postLogout = (req, res, next) => {};

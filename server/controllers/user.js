@@ -27,15 +27,6 @@ exports.updateProfile = (req, res, next) => {
   const username = req.body.username;
   const country = req.body.country;
   const bio = req.body.bio;
-  let profilePic = req.body.profilePic;
-  if (req.file) {
-    profilePic = req.file.path.replace('\\', '/');
-  }
-  if (!profilePic) {
-    const error = new Error('No image picked');
-    error.statusCode = 422;
-    throw error;
-  }
   if (password !== confirmPassword) {
     const error = new Error('Passwords does NOT Match');
     error.statusCode = 409;
@@ -55,13 +46,32 @@ exports.updateProfile = (req, res, next) => {
       user.country = country;
       user.password = password;
       user.confirmPassword = confirmPassword;
-      user.profilePic = profilePic;
       user.bio = bio;
 
       return user.save();
     })
     .then((result) => {
       res.status(200).json({ result });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
+
+exports.getInfo = (req, res, next) => {
+  const username = req.params.username;
+  User.findOne({ username: username })
+    .then((user) => {
+      if (user) {
+        res.status(202).json(user);
+      } else {
+        const error = new Error('User Does Not Exist');
+        error.statusCode = 401;
+        throw error;
+      }
     })
     .catch((err) => {
       if (!err.statusCode) {

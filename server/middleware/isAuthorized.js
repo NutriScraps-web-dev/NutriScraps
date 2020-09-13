@@ -9,6 +9,7 @@ module.exports = (req, res, next) => {
     throw error;
   }
   const token = headerWithToken.split(' ')[1];
+
   let decodedToken;
   try {
     decodedToken = jwt.verify(
@@ -24,6 +25,8 @@ module.exports = (req, res, next) => {
     err.statusCode = 401;
     throw error;
   }
-  req.userId = headerWithToken.userId;
+  req.userId = decodedToken.userId;
+  req.role = decodedToken.userRole;
+  req.token = decodedToken;
   next();
 };
