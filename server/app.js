@@ -46,7 +46,7 @@ app.get('/api', function (req, res) {
 });
 
 app.use('/users', authRouter);
-app.use('/users', userRouter);
+app.use('/user', userRouter);
 app.use('/admins', roleRouter);
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
