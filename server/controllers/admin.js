@@ -2,22 +2,16 @@ const User = require('../models/user');
 const Role = require('../models/role');
 
 exports.getAllUsers = (req, res, next) => {
-  const role = req.role;
-  if (role !== 'admin') {
-    const error = new Error('You Are Not Authorized');
-    error.statusCode = 401;
-    throw error;
-  }
-  const currentPage = req.query.page || 1;
-  const perPage = req.query.perPage || 3;
+  const currentPage = +req.query.page || 1;
+  const limit = +req.query.limit || 5;
   let totalUsers;
   User.find()
     .countDocuments()
     .then((count) => {
       totalUsers = count;
       return User.find()
-        .skip((currentPage - 1) * perPage)
-        .limit(perPage);
+        .skip((currentPage - 1) * limit)
+        .limit(limit);
     })
     .then((userDocs) => {
       if (!userDocs) {
