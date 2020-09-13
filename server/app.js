@@ -68,7 +68,7 @@ app.use(cors());
 app.use(
   multer({ storage: fileStorage, fileFilter: fileFilter }).single('image')
 );
-app.use(express.static(path.join(__dirname, 'images')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // Import routes
 app.get('/api', function (req, res) {

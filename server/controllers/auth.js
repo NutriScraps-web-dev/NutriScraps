@@ -2,7 +2,7 @@ const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator/check');
 const jwt = require('jsonwebtoken');
-//const Role = require('../Models/role');
+const Role = require('../models/role');
 
 exports.getLogin = (req, res, next) => {
   const username = req.params.username;
@@ -83,26 +83,26 @@ exports.postSignup = (req, res, next) => {
   const country = req.body.country;
   const bio = req.body.bio;
   const profilePic = req.file.path.replace('\\', '/');
-  // const roleType = req.body.role.roleType;
-  // const roleId = req.body.role.roleId;
+  const roleType = req.body.roleType;
+  //const roleId = req.body.roleId;
 
-  //let userRole;
-
-  // Role.findOne({ role: roleType })
-  //   .then((roleDoc) => {
-  //     if (!roleDoc) {
-  //       const error = new Error('Specified Role Dose NOT exist');
-  //       error.statusCode = 404;
-  //       throw error;
-  //     }
-  //     userRole = roleDoc;
-  //   })
-  //   .catch((err) => {
-  //     if (!err.statusCode) {
-  //       err.statusCode = 500;
-  //     }
-  //     next(err);
-  //   });
+  let userRole;
+  console.log(roleType);
+  Role.findOne({ role: roleType })
+    .then((roleDoc) => {
+      if (!roleDoc) {
+        const error = new Error('Specified Role Dose NOT exist');
+        error.statusCode = 404;
+        throw error;
+      }
+      userRole = roleDoc;
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
 
   if (password !== confirmPassword) {
     return res.status(409).json({ error: 'Passwords does NOT Match' });
@@ -130,7 +130,7 @@ exports.postSignup = (req, res, next) => {
               country: country,
               bio: bio,
               profilePic: profilePic,
-              // roleId: userRole,
+              roleId: userRole,
             });
             return user.save();
           })
