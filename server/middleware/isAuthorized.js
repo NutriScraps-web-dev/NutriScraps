@@ -4,8 +4,8 @@ module.exports = (req, res, next) => {
   // the token should be sent as a header and it should start with "Bearer "
   const headerWithToken = req.get('Authorization');
   if (!headerWithToken) {
-    const error = new Error('User Not Authenticated');
-    err.statusCode = 401;
+    const error = new Error('User Is Not Authenticated');
+    error.statusCode = 401;
     throw error;
   }
   const token = headerWithToken.split(' ')[1];
@@ -21,7 +21,7 @@ module.exports = (req, res, next) => {
     throw err;
   }
   if (!decodedToken) {
-    const error = new Error('User Not Authenticated');
+    const error = new Error('User Is Not Authenticated');
     err.statusCode = 401;
     throw error;
   }

@@ -5,7 +5,7 @@ const isAdmin = require('../middleware/isAdmin');
 
 const router = express.Router();
 
-router.post('/roles', isAuth, isAdmin, roleController.createRoles);
+router.post('/roles', isAuth, isAdmin, roleController.createRole);
 router.get('/roles', isAuth, isAdmin, roleController.getAllRoles);
 router.get('/roles/:type', isAuth, isAdmin, roleController.getRole);
 router.patch('/roles/:type', isAuth, isAdmin, roleController.editRole);

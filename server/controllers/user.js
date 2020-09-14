@@ -19,19 +19,6 @@ exports.deleteProfile = (req, res, next) => {
 
 exports.updateProfile = (req, res, next) => {
   const id = req.params.id;
-  const firstName = req.body.name.firstName;
-  const lastName = req.body.name.lastName;
-  const email = req.body.email;
-  const password = req.body.password;
-  const confirmPassword = req.body.confirmPassword;
-  const username = req.body.username;
-  const country = req.body.country;
-  const bio = req.body.bio;
-  if (password !== confirmPassword) {
-    const error = new Error('Passwords does NOT Match');
-    error.statusCode = 409;
-    throw error;
-  }
   User.findById(id)
     .then((user) => {
       if (!user) {
@@ -39,14 +26,13 @@ exports.updateProfile = (req, res, next) => {
         error.statusCode = 404;
         throw error;
       }
-      user.username = username;
-      user.name.firstName = firstName;
-      user.name.lastName = lastName;
-      user.email = email;
-      user.country = country;
-      user.password = password;
-      user.confirmPassword = confirmPassword;
-      user.bio = bio;
+      user.username = req.body.username || user.username;
+      user.name.firstName = req.body.name.firstName || user.name.firstName;
+      user.name.lastName = req.body.name.lastName || user.name.lastName;
+      user.email = req.body.email || user.email;
+      user.country = req.body.country || user.country;
+      user.password = user.password;
+      user.bio = req.body.bio || user.bio;
 
       return user.save();
     })
@@ -62,8 +48,8 @@ exports.updateProfile = (req, res, next) => {
 };
 
 exports.getInfo = (req, res, next) => {
-  const username = req.params.username;
-  User.findOne({ username: username })
+  const id = req.params.id;
+  User.findOne({ _id: id })
     .then((user) => {
       if (user) {
         res.status(202).json(user);

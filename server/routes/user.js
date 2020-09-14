@@ -6,7 +6,8 @@ const router = express.Router();
 
 router.delete('/:id', isAuth, userController.deleteProfile);
 
-router.put('/:id', isAuth, userController.updateProfile);
+//needs to be revisited
+router.patch('/:id', isAuth, userController.updateProfile);
 
-router.get('/:username', isAuth, userController.getInfo);
+router.get('/:id', isAuth, userController.getInfo);
 module.exports = router;

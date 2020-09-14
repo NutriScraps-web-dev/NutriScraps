@@ -1,6 +1,6 @@
 const Role = require('../models/role');
 
-exports.createRoles = (req, res, next) => {
+exports.createRole = (req, res, next) => {
   const roleName = req.body.role;
   const description = req.body.description;
   Role.findOne({ role: roleName })
@@ -97,7 +97,7 @@ exports.deleteRole = (req, res, next) => {
         error.statusCode = 404;
         throw error;
       }
-      res.status(200).json({ message: `The ${role} Is Deleted` });
+      res.status(200).json({ message: `The ${role.role} Is Deleted` });
     })
     .catch((err) => {
       if (!err.statusCode) {
