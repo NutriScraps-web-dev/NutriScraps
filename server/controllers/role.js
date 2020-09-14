@@ -44,6 +44,7 @@ exports.getAllRoles = (req, res, next) => {
       next(err);
     });
 };
+
 exports.getRole = (req, res, next) => {
   const roleType = req.params.type;
   Role.findOne({ role: roleType })
@@ -62,6 +63,7 @@ exports.getRole = (req, res, next) => {
       next(err);
     });
 };
+
 exports.editRole = (req, res, next) => {
   const roleType = req.params.type;
   Role.findOne({ role: roleType })
@@ -85,4 +87,22 @@ exports.editRole = (req, res, next) => {
       next(err);
     });
 };
-exports.deleteRoles = (req, res, next) => {};
+
+exports.deleteRoles = (req, res, next) => {
+  const roleType = req.params.type;
+  Role.findOneAndDelete({ role: roleType })
+    .then((role) => {
+      if (!role) {
+        const error = new Error('The role does NOT Exist');
+        error.statusCode = 404;
+        throw error;
+      }
+      res.status(200).json({ message: `The ${role} Is Deleted` });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
