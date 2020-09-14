@@ -24,3 +24,26 @@ exports.createRoles = (req, res, next) => {
       next(err);
     });
 };
+
+exports.getAllRoles = (req, res, next) => {
+  const sortBy = req.query.sort || '';
+  Role.find()
+    .sort(sortBy)
+    .then((roles) => {
+      if (!roles) {
+        const error = new Error('Can NOT Fetch Roles. Please Try Again');
+        error.statusCode = 500;
+        throw error;
+      }
+      res.status(202).json(roles);
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
+exports.getRole = (req, res, next) => {};
+exports.editRole = (req, res, next) => {};
+exports.deleteRoles = (req, res, next) => {};

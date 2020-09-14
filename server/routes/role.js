@@ -6,5 +6,9 @@ const isAdmin = require('../middleware/isAdmin');
 const router = express.Router();
 
 router.post('/roles', isAuth, isAdmin, roleController.createRoles);
+router.get('/roles', isAuth, isAdmin, roleController.getAllRoles);
+router.get('/roles/:name', isAuth, isAdmin, roleController.getRole);
+router.patch('/roles/:name', isAuth, isAdmin, roleController.editRole);
+router.delete('/roles/:name', isAuth, isAdmin, roleController.deleteRole);
 
 module.exports = router;
