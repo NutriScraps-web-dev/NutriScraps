@@ -62,5 +62,27 @@ exports.getRole = (req, res, next) => {
       next(err);
     });
 };
-exports.editRole = (req, res, next) => {};
+exports.editRole = (req, res, next) => {
+  const roleType = req.params.type;
+  Role.findOne({ role: roleType })
+    .then((role) => {
+      if (!role) {
+        const error = new Error('The role does NOT Exist');
+        error.statusCode = 404;
+        throw error;
+      }
+      role.role = req.body.role || role.role;
+      role.description = req.body.description || role.description;
+      return role.save();
+    })
+    .then((result) => {
+      res.status(200).json({ message: 'Role Updated', updatedRole: result });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
 exports.deleteRoles = (req, res, next) => {};
