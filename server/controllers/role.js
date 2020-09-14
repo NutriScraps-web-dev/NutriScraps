@@ -88,7 +88,7 @@ exports.editRole = (req, res, next) => {
     });
 };
 
-exports.deleteRoles = (req, res, next) => {
+exports.deleteRole = (req, res, next) => {
   const roleType = req.params.type;
   Role.findOneAndDelete({ role: roleType })
     .then((role) => {
