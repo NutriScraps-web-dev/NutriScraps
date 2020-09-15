@@ -10,4 +10,7 @@ router.delete('/:id', isAuth, userController.deleteProfile);
 router.patch('/:id', isAuth, userController.updateProfile);
 
 router.get('/:id', isAuth, userController.getInfo);
+
+router.patch('/:id/password', isAuth, userController.changePassword);
+
 module.exports = router;
