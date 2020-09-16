@@ -110,6 +110,9 @@ exports.postSignup = (req, res, next) => {
               bio: bio,
               roleId: userRole,
               roleType: roleType,
+              posts: [],
+              rating: [],
+              comments: [],
             });
             return user.save();
           })

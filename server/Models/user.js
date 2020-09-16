@@ -43,6 +43,24 @@ const userSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'Role',
     },
+    posts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Recipe',
+      },
+    ],
+    ratings: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Rating',
+      },
+    ],
+    comments: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Comment',
+      },
+    ],
   },
   { timestamps: true }
 );
