@@ -1,17 +1,21 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var morgan = require('morgan');
-var path = require('path');
-var cors = require('cors');
-var history = require('connect-history-api-fallback');
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const morgan = require('morgan');
+const path = require('path');
+const cors = require('cors');
+const history = require('connect-history-api-fallback');
+
+const recipesController = require('./controllers/recipes');
+const ingredientsController = require('./controllers/ingredients');
 
 // Variables
-var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/animalDevelopmentDB';
-var port = process.env.PORT || 3000;
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/nutriScrapsDB';
+const port = process.env.PORT || 3000;
 
 // Connect to MongoDB
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }, function(err) {
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
     if (err) {
         console.error(`Failed to connect to MongoDB with URI: ${mongoURI}`);
         console.error(err.stack);
@@ -21,7 +25,7 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }, 
 });
 
 // Create Express app
-var app = express();
+const app = express();
 // Parse requests of content-type 'application/json'
 app.use(bodyParser.json());
 // HTTP request logger
@@ -31,12 +35,16 @@ app.options('*', cors());
 app.use(cors());
 
 // Import routes
-app.get('/api', function(req, res) {
+app.get('/api', (req, res) => {
     res.json({'message': 'Welcome to your DIT341 backend ExpressJS project!'});
 });
 
+app.use(recipesController);
+
+app.use(ingredientsController);
+
 // Catch all non-error handler for api (i.e., 404 Not Found)
-app.use('/api/*', function (req, res) {
+app.use('/api/*', (req, res) => {
     res.status(404).json({ 'message': 'Not Found' });
 });
 
@@ -44,16 +52,16 @@ app.use('/api/*', function (req, res) {
 // Support Vuejs HTML 5 history mode
 app.use(history());
 // Serve static assets
-var root = path.normalize(__dirname + '/..');
-var client = path.join(root, 'client', 'dist');
+const root = path.normalize(__dirname + '/..');
+const client = path.join(root, 'client', 'dist');
 app.use(express.static(client));
 
 // Error handler (i.e., when exception is thrown) must be registered last
-var env = app.get('env');
-// eslint-disable-next-line no-unused-vars
-app.use(function(err, req, res, next) {
+const env = app.get('env');
+// eslint-disable-next-line no-unused-consts
+app.use((err, req, res, next) => {
     console.error(err.stack);
-    var err_res = {
+    const err_res = {
         'message': err.message,
         'error': {}
     };
@@ -64,7 +72,7 @@ app.use(function(err, req, res, next) {
     res.json(err_res);
 });
 
-app.listen(port, function(err) {
+app.listen(port, (err) => {
     if (err) throw err;
     console.log(`Express server listening on port ${port}, in ${env} mode`);
     console.log(`Backend: http://localhost:${port}/api/`);
