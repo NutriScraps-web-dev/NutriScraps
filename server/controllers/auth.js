@@ -8,49 +8,57 @@ exports.postLogin = (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
   let foundUser;
-  User.findOne({ username: username }).then((user) => {
-    if (!user) {
-      const error = new Error('Invalid Email or Password');
-      error.statusCode = 401;
-      throw error;
-    }
-    foundUser = user;
-    bcrypt
-      .compare(password, user.password)
-      .then((doMatch) => {
-        if (!doMatch) {
-          const error = new Error('Invalid Email or Password');
-          error.statusCode = 401;
-          throw error;
-        }
-        const token = jwt.sign(
-          {
-            email: foundUser.email,
+  User.findOne({ username: username })
+    .then((user) => {
+      if (!user) {
+        const error = new Error('Invalid Username or Password');
+        error.statusCode = 401;
+        throw error;
+      }
+      foundUser = user;
+      bcrypt
+        .compare(password, user.password)
+        .then((doMatch) => {
+          if (!doMatch) {
+            const error = new Error('Invalid Username or Password');
+            error.statusCode = 401;
+            throw error;
+          }
+          const token = jwt.sign(
+            {
+              email: foundUser.email,
+              userId: foundUser._id.toString(),
+              userRole: foundUser.roleType,
+            },
+            'thisIsSupposedToBeVeryLongForSecurityReasons',
+            { expiresIn: '1h' }
+          );
+          res.status(200).json({
+            token: token,
             userId: foundUser._id.toString(),
             userRole: foundUser.roleType,
-          },
-          'thisIsSupposedToBeVeryLongForSecurityReasons',
-          { expiresIn: '1h' }
-        );
-        res.status(200).json({
-          token: token,
-          userId: foundUser._id.toString(),
-          userRole: foundUser.roleType,
+          });
+        })
+        .catch((err) => {
+          if (!err.statusCode) {
+            err.statusCode = 500;
+          }
+          next(err);
         });
-      })
-      .catch((err) => {
-        if (!err.statusCode) {
-          err.statusCode = 500;
-        }
-        next(err);
-      });
-  });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
 };
 
 exports.postSignup = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    const error = new Error('invalid data');
+    const error = new Error();
+    error.message = 'invalid data';
     error.statusCode = 422;
     error.data = errors.array();
     throw error;

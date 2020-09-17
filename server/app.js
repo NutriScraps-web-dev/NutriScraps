@@ -66,12 +66,12 @@ app.use(express.static(client));
 
 // Error handler (i.e., when exception is thrown) must be registered last
 var env = app.get('env');
-// app.use((err, req, res, next) => {
-//   console.log(err);
-//   const status = error.statusCode || 500;
-//   const message = error.message;
-//   res.status(status).json({ message: message });
-// });
+app.use((err, req, res, next) => {
+  console.log(err);
+  const status = err.statusCode || 500;
+  const message = err.message;
+  res.status(status).json({ message: message });
+});
 
 // eslint-disable-next-line no-unused-vars
 app.use(function (err, req, res, next) {
