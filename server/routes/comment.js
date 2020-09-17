@@ -4,9 +4,10 @@ const isAuth = require('../middleware/isAuthorized');
 
 const router = express.Router();
 
-router.post('/comment', isAuth, commentController.createComment);
-router.get('/comment', isAuth, commentController.getComment);
-router.patch('/comment/:type', isAuth, commentController.addSubcomment);
-router.delete('/comment/:type', isAuth, commentController.deleteComment);
+router.post('/api/comments', isAuth, commentController.createComment);
+router.get('/api/comments',isAuth, commentController.getAllComments);
+router.get('/api/comments/:id', isAuth, commentController.getComment);
+router.patch('/api/comments/:id', isAuth, commentController.addSubcomment);
+router.delete('/api/comments/:id', isAuth, commentController.deleteComment);
 
 module.exports = router;
