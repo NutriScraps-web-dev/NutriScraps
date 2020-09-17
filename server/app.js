@@ -1,16 +1,22 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var morgan = require('morgan');
-var path = require('path');
-var cors = require('cors');
-var history = require('connect-history-api-fallback');
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const morgan = require('morgan');
+const path = require('path');
+const cors = require('cors');
+const history = require('connect-history-api-fallback');
+
+const recipesRouter = require('./routes/recipe');
+const ingredientsRouter = require('./routes/ingredient');
 
 const authRouter = require('./routes/auth');
 const userRouter = require('./routes/user');
 const roleRouter = require('./routes/role');
 const adminRouter = require('./routes/admin');
 //const recipeRouter = require('./routes/recipe');
+
+const commentRouter = require('./routes/comment');
+const ratingRouter = require('./routes/rating');
 
 // Variables
 var mongoURI =
@@ -33,7 +39,7 @@ mongoose.connect(
 );
 
 // Create Express app
-var app = express();
+const app = express();
 // Parse requests of content-type 'application/json'
 app.use(bodyParser.json());
 // HTTP request logger
@@ -53,6 +59,12 @@ app.use('/api/admins', roleRouter);
 app.use('/api/admins', adminRouter);
 //app.use('/api/users', recipeRouter);
 
+app.use('/comment', commentRouter);
+app.use('/rating', ratingRouter);
+
+app.use(recipesRouter);
+app.use(ingredientsRouter);
+
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {
   res.status(404).json({ message: 'Not Found' });
@@ -62,8 +74,8 @@ app.use('/api/*', function (req, res) {
 // Support Vuejs HTML 5 history mode
 app.use(history());
 // Serve static assets
-var root = path.normalize(__dirname + '/..');
-var client = path.join(root, 'client', 'dist');
+const root = path.normalize(__dirname + '/..');
+const client = path.join(root, 'client', 'dist');
 app.use(express.static(client));
 
 // Error handler (i.e., when exception is thrown) must be registered last
@@ -74,10 +86,10 @@ app.use((err, req, res, next) => {
   res.status(status).json({ message: message });
 });
 
-// eslint-disable-next-line no-unused-vars
-app.use(function (err, req, res, next) {
+// eslint-disable-next-line no-unused-consts
+app.use((err, req, res, next) => {
   console.error(err.stack);
-  var err_res = {
+  const err_res = {
     message: err.message,
     error: {},
   };
@@ -88,7 +100,7 @@ app.use(function (err, req, res, next) {
   res.json(err_res);
 });
 
-app.listen(port, function (err) {
+app.listen(port, (err) => {
   if (err) throw err;
   console.log(`Express server listening on port ${port}, in ${env} mode`);
   console.log(`Backend: http://localhost:${port}/api/`);
