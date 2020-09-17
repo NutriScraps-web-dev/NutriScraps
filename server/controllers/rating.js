@@ -3,17 +3,16 @@ const Comment = require('../models/comment');
 
 exports.createRating = (req, res) => {
     const masterID = req.body.id;
-    const rating;
     if(req instanceof Comment){
-        rating = new Rating({
+        const rating = new Rating({
             commentID: commentID,
         });
     }
-    //else if(req instanceof Receipe){
-    //    rating = new Rating({
-    //        receipeID: receipeID,
-    //    });
-    //}
+    else if(req instanceof Recipe){
+       const rating = new Rating({
+            recipeID: recipeID,
+        });
+    }
     res.status(200).json(rating);
     return rating.save();
 }
@@ -59,7 +58,7 @@ exports.editRatingLikes = (req, res, next) => {
             });
     }
 
-    //else if(req instanceof Receipe){}
+    //else if(req instanceof Recipe){}
 }
 
 exports.editRatingDislikes = (req, res, next) => {
@@ -85,7 +84,7 @@ exports.editRatingDislikes = (req, res, next) => {
             });
     }
 
-     //else if(req instanceof Receipe){}
+     //else if(req instanceof Recipe){}
 }
 
 exports.deleteRating = (req, res, next) => {

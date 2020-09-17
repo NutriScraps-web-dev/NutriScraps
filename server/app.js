@@ -59,7 +59,7 @@ app.use('/admins', roleRouter);
 app.use('/admins', adminRouter);
 
 app.use('/comment', commentRouter);
-app.user('/rating', ratingRouter);
+app.use('/rating', ratingRouter);
 
 app.use(recipesRouter);
 app.use(ingredientsRouter);
@@ -78,6 +78,7 @@ const client = path.join(root, 'client', 'dist');
 app.use(express.static(client));
 
 // Error handler (i.e., when exception is thrown) must be registered last
+const env = app.get('env');
 // app.use((err, req, res, next) => {
 //   console.log(err);
 //   const status = error.statusCode || 500;
