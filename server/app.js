@@ -10,6 +10,7 @@ const authRouter = require('./routes/auth');
 const userRouter = require('./routes/user');
 const roleRouter = require('./routes/role');
 const adminRouter = require('./routes/admin');
+//const recipeRouter = require('./routes/recipe');
 
 // Variables
 var mongoURI =
@@ -50,6 +51,7 @@ app.use('/api/users', authRouter);
 app.use('/api/user', userRouter);
 app.use('/api/admins', roleRouter);
 app.use('/api/admins', adminRouter);
+//app.use('/api/users', recipeRouter);
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {
