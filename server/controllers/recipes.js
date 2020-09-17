@@ -1,5 +1,7 @@
 
 const Recipe = require('../models/recipe');
+const axios = require('axios');
+
 
 exports.createRecipe = (req, res, next) => {
     const recipe = new Recipe(req.body);
@@ -13,7 +15,7 @@ exports.getAllRecipes = (req, res, next) => {
     const sortBy = req.query.sort || '';
     Recipe.find((err, recipes) => {
         if (err) { return next(err); }
-        res.status(200).json({'recipes': recipes });
+        res.status(200).json({ 'recipes': recipes });
     }).sort(sortBy)
 };
 
@@ -22,7 +24,7 @@ exports.getRecipe = (req, res, next) => {
     Recipe.findById(id, (err, recipe) => {
         if (err) { return next(err); }
         if (recipe === null) {
-            return res.status(404).json({'message': 'Recipe not found!'});
+            return res.status(404).json({ 'message': 'Recipe not found!' });
         }
         res.status(200).json(recipe);
     });
@@ -33,7 +35,7 @@ exports.editRecipe = (req, res, next) => {
     Recipe.findById(id, (err, recipe) => {
         if (err) { return next(err); }
         if (recipe === null) {
-            return res.status(404).json({'message': 'Recipe not found!'});
+            return res.status(404).json({ 'message': 'Recipe not found!' });
         }
         recipe.name = req.body.name;
         recipe.cuisine = req.body.cuisine;
@@ -53,7 +55,7 @@ exports.updateRecipe = (req, res, next) => {
     Recipe.findById(id, (err, recipe) => {
         if (err) { return next(err); }
         if (recipe === null) {
-            return res.status(404).json({'message': 'Recipe not found!'});
+            return res.status(404).json({ 'message': 'Recipe not found!' });
         }
         recipe.name = (req.body.name || recipe.name);
         recipe.cuisine = (req.body.cuisine || recipe.cuisine);
@@ -69,11 +71,31 @@ exports.updateRecipe = (req, res, next) => {
 
 exports.deleteRecipe = (req, res, next) => {
     const id = req.params.id;
-    Recipe.findOneAndDelete({_id: id}, (err, recipe) => {
+    Recipe.findOneAndDelete({ _id: id }, (err, recipe) => {
         if (err) { return next(err); }
         if (recipe === null) {
-            return res.status(404).json({'message': 'Recipe not found!'});
+            return res.status(404).json({ 'message': 'Recipe not found!' });
         }
         res.status(200).json(recipe);
     });
+};
+
+module.exports.getRecipeFromAPI = async (req, res, next) => {
+    const ingredients = req.body.ingredients;
+    API_KEY = 'd8e184c06980422a954050ec0fd3563f';
+    const ingredientsString = ingredients.join(',' + '+');
+    const spoonacularLink = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${API_KEY}&number=6&ranking=1&ignorePantry=true&ingredients=${ingredientsString}`;
+
+    axios
+        .get(spoonacularLink)
+        .then((result) => {
+            res.json({ recipes: result.data });
+        })
+        .catch((err) => {
+            if (!err.statusCode) {
+                err.statusCode = 500;
+            }
+            next(err);
+        });
+
 };

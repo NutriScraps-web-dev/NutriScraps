@@ -13,7 +13,7 @@ const authRouter = require('./routes/auth');
 const userRouter = require('./routes/user');
 const roleRouter = require('./routes/role');
 const adminRouter = require('./routes/admin');
-//const recipeRouter = require('./routes/recipe');
+
 
 const commentRouter = require('./routes/comment');
 const ratingRouter = require('./routes/rating');
@@ -57,7 +57,6 @@ app.use('/api/users', authRouter);
 app.use('/api/user', userRouter);
 app.use('/api/admins', roleRouter);
 app.use('/api/admins', adminRouter);
-//app.use('/api/users', recipeRouter);
 
 app.use('/comment', commentRouter);
 app.use('/rating', ratingRouter);
