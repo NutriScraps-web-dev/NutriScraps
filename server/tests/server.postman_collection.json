@@ -88,9 +88,9 @@
         },
         "url": {
           "raw": "{{host}}/api/users/signup",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "users", "signup"]
         }
       },
@@ -145,9 +145,9 @@
         },
         "url": {
           "raw": "{{host}}/api/users/signup",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "users", "signup"]
         }
       },
@@ -205,9 +205,9 @@
         },
         "url": {
           "raw": "{{host}}/api/users/signup",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "users", "signup"]
         }
       },
@@ -266,9 +266,9 @@
         },
         "url": {
           "raw": "{{host}}/api/users/signup",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "users", "signup"]
         }
       },
@@ -310,9 +310,9 @@
         },
         "url": {
           "raw": "{{host}}/api/users/login",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "users", "login"]
         }
       },
@@ -354,9 +354,9 @@
         },
         "url": {
           "raw": "{{host}}/api/users/login",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "users", "login"]
         }
       },
@@ -396,9 +396,9 @@
         },
         "url": {
           "raw": "{{host}}/api/users/login",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "users", "login"]
         }
       },
@@ -431,9 +431,9 @@
         ],
         "url": {
           "raw": "{{host}}/api/user/{{idUser}}",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "user", "{{idUser}}"]
         }
       },
@@ -493,9 +493,9 @@
         },
         "url": {
           "raw": "{{host}}/api/user/{{idUser}}",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "user", "{{idUser}}"]
         }
       },
@@ -550,9 +550,9 @@
         },
         "url": {
           "raw": "{{host}}/api/user/{{idUser}}/password",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "user", "{{idUser}}", "password"]
         }
       },
@@ -607,9 +607,9 @@
         },
         "url": {
           "raw": "{{host}}/api/user/{{idUser}}/password",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "user", "{{idUser}}", "password"]
         }
       },
@@ -664,9 +664,9 @@
         },
         "url": {
           "raw": "{{host}}/api/user/{{idUser}}/password",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "user", "{{idUser}}", "password"]
         }
       },
@@ -705,9 +705,9 @@
         ],
         "url": {
           "raw": "{{host}}/api/user/{{idUser}}",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "user", "{{idUser}}"]
         }
       },
@@ -748,9 +748,9 @@
         },
         "url": {
           "raw": "{{host}}/api/users/login",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "users", "login"]
         }
       },
@@ -803,9 +803,9 @@
         },
         "url": {
           "raw": "{{host}}/api/admins/roles",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "admins", "roles"]
         }
       },
@@ -859,9 +859,9 @@
         },
         "url": {
           "raw": "{{host}}/api/admins/roles",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "admins", "roles"]
         }
       },
@@ -894,9 +894,9 @@
         ],
         "url": {
           "raw": "{{host}}/api/admins/roles",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "admins", "roles"]
         }
       },
@@ -929,9 +929,9 @@
         ],
         "url": {
           "raw": "{{host}}/api/admins/roles?sort=-role",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "admins", "roles"],
           "query": [
             {
@@ -977,9 +977,9 @@
         ],
         "url": {
           "raw": "{{host}}/api/admins/roles/{{roleType}}",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "admins", "roles", "{{roleType}}"],
           "query": [
             {
@@ -1044,9 +1044,9 @@
         },
         "url": {
           "raw": "{{host}}/api/admins/roles/{{roleType}}",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "admins", "roles", "{{roleType}}"]
         }
       },
@@ -1085,9 +1085,9 @@
         ],
         "url": {
           "raw": "{{host}}/api/admins/roles/hgkjhgjgkj",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "admins", "roles", "hgkjhgjgkj"]
         }
       },
@@ -1126,9 +1126,9 @@
         ],
         "url": {
           "raw": "{{host}}/api/admins/roles/{{newRoleType}}",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "admins", "roles", "{{newRoleType}}"]
         }
       },
@@ -1192,9 +1192,9 @@
         ],
         "url": {
           "raw": "{{host}}/api/admins/allusers?page=1&limit={{perPage}}",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "admins", "allusers"],
           "query": [
             {
@@ -1263,9 +1263,9 @@
         ],
         "url": {
           "raw": "{{host}}/api/admins/allusers",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "admins", "allusers"]
         }
       },
@@ -1323,9 +1323,9 @@
         },
         "url": {
           "raw": "{{host}}/api/users/signup",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "users", "signup"]
         }
       },
@@ -1376,9 +1376,9 @@
         },
         "url": {
           "raw": "{{host}}/api/admins/allusers/{{idUser2}}",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "admins", "allusers", "{{idUser2}}"],
           "query": [
             {
@@ -1427,9 +1427,9 @@
         },
         "url": {
           "raw": "{{host}}/api/admins/allusers/{{idUser2}}",
-          "protocol": "http",
+
           "host": ["{{host}}"],
-          "port": "3001",
+
           "path": ["api", "admins", "allusers", "{{idUser2}}"]
         }
       },
