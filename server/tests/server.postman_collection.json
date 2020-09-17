@@ -1,75 +1,1411 @@
 {
-	"info": {
-		"_postman_id": "f7ee95b5-9cb9-442f-a6a9-42de46138872",
-		"name": "server",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "GET /api",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "b58d92ec-5214-450c-adb0-28e068aa71b9",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "{{host}}/api",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api"
-					]
-				}
-			},
-			"response": []
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"id": "05864cff-5cba-4070-bac3-a59328954ebf",
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"id": "e9c319be-3306-4fc5-ba34-fcf64391213a",
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variable": [
-		{
-			"id": "cd185905-a834-4211-8030-583d17702534",
-			"key": "host",
-			"value": "http://localhost:3000",
-			"type": "string"
-		}
-	],
-	"protocolProfileBehavior": {}
+  "info": {
+    "_postman_id": "f7ee95b5-9cb9-442f-a6a9-42de46138872",
+    "name": "server",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "post - postSignup - user",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5bfe15ac-dc8a-4521-9fb6-835fee3ad5d1",
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "7cc180f4-7657-4eb1-8d29-89bb3294694f",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "pm.environment.set(\"usernameUser\", jsonData.username);\r",
+              "pm.environment.set(\"passwordUser\", \"password\");\r",
+              "pm.environment.set(\"idUser\", jsonData._id);\r",
+              "pm.environment.set(\"emailUser\", jsonData.email);\r",
+              "//console.log(pm.environment.get(\"username\"))\r",
+              "\r",
+              "pm.test(\"sign up as a user - status check\", function(){\r",
+              "    pm.response.to.have.status(201);\r",
+              "})\r",
+              "\r",
+              "pm.test(\"sign up as a user - json check\", function(){\r",
+              "    pm.expect(jsonData.username).to.eql(pm.environment.get(\"usernameUser\"));\r",
+              "    pm.expect(jsonData.email).to.eql(pm.environment.get(\"emailUser\"));\r",
+              "})\r",
+              "\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{    \"bio\": \"some random text\",\r\n    \"name\": {\r\n        \"firstName\": \"{{$randomFirstName}}\",\r\n        \"lastName\": \"{{$randomLastName}}\"\r\n    },\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"password\",\r\n    \"country\": \"{{$randomCountry}}\",\r\n    \"confirmPassword\": \"password\",\r\n    \"roleType\" : \"user\"\r\n    \r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/users/signup",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["users", "signup"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "post - postSignup - user - error",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "0cec2d48-8c7a-4d66-bfbf-0b9872c8eabb",
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "8edec23a-a6d2-4310-b3f2-fcb9ba0bc969",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "\r",
+              "pm.test(\"sign up as a user - existing Username - status check\", function(){\r",
+              "    pm.response.to.have.status(403);\r",
+              "})\r",
+              "\r",
+              "pm.test(\"sign up as a user - existing Username - json check\", function(){\r",
+              "    pm.expect(jsonData.message).to.eql(pm.environment.get(\"Username Already Exist\"));\r",
+              "})\r",
+              "\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{    \"bio\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\",\r\n    \"name\": {\r\n        \"firstName\": \"{{$randomFirstName}}\",\r\n        \"lastName\": \"{{$randomLastName}}\"\r\n    },\r\n    \"username\": \"idrees\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"password\",\r\n    \"country\": \"Germany\",\r\n    \"confirmPassword\": \"password\",\r\n    \"roleType\" : \"user\"\r\n    \r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/users/signup",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["users", "signup"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "post - postSignup - user - error",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "dea2d025-35f1-46f8-a34b-32e1513c2840",
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "1c71ea7c-3721-4211-ae51-2e7dea8438e5",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "\r",
+              "pm.test(\"sign up as a user - email exist - status check\", function(){\r",
+              "    pm.response.to.have.status(403);\r",
+              "})\r",
+              "\r",
+              "pm.test(\"sign up as a user - email exist - json check\", function(){\r",
+              "    pm.expect(jsonData.message).to.eql(pm.environment.get(\"Email Already Exist\"));\r",
+              "})\r",
+              "\r",
+              "\r",
+              "\r",
+              "\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{    \"bio\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\",\r\n    \"name\": {\r\n        \"firstName\": \"{{$randomFirstName}}\",\r\n        \"lastName\": \"{{$randomLastName}}\"\r\n    },\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"email\": \"idrees@test.com\",\r\n    \"password\": \"password\",\r\n    \"country\": \"{{$randomCountry}}\",\r\n    \"confirmPassword\": \"password\",\r\n    \"roleType\" : \"user\"\r\n    \r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/users/signup",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["users", "signup"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "post - postSignup - user - error",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "0427b4d6-2309-4573-9952-b4442d5249fb",
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "b017f191-5287-4932-9910-0eded26e616c",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "\r",
+              "pm.test(\"sign up as a user - invalid data - status check\", function(){\r",
+              "    pm.response.to.have.status(422);\r",
+              "    \r",
+              "})\r",
+              "\r",
+              "pm.test(\"sign up as a user - invalid data - json check\", function(){\r",
+              "    pm.expect(jsonData.message).to.eql(\"invalid data\");\r",
+              "})\r",
+              "\r",
+              "\r",
+              "\r",
+              "\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{    \"bio\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\",\r\n    \"name\": {\r\n        \"firstName\": \"\",\r\n        \"lastName\": \"{{$randomLastName}}\"\r\n    },\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"email\": \"idrees@test.com\",\r\n    \"password\": \"password\",\r\n    \"country\": \"{{$randomCountry}}\",\r\n    \"confirmPassword\": \"password\",\r\n    \"roleType\" : \"user\"\r\n    \r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/users/signup",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["users", "signup"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "post - postLogin - user - error",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "ca67ac1f-712f-41e9-a755-532034c73d5f",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"user log in\", ()=>{\r",
+              "    pm.response.to.have.status(401)\r",
+              "})\r",
+              "\r",
+              "pm.test(\"log in as a user - Wrong Username - json check\", function(){\r",
+              "    pm.expect(jsonData.message).to.eql(\"Invalid Username or Password\");\r",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"someName\",\r\n    \"password\": \"{{passwordUser}}\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/users/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["users", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "post - postLogin - user - error",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "628da1da-95b5-49e2-b9c6-f12d844a419c",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"user log in\", ()=>{\r",
+              "    pm.response.to.have.status(401)\r",
+              "})\r",
+              "console.log(jsonData)\r",
+              "pm.test(\"log in as a user - Wrong Password - json check\", function(){\r",
+              "    pm.expect(jsonData.message).to.eql(\"Invalid Username or Password\");\r",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"idrees\",\r\n    \"password\": \"wrongPass\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/users/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["users", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "post - postLogin - user",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "e49fe331-6eab-41b6-9c32-737b94c6d7d0",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"user log in\", ()=>{\r",
+              "    pm.response.to.have.status(200)\r",
+              "})\r",
+              "\r",
+              "pm.environment.set(\"tokenUser\", jsonData.token);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"{{usernameUser}}\",\r\n    \"password\": \"{{passwordUser}}\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/users/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["users", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get - getInfo - user",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "dcf70b64-6352-400f-b871-57ae92f9056f",
+            "exec": [
+              "pm.test(\"getting a single user info by ID - getInfo\", ()=>{\r",
+              "    pm.response.to.have.status(202);\r",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{tokenUser}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/user/{{idUser}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["user", "{{idUser}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "patch - updateProfile - user",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "8e7636ac-677c-45fd-aac1-b5f79a4efbe2",
+            "exec": [
+              "pm.environment.set(\"updatedBio\", \"I Like cooking Indian foods\")"
+            ],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "9ef2341b-63ee-4847-939a-bcc71099038e",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"user updates profile - updateProfile\", ()=>{\r",
+              "    pm.response.to.have.status(200)\r",
+              "})\r",
+              "\r",
+              "console.log(jsonData);\r",
+              "pm.test(\"user updates profile - updateProfile\", ()=>{\r",
+              "    pm.expect(jsonData.result.bio).to.equal(pm.environment.get(\"updatedBio\"))\r",
+              "    pm.expect(jsonData.result.name.firstName).to.equal(\"someOne\")\r",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{tokenUser}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\":{\r\n        \"firstName\": \"someOne\"\r\n    },\r\n    \"bio\": \"{{updatedBio}}\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/user/{{idUser}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["user", "{{idUser}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "patch - changePassword - user - error",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "1ffd6efd-bf5a-4999-80fc-7c6e2029a808",
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "14e011d8-e742-4ba6-b50c-a8828e919545",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"user updates profile - updateProfile\", ()=>{\r",
+              "    pm.response.to.have.status(401)\r",
+              "})\r",
+              "pm.test(\"user updates profile - updateProfile\", ()=>{\r",
+              "    pm.expect(jsonData.message).to.equal(\"Please Enter Correct Password\")\r",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "type": "text",
+            "value": "Bearer {{tokenUser}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"oldPassword\": \"wrongPass\",\r\n    \"newPassword\": \"newPassword\",\r\n    \"confirmNewPassword\": \"newPassword\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/user/{{idUser}}/password",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["user", "{{idUser}}", "password"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "patch - changePassword - user error",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "719bfdb6-f3ec-4338-b253-bb0ce1bd1566",
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "a0a95821-10be-4103-9976-7a0f0a79737e",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"user updates profile - updateProfile\", ()=>{\r",
+              "    pm.response.to.have.status(422)\r",
+              "})\r",
+              "pm.test(\"user updates profile - updateProfile\", ()=>{\r",
+              "    pm.expect(jsonData.message).to.equal(\"Password Too Short, Must be at Least 8 characters Long\")\r",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "type": "text",
+            "value": "Bearer {{tokenUser}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"oldPassword\": \"{{passwordUser}}\",\r\n    \"newPassword\": \"newP\",\r\n    \"confirmNewPassword\": \"newP\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/user/{{idUser}}/password",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["user", "{{idUser}}", "password"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "patch - changePassword - user",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "f69aa086-54fd-4773-8e00-12f814db9153",
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "f09d336e-d703-4a05-b177-0e6a3c0b359d",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"user updates profile - updateProfile\", ()=>{\r",
+              "    pm.response.to.have.status(200)\r",
+              "})\r",
+              "pm.test(\"user updates profile - updateProfile\", ()=>{\r",
+              "    pm.expect(jsonData.message).to.equal(\"Password changed\")\r",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "type": "text",
+            "value": "Bearer {{tokenUser}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"oldPassword\": \"{{passwordUser}}\",\r\n    \"newPassword\": \"newPassword\",\r\n    \"confirmNewPassword\": \"newPassword\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/user/{{idUser}}/password",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["user", "{{idUser}}", "password"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete - deleteProfile - user",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "14118697-e54e-4d38-81bc-0139f8ac2bdc",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"user deletes profile\", ()=>{\r",
+              "    pm.response.to.have.status(200)\r",
+              "})\r",
+              "\r",
+              "pm.test(\"user updates profile - updateProfile\", ()=>{\r",
+              "    pm.expect(jsonData.message).to.equal(\"The User is Deleted\")\r",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{tokenUser}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/user/{{idUser}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["user", "{{idUser}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "post - postLogin - admin",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "f815c5d0-fb65-4d42-8216-8b0f42215802",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"user log in\", ()=>{\r",
+              "    pm.response.to.have.status(200)\r",
+              "})\r",
+              "\r",
+              "pm.environment.set(\"tokenAdmin\", jsonData.token);\r",
+              "pm.environment.set(\"idAdmin\", jsonData.userId);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"idrees\",\r\n    \"password\": \"password\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/users/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["users", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "post - createRole - admin  - error",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5a2b4a9b-7353-41e9-9fbe-1e2f4d19b29f",
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "21001df0-c63c-4aa0-b416-bd247071ba7f",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"admin creates new role\", ()=>{\r",
+              "    pm.response.to.have.status(403)\r",
+              "})\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{tokenAdmin}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"role\" : \"user\",\r\n    \"description\": \"{{$randomLoremText}}\",\r\n    \"users\": []\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/admins/roles",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["admins", "roles"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "post - createRole - admin ",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "1b82049a-29e4-4b2a-8171-7f7f72afb0a2",
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "cba7fcfd-48b3-4b0b-92cc-399588b156fc",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"admin creates new role\", ()=>{\r",
+              "    pm.response.to.have.status(201)\r",
+              "})\r",
+              "\r",
+              "pm.environment.set(\"roleType\", jsonData.role);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{tokenAdmin}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"role\" : \"{{$randomFirstName}}\",\r\n    \"description\": \"some random text\",\r\n    \"users\": []\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/admins/roles",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["admins", "roles"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get - getAllRoles - admin",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "ed1f69f8-cc94-4eaa-91bf-815f61f33011",
+            "exec": [
+              "pm.test(\"admin fetch all roles\", ()=>{\r",
+              "    pm.response.to.have.status(202)\r",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{tokenAdmin}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/admins/roles",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["admins", "roles"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get - getAllRoles - admin - sort",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "38bbe838-b46d-4ce6-9ebe-aadca84e88eb",
+            "exec": [
+              "pm.test(\"admin fetch all roles\", ()=>{\r",
+              "    pm.response.to.have.status(202)\r",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "type": "text",
+            "value": "Bearer {{tokenAdmin}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/admins/roles?sort=-role",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["admins", "roles"],
+          "query": [
+            {
+              "key": "sort",
+              "value": "-role"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get - getRole - admin",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "666d5bda-8a13-476c-93d5-29879206360a",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"admin fetch a role by type - status check\", ()=>{\r",
+              "    pm.response.to.have.status(200)\r",
+              "})\r",
+              "\r",
+              "pm.test(\"admin fetch a role by type - json Check\", ()=>{\r",
+              "    pm.expect(jsonData.role).to.eql(pm.environment.get(\"roleType\"))\r",
+              "})\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{tokenAdmin}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/admins/roles/{{roleType}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["admins", "roles", "{{roleType}}"],
+          "query": [
+            {
+              "key": "",
+              "value": null,
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "patch - editRole - admin",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "e968a09e-73d5-4f95-885b-96946b015db1",
+            "exec": ["const newRoleType = \"newRoleType\""],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "7ee25678-9a8f-41e5-9856-b71285c6f99f",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "pm.environment.set(\"roleType\", jsonData.updatedRole.role)\r",
+              "\r",
+              "pm.test(\"admin edits a role by type - status check\", ()=>{\r",
+              "    pm.response.to.have.status(200)\r",
+              "})\r",
+              "\r",
+              "pm.test(\"admin edits a role by type - json check\", ()=>{\r",
+              "    pm.expect(jsonData.updatedRole.role).to.eql(pm.environment.get(\"newRoleType\"))\r",
+              "})\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{tokenAdmin}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"role\": \"{{newRoleType}}\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/admins/roles/{{roleType}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["admins", "roles", "{{roleType}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete - deleteRole - admin - error",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "fa26ad65-3162-40b6-bab8-5d69741348b2",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"admin deletes a role by type\", ()=>{\r",
+              "    pm.response.to.have.status(404)\r",
+              "})\r",
+              "\r",
+              "pm.test(\"admin deletes a role by type - json check\", ()=>{\r",
+              "    pm.expect(jsonData.message).to.eql(\"The role does NOT Exist\")\r",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{tokenAdmin}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/admins/roles/hgkjhgjgkj",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["admins", "roles", "hgkjhgjgkj"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete - deleteRole - admin",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "a3725956-c843-4593-937d-0fd90fb3611f",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"admin deletes a role by type\", ()=>{\r",
+              "    pm.response.to.have.status(200)\r",
+              "})\r",
+              "\r",
+              "pm.test(\"admin deletes a role by type - json check\", ()=>{\r",
+              "    pm.expect(jsonData.message).to.eql(\"The newRoleName Is Deleted\")\r",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{tokenAdmin}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/admins/roles/{{newRoleType}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["admins", "roles", "{{newRoleType}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get - getAllUsers - admin - pagenation",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "eeb62d8d-6560-448b-931d-d2a1b6d430e4",
+            "exec": [
+              "let perPage = Math.floor(Math.random() * Math.floor(10));\r",
+              "\r",
+              "pm.environment.set(\"perPage\", perPage);"
+            ],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "2d92c4b2-7ea6-41d8-b8bf-fe64554740c3",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"admin Fetches all users - status\", ()=>{\r",
+              "    pm.response.to.have.status(200)\r",
+              "})\r",
+              "\r",
+              "pm.test(\"admin Fetches all users - pagenation Check\", ()=>{\r",
+              "    pm.expect(jsonData.user.length).to.eql(pm.environment.get(\"perPage\"))\r",
+              "})\r",
+              "\r",
+              "console.log(pm.environment.get(\"perPage\"))\r",
+              "console.log(jsonData.user.length)"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{tokenAdmin}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/admins/allusers?page=1&limit={{perPage}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["admins", "allusers"],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "{{perPage}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get - getAllUsers - admin",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "ef22536b-18e9-4e4e-83de-b21109fac9b4",
+            "exec": [
+              "let perPage = Math.floor(Math.random() * Math.floor(6));\r",
+              "\r",
+              "pm.environment.set(\"perPage\", perPage);"
+            ],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "a06aeb40-cc80-4c0e-83f6-10284e0ccdca",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"admin Fetches all users - status\", ()=>{\r",
+              "    pm.response.to.have.status(200)\r",
+              "})\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{tokenAdmin}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/admins/allusers",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["admins", "allusers"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "post - postSignup - user 2",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "19520d76-6181-4d11-a85e-ac3ceb66d1c4",
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "313ef0b4-8ae9-4acb-8739-4ae99faed5cd",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "pm.environment.set(\"usernameUser2\", jsonData.username);\r",
+              "pm.environment.set(\"passwordUser2\", \"password\");\r",
+              "pm.environment.set(\"idUser2\", jsonData._id);\r",
+              "\r",
+              "pm.test(\"sign up as a user - status check\", function(){\r",
+              "    pm.response.to.have.status(201);\r",
+              "})\r",
+              "\r",
+              "pm.test(\"sign up as a user - json check\", function(){\r",
+              "    pm.expect(jsonData.username).to.eql(pm.environment.get(\"usernameUser2\"));\r",
+              "})\r",
+              "\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{    \"bio\": \"some random Text\",\r\n    \"name\": {\r\n        \"firstName\": \"{{$randomFirstName}}\",\r\n        \"lastName\": \"{{$randomLastName}}\"\r\n    },\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"password\",\r\n    \"country\": \"{{$randomCountry}}\",\r\n    \"confirmPassword\": \"password\",\r\n    \"roleType\" : \"user\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/users/signup",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["users", "signup"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "patch - editUser - admin",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "e4742219-9c92-4ec1-8b15-106dbaa12c27",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"admin edits user - status check\", function(){\r",
+              "    pm.response.to.have.status(200);\r",
+              "})\r",
+              "\r",
+              "pm.test(\"admin edits user - json check\", function(){\r",
+              "    pm.expect(jsonData.updatedUser.name.firstName).to.eql(\"jack\");\r",
+              "   pm.expect(jsonData.updatedUser.name.lastName).to.eql(\"Bower\");\r",
+              "    pm.expect(jsonData.updatedUser.country).to.equals(\"USA\");\r",
+              "})\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{tokenAdmin}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\":{\r\n        \"firstName\": \"jack\",\r\n        \"lastName\": \"Bower\"\r\n    },\r\n    \"country\": \"USA\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/admins/allusers/{{idUser2}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["admins", "allusers", "{{idUser2}}"],
+          "query": [
+            {
+              "key": "",
+              "value": null,
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete - deleteUser - admin",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "e8055e9b-3398-4c24-a283-cebddc2573b5",
+            "exec": [
+              "pm.test(\"admin deletes a user\", ()=>{\r",
+              "    pm.response.to.have.status(200)\r",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "bearer {{tokenAdmin}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/admins/allusers/{{idUser2}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["admins", "allusers", "{{idUser2}}"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "protocolProfileBehavior": {}
 }
