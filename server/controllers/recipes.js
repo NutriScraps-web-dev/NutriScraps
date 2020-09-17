@@ -13,7 +13,7 @@ exports.getAllRecipes = (req, res, next) => {
     const sortBy = req.query.sort || '';
     Recipe.find((err, recipes) => {
         if (err) { return next(err); }
-        res.json({'recipes': recipes });
+        res.status(200).json({'recipes': recipes });
     }).sort(sortBy)
 };
 
@@ -24,7 +24,7 @@ exports.getRecipe = (req, res, next) => {
         if (recipe === null) {
             return res.status(404).json({'message': 'Recipe not found!'});
         }
-        res.json(recipe);
+        res.status(200).json(recipe);
     });
 };
 
@@ -41,7 +41,7 @@ exports.editRecipe = (req, res, next) => {
         recipe.cookingProcess = req.body.cookingProcess;
         recipe.toServe = req.body.toServe;
         recipe.save();
-        res.json(recipe);
+        res.status(200).json(recipe);
     });
 };
 
@@ -58,7 +58,7 @@ exports.updateRecipe = (req, res, next) => {
         recipe.cookingProcess = (req.body.cookingProcess || recipe.cookingProcess);
         recipe.toServe = (req.body.toServe || recipe.toServe);
         recipe.save();
-        res.json(recipe);
+        res.status(200).json(recipe);
     });
 };
 
@@ -69,6 +69,6 @@ exports.deleteRecipe = (req, res, next) => {
         if (recipe === null) {
             return res.status(404).json({'message': 'Recipe not found!'});
         }
-        res.json(recipe);
+        res.status(200).json(recipe);
     });
 };

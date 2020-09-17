@@ -12,11 +12,9 @@ exports.createIngredient = (req, res, next) => {
 exports.getAllIngredients = (req, res, next) => {
     Ingredient.find((err, ingredients) => {
         if (err) { return next(err); }
-        res.json({'ingredients': ingredients});
+        res.status(200).json({'ingredients': ingredients});
     })
 };
-
-
 
 exports.getIngredient = (req, res, next) => {
     const id = req.params.id;
@@ -25,7 +23,7 @@ exports.getIngredient = (req, res, next) => {
         if (ingredient === null) {
             return res.status(404).json({'message': 'Ingredient not found!'});
         }
-        res.json(ingredient);
+        res.status(200).json(ingredient);
     });
 };
 
@@ -39,7 +37,7 @@ exports.editIngredient = (req, res, next) => {
         ingredient.name = req.body.name;
         ingredient.weight = req.body.weight;
         ingredient.save();
-        res.json(ingredient);
+        res.status(200).json(ingredient);
     });
 };
 
@@ -53,7 +51,7 @@ exports.updateIngredient = (req, res, next) => {
         ingredient.name = (req.body.name || ingredient.name);
         ingredient.weight = (req.body.weight || ingredient.weight);
         ingredient.save();
-        res.json(ingredient);
+        res.status(200).json(ingredient);
     });
 };
 
@@ -64,6 +62,6 @@ exports.deleteIngredient = (req, res, next) => {
         if (ingredient === null) {
             return res.status(404).json({'message': 'Ingredient not found!'});
         }
-        res.json(ingredient);
+        res.status(200).json(ingredient);
     });
 };
