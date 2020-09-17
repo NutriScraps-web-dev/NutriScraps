@@ -1,10 +1,14 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var morgan = require('morgan');
-var path = require('path');
-var cors = require('cors');
-var history = require('connect-history-api-fallback');
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const morgan = require('morgan');
+const path = require('path');
+const cors = require('cors');
+const history = require('connect-history-api-fallback');
+
+const recipesRouter = require('./routes/recipe');
+const ingredientsRouter = require('./routes/ingredient');
 
 const authRouter = require('./routes/auth');
 const userRouter = require('./routes/user');
@@ -35,7 +39,7 @@ mongoose.connect(
 );
 
 // Create Express app
-var app = express();
+const app = express();
 // Parse requests of content-type 'application/json'
 app.use(bodyParser.json());
 // HTTP request logger
@@ -57,6 +61,9 @@ app.use('/admins', adminRouter);
 app.use('/comment', commentRouter);
 app.user('/rating', ratingRouter);
 
+app.use(recipesRouter);
+app.use(ingredientsRouter);
+
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {
   res.status(404).json({ message: 'Not Found' });
@@ -66,12 +73,11 @@ app.use('/api/*', function (req, res) {
 // Support Vuejs HTML 5 history mode
 app.use(history());
 // Serve static assets
-var root = path.normalize(__dirname + '/..');
-var client = path.join(root, 'client', 'dist');
+const root = path.normalize(__dirname + '/..');
+const client = path.join(root, 'client', 'dist');
 app.use(express.static(client));
 
 // Error handler (i.e., when exception is thrown) must be registered last
-var env = app.get('env');
 // app.use((err, req, res, next) => {
 //   console.log(err);
 //   const status = error.statusCode || 500;
@@ -79,25 +85,25 @@ var env = app.get('env');
 //   res.status(status).json({ message: message });
 // });
 
-// eslint-disable-next-line no-unused-vars
-app.use(function (err, req, res, next) {
-  console.error(err.stack);
-  var err_res = {
-    message: err.message,
-    error: {},
-  };
-  if (env === 'development') {
-    err_res['error'] = err;
-  }
-  res.status(err.status || 500);
-  res.json(err_res);
+// eslint-disable-next-line no-unused-consts
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    const err_res = {
+        'message': err.message,
+        'error': {}
+    };
+    if (env === 'development') {
+        err_res['error'] = err;
+    }
+    res.status(err.status || 500);
+    res.json(err_res);
 });
 
-app.listen(port, function (err) {
-  if (err) throw err;
-  console.log(`Express server listening on port ${port}, in ${env} mode`);
-  console.log(`Backend: http://localhost:${port}/api/`);
-  console.log(`Frontend (production): http://localhost:${port}/`);
+app.listen(port, (err) => {
+    if (err) throw err;
+    console.log(`Express server listening on port ${port}, in ${env} mode`);
+    console.log(`Backend: http://localhost:${port}/api/`);
+    console.log(`Frontend (production): http://localhost:${port}/`);
 });
 
 module.exports = app;
