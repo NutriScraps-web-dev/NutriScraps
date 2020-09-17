@@ -39,10 +39,12 @@ const userSchema = new Schema(
       default: 'user',
       type: String,
     },
-    roleId: {
-      type: Schema.Types.ObjectId,
-      ref: 'Role',
-    },
+    roleId: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Role',
+      },
+    ],
     posts: [
       {
         type: Schema.Types.ObjectId,

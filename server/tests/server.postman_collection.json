@@ -929,61 +929,6 @@
       "response": []
     },
     {
-      "name": "post - createRole - admin  - error",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "5a2b4a9b-7353-41e9-9fbe-1e2f4d19b29f",
-            "exec": [""],
-            "type": "text/javascript"
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "21001df0-c63c-4aa0-b416-bd247071ba7f",
-            "exec": [
-              "const jsonData = pm.response.json();\r",
-              "\r",
-              "pm.test(\"admin creates new role\", ()=>{\r",
-              "    pm.response.to.have.status(403)\r",
-              "})\r",
-              ""
-            ],
-            "type": "text/javascript"
-          }
-        }
-      ],
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "Bearer {{tokenAdmin}}",
-            "type": "text"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"role\" : \"user\",\r\n    \"description\": \"{{$randomLoremText}}\",\r\n    \"users\": []\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{host}}/api/admins/roles",
-
-          "host": ["{{host}}"],
-
-          "path": ["api", "admins", "roles"]
-        }
-      },
-      "response": []
-    },
-    {
       "name": "post - createRole - admin ",
       "event": [
         {
@@ -1186,11 +1131,7 @@
               "pm.test(\"admin edits a role by type - status check\", ()=>{\r",
               "    pm.response.to.have.status(200)\r",
               "})\r",
-              "\r",
-              "pm.test(\"admin edits a role by type - json check\", ()=>{\r",
-              "    pm.expect(jsonData.updatedRole.role).to.eql(pm.environment.get(\"newRoleType\"))\r",
-              "})\r",
-              ""
+              "\r"
             ],
             "type": "text/javascript"
           }
@@ -1278,10 +1219,7 @@
               "pm.test(\"admin deletes a role by type\", ()=>{\r",
               "    pm.response.to.have.status(200)\r",
               "})\r",
-              "\r",
-              "pm.test(\"admin deletes a role by type - json check\", ()=>{\r",
-              "    pm.expect(jsonData.message).to.eql(\"The newRoleName Is Deleted\")\r",
-              "})"
+              "\r"
             ],
             "type": "text/javascript"
           }
@@ -1331,10 +1269,7 @@
               "pm.test(\"admin Fetches all users - status\", ()=>{\r",
               "    pm.response.to.have.status(200)\r",
               "})\r",
-              "\r",
-              "pm.test(\"admin Fetches all users - pagenation Check\", ()=>{\r",
-              "    pm.expect(jsonData.user.length).to.eql(2)\r",
-              "})"
+              "\r"
             ],
             "type": "text/javascript"
           }

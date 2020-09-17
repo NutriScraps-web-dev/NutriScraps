@@ -73,22 +73,23 @@ exports.postSignup = (req, res, next) => {
   const bio = req.body.bio;
   const roleType = req.body.roleType;
 
-  let userRole;
-  Role.findOne({ role: roleType })
-    .then((roleDoc) => {
-      if (!roleDoc) {
-        const error = new Error('Specified Role Dose NOT exist');
-        error.statusCode = 404;
-        throw error;
-      }
-      userRole = roleDoc;
-    })
-    .catch((err) => {
-      if (!err.statusCode) {
-        err.statusCode = 500;
-      }
-      next(err);
-    });
+  // let userRole;
+
+  // Role.findOne({ role: roleType })
+  //   .then((roleDoc) => {
+  //     if (!roleDoc) {
+  //       const error = new Error('Specified Role Dose NOT exist');
+  //       error.statusCode = 404;
+  //       throw error;
+  //     }
+  //     userRole = roleDoc;
+  //   })
+  //   .catch((err) => {
+  //     if (!err.statusCode) {
+  //       err.statusCode = 500;
+  //     }
+  //     next(err);
+  //   });
 
   if (password !== confirmPassword) {
     return res.status(409).json({ error: 'Passwords does NOT Match' });
@@ -115,7 +116,7 @@ exports.postSignup = (req, res, next) => {
               password: hashedPassword,
               country: country,
               bio: bio,
-              roleId: userRole,
+              roleId: [],
               roleType: roleType,
               posts: [],
               rating: [],
@@ -124,8 +125,8 @@ exports.postSignup = (req, res, next) => {
             return user.save();
           })
           .then((result) => {
-            userRole.users.push(result);
-            userRole.save();
+            //userRole.users.push(result);
+            // userRole.save();
             res.status(201).json(result);
           })
           .catch((err) => {
