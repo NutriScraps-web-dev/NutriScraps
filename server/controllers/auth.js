@@ -74,7 +74,6 @@ exports.postSignup = (req, res, next) => {
   const roleType = req.body.roleType;
 
   let userRole;
-
   Role.findOne({ role: roleType })
     .then((roleDoc) => {
       if (!roleDoc) {

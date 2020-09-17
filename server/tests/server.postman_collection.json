@@ -35,6 +35,182 @@
       "response": []
     },
     {
+      "name": "post - createRole - admin - admin",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "092943d1-199e-4e1a-b04c-55078eda0b51",
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "17576158-114b-4d07-9539-610ebb9aff71",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"admin creates new role\", ()=>{\r",
+              "    pm.response.to.have.status(201)\r",
+              "})\r",
+              "\r",
+              "pm.environment.set(\"roleType\", jsonData.role);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{tokenAdmin}}",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"role\" : \"admin\",\r\n    \"description\": \"some random text\",\r\n    \"users\": []\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/api/admins/roles",
+
+          "host": ["{{host}}"],
+
+          "path": ["api", "admins", "roles"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "post - createRole - admin - user",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "f6f6200e-96ea-4b60-aac9-9525edc89dd5",
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "b09f68de-46be-41df-bce8-c6515db8f796",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"admin creates new role\", ()=>{\r",
+              "    pm.response.to.have.status(201)\r",
+              "})\r",
+              "\r",
+              "pm.environment.set(\"roleType\", jsonData.role);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "type": "text",
+            "value": "Bearer {{tokenAdmin}}",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"role\" : \"user\",\r\n    \"description\": \"some random text\",\r\n    \"users\": []\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/api/admins/roles",
+
+          "host": ["{{host}}"],
+
+          "path": ["api", "admins", "roles"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "post - postSignup - admin",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "a8c7e474-2eae-4acd-a882-3f4df32b7f1f",
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "16521355-fcd9-490e-ab7e-7f338ebd207b",
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "pm.environment.set(\"usernameUser\", jsonData.username);\r",
+              "pm.environment.set(\"passwordUser\", \"password\");\r",
+              "pm.environment.set(\"idUser\", jsonData._id);\r",
+              "pm.environment.set(\"emailUser\", jsonData.email);\r",
+              "//console.log(pm.environment.get(\"username\"))\r",
+              "\r",
+              "pm.test(\"sign up as a user - status check\", function(){\r",
+              "    pm.response.to.have.status(201);\r",
+              "})\r",
+              "\r",
+              "pm.test(\"sign up as a user - json check\", function(){\r",
+              "    pm.expect(jsonData.username).to.eql(pm.environment.get(\"usernameUser\"));\r",
+              "    pm.expect(jsonData.email).to.eql(pm.environment.get(\"emailUser\"));\r",
+              "})\r",
+              "\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{    \"bio\": \"some random text\",\r\n    \"name\": {\r\n        \"firstName\": \"{{$randomFirstName}}\",\r\n        \"lastName\": \"{{$randomLastName}}\"\r\n    },\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"password\",\r\n    \"country\": \"{{$randomCountry}}\",\r\n    \"confirmPassword\": \"password\",\r\n    \"roleType\" : \"user\"\r\n    \r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/api/users/signup",
+
+          "host": ["{{host}}"],
+
+          "path": ["api", "users", "signup"]
+        }
+      },
+      "response": []
+    },
+    {
       "name": "post - postSignup - user",
       "event": [
         {
