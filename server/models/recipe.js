@@ -7,7 +7,7 @@ const recipeSchema = new Schema({
         type: String, 
         required: true
     },
-    preperation: { 
+    preparation: { 
         type: [String]
     },
     cookingProcess: {
