@@ -11,6 +11,9 @@ const userRouter = require('./routes/user');
 const roleRouter = require('./routes/role');
 const adminRouter = require('./routes/admin');
 
+const commentRouter = require('./routes/comment');
+const ratingRouter = require('./routes/rating');
+
 // Variables
 var mongoURI =
   process.env.MONGODB_URI ||
@@ -50,6 +53,9 @@ app.use('/users', authRouter);
 app.use('/user', userRouter);
 app.use('/admins', roleRouter);
 app.use('/admins', adminRouter);
+
+app.use('/comment', commentRouter);
+app.user('/rating', ratingRouter);
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {
