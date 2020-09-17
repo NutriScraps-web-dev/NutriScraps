@@ -95,13 +95,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/users/signup",
+					"raw": "http://localhost:3000/api/users/signup",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"users",
 						"signup"
 					]
@@ -159,13 +160,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/users/signup",
+					"raw": "http://localhost:3000/api/users/signup",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"users",
 						"signup"
 					]
@@ -226,13 +228,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/users/signup",
+					"raw": "http://localhost:3000/api/users/signup",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"users",
 						"signup"
 					]
@@ -294,13 +297,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/users/signup",
+					"raw": "http://localhost:3000/api/users/signup",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"users",
 						"signup"
 					]
@@ -343,13 +347,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/users/login",
+					"raw": "http://localhost:3000/api/users/login",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"users",
 						"login"
 					]
@@ -392,13 +397,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/users/login",
+					"raw": "http://localhost:3000/api/users/login",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"users",
 						"login"
 					]
@@ -439,13 +445,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/users/login",
+					"raw": "http://localhost:3000/api/users/login",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"users",
 						"login"
 					]
@@ -479,13 +486,14 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:3000/user/{{idUser}}",
+					"raw": "http://localhost:3000/api/user/{{idUser}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"user",
 						"{{idUser}}"
 					]
@@ -546,15 +554,82 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/user/{{idUser}}",
+					"raw": "http://localhost:3000/api/user/{{idUser}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"user",
 						"{{idUser}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patch - changePassword - user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f69aa086-54fd-4773-8e00-12f814db9153",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "f09d336e-d703-4a05-b177-0e6a3c0b359d",
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"user update Password\", ()=>{\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"pm.test(\"user updates Password\", ()=>{\r",
+							"    pm.expect(jsonData.message).to.equal(\"Password changed\")\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{tokenUser}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"oldPassword\": \"{{passwordUser}}\",\r\n    \"newPassword\": \"newPassword\",\r\n    \"confirmNewPassword\": \"newPassword\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/user/{{idUser}}/password",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"{{idUser}}",
+						"password"
 					]
 				}
 			},
@@ -610,13 +685,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/user/{{idUser}}/password",
+					"raw": "http://localhost:3000/api/user/{{idUser}}/password",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"user",
 						"{{idUser}}",
 						"password"
@@ -645,10 +721,10 @@
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
-							"pm.test(\"user updates profile - updateProfile\", ()=>{\r",
+							"pm.test(\"user updates Password\", ()=>{\r",
 							"    pm.response.to.have.status(422)\r",
 							"})\r",
-							"pm.test(\"user updates profile - updateProfile\", ()=>{\r",
+							"pm.test(\"user updates Password\", ()=>{\r",
 							"    pm.expect(jsonData.message).to.equal(\"Password Too Short, Must be at Least 8 characters Long\")\r",
 							"})"
 						],
@@ -675,78 +751,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/user/{{idUser}}/password",
+					"raw": "http://localhost:3000/api/user/{{idUser}}/password",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"user",
-						"{{idUser}}",
-						"password"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "patch - changePassword - user",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "f69aa086-54fd-4773-8e00-12f814db9153",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "f09d336e-d703-4a05-b177-0e6a3c0b359d",
-						"exec": [
-							"const jsonData = pm.response.json();\r",
-							"\r",
-							"pm.test(\"user updates profile - updateProfile\", ()=>{\r",
-							"    pm.response.to.have.status(200)\r",
-							"})\r",
-							"pm.test(\"user updates profile - updateProfile\", ()=>{\r",
-							"    pm.expect(jsonData.message).to.equal(\"Password changed\")\r",
-							"})"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "Authorization",
-						"type": "text",
-						"value": "Bearer {{tokenUser}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"oldPassword\": \"{{passwordUser}}\",\r\n    \"newPassword\": \"newPassword\",\r\n    \"confirmNewPassword\": \"newPassword\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/user/{{idUser}}/password",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
+						"api",
 						"user",
 						"{{idUser}}",
 						"password"
@@ -787,13 +799,14 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:3000/user/{{idUser}}",
+					"raw": "http://localhost:3000/api/user/{{idUser}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"user",
 						"{{idUser}}"
 					]
@@ -835,13 +848,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/users/login",
+					"raw": "http://localhost:3000/api/users/login",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"users",
 						"login"
 					]
@@ -897,13 +911,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/admins/roles",
+					"raw": "http://localhost:3000/api/admins/roles",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"admins",
 						"roles"
 					]
@@ -960,13 +975,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/admins/roles",
+					"raw": "http://localhost:3000/api/admins/roles",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"admins",
 						"roles"
 					]
@@ -1000,13 +1016,14 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:3000/admins/roles",
+					"raw": "http://localhost:3000/api/admins/roles",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"admins",
 						"roles"
 					]
@@ -1040,13 +1057,14 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:3000/admins/roles?sort=-role",
+					"raw": "http://localhost:3000/api/admins/roles?sort=-role",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"admins",
 						"roles"
 					],
@@ -1093,13 +1111,14 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:3000/admins/roles/{{roleType}}",
+					"raw": "http://localhost:3000/api/admins/roles/{{roleType}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"admins",
 						"roles",
 						"{{roleType}}"
@@ -1168,13 +1187,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/admins/roles/{{roleType}}",
+					"raw": "http://localhost:3000/api/admins/roles/{{roleType}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"admins",
 						"roles",
 						"{{roleType}}"
@@ -1215,13 +1235,14 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:3000/admins/roles/hgkjhgjgkj",
+					"raw": "http://localhost:3000/api/admins/roles/hgkjhgjgkj",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"admins",
 						"roles",
 						"hgkjhgjgkj"
@@ -1262,13 +1283,14 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:3000/admins/roles/{{newRoleType}}",
+					"raw": "http://localhost:3000/api/admins/roles/{{newRoleType}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"admins",
 						"roles",
 						"{{newRoleType}}"
@@ -1334,13 +1356,14 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:3000/admins/allusers?page=1&limit={{perPage}}",
+					"raw": "http://localhost:3000/api/admins/allusers?page=1&limit={{perPage}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"admins",
 						"allusers"
 					],
@@ -1410,13 +1433,14 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:3000/admins/allusers",
+					"raw": "http://localhost:3000/api/admins/allusers",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"admins",
 						"allusers"
 					]
@@ -1477,13 +1501,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/users/signup",
+					"raw": "http://localhost:3000/api/users/signup",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"users",
 						"signup"
 					]
@@ -1535,13 +1560,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/admins/allusers/{{idUser2}}",
+					"raw": "http://localhost:3000/api/admins/allusers/{{idUser2}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"admins",
 						"allusers",
 						"{{idUser2}}"
@@ -1592,13 +1618,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/admins/allusers/{{idUser2}}",
+					"raw": "http://localhost:3000/api/admins/allusers/{{idUser2}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"admins",
 						"allusers",
 						"{{idUser2}}"

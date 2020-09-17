@@ -46,10 +46,10 @@ app.get('/api', function (req, res) {
   res.json({ message: 'Welcome to your DIT341 backend ExpressJS project!' });
 });
 
-app.use('/users', authRouter);
-app.use('/user', userRouter);
-app.use('/admins', roleRouter);
-app.use('/admins', adminRouter);
+app.use('/api/users', authRouter);
+app.use('/api/user', userRouter);
+app.use('/api/admins', roleRouter);
+app.use('/api/admins', adminRouter);
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {
