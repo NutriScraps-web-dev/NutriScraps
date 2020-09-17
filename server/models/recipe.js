@@ -7,21 +7,32 @@ const recipeSchema = new Schema({
         type: String, 
         required: true
     },
+    cuisine: {
+        type: String,
+        default: "Unspecified"
+    },
     preparation: { 
-        type: [String]
+        type: [String],
+        default: ["Not Required"]
     },
     cookingProcess: {
         type: [String], 
         required: true
     },
     toServe: {
-        type: [String]
+        type: [String],
+        default: ["Not Included"]
+    },
+    type: {
+        type: String,
+        enum: ["Vegetarian", "Vegan", "Non-Vegetarian", "Unspecified"],
+        default: "Unspecified",
+        required: true
     },
     ingredients: [{ 
         type: Schema.Types.ObjectId,
         ref: 'ingredients', 
-        required: true
-    }],
+    }]
 });
 
 module.exports = mongoose.model('recipes', recipeSchema);

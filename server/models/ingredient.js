@@ -11,7 +11,7 @@ const ingredientSchema = new Schema({
         type: String, 
         required: true
     },
-    weight: {
+    quantity: {
         type: Number, 
         required: true
     }

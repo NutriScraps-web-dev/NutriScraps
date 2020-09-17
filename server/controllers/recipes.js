@@ -36,10 +36,13 @@ exports.editRecipe = (req, res, next) => {
             return res.status(404).json({'message': 'Recipe not found!'});
         }
         recipe.name = req.body.name;
+        recipe.cuisine = req.body.cuisine;
         recipe.ingredients = req.body.ingredients;
         recipe.preparation = req.body.preparation;
         recipe.cookingProcess = req.body.cookingProcess;
         recipe.toServe = req.body.toServe;
+        recipe.type = req.body.type;
+        recipe.ingredients = req.body.ingredients;
         recipe.save();
         res.status(200).json(recipe);
     });
@@ -53,10 +56,12 @@ exports.updateRecipe = (req, res, next) => {
             return res.status(404).json({'message': 'Recipe not found!'});
         }
         recipe.name = (req.body.name || recipe.name);
-        recipe.ingredients = (req.body.ingredients || recipe.ingredients);
+        recipe.cuisine = (req.body.cuisine || recipe.cuisine);
         recipe.preparation = (req.body.preparation || recipe.preparation);
         recipe.cookingProcess = (req.body.cookingProcess || recipe.cookingProcess);
         recipe.toServe = (req.body.toServe || recipe.toServe);
+        recipe.type = (req.body.type || recipe.type);
+        recipe.ingredients = (req.body.ingredients || recipe.ingredients);
         recipe.save();
         res.status(200).json(recipe);
     });
