@@ -7,8 +7,8 @@ const path = require('path');
 const cors = require('cors');
 const history = require('connect-history-api-fallback');
 
-const recipesController = require('./controllers/recipes');
-const ingredientsController = require('./controllers/ingredients');
+const recipesRouter = require('./routes/recipe');
+const ingredientsRouter = require('./routes/ingredient');
 
 // Variables
 const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/nutriScrapsDB';
@@ -39,9 +39,9 @@ app.get('/api', (req, res) => {
     res.json({'message': 'Welcome to your DIT341 backend ExpressJS project!'});
 });
 
-app.use(recipesController);
+app.use(recipesRouter);
 
-app.use(ingredientsController);
+app.use(ingredientsRouter);
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', (req, res) => {
