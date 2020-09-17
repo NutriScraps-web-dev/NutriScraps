@@ -368,7 +368,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{    \"bio\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\",\r\n    \"name\": {\r\n        \"firstName\": \"{{$randomFirstName}}\",\r\n        \"lastName\": \"{{$randomLastName}}\"\r\n    },\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"email\": \"idrees@test.com\",\r\n    \"password\": \"password\",\r\n    \"country\": \"{{$randomCountry}}\",\r\n    \"confirmPassword\": \"password\",\r\n    \"roleType\" : \"user\"\r\n    \r\n}",
+          "raw": "{    \"bio\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\",\r\n    \"name\": {\r\n        \"firstName\": \"{{$randomFirstName}}\",\r\n        \"lastName\": \"{{$randomLastName}}\"\r\n    },\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"email\": \"test@test.com\",\r\n    \"password\": \"password\",\r\n    \"country\": \"{{$randomCountry}}\",\r\n    \"confirmPassword\": \"password\",\r\n    \"roleType\" : \"user\"\r\n    \r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -1333,11 +1333,8 @@
               "})\r",
               "\r",
               "pm.test(\"admin Fetches all users - pagenation Check\", ()=>{\r",
-              "    pm.expect(jsonData.user.length).to.eql(5)\r",
-              "})\r",
-              "\r",
-              "console.log(pm.environment.get(\"perPage\"))\r",
-              "console.log(jsonData.user.length)"
+              "    pm.expect(jsonData.user.length).to.eql(2)\r",
+              "})"
             ],
             "type": "text/javascript"
           }
