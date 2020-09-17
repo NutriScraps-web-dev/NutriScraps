@@ -73,29 +73,23 @@ exports.postSignup = (req, res, next) => {
   const bio = req.body.bio;
   const roleType = req.body.roleType;
 
-  // let userRole;
+  let userRole;
 
-  // Role.findOne({ role: roleType })
-  //   .then((roleDoc) => {
-  //     if (!roleDoc) {
-  //       const error = new Error('Specified Role Dose NOT exist');
-  //       error.statusCode = 404;
-  //       throw error;
-  //     }
-  //     userRole = roleDoc;
-  //   })
-  //   .catch((err) => {
-  //     if (!err.statusCode) {
-  //       err.statusCode = 500;
-  //     }
-  //     next(err);
-  //   });
+  Role.findOne({ role: roleType })
+    .then((roleDoc) => {
+      if (!roleDoc) {
+        const error = new Error('Specified Role Dose NOT exist');
+        error.statusCode = 404;
+        throw error;
+      }
+      userRole = roleDoc;
 
-  if (password !== confirmPassword) {
-    return res.status(409).json({ error: 'Passwords does NOT Match' });
-  }
-  User.findOne({ $or: [{ username: username }, { email: email }] }).then(
-    (userDoc) => {
+      if (password !== confirmPassword) {
+        return res.status(409).json({ error: 'Passwords does NOT Match' });
+      }
+      return User.findOne({ $or: [{ username: username }, { email: email }] });
+    })
+    .then((userDoc) => {
       if (userDoc) {
         if (userDoc.username === username) {
           return res.status(403).json({ error: 'Username Already Exist' });
@@ -125,8 +119,8 @@ exports.postSignup = (req, res, next) => {
             return user.save();
           })
           .then((result) => {
-            //userRole.users.push(result);
-            // userRole.save();
+            userRole.users.push(result);
+            userRole.save();
             res.status(201).json(result);
           })
           .catch((err) => {
@@ -136,6 +130,11 @@ exports.postSignup = (req, res, next) => {
             next(err);
           });
       }
-    }
-  );
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
 };
