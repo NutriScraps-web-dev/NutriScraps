@@ -1,25 +1,24 @@
 
-const express = require('express');
-const router = express.Router();
-
 const Ingredient = require('../models/ingredient');
 
-router.post('/api/ingredients', (req, res, next) => {
+exports.createIngredient = (req, res, next) => {
     const ingredient = new Ingredient(req.body);
     ingredient.save((err, ingredient) => {
         if (err) { return next(err); }
         res.status(201).json(ingredient);
     });
-});
+};
 
-router.get('/api/ingredients',(req, res, next) => {
+exports.getAllIngredients = (req, res, next) => {
     Ingredient.find((err, ingredients) => {
         if (err) { return next(err); }
         res.json({'ingredients': ingredients});
     })
-});
+};
 
-router.get('/api/ingredients/:id',(req, res, next) => {
+
+
+exports.getIngredient = (req, res, next) => {
     const id = req.params.id;
     Ingredient.findById(id, (err, ingredient) => {
         if (err) { return next(err); }
@@ -28,9 +27,9 @@ router.get('/api/ingredients/:id',(req, res, next) => {
         }
         res.json(ingredient);
     });
-});
+};
 
-router.put('/api/ingredients/:id', (req, res, next) => {
+exports.editIngredient = (req, res, next) => {
     const id = req.params.id;
     Ingredient.findById(id, (err, ingredient) => {
         if (err) { return next(err); }
@@ -42,9 +41,9 @@ router.put('/api/ingredients/:id', (req, res, next) => {
         ingredient.save();
         res.json(ingredient);
     });
-});
+};
 
-router.patch('/api/ingredients/:id', (req, res, next) => {
+exports.updateIngredient = (req, res, next) => {
     const id = req.params.id;
     Ingredient.findById(id, (err, ingredient) => {
         if (err) { return next(err); }
@@ -56,9 +55,9 @@ router.patch('/api/ingredients/:id', (req, res, next) => {
         ingredient.save();
         res.json(ingredient);
     });
-});
+};
 
-router.delete('/api/ingredients/:id', (req, res, next) => {
+exports.deleteIngredient = (req, res, next) => {
     const id = req.params.id;
     Ingredient.findOneAndDelete({_id: id}, (err, ingredient) => {
         if (err) { return next(err); }
@@ -67,6 +66,4 @@ router.delete('/api/ingredients/:id', (req, res, next) => {
         }
         res.json(ingredient);
     });
-});
-
-module.exports = router;
+};
