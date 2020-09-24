@@ -12,6 +12,7 @@
     "bootstrap": "^4.5.2",
     "bootstrap-vue": "^2.16.0",
     "vue": "^2.6.12",
+    "vue-country-region-select": "^2.0.14",
     "vue-router": "^3.4.3"
   },
   "devDependencies": {
