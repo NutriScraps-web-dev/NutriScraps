@@ -1,17 +1,17 @@
 <template>
-<form class="needs-validation" id="form" novalidate>
+<form class="needs-validation" id="form" novalidate @submit.prevent="onSubmit">
   <div class="form-group">
       <div class="form-row">
     <div class="col">
       <label for="validationCustom01">First name</label>
-      <input type="text" class="form-control" id="validationCustom01" placeholder="First name" required>
+      <input type="text" class="form-control" id="validationCustom01" placeholder="First name" v-model="firstName" required>
       <div class="valid-feedback">
         Looks good!
       </div>
     </div>
     <div class="col">
       <label for="validationCustom02">Last name</label>
-      <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" required>
+      <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" v-model="lastName" required>
       <div class="valid-feedback">
         Looks good!
       </div>
@@ -26,7 +26,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroupPrepend">@</span>
         </div>
-        <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+        <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" v-model="username" required>
         <div class="invalid-feedback">
           Please choose a username.
         </div>
@@ -34,7 +34,7 @@
     </div>
     <div class="col">
       <label for="validationCustom02">Email</label>
-      <input type="email" class="form-control" id="validationCustom02" placeholder="Email" value="" required>
+      <input type="email" class="form-control" id="validationCustom02" placeholder="Email" value="" v-model="email" required>
       <div class="valid-feedback">
         Please Enter valid Email!
       </div>
@@ -44,14 +44,14 @@
 <div class="form-group">  <div class="form-row">
       <div class="col">
       <label for="validationCustom02">Password</label>
-      <input type="password" class="form-control" id="validationCustom02" placeholder="Password" value="" required>
+      <input type="password" class="form-control" id="validationCustom02" placeholder="Password" value="" v-model="password" required>
       <div class="valid-feedback">
         Please Enter valid Password!
       </div>
     </div>
           <div class="col">
       <label for="validationCustom02">Confirm Password</label>
-      <input type="password" class="form-control" id="validationCustom02" placeholder="Repeat Password" value="" required>
+      <input type="password" class="form-control" id="validationCustom02" placeholder="Repeat Password" value="" v-model="confirmPassword" required>
       <div class="valid-feedback">
         Please Enter valid Password!
       </div>
@@ -63,13 +63,14 @@
     </div>
       <div class="form-group">
     <label>Bio</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" v-model="bio"></textarea>
   </div>
   <button class="btn btn-info mx-1 px-5" type="submit">Sign Up</button>
 </form>
 </template>
 
 <script>
+import { Api } from '@/Api'
 
 (function () {
   'use strict'
@@ -87,6 +88,37 @@
   }, false)
 })()
 export default {
+  data() {
+    return {
+      firstName: '',
+      lastName: '',
+      username: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      bio: '',
+      country: ''
+    }
+  },
+  methods: {
+    onSubmit() {
+      const formData = {
+        name: {
+          firstName: this.firstName,
+          lastName: this.lastName
+        },
+        username: this.username,
+        email: this.email,
+        password: this.password,
+        confirmPassword: this.confirmPassword,
+        country: this.country,
+        bio: this.bio,
+        roleType: 'user'
+      }
+      console.log(formData)
+      Api.post('/users/signup', formData).then(res => console.log(res)).catch(err => console.log(err))
+    }
+  }
 }
 </script>
 
