@@ -65,7 +65,7 @@
     <label>Bio</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
-  <button class="btn btn-primary" type="submit">Sign Up</button>
+  <button class="btn btn-info mx-1 px-5" type="submit">Sign Up</button>
 </form>
 </template>
 
@@ -93,6 +93,8 @@ export default {
 <style scoped>
 #form {
   width: 40%;
-  margin: 0 auto;
+  margin: 0rem auto;
+  margin-top: 3rem;
+
 }
 </style>
