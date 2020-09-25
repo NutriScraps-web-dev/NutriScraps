@@ -20,7 +20,7 @@
               <b-link class="nav-item nav-link mx-2 px-2" to="/contact">Contact</b-link>
             </li>
             <li class="nav-item">
-              <b-link class="nav-link btn btn-outline-info mx-1 px-5" to="/login">Log In</b-link>
+              <b-link class="nav-link btn btn-outline-info mx-1 px-5" to="/users/login">Log In</b-link>
             </li>
             <li class="nav-item">
               <b-link class="nav-link btn btn-info mx-1 px-5 user-btn" to="/users/signup">Sign Up</b-link>

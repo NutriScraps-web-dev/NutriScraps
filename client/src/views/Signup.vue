@@ -1,5 +1,5 @@
 <template>
-<form class="needs-validation" id="form" novalidate @submit.prevent="onSubmit">
+<b-form class="needs-validation" id="form" novalidate @submit.prevent="onSubmit">
   <div class="form-group">
       <div class="form-row">
     <div class="col">
@@ -66,7 +66,7 @@
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" v-model="bio"></textarea>
   </div>
   <button class="btn btn-info mx-1 px-5" type="submit">Sign Up</button>
-</form>
+</b-form>
 </template>
 
 <script>
@@ -117,7 +117,7 @@ export default {
       }
       console.log(formData)
       Api.post('/users/signup', formData).then(res => {
-        this.$router.push('/')
+        this.$router.push('/users/login')
         console.log(res)
       }).catch(err => console.log(err))
     }
