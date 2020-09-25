@@ -46,12 +46,14 @@
 
 <script>
 import { Api } from '@/Api'
+import { eventBus } from '../main'
 
 export default {
   data() {
     return {
       username: '',
-      password: ''
+      password: '',
+      isLogedIn: false
     }
   },
   methods: {
@@ -63,8 +65,12 @@ export default {
       console.log(formData)
       Api.post('/users/login', formData)
         .then(res => {
-          this.$router.push('/')
-          console.log(res)
+          if (res.status === 200) {
+            this.isLogedIn = true
+            eventBus.$emit('userLogedIn', this.isLogedIn)
+            this.$router.push('/')
+            console.log(res)
+          }
         })
         .catch(err => console.log(err))
     }
