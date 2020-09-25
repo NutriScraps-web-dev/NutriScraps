@@ -33,8 +33,8 @@
       </div>
     </div>
     <div class="col">
-      <label for="validationCustom02">Email</label>
-      <input type="email" class="form-control" id="validationCustom02" placeholder="Email" value="" v-model="email" required>
+      <label for="validationCustom03">Email</label>
+      <input type="email" class="form-control" id="validationCustom03" placeholder="Email" value="" v-model="email" required>
       <div class="valid-feedback">
         Please Enter valid Email!
       </div>
@@ -43,15 +43,15 @@
 </div>
 <div class="form-group">  <div class="form-row">
       <div class="col">
-      <label for="validationCustom02">Password</label>
-      <input type="password" class="form-control" id="validationCustom02" placeholder="Password" value="" v-model="password" required>
+      <label for="validationCustom04">Password</label>
+      <input type="password" class="form-control" id="validationCustom04" placeholder="Password" value="" v-model="password" required>
       <div class="valid-feedback">
         Please Enter valid Password!
       </div>
     </div>
           <div class="col">
-      <label for="validationCustom02">Confirm Password</label>
-      <input type="password" class="form-control" id="validationCustom02" placeholder="Repeat Password" value="" v-model="confirmPassword" required>
+      <label for="validationCustom05">Confirm Password</label>
+      <input type="password" class="form-control" id="validationCustom05" placeholder="Repeat Password" value="" v-model="confirmPassword" required>
       <div class="valid-feedback">
         Please Enter valid Password!
       </div>
@@ -116,7 +116,10 @@ export default {
         roleType: 'user'
       }
       console.log(formData)
-      Api.post('/users/signup', formData).then(res => console.log(res)).catch(err => console.log(err))
+      Api.post('/users/signup', formData).then(res => {
+        this.$router.push('/')
+        console.log(res)
+      }).catch(err => console.log(err))
     }
   }
 }

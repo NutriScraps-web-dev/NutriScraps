@@ -23,7 +23,7 @@
               <b-link class="nav-link btn btn-outline-info mx-1 px-5" to="/login">Log In</b-link>
             </li>
             <li class="nav-item">
-              <b-link class="nav-link btn btn-info mx-1 px-5 user-btn" to="/signup">Sign Up</b-link>
+              <b-link class="nav-link btn btn-info mx-1 px-5 user-btn" to="/users/signup">Sign Up</b-link>
             </li>
         </b-nav-form>
       </b-navbar-nav>
