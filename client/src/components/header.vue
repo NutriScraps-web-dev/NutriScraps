@@ -19,17 +19,7 @@
             <li class="nav-item">
               <b-link class="nav-item nav-link mx-2 px-2" to="/contact">Contact</b-link>
             </li>
-            <li class="nav-item" v-if="isLogedIn">
-              <b-link class="nav-link btn btn-info mx-1 px-5 user-btn" to="/users/signup">Log Out</b-link>
-            </li>
-            <div class="signUp-btns" v-else>
-              <li class="nav-item">
-              <b-link class="nav-link btn btn-outline-info mx-1 px-5" to="/users/login">Log In</b-link>
-            </li>
-            <li class="nav-item">
-              <b-link class="nav-link btn btn-info mx-1 px-5 user-btn" to="/users/signup">Sign Up</b-link>
-            </li>
-            </div>
+            <account-btns></account-btns>
         </b-nav-form>
       </b-navbar-nav>
     </b-collapse>
@@ -37,18 +27,11 @@
 </template>
 
 <script>
-import { eventBus } from '../main'
+import AccountBtns from './UserAccountBtn.vue'
 
 export default {
-  data() {
-    return {
-      isLogedIn: false
-    }
-  },
-  created() {
-    eventBus.$on('userLogedIn', (data) => {
-      this.isLogedIn = data
-    })
+  components: {
+    'account-btns': AccountBtns
   }
 }
 </script>
@@ -59,12 +42,5 @@ export default {
 }
 .navbar-logo {
   width: 35px;
-}
-.user-btn:hover {
-  background: none !important;
-}
-
-.signUp-btns {
-  display: flex;
 }
 </style>
