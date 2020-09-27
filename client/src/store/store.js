@@ -52,7 +52,7 @@ export const store = new Vuex.Store({
               userRole: res.data.userRole
             })
             context.commit('changeLogInStatus')
-            // ask the TA if this is in the right place since router has nothing to do with state management
+            context.dispatch('logOutTimer')
             Router.push('/')
           }
         })
@@ -73,6 +73,11 @@ export const store = new Vuex.Store({
     logOut({ commit }) {
       commit('clearToken')
       Router.replace('/')
+    },
+    logOutTimer({ commit }) {
+      setTimeout(() => {
+        commit('clearToken')
+      }, 3600 * 1000)
     }
   }
 })
