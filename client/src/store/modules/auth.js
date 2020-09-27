@@ -14,9 +14,9 @@ const getters = {
 }
 
 const mutations = {
-  changeLogInStatus: state => {
-    state.isLoggedIn = !state.isLoggedIn
-  },
+  // changeLogInStatus: state => {
+  //   state.isLoggedIn = !state.isLoggedIn
+  // },
   authUser(state, userData) {
     state.authToken = userData.token
     state.userId = userData.userId
@@ -71,7 +71,7 @@ const actions = {
           localStorage.setItem('userRole', res.data.userRole)
           localStorage.setItem('userId', res.data.userId)
 
-          context.commit('changeLogInStatus')
+          // context.commit('changeLogInStatus')
           context.dispatch('logOutTimer')
           Router.push('/')
         }
@@ -87,18 +87,6 @@ const actions = {
     setTimeout(() => {
       commit('clearToken')
     }, 3600 * 1000)
-  },
-  getUserInfo({ commit, state }) {
-    if (!state.authToken) {
-      return
-    }
-    Api.get('user/5f6d12f6d109e141603cf190', {
-      headers: {
-        Authorization: `Bearer ${state.authToken}`
-      }
-    })
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
   }
 }
 

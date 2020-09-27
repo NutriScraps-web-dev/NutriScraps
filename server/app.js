@@ -54,7 +54,7 @@ app.get('/api', function (req, res) {
 });
 
 app.use('/api/users', authRouter);
-app.use('/api/user', userRouter);
+app.use('/api/users', userRouter);
 app.use('/api/admins', roleRouter);
 app.use('/api/admins', adminRouter);
 

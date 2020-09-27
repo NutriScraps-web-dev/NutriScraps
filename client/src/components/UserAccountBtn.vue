@@ -15,10 +15,10 @@
           <span class="dropdown-text">Log Out</span>
         </b-dropdown-item-button>
         <b-dropdown-divider></b-dropdown-divider>
-        <b-link to="/users/mypage">
+        <b-link to="/users/profile">
           <b-dropdown-item-button>
-            <font-awesome-icon icon="user-edit" class="mr-2" />
-            <span class="dropdown-text">Edit Profile</span>
+            <font-awesome-icon icon="user-circle" class="mr-2 icon-size" />
+            <span class="dropdown-text">Profile</span>
           </b-dropdown-item-button>
         </b-link>
         <b-dropdown-divider></b-dropdown-divider>
@@ -29,7 +29,6 @@
           </b-dropdown-item-button>
         </b-link>
       </b-dropdown>
-      <b-button @click="getUserInfo">get info</b-button>
     </div>
     <div class="signUp-btns" v-else>
       <li class="nav-item">
@@ -58,7 +57,7 @@ export default {
     ...mapGetters(['isLoggedIn'])
   },
   methods: {
-    ...mapActions(['logOut', 'getUserInfo'])
+    ...mapActions(['logOut'])
   }
 }
 </script>
@@ -83,5 +82,8 @@ export default {
 }
 .dropdown {
   margin-right: 2rem;
+}
+.icon-size {
+  font-size: 1.2rem;
 }
 </style>
