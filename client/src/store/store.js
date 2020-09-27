@@ -41,22 +41,54 @@ export const store = new Vuex.Store({
         })
         .catch(err => console.log(err))
     },
+    autoLogIn({ commit }) {
+      const token = localStorage.getItem('token')
+      const expireDate = localStorage.getItem('expiresIn')
+      const userRole = localStorage.getItem('userRole')
+      const userId = localStorage.getItem('userId')
+      const now = new Date()
+      if (!token || now >= expireDate) {
+        return
+      }
+      commit('authUser', {
+        token,
+        userRole,
+        userId
+      })
+    },
     logIn(context, payload) {
       Api.post('/users/login', payload)
         .then(res => {
           // console.log(res)
           if (res.status === 200) {
-            this.commit('authUser', {
+            context.commit('authUser', {
               token: res.data.token,
               userId: res.data.userId,
               userRole: res.data.userRole
             })
+            const now = new Date()
+            const expireDate = new Date(now.getTime() + 3600000)
+            localStorage.setItem('token', res.data.token)
+            localStorage.setItem('expiresIn', expireDate)
+            localStorage.setItem('userRole', res.data.userRole)
+            localStorage.setItem('userId', res.data.userId)
+
             context.commit('changeLogInStatus')
             context.dispatch('logOutTimer')
             Router.push('/')
           }
         })
         .catch(err => console.log(err))
+    },
+    logOut({ commit }) {
+      commit('clearToken')
+      localStorage.clear()
+      Router.replace('/')
+    },
+    logOutTimer({ commit }) {
+      setTimeout(() => {
+        commit('clearToken')
+      }, 3600 * 1000)
     },
     getUserInfo({ commit, state }) {
       if (!state.authToken) {
@@ -69,15 +101,6 @@ export const store = new Vuex.Store({
       })
         .then(res => console.log(res))
         .catch(err => console.log(err))
-    },
-    logOut({ commit }) {
-      commit('clearToken')
-      Router.replace('/')
-    },
-    logOutTimer({ commit }) {
-      setTimeout(() => {
-        commit('clearToken')
-      }, 3600 * 1000)
     }
   }
 })
