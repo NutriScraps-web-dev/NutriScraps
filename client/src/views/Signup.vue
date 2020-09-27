@@ -70,7 +70,6 @@
 </template>
 
 <script>
-import { Api } from '@/Api'
 
 (function () {
   'use strict'
@@ -115,11 +114,7 @@ export default {
         bio: this.bio,
         roleType: 'user'
       }
-      console.log(formData)
-      Api.post('/users/signup', formData).then(res => {
-        this.$router.push('/users/login')
-        console.log(res)
-      }).catch(err => console.log(err))
+      this.$store.dispatch('signUp', formData)
     }
   }
 }

@@ -31,11 +31,9 @@
             required
           />
         </div>
-
         <button type="submit" class="btn btn-info btn-lg btn-block px-5">
           Log In
         </button>
-
         <p class="accout text-right mt-2 mb-4">
           <b-link to="/users/signup">Don't Have Accout Yet?</b-link>
         </p>
@@ -45,15 +43,13 @@
 </template>
 
 <script>
-import { Api } from '@/Api'
-import { eventBus } from '../main'
+// import {mapMutations} from 'vuex'
 
 export default {
   data() {
     return {
       username: '',
-      password: '',
-      isLogedIn: false
+      password: ''
     }
   },
   methods: {
@@ -62,17 +58,7 @@ export default {
         username: this.username,
         password: this.password
       }
-      console.log(formData)
-      Api.post('/users/login', formData)
-        .then(res => {
-          if (res.status === 200) {
-            this.isLogedIn = true
-            eventBus.$emit('userLogedIn', this.isLogedIn)
-            this.$router.push('/')
-            console.log(res)
-          }
-        })
-        .catch(err => console.log(err))
+      this.$store.dispatch('logIn', formData)
     }
   }
 }

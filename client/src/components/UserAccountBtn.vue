@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-if="isLogedIn">
-      <b-dropdown variant="outline-info" class="mr-4">
+    <div v-if="isLoggedIn">
+      <b-dropdown variant="outline-info" class="drapdown">
         <template v-slot:button-content>
           <b-icon
             icon="person-fill"
@@ -10,20 +10,26 @@
           ></b-icon>
           <span class="account-text">Account</span>
         </template>
-        <b-dropdown-item-button>
+        <b-dropdown-item-button @click="logOut">
           <b-icon icon="power" aria-hidden="true" class="mr-2"></b-icon>
-          <span class="dd-text">Log Out</span>
+          <span class="dropdown-text">Log Out</span>
         </b-dropdown-item-button>
         <b-dropdown-divider></b-dropdown-divider>
-        <b-dropdown-item-button>
-          <b-icon
-            icon="gear-fill"
-            aria-hidden="true"
-            class="mr-2"
-          ></b-icon>
-          <span class="dd-text">Edit</span>
-        </b-dropdown-item-button>
+        <b-link to="/users/mypage">
+          <b-dropdown-item-button>
+            <font-awesome-icon icon="user-edit" class="mr-2" />
+            <span class="dropdown-text">Edit</span>
+          </b-dropdown-item-button>
+        </b-link>
+        <b-dropdown-divider></b-dropdown-divider>
+        <b-link to="/users/mypass">
+          <b-dropdown-item-button>
+            <font-awesome-icon icon="key" class="mr-2" />
+            <span class="dropdown-text">Change Password</span>
+          </b-dropdown-item-button>
+        </b-link>
       </b-dropdown>
+      <b-button @click="getUserInfo">get info</b-button>
     </div>
     <div class="signUp-btns" v-else>
       <li class="nav-item">
@@ -45,18 +51,14 @@
 </template>
 
 <script>
-import { eventBus } from '../main'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  data() {
-    return {
-      isLogedIn: false
-    }
+  computed: {
+    ...mapGetters(['isLoggedIn'])
   },
-  created() {
-    eventBus.$on('userLogedIn', (data) => {
-      this.isLogedIn = data
-    })
+  methods: {
+    ...mapActions(['logOut', 'getUserInfo'])
   }
 }
 </script>
@@ -76,7 +78,10 @@ export default {
   margin-left: 0.7rem;
   margin-right: 1rem;
 }
-.dd-text {
+.dropdown-text {
   color: rgba(0, 0, 0, 0.7) !important;
+}
+.dropdown {
+  margin-right: 2rem;
 }
 </style>
