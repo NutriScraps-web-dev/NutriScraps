@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div v-if="userInfo">
     <div>
-      <h2>Username:</h2>
+      <h2 class="h2">Username:</h2>
       <h4>{{ userInfo.username }}</h4>
     </div>
     <div>
@@ -40,11 +40,13 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 
 export default {
   computed: {
-    ...mapGetters(['userInfo'])
+    userInfo() {
+      return !this.$store.getters.userInfo ? false : this.$store.getters.userInfo
+    }
   },
   created() {
     this.$store.dispatch('getUserInfo')

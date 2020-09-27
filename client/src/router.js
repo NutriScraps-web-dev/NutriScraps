@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+// import store from './store/store'
 import Home from './views/Home.vue'
 import Signup from './views/Signup.vue'
 import Login from './views/Login.vue'
@@ -30,6 +31,13 @@ export default new Router({
       path: '/users/profile',
       name: 'profile',
       component: Profile
+      // beforeEnter: (to, from, next) => {
+      //   if (store.state.authToken) {
+      //     next()
+      //   } else {
+      //     next('users/login')
+      //   }
+      // }
     }
   ]
 })
