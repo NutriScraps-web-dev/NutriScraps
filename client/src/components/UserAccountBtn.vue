@@ -18,7 +18,7 @@
         <b-link to="/users/mypage">
           <b-dropdown-item-button>
             <font-awesome-icon icon="user-edit" class="mr-2" />
-            <span class="dropdown-text">Edit</span>
+            <span class="dropdown-text">Edit Profile</span>
           </b-dropdown-item-button>
         </b-link>
         <b-dropdown-divider></b-dropdown-divider>
