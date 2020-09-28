@@ -33,6 +33,18 @@ const actions = {
         console.log(this.user)
       })
       .catch(err => console.log(err))
+  },
+  changePassword({ commit }, payload) {
+    console.log(payload)
+    Api.patch(`users/${auth.state.userId}/password`, payload, {
+      headers: {
+        Authorization: `Bearer ${auth.state.authToken}`
+      }
+    })
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => console.log(err))
   }
 }
 

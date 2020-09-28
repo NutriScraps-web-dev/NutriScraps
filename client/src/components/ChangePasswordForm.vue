@@ -21,16 +21,10 @@
               type="password"
               v-model="currentPassword"
               @blur="$v.currentPassword.$touch()"
-              :class="{ 'is-invalid': $v.currentPassword.$error }"
+              class="pass-input"
+              :class="{ invalidInput: $v.currentPassword.$error }"
             ></b-form-input>
-            <b-form-invalid-feedback :state="is - invalid">
-              This Field Must Not be Empty
-            </b-form-invalid-feedback>
-            <b-form-valid-feedback
-              :state="!$v.currentPassword.$error && $v.currentPassword.$dirty"
-            >
-              Looks Good.
-            </b-form-valid-feedback>
+            <p v-if="$v.currentPassword.$error">This Field Must Not Be Empty {{ $v }}</p>
           </b-form-group>
 
           <b-form-group
@@ -45,21 +39,13 @@
               type="password"
               v-model="newPassword"
               @blur="$v.newPassword.$touch()"
-              :class="{ 'is-invalid': $v.newPassword.$error }"
+              class="pass-input"
+              :class="{ invalidInput: $v.newPassword.$error }"
             ></b-form-input>
-            <b-form-invalid-feedback :state="is - invalid">
-              <p v-if="!$v.newPassword.minLeg">
-                Must Be At Least 8 Characters Long
-              </p>
-              <p v-if="!$v.newPassword.required">
-                This Field Must Not be Empty
-              </p>
-            </b-form-invalid-feedback>
-            <b-form-valid-feedback
-              :state="!$v.newPassword.$error && $v.newPassword.$dirty"
-            >
-              Looks Good.
-            </b-form-valid-feedback>
+
+            <p v-if="$v.newPassword.$error">
+              Must Be At Least 8 Characters Long
+            </p>
           </b-form-group>
 
           <b-form-group
@@ -74,26 +60,23 @@
               type="password"
               v-model="confirmPassword"
               @blur="$v.confirmPassword.$touch()"
-              :class="{ 'is-invalid': $v.confirmPassword.$error }"
+              class="pass-input"
+              :class="{ invalidInput: $v.confirmPassword.$error }"
             ></b-form-input>
-            <b-form-invalid-feedback :state="is - invalid">
+            <p v-if="!$v.confirmPassword.sameAs">
               Passwords Does Not Match
-            </b-form-invalid-feedback>
-            <b-form-valid-feedback
-              :state="!$v.confirmPassword.$error && $v.confirmPassword.$dirty"
-            >
-              Looks Good.
-            </b-form-valid-feedback>
+            </p>
           </b-form-group>
         </b-form-group>
-      </b-form>
-      <b-button
+              <b-button
         variant="primary"
         class="ml-2 my-4 pass-btn px-5"
         v-b-toggle="'collapse-2'"
         :disabled="$v.$invalid"
+        type="submit"
         >Update</b-button
       >
+      </b-form>
     </b-card>
   </div>
 </template>
@@ -108,7 +91,7 @@ export default {
     },
     newPassword: {
       required,
-      minLeg: minLength(8)
+      minLength: minLength(8)
     },
     confirmPassword: {
       sameAs: sameAs('newPassword')
@@ -128,7 +111,8 @@ export default {
         newPassword: this.newPassword,
         confirmNewPassword: this.confirmPassword
       }
-      this.$store.dispatch('signUp', formData)
+      console.log('working')
+      this.$store.dispatch('changePassword', formData)
     }
   }
 }
@@ -140,5 +124,12 @@ export default {
 }
 .pass-btn {
   float: right;
+}
+.pass-input.invalidInput {
+  border: 1px solid red !important;
+  background-color: #ffc9aa !important;
+}
+p {
+  color: red;
 }
 </style>
