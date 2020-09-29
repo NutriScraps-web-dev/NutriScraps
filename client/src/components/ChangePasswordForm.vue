@@ -68,14 +68,14 @@
             </p>
           </b-form-group>
         </b-form-group>
-              <b-button
-        variant="primary"
-        class="ml-2 my-4 pass-btn px-5"
-        v-b-toggle="'collapse-2'"
-        :disabled="$v.$invalid"
-        type="submit"
-        >Update</b-button
-      >
+        <b-button
+          variant="primary"
+          class="ml-2 my-4 pass-btn px-5"
+          v-b-toggle="'update-pass-col'"
+          :disabled="$v.$invalid"
+          type="submit"
+          >Update</b-button
+        >
       </b-form>
     </b-card>
   </div>

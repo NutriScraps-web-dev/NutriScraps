@@ -77,8 +77,8 @@
           <b-button
             variant="primary"
             class="ml-2 my-4 pass-btn px-5"
-            v-b-toggle="'collapse-2'"
             type="submit"
+            v-b-toggle="'update-user-col'"
             >Update</b-button
           >
         </FormulateForm>

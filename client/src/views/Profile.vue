@@ -98,7 +98,7 @@
     </b-row>
     <b-row>
       <b-button variant="outline-primary" class="mr-5 my-4"
-        >Remore My Likes</b-button
+        >Remove My Likes</b-button
       >
     </b-row>
   </b-container>
