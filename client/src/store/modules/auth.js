@@ -87,7 +87,7 @@ const actions = {
     setTimeout(() => {
       Router.push('/')
       commit('clearToken')
-    }, 3600 * 1000)
+    }, 3600000)
   }
 }
 
