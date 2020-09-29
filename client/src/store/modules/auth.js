@@ -85,6 +85,7 @@ const actions = {
   },
   logOutTimer({ commit }) {
     setTimeout(() => {
+      Router.push('/')
       commit('clearToken')
     }, 3600 * 1000)
   }

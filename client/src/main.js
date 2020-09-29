@@ -8,6 +8,7 @@ import { faKey, faUserEdit, faUserCircle } from '@fortawesome/free-solid-svg-ico
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { store } from './store/store'
 import Vuelidate from 'vuelidate'
+import VueFormulate from '@braid/vue-formulate'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -16,6 +17,7 @@ Vue.use(BootstrapVue)
 Vue.use(vueCountryRegionSelect)
 Vue.use(BootstrapVueIcons)
 Vue.use(Vuelidate)
+Vue.use(VueFormulate)
 
 library.add(faKey, faUserEdit, faUserCircle)
 Vue.component('font-awesome-icon', FontAwesomeIcon)

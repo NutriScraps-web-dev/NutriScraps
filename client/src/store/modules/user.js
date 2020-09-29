@@ -45,6 +45,21 @@ const actions = {
         console.log(res)
       })
       .catch(err => console.log(err))
+  },
+  updateProfile({ commit }, payload) {
+    console.log(payload)
+    Api.patch(`users/${auth.state.userId}`, payload, {
+      headers: {
+        Authorization: `Bearer ${auth.state.authToken}`
+      }
+    })
+      .then(res => {
+        if (res.state === 200) {
+          console.log(res)
+          commit('storeUser')
+        }
+      })
+      .catch(err => console.log(err))
   }
 }
 
