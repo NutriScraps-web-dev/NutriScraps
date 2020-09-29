@@ -35,33 +35,47 @@
         </b-col>
       </b-row>
       <b-row offset="4">
-        <b-col cols="6" offset="2">
-          <b-button variant="outline-primary" class="mr-5 my-4" v-b-toggle="'update-user-col'"
+        <b-col cols="8" offset="2">
+          <b-button
+            variant="outline-primary"
+            class="mr-5 my-4"
+            v-b-toggle="'update-user-col'"
             >Update Profile</b-button
           >
           <b-button
             variant="outline-primary"
-            class="ml-2 my-4"
+            class="mx-2 my-4"
             v-b-toggle="'update-pass-col'"
             >Update Password</b-button
+          >
+          <b-button
+            variant="outline-danger"
+            class="ml-5 my-4"
+            v-b-toggle="'delete-col'"
+            >Delete Account</b-button
           >
         </b-col>
       </b-row>
       <b-row>
         <b-col>
+          <b-collapse accordion="user-update" id="delete-col">
+            <delete-account></delete-account>
+          </b-collapse>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
           <b-collapse accordion="user-update" id="update-pass-col">
-            <b-card
-            >
+            <b-card>
               <pass-form></pass-form>
             </b-card>
           </b-collapse>
         </b-col>
       </b-row>
-            <b-row>
+      <b-row>
         <b-col>
           <b-collapse accordion="user-update" id="update-user-col">
-            <b-card
-            >
+            <b-card>
               <update-profile></update-profile>
             </b-card>
           </b-collapse>
@@ -108,11 +122,13 @@
 // import { mapGetters } from 'vuex'
 import ChangePasswordForm from '../components/ChangePasswordForm.vue'
 import UpdateProfile from '../components/UpdateProfile.vue'
+import DeleteAccount from '../components/DeleteAccount.vue'
 
 export default {
   components: {
     'pass-form': ChangePasswordForm,
-    'update-profile': UpdateProfile
+    'update-profile': UpdateProfile,
+    'delete-account': DeleteAccount
   },
   computed: {
     userInfo() {
