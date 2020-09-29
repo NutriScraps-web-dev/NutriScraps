@@ -36,23 +36,33 @@
       </b-row>
       <b-row offset="4">
         <b-col cols="6" offset="2">
-          <b-button variant="outline-primary" class="mr-5 my-4"
+          <b-button variant="outline-primary" class="mr-5 my-4" v-b-toggle="'update-user-col'"
             >Update Profile</b-button
           >
           <b-button
             variant="outline-primary"
             class="ml-2 my-4"
-            v-b-toggle="'collapse-2'"
+            v-b-toggle="'update-pass-col'"
             >Update Password</b-button
           >
         </b-col>
       </b-row>
       <b-row>
         <b-col>
-          <b-collapse id="collapse-2">
+          <b-collapse accordion="user-update" id="update-pass-col">
             <b-card
             >
               <pass-form></pass-form>
+            </b-card>
+          </b-collapse>
+        </b-col>
+      </b-row>
+            <b-row>
+        <b-col>
+          <b-collapse accordion="user-update" id="update-user-col">
+            <b-card
+            >
+              <update-profile></update-profile>
             </b-card>
           </b-collapse>
         </b-col>
@@ -97,10 +107,12 @@
 <script>
 // import { mapGetters } from 'vuex'
 import ChangePasswordForm from '../components/ChangePasswordForm.vue'
+import UpdateProfile from '../components/UpdateProfile.vue'
 
 export default {
   components: {
-    'pass-form': ChangePasswordForm
+    'pass-form': ChangePasswordForm,
+    'update-profile': UpdateProfile
   },
   computed: {
     userInfo() {

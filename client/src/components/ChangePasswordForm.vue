@@ -24,7 +24,7 @@
               class="pass-input"
               :class="{ invalidInput: $v.currentPassword.$error }"
             ></b-form-input>
-            <p v-if="$v.currentPassword.$error">This Field Must Not Be Empty {{ $v }}</p>
+            <p v-if="$v.currentPassword.$error">This Field Must Not Be Empty</p>
           </b-form-group>
 
           <b-form-group

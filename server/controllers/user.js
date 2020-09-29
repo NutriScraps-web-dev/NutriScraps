@@ -28,10 +28,10 @@ exports.updateProfile = (req, res, next) => {
         error.statusCode = 404;
         throw error;
       }
-      user.username = req.body.username || user.username;
+      // user.username = req.body.username || user.username;
       user.name.firstName = req.body.name.firstName || user.name.firstName;
       user.name.lastName = req.body.name.lastName || user.name.lastName;
-      user.email = req.body.email || user.email;
+      // user.email = req.body.email || user.email;
       user.country = req.body.country || user.country;
       // user.password = user.password;
       user.bio = req.body.bio || user.bio;
