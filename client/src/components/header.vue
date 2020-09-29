@@ -9,8 +9,6 @@
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
-
-      <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
         <b-nav-form>
             <li class="nav-item">
@@ -27,7 +25,7 @@
 </template>
 
 <script>
-import AccountBtns from './UserAccountBtn.vue'
+import AccountBtns from './user/ControlButtons.vue'
 
 export default {
   components: {

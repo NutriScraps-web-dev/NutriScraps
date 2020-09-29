@@ -88,7 +88,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import '../assets/formulate.css'
+import '../../assets/formulate.css'
 
 export default {
   methods: {

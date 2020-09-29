@@ -120,9 +120,9 @@
 
 <script>
 // import { mapGetters } from 'vuex'
-import ChangePasswordForm from '../components/ChangePasswordForm.vue'
-import UpdateProfile from '../components/UpdateProfile.vue'
-import DeleteAccount from '../components/DeleteAccount.vue'
+import ChangePasswordForm from '../../components/user/ChangePasswordForm.vue'
+import UpdateProfile from '../../components/user/UpdateProfile.vue'
+import DeleteAccount from '../../components/user/DeleteAccount.vue'
 
 export default {
   components: {
