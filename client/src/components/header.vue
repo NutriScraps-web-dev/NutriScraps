@@ -17,7 +17,8 @@
             <li class="nav-item">
               <b-link class="nav-item nav-link mx-2 px-2" to="/contact">Contact</b-link>
             </li>
-            <account-btns></account-btns>
+            <admin-ctrl-btns></admin-ctrl-btns>
+            <control-btns></control-btns>
         </b-nav-form>
       </b-navbar-nav>
     </b-collapse>
@@ -25,11 +26,13 @@
 </template>
 
 <script>
-import AccountBtns from './user/ControlButtons.vue'
+import controlBtns from './user/ControlButtons.vue'
+import AdminControlBtns from './admin/AdminControlbtn.vue'
 
 export default {
   components: {
-    'account-btns': AccountBtns
+    'admin-ctrl-btns': AdminControlBtns,
+    'control-btns': controlBtns
   }
 }
 </script>
