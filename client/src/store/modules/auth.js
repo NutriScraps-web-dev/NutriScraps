@@ -10,6 +10,9 @@ const state = {
 const getters = {
   isLoggedIn: state => {
     return state.authToken !== null
+  },
+  isAdmin: state => {
+    return state.userRole === 'admin'
   }
 }
 

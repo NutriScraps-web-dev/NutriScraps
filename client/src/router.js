@@ -5,6 +5,8 @@ import Home from './views/Home.vue'
 import Signup from './views/auth/Signup.vue'
 import Login from './views/auth/Login.vue'
 import Profile from './views/user/Profile.vue'
+import Roles from './views/admin/Roles.vue'
+import Users from './views/admin/Users.vue'
 
 Vue.use(Router)
 
@@ -38,6 +40,16 @@ export default new Router({
           next('users/login')
         }
       }
+    },
+    {
+      path: '/admins/roles',
+      name: 'Roles Management',
+      component: Roles
+    },
+    {
+      path: '/admins/users',
+      name: 'Users Management',
+      component: Users
     }
   ]
 })
