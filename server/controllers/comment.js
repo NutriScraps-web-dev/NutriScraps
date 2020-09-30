@@ -34,7 +34,7 @@ exports.createComment = (req, res, next) => {
 };
 
 exports.getComment = (req, res, next) => {
-  Comment.findById({ comment: req.params.id })
+  Comment.findById(req.params.id)
     .then((comment) => {
       if (!comment) {
         const error = new Error('The comment does NOT Exist');
@@ -70,14 +70,14 @@ exports.getAllComments = (req, res, next) => {
 };
 
 exports.deleteComment = (req, res, next) => {
-  Comment.findByIdAndDelete({ comment: req.params.id })
+  Comment.deleteOne({_id:req.params.id})
     .then((comment) => {
       if (!comment) {
         const error = new Error('The comment does NOT exist');
         error.statusCode = 404;
         throw error;
       }
-      res.status(200).json({ message: `The comment ${comment.id} is deleted` });
+      res.status(200).json({ message: `The comment is deleted` });
     })
     .catch((err) => {
       if (!err.statusCode) {
