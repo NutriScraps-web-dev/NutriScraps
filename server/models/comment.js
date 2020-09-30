@@ -19,7 +19,7 @@ const commentSchema = new Schema(
         subcomments: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'Subcomment'
+                ref: 'Comment'
             }
         ]
     },
