@@ -3,7 +3,7 @@
       <p class="red">{{message}}</p>
       <b-row>
         <b-col cols="7" offset="1" offset-md="2">
-          <b-form-input v-model="text" placeholder="Enter your name"></b-form-input>
+          <b-form-input v-model="text" placeholder="Search Recipe"></b-form-input>
         </b-col>
         <b-col cols="3">
           <b-button v-on:click="createRecipe">Create New</b-button>
