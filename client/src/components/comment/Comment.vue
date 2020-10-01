@@ -7,8 +7,12 @@
                     <b-row>
                         <h5 class="mt-2 ml-1">This dish is spicy!!</h5>
                         <div class="ml-auto">
-                            <b-button class="mr-1" pill variant="outline-primary" @click="likeComments">Likes</b-button>
-                            <b-button class="mr-1" pill variant="outline-success" @click="replyComments">Reply</b-button>
+                            <b-button class="mr-1" pill variant="outline-primary" @click="likeComments">
+                                <b-icon icon="hand-thumbs-up" aria-hidden="true"></b-icon>Likes
+                            </b-button>
+                            <b-button class="mr-1" pill variant="outline-success" @click="replyComments">
+                                <b-icon icon="reply" aria-hidden="true"></b-icon>Reply
+                            </b-button>
                         </div>
                     </b-row>
                 </b-list-group-item>
