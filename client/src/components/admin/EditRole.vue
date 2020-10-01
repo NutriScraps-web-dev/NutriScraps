@@ -21,6 +21,9 @@
                 type="text"
                 v-model="roleInfo.role"
                 validation="bail|required|alpha|max:20,length"
+                :help="
+                  `Must be a single word`
+                "
               />
             </b-form-group>
 
@@ -35,7 +38,7 @@
                 id="role-description"
                 type="text"
                 v-model="roleInfo.description"
-                validation="bail|required|alpha|max:50,length"
+                validation="bail|required|max:50,length"
                 :help="
                   `Keep it under 50 characters. ${50 -
                     roleInfo.description.length} left.`

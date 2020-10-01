@@ -8,7 +8,7 @@
     class="mx-2 my-1"
   >
     <b-card-text>
-      You Are About To <strong>Delete</strong> A Role. This Action will Result In Deleting <strong> All Users </strong> All Users That Have This Role. This Action Is
+      You Are About To <strong>Delete</strong> A Role. This Action will Result In Deleting <strong> All Users </strong> That Have This Role. This Action Is
       <strong>Irreversible</strong>
     </b-card-text>
     <b-button
