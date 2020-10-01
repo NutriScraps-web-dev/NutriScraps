@@ -5,6 +5,7 @@ import Home from './views/Home.vue'
 import Signup from './views/auth/Signup.vue'
 import Login from './views/auth/Login.vue'
 import Profile from './views/user/Profile.vue'
+import Comment from './components/comment/Comment.vue'
 
 Vue.use(Router)
 
@@ -38,6 +39,11 @@ export default new Router({
           next('users/login')
         }
       }
+    },
+    {
+      path: '/comments',
+      name: 'comments',
+      component: Comment
     }
   ]
 })
