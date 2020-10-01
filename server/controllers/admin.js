@@ -20,7 +20,7 @@ exports.getAllUsers = (req, res, next) => {
         error.statusCode = 500;
         throw error;
       }
-      res.status(200).json({ user: userDocs, totalUsers: totalUsers });
+      res.status(200).json({userDocs});
     })
     .catch((err) => {
       if (!err.statusCode) {
