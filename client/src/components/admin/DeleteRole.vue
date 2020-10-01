@@ -29,7 +29,7 @@
 <script>
 export default {
   methods: {
-    deleteUser() {
+    deleteRole() {
       this.$store.dispatch('deleteRole')
     }
   }

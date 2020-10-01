@@ -89,8 +89,8 @@ exports.editRole = (req, res, next) => {
 };
 
 exports.deleteRole = (req, res, next) => {
-  const roleType = req.params.type;
-  Role.findOneAndDelete({ role: roleType })
+  const roleId = req.params.id;
+  Role.findByIdAndDelete(roleId)
     .then((role) => {
       if (!role) {
         const error = new Error('The role does NOT Exist');

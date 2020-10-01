@@ -33,22 +33,6 @@ const actions = {
       })
       .catch(err => console.log(err))
   },
-  // getRoleInfo({ commit }) {
-  //   if (!auth.state.authToken) {
-  //     return
-  //   }
-  //   Api.get(`admins/roles/${this.role.role}`, {
-  //     headers: {
-  //       Authorization: `Bearer ${auth.state.authToken}`
-  //     }
-  //   })
-  //     .then(res => {
-  //       console.log(res)
-  //       console.log(res.data)
-  //       // commit('storeUser', res.data)
-  //     })
-  //     .catch(err => console.log(err))
-  // }
   updateRole({ commit, state }, payload) {
     console.log('updateRole')
     console.log(payload)
@@ -65,19 +49,20 @@ const actions = {
         }
       })
       .catch(err => console.log(err))
+  },
+  deleteRole({ commit, state }) {
+    Api.delete(`admins/roles/${state.role._id}`, {
+      headers: {
+        Authorization: `Bearer ${auth.state.authToken}`
+      }
+    })
+      .then(res => {
+        console.log('deleteRole')
+        console.log(state.role._id)
+        commit('DeleteRole', state.role._id)
+      })
+      .catch(err => console.log(err))
   }
-  // deleteRole({ commit }) {
-  //   Api.delete(`admins/roles/${this.state.roleType}`, {
-  //     headers: {
-  //       Authorization: `Bearer ${auth.state.authToken}`
-  //     }
-  //   })
-  //     .then(res => {
-  //       console.log(res)
-  //       commit('DeleteRole')
-  //     })
-  //     .catch(err => console.log(err))
-  // }
 }
 
 const mutations = {
@@ -86,6 +71,12 @@ const mutations = {
   },
   storeRole: (state, role) => {
     state.role = role
+  },
+  DeleteRole: (state, roleId) => {
+    // eslint-disable-next-line eqeqeq
+    const index = state.roles.findIndex(r => r._id == roleId)
+    state.roles.splice(index, 1)
+    // state.role = state.roles.filter(r => r._id != roleId)
   }
 }
 

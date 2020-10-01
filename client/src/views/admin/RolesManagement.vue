@@ -50,7 +50,7 @@
             >
             <b-button
               v-b-toggle="'delete-role'"
-              variant="outline-info"
+              variant="outline-danger"
               @click="saveRole(row.item)"
               size="sm"
               class="mx-2 mt-2 mb-4 pass-btn px-5"
@@ -60,7 +60,7 @@
               <edit-role></edit-role>
             </b-collapse>
             <b-collapse accordion="role-update" id="delete-role">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga illo minima eum, veniam voluptatem perferendis quaerat voluptatum quis quidem sit blanditiis consectetur. Tempore inventore, reprehenderit tenetur soluta odio harum quae.</p>
+              <delete-role></delete-role>
             </b-collapse>
           </b-card>
         </template>
@@ -71,8 +71,10 @@
 
 <script>
 import EditRole from '../../components/admin/EditRole'
+import DeleteRole from '../../components/admin/DeleteRole'
 export default {
   components: {
+    'delete-role': DeleteRole,
     'edit-role': EditRole
   },
   data() {
