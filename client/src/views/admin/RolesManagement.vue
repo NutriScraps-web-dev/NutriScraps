@@ -37,25 +37,27 @@
               variant="outline-info"
               size="sm"
               @click="row.toggleDetails"
-              class="mx-2"
+              class="mx-2 mt-2 mb-4 pass-btn px-4"
               >Hide Details</b-button
             >
             <b-button
-              v-b-toggle="'edit-role'"
+              v-b-toggle="'edit-role-col'"
+              @click="saveRole(row.item)"
               variant="outline-info"
               size="sm"
-              class="mx-2"
+              class="mx-2 mt-2 mb-4 pass-btn px-5"
               >Edit</b-button
             >
             <b-button
               v-b-toggle="'delete-role'"
               variant="outline-info"
+              @click="saveRole(row.item)"
               size="sm"
-              class="mx-2"
+              class="mx-2 mt-2 mb-4 pass-btn px-5"
               >Delete</b-button
             >
-            <b-collapse accordion="role-update" id="edit-role">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga illo minima eum, veniam voluptatem perferendis quaerat voluptatum quis quidem sit blanditiis consectetur. Tempore inventore, reprehenderit tenetur soluta odio harum quae.</p>
+            <b-collapse accordion="role-update" id="edit-role-col">
+              <edit-role></edit-role>
             </b-collapse>
             <b-collapse accordion="role-update" id="delete-role">
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga illo minima eum, veniam voluptatem perferendis quaerat voluptatum quis quidem sit blanditiis consectetur. Tempore inventore, reprehenderit tenetur soluta odio harum quae.</p>
@@ -68,7 +70,11 @@
 </template>
 
 <script>
+import EditRole from '../../components/admin/EditRole'
 export default {
+  components: {
+    'edit-role': EditRole
+  },
   data() {
     return {
       fields: [
@@ -95,6 +101,11 @@ export default {
   },
   created() {
     this.$store.dispatch('getAllRoles')
+  },
+  methods: {
+    saveRole(role) {
+      this.$store.commit('storeRole', role)
+    }
   }
 }
 </script>
