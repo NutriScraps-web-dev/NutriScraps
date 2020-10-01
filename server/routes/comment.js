@@ -7,7 +7,7 @@ const router = express.Router();
 router.post('/api/comments', isAuth, commentController.createComment);
 router.get('/api/comments',isAuth, commentController.getAllComments);
 router.get('/api/comments/:id', isAuth, commentController.getComment);
-router.patch('/api/comments/:id', isAuth, commentController.addSubcomment);
+router.post('/api/comments/:parent_id', isAuth, commentController.addSubcomment);
 router.delete('/api/comments/:id', isAuth, commentController.deleteComment);
 
 module.exports = router;
