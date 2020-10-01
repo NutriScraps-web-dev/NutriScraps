@@ -58,8 +58,8 @@ app.use('/api/users', userRouter);
 app.use('/api/admins', roleRouter);
 app.use('/api/admins', adminRouter);
 
-app.use('/comment', commentRouter);
-app.use('/rating', ratingRouter);
+app.use(commentRouter);
+app.use(ratingRouter);
 
 app.use(recipesRouter);
 app.use(ingredientsRouter);
