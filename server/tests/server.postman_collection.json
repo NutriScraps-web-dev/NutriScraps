@@ -2180,11 +2180,11 @@
           }
         ],
         "url": {
-          "raw": "{{host}}/api/user/{{idUser}}",
+          "raw": "{{host}}/api/users/{{idUser}}",
 
           "host": ["{{host}}"],
 
-          "path": ["api", "user", "{{idUser}}"]
+          "path": ["api", "users", "{{idUser}}"]
         }
       },
       "response": []
@@ -2242,11 +2242,11 @@
           }
         },
         "url": {
-          "raw": "{{host}}/api/user/{{idUser}}",
+          "raw": "{{host}}/api/users/{{idUser}}",
 
           "host": ["{{host}}"],
 
-          "path": ["api", "user", "{{idUser}}"]
+          "path": ["api", "users", "{{idUser}}"]
         }
       },
       "response": []
@@ -2299,11 +2299,11 @@
           }
         },
         "url": {
-          "raw": "{{host}}/api/user/{{idUser}}/password",
+          "raw": "{{host}}/api/users/{{idUser}}/password",
 
           "host": ["{{host}}"],
 
-          "path": ["api", "user", "{{idUser}}", "password"]
+          "path": ["api", "users", "{{idUser}}", "password"]
         }
       },
       "response": []
@@ -2356,11 +2356,11 @@
           }
         },
         "url": {
-          "raw": "{{host}}/api/user/{{idUser}}/password",
+          "raw": "{{host}}/api/users/{{idUser}}/password",
 
           "host": ["{{host}}"],
 
-          "path": ["api", "user", "{{idUser}}", "password"]
+          "path": ["api", "users", "{{idUser}}", "password"]
         }
       },
       "response": []
@@ -2413,11 +2413,11 @@
           }
         },
         "url": {
-          "raw": "{{host}}/api/user/{{idUser}}/password",
+          "raw": "{{host}}/api/users/{{idUser}}/password",
 
           "host": ["{{host}}"],
 
-          "path": ["api", "user", "{{idUser}}", "password"]
+          "path": ["api", "users", "{{idUser}}", "password"]
         }
       },
       "response": []
@@ -2454,11 +2454,11 @@
           }
         ],
         "url": {
-          "raw": "{{host}}/api/user/{{idUser}}",
+          "raw": "{{host}}/api/users/{{idUser}}",
 
           "host": ["{{host}}"],
 
-          "path": ["api", "user", "{{idUser}}"]
+          "path": ["api", "users", "{{idUser}}"]
         }
       },
       "response": []
@@ -2528,7 +2528,7 @@
               "    pm.response.to.have.status(201)\r",
               "})\r",
               "\r",
-              "pm.environment.set(\"roleType\", jsonData.role);"
+              "pm.environment.set(\"roleId\", jsonData._id);"
             ],
             "type": "text/javascript"
           }
@@ -2734,52 +2734,11 @@
           }
         },
         "url": {
-          "raw": "{{host}}/api/admins/roles/{{roleType}}",
+          "raw": "{{host}}/api/admins/roles/{{roleId}}",
 
           "host": ["{{host}}"],
 
-          "path": ["api", "admins", "roles", "{{roleType}}"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "delete - deleteRole - admin - error",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "fa26ad65-3162-40b6-bab8-5d69741348b2",
-            "exec": [
-              "const jsonData = pm.response.json();\r",
-              "\r",
-              "pm.test(\"admin deletes a role by type\", ()=>{\r",
-              "    pm.response.to.have.status(404)\r",
-              "})\r",
-              "\r",
-              "pm.test(\"admin deletes a role by type - json check\", ()=>{\r",
-              "    pm.expect(jsonData.message).to.eql(\"The role does NOT Exist\")\r",
-              "})"
-            ],
-            "type": "text/javascript"
-          }
-        }
-      ],
-      "request": {
-        "method": "DELETE",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "Bearer {{tokenAdmin}}",
-            "type": "text"
-          }
-        ],
-        "url": {
-          "raw": "{{host}}/api/admins/roles/hgkjhgjgkj",
-
-          "host": ["{{host}}"],
-
-          "path": ["api", "admins", "roles", "hgkjhgjgkj"]
+          "path": ["api", "admins", "roles", "{{roleId}}"]
         }
       },
       "response": []
@@ -2813,11 +2772,11 @@
           }
         ],
         "url": {
-          "raw": "{{host}}/api/admins/roles/{{newRoleType}}",
+          "raw": "{{host}}/api/admins/roles/{{roleId}}",
 
           "host": ["{{host}}"],
 
-          "path": ["api", "admins", "roles", "{{newRoleType}}"]
+          "path": ["api", "admins", "roles", "{{roleId}}"]
         }
       },
       "response": []
@@ -2873,11 +2832,11 @@
           }
         ],
         "url": {
-          "raw": "{{host}}/api/admins/allusers?page=1&limit=5",
+          "raw": "{{host}}/api/admins/users?page=1&limit=5",
 
           "host": ["{{host}}"],
 
-          "path": ["api", "admins", "allusers"],
+          "path": ["api", "admins", "users"],
           "query": [
             {
               "key": "page",
@@ -2944,11 +2903,11 @@
           }
         ],
         "url": {
-          "raw": "{{host}}/api/admins/allusers",
+          "raw": "{{host}}/api/admins/users",
 
           "host": ["{{host}}"],
 
-          "path": ["api", "admins", "allusers"]
+          "path": ["api", "admins", "users"]
         }
       },
       "response": []
@@ -3057,11 +3016,11 @@
           }
         },
         "url": {
-          "raw": "{{host}}/api/admins/allusers/{{idUser2}}",
+          "raw": "{{host}}/api/admins/users/{{idUser2}}",
 
           "host": ["{{host}}"],
 
-          "path": ["api", "admins", "allusers", "{{idUser2}}"],
+          "path": ["api", "admins", "users", "{{idUser2}}"],
           "query": [
             {
               "key": "",
@@ -3108,11 +3067,11 @@
           }
         },
         "url": {
-          "raw": "{{host}}/api/admins/allusers/{{idUser2}}",
+          "raw": "{{host}}/api/admins/users/{{idUser2}}",
 
           "host": ["{{host}}"],
 
-          "path": ["api", "admins", "allusers", "{{idUser2}}"]
+          "path": ["api", "admins", "users", "{{idUser2}}"]
         }
       },
       "response": []
