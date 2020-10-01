@@ -1,27 +1,42 @@
 <template>
-<div>
-    <b-button v-b-modal.commentsAndRating>Comments</b-button>
-    <b-modal id="commentsAndRating" hide-footer centered title="Comments and rating">
-    <div class="d-block text-center">
-        <h3>This is comments and rating modal</h3>
+    <div>
+        <b-button v-b-modal.commentsDialog>Comments</b-button>
+        <b-modal id="commentsDialog" size="lg" scrollable centered title="Comments">
+            <b-container>
+                <b-list-group-item>
+                    <b-row>
+                        <h5 class="mt-2 ml-1">This dish is spicy!!</h5>
+                        <div class="ml-auto">
+                            <b-button class="mr-1" pill variant="outline-primary" @click="likeComments">Likes</b-button>
+                            <b-button class="mr-1" pill variant="outline-success" @click="replyComments">Reply</b-button>
+                        </div>
+                    </b-row>
+                </b-list-group-item>
+            </b-container>
+            <template v-slot:modal-footer>
+                <div class="w-100">
+                    <b-button variant="danger" pill size="sm" class="float-right" @click="hideModal"> Close </b-button>
+                </div>
+            </template>
+        </b-modal>
     </div>
-    <b-button class="mt-3" variant="outline-danger" block @click="hideModal">Close Me</b-button>
-    <b-button class="mt-2" variant="outline-warning" block @click="toggleModal">Toggle Me</b-button>
-    </b-modal>
-</div>
 </template>
 
 <script>
 export default {
   methods: {
     showModal() {
-      this.$refs.commentsAndRating.show()
+      this.$bvModal.show('commentsDialog')
     },
     hideModal() {
-      this.$refs.commentsAndRating.hide()
+      this.$bvModal.hide('commentsDialog')
     },
     toggleModal() {
-      this.$refs.commentsAndRating.toggle('#toggle-btn')
+      this.$bvModal.toggle('#toggle-btn')
+    },
+    likeComments() {
+    },
+    replyComments() {
     }
   }
 }
@@ -29,4 +44,4 @@ export default {
 
 <style>
 
-</style>>
+</style>
