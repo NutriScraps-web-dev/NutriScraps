@@ -5,8 +5,8 @@ import Home from './views/Home.vue'
 import Signup from './views/auth/Signup.vue'
 import Login from './views/auth/Login.vue'
 import Profile from './views/user/Profile.vue'
-import Roles from './views/admin/Roles.vue'
-import Users from './views/admin/Users.vue'
+import Roles from './views/admin/RolesManagement.vue'
+import Users from './views/admin/UsersManagement.vue'
 
 Vue.use(Router)
 
@@ -44,12 +44,26 @@ export default new Router({
     {
       path: '/admins/roles',
       name: 'Roles Management',
-      component: Roles
+      component: Roles,
+      beforeEnter: (to, from, next) => {
+        if (Store.state.authToken) {
+          next()
+        } else {
+          next('users/login')
+        }
+      }
     },
     {
       path: '/admins/users',
       name: 'Users Management',
-      component: Users
+      component: Users,
+      beforeEnter: (to, from, next) => {
+        if (Store.state.authToken) {
+          next()
+        } else {
+          next('users/login')
+        }
+      }
     }
   ]
 })
