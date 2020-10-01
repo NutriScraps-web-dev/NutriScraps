@@ -1,6 +1,18 @@
 <template>
   <b-container class="mt-5" v-if="roles">
     <b-jumbotron class="jumbo">
+      <b-container class="mb-4 role-container">
+        <b-button
+          variant="outline-info"
+          v-b-toggle="'create-role-col'"
+          class="mb-4 role-btn"
+        >
+          <b-icon icon="plus"></b-icon> Create Role
+        </b-button>
+        <b-collapse accordion="role-update" id="create-role-col">
+          <create-role></create-role>
+        </b-collapse>
+      </b-container>
       <b-table
         head-row-variant="info"
         table-variant="light"
@@ -9,6 +21,7 @@
         :items="roles"
         :fields="fields"
         borderless
+        sort-icon-left
       >
         <template v-slot:cell(show_details)="row">
           <b-button
@@ -72,8 +85,10 @@
 <script>
 import EditRole from '../../components/admin/EditRole'
 import DeleteRole from '../../components/admin/DeleteRole'
+import CreateRole from '../../components/admin/createRoleForm'
 export default {
   components: {
+    'create-role': CreateRole,
     'delete-role': DeleteRole,
     'edit-role': EditRole
   },
@@ -82,11 +97,13 @@ export default {
       fields: [
         {
           key: 'role',
-          lable: 'Roles'
+          lable: 'Roles',
+          sortable: true
         },
         {
           key: 'description',
-          lable: 'Description'
+          lable: 'Description',
+          sortable: true
         },
         {
           key: 'show_details'
@@ -111,3 +128,13 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.role-btn {
+  float: right;
+}
+.role-container {
+  display: flex;
+  flex-direction: column;
+}
+</style>

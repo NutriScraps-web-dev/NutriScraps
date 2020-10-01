@@ -11,6 +11,7 @@ exports.createRole = (req, res, next) => {
       const role = new Role({
         role: roleName,
         description: description,
+        users: []
       });
       return role.save();
     })

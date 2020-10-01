@@ -18,6 +18,13 @@ const getters = {
 }
 
 const actions = {
+  createRole({ commit }, payload) {
+    Api.post('/admins/roles', payload)
+      .then(result => {
+        commit('createRole', result)
+      })
+      .catch(err => console.log(err))
+  },
   getAllRoles: ({ commit }) => {
     if (!auth.state.authToken) {
       return
@@ -57,8 +64,6 @@ const actions = {
       }
     })
       .then(res => {
-        console.log('deleteRole')
-        console.log(state.role._id)
         commit('DeleteRole', state.role._id)
       })
       .catch(err => console.log(err))
@@ -77,6 +82,9 @@ const mutations = {
     const index = state.roles.findIndex(r => r._id == roleId)
     state.roles.splice(index, 1)
     // state.role = state.roles.filter(r => r._id != roleId)
+  },
+  createRole: (state, role) => {
+    state.roles.push(role)
   }
 }
 
