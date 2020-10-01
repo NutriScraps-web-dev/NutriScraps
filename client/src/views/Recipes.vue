@@ -9,7 +9,6 @@
           <b-button v-on:click="createRecipe">Create New</b-button>
         </b-col>
       </b-row>
-      <h1>Here are my recipes:</h1>
       <b-row align-h="center">
         <b-col cols="12" sm="6" md="4" v-for="recipe in recipes" v-bind:key="recipe._id">
             <recipe-item v-bind:recipe="recipe" v-on:del-recipe="deleteRecipe"/>
