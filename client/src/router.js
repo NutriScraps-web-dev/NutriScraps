@@ -7,12 +7,12 @@ import Recipes from './views/Recipes.vue'
 import Signup from './views/auth/Signup.vue'
 import Login from './views/auth/Login.vue'
 import Profile from './views/user/Profile.vue'
-import Comment from './components/comment/Comment.vue'
-
 import Roles from './views/admin/RolesManagement.vue'
 import Users from './views/admin/UsersManagement.vue'
 import CreateRecipe from './components/CreateRecipe.vue'
 import Recipe from './views/Recipe.vue'
+import Comment from './components/comment/Comment.vue'
+
 Vue.use(Router)
 export default new Router({
   mode: 'history',
@@ -67,11 +67,6 @@ export default new Router({
       }
     },
     {
-      path: '/comments',
-      name: 'comments',
-      component: Comment
-    },
-    {
       path: '/admins/roles',
       name: 'Roles Management',
       component: Roles
@@ -79,7 +74,17 @@ export default new Router({
     {
       path: '/admins/users',
       name: 'Users Management',
-      component: Users
+      component: Users,
+      beforeEnter: (to, from, next) => {
+        if (Store.state.authToken) {
+          next()
+        } else {
+          next('users/login')
+        }
+      }
+      path: '/comments',
+      name: 'comments',
+      component: Comment
     }
   ],
   scrollBehavior(to, from, savedPosition) {
