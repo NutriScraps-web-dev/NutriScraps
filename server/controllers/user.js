@@ -99,7 +99,7 @@ exports.changePassword = (req, res, next) => {
         .compare(oldPassword, user.password)
         .then((doMatch) => {
           if (!doMatch) {
-            const error = new Error('Please Endter Correct Old Passowrd');
+            const error = new Error('Please Enter Correct Current Password');
             error.statusCode = 401;
             throw error;
           }
