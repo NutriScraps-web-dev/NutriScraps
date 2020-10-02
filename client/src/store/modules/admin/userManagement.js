@@ -2,29 +2,20 @@ import { Api } from '@/Api'
 import auth from '../auth'
 
 const state = {
-  users: null,
-  user: null
+  usersArray: null,
+  selectedUser: null
 }
 
 const getters = {
   allUsers: state => {
-    return state.users
+    return state.usersArray
   },
   userInfo: state => {
-    console.log('roleInfo')
-    console.log(state.user)
-    return state.user
+    return state.selectedUser
   }
 }
 
 const actions = {
-  // createRole({ commit }, payload) {
-  //   Api.post('/admins/roles', payload)
-  //     .then(result => {
-  //       commit('createRole', result)
-  //     })
-  //     .catch(err => console.log(err))
-  // },
   getAllUsers: ({ commit }) => {
     if (!auth.state.authToken) {
       return
@@ -39,7 +30,7 @@ const actions = {
         commit('storeUsers', result.data.userDocs)
       })
       .catch(err => console.log(err))
-  }
+  },
   // updateRole({ commit, state }, payload) {
   //   console.log('updateRole')
   //   console.log(payload)
@@ -57,35 +48,32 @@ const actions = {
   //     })
   //     .catch(err => console.log(err))
   // },
-  // deleteRole({ commit, state }) {
-  //   Api.delete(`admins/roles/${state.role._id}`, {
-  //     headers: {
-  //       Authorization: `Bearer ${auth.state.authToken}`
-  //     }
-  //   })
-  //     .then(res => {
-  //       commit('DeleteRole', state.role._id)
-  //     })
-  //     .catch(err => console.log(err))
-  // }
+  deleteUser({ commit, state }) {
+    Api.delete(`admins/users/${state.selectedUser._id}`, {
+      headers: {
+        Authorization: `Bearer ${auth.state.authToken}`
+      }
+    })
+      .then(res => {
+        commit('DeleteUser', state.selectedUser._id)
+      })
+      .catch(err => console.log(err))
+  }
 }
 
 const mutations = {
   storeUsers: (state, users) => {
-    state.users = users
+    state.usersArray = users
+  },
+  storeUser: (state, user) => {
+    state.selectedUser = user
+  },
+  DeleteUser: (state, userId) => {
+    // eslint-disable-next-line eqeqeq
+    const index = state.usersArray.findIndex(r => r._id == userId)
+    state.usersArray.splice(index, 1)
+    // state.role = state.roles.filter(r => r._id != roleId)
   }
-  // storeRole: (state, role) => {
-  //   state.role = role
-  // },
-  // DeleteRole: (state, roleId) => {
-  //   // eslint-disable-next-line eqeqeq
-  //   const index = state.roles.findIndex(r => r._id == roleId)
-  //   state.roles.splice(index, 1)
-  //   // state.role = state.roles.filter(r => r._id != roleId)
-  // },
-  // createRole: (state, role) => {
-  //   state.roles.push(role)
-  // }
 }
 
 export default {

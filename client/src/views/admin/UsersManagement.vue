@@ -43,7 +43,7 @@
             </b-row>
 
             <b-row class="mb-2">
-              <b-col sm="3" class="text-sm-right"><b>User Id: </b></b-col>
+              <b-col sm="3" class="text-sm-right"><b>country: </b></b-col>
               <b-col>{{ row.item.country }}</b-col>
             </b-row>
 
@@ -66,7 +66,7 @@
             >
             <b-button
               v-b-toggle="'edit-role-col'"
-              @click="saveRole(row.item)"
+              @click="saveUser(row.item)"
               variant="outline-info"
               size="sm"
               class="mx-2 mt-2 mb-4 pass-btn px-5"
@@ -75,16 +75,16 @@
             <b-button
               v-b-toggle="'delete-role'"
               variant="outline-danger"
-              @click="saveRole(row.item)"
+              @click="saveUser(row.item)"
               size="sm"
               class="mx-2 mt-2 mb-4 pass-btn px-5"
               >Delete</b-button
             >
             <b-collapse accordion="role-update" id="edit-role-col">
-              <edit-role></edit-role>
+              <!-- <edit-role></edit-role> -->
             </b-collapse>
             <b-collapse accordion="role-update" id="delete-role">
-              <delete-role></delete-role>
+              <delete-user></delete-user>
             </b-collapse>
           </b-card>
         </template>
@@ -95,12 +95,10 @@
 
 <script>
 // import EditRole from '../../components/admin/EditRole'
-// import DeleteRole from '../../components/admin/DeleteRole'
-// import CreateRole from '../../components/admin/createRoleForm'
+import DeleteUser from '../../components/admin/DeleteUser'
 export default {
   components: {
-    // 'create-role': CreateRole,
-    // 'delete-role': DeleteRole,
+    'delete-user': DeleteUser
     // 'edit-role': EditRole
   },
   data() {
@@ -128,7 +126,6 @@ export default {
   },
   computed: {
     users() {
-      console.log(this.$store.state.users)
       return !this.$store.getters.allUsers
         ? false
         : this.$store.getters.allUsers
@@ -136,12 +133,12 @@ export default {
   },
   created() {
     this.$store.dispatch('getAllUsers')
+  },
+  methods: {
+    saveUser(user) {
+      this.$store.commit('storeUser', user)
+    }
   }
-  //   methods: {
-  //     // saveRole(role) {
-  //     //   // this.$store.commit('storeRole', role)
-  //     // }
-  //   }
 }
 </script>
 
