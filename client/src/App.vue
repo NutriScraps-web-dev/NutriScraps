@@ -1,14 +1,7 @@
 <template>
   <div id="app">
-
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/contact-us">Contact Us</router-link> |
-      <router-link to="/recipes">Recipes</router-link>
-    </div>
     <app-header></app-header>
-    <router-view></router-view  >
-
+    <router-view></router-view>
   </div>
 </template>
 

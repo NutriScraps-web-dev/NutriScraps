@@ -11,11 +11,14 @@
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class="ml-auto">
         <b-nav-form>
+          <li class="nav-item">
+              <b-link class="nav-item nav-link mx-2 px-2" to="/recipes">Recipe</b-link>
+            </li>
             <li class="nav-item">
               <b-link class="nav-item nav-link mx-2 px-2" to="/about">About</b-link>
             </li>
             <li class="nav-item">
-              <b-link class="nav-item nav-link mx-2 px-2" to="/contact">Contact</b-link>
+              <b-link class="nav-item nav-link mx-2 px-2" to="/contact-us">Contact</b-link>
             </li>
             <admin-ctrl-btns></admin-ctrl-btns>
             <control-btns></control-btns>
