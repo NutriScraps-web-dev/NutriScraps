@@ -246,8 +246,7 @@ export default {
         password: this.password,
         confirmPassword: this.confirmPassword,
         country: this.country,
-        bio: this.bio,
-        roleType: 'user'
+        bio: this.bio
       }
       this.$store.dispatch('signUp', formData)
     }
