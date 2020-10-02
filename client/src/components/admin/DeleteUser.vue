@@ -30,7 +30,7 @@
 export default {
   methods: {
     deleteUser() {
-      this.$store.dispatch('deleteUser')
+      this.$store.dispatch('deleteSelectedUser')
     }
   }
 }

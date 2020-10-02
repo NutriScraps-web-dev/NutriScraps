@@ -10,7 +10,7 @@ const getters = {
   allUsers: state => {
     return state.usersArray
   },
-  userInfo: state => {
+  selectedUserInfo: state => {
     return state.selectedUser
   }
 }
@@ -31,31 +31,31 @@ const actions = {
       })
       .catch(err => console.log(err))
   },
-  // updateRole({ commit, state }, payload) {
-  //   console.log('updateRole')
-  //   console.log(payload)
-  //   console.log(state.role._id)
-  //   Api.patch(`admins/roles/${state.role._id}`, payload, {
-  //     headers: {
-  //       Authorization: `Bearer ${auth.state.authToken}`
-  //     }
-  //   })
-  //     .then(res => {
-  //       if (res.state === 200) {
-  //         console.log(res)
-  //         // commit('storeUser')
-  //       }
-  //     })
-  //     .catch(err => console.log(err))
-  // },
-  deleteUser({ commit, state }) {
+  updateUser({ commit, state }, payload) {
+    console.log('updateRole')
+    console.log(payload)
+    console.log(state.selectedUser._id)
+    Api.patch(`admins/users/${state.selectedUser._id}`, payload, {
+      headers: {
+        Authorization: `Bearer ${auth.state.authToken}`
+      }
+    })
+      .then(res => {
+        if (res.state === 200) {
+          console.log(res)
+          // commit('storeUser')
+        }
+      })
+      .catch(err => console.log(err))
+  },
+  deleteSelectedUser({ commit, state }) {
     Api.delete(`admins/users/${state.selectedUser._id}`, {
       headers: {
         Authorization: `Bearer ${auth.state.authToken}`
       }
     })
       .then(res => {
-        commit('DeleteUser', state.selectedUser._id)
+        commit('DeleteSelectedUser', state.selectedUser._id)
       })
       .catch(err => console.log(err))
   }
@@ -65,10 +65,10 @@ const mutations = {
   storeUsers: (state, users) => {
     state.usersArray = users
   },
-  storeUser: (state, user) => {
+  storeSelectedUser: (state, user) => {
     state.selectedUser = user
   },
-  DeleteUser: (state, userId) => {
+  DeleteSelectedUser: (state, userId) => {
     // eslint-disable-next-line eqeqeq
     const index = state.usersArray.findIndex(r => r._id == userId)
     state.usersArray.splice(index, 1)

@@ -76,6 +76,7 @@ exports.editUser = (req, res, next) => {
     })
     .catch((err) => {
       if (!err.statusCode) {
+        err.message('coming from here')
         err.statusCode = 500;
       }
       next(err);

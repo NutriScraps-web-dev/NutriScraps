@@ -81,7 +81,7 @@
               >Delete</b-button
             >
             <b-collapse accordion="role-update" id="edit-role-col">
-              <!-- <edit-role></edit-role> -->
+              <edit-user></edit-user>
             </b-collapse>
             <b-collapse accordion="role-update" id="delete-role">
               <delete-user></delete-user>
@@ -94,12 +94,12 @@
 </template>
 
 <script>
-// import EditRole from '../../components/admin/EditRole'
+import EditUser from '../../components/admin/EditUser'
 import DeleteUser from '../../components/admin/DeleteUser'
 export default {
   components: {
-    'delete-user': DeleteUser
-    // 'edit-role': EditRole
+    'delete-user': DeleteUser,
+    'edit-user': EditUser
   },
   data() {
     return {
@@ -136,7 +136,7 @@ export default {
   },
   methods: {
     saveUser(user) {
-      this.$store.commit('storeUser', user)
+      this.$store.commit('storeSelectedUser', user)
     }
   }
 }
