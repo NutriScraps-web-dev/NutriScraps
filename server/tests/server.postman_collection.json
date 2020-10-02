@@ -2309,63 +2309,6 @@
       "response": []
     },
     {
-      "name": "patch - changePassword - user - error",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "1ffd6efd-bf5a-4999-80fc-7c6e2029a808",
-            "exec": [""],
-            "type": "text/javascript"
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "14e011d8-e742-4ba6-b50c-a8828e919545",
-            "exec": [
-              "const jsonData = pm.response.json();\r",
-              "\r",
-              "pm.test(\"user updates profile - updateProfile\", ()=>{\r",
-              "    pm.response.to.have.status(401)\r",
-              "})\r",
-              "pm.test(\"user updates profile - updateProfile\", ()=>{\r",
-              "    pm.expect(jsonData.message).to.equal(\"Please Enter Correct Password\")\r",
-              "})"
-            ],
-            "type": "text/javascript"
-          }
-        }
-      ],
-      "request": {
-        "method": "PATCH",
-        "header": [
-          {
-            "key": "Authorization",
-            "type": "text",
-            "value": "Bearer {{tokenUser}}"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"oldPassword\": \"wrongPass\",\r\n    \"newPassword\": \"newPassword\",\r\n    \"confirmNewPassword\": \"newPassword\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{host}}/api/users/{{idUser}}/password",
-
-          "host": ["{{host}}"],
-
-          "path": ["api", "users", "{{idUser}}", "password"]
-        }
-      },
-      "response": []
-    },
-    {
       "name": "patch - changePassword - user error",
       "event": [
         {
