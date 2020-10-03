@@ -108,5 +108,6 @@ export default {
 .pass-btn[disabled] {
   background-color: #666666 !important;
   opacity: 0.2;
+  cursor: not-allowed;
 }
 </style>

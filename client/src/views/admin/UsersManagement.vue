@@ -92,6 +92,13 @@
           </b-card>
         </template>
       </b-table>
+      <b-button
+        variant="outline-info"
+        @click="moreUsers(page++)"
+        class="mx-2 mt-2 mb-4 more-btn px-5"
+      >
+        More</b-button
+      >
     </b-jumbotron>
   </b-container>
 </template>
@@ -99,6 +106,8 @@
 <script>
 import EditUser from '../../components/admin/EditUser'
 import DeleteUser from '../../components/admin/DeleteUser'
+import { mapActions } from 'vuex'
+
 export default {
   components: {
     'delete-user': DeleteUser,
@@ -106,6 +115,7 @@ export default {
   },
   data() {
     return {
+      page: 1,
       fields: [
         {
           key: 'username',
@@ -135,11 +145,15 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch('getAllUsers')
+    this.getAllUsers()
   },
   methods: {
+    ...mapActions(['getAllUsers', 'getMoreUsers']),
     saveUser(user) {
       this.$store.commit('storeSelectedUser', user)
+    },
+    moreUsers(page) {
+      this.getMoreUsers(page)
     }
   }
 }
@@ -152,5 +166,8 @@ export default {
 .role-container {
   display: flex;
   flex-direction: column;
+}
+.more-btn {
+  align-self: center;
 }
 </style>

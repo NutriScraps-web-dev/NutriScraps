@@ -76,6 +76,12 @@
           type="submit"
           >Update</b-button
         >
+         <b-button
+          variant="outline-primary"
+          class="ml-2 my-4 pass-btn px-5"
+          v-b-toggle="'update-pass-col'"
+          >Close</b-button
+        >
       </b-form>
     </b-card>
   </div>
@@ -131,5 +137,10 @@ export default {
 }
 p {
   color: red;
+}
+.pass-btn[disabled] {
+  background-color: #666666 !important;
+  opacity: 0.2;
+  cursor: not-allowed;
 }
 </style>

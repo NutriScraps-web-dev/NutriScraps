@@ -16,6 +16,21 @@ const getters = {
 }
 
 const actions = {
+  getMoreUsers: ({ commit }, payload) => {
+    if (!auth.state.authToken) {
+      return
+    }
+    Api.get(`/admins/users?page=${payload}&limit=5`, {
+      headers: {
+        Authorization: `Bearer ${auth.state.authToken}`
+      }
+    })
+      .then(result => {
+        console.log(result.data)
+        commit('storeMoreUsers', result.data.userDocs)
+      })
+      .catch(err => console.log(err))
+  },
   getAllUsers: ({ commit }) => {
     if (!auth.state.authToken) {
       return
@@ -63,7 +78,14 @@ const actions = {
 
 const mutations = {
   storeUsers: (state, users) => {
+    console.log('storeUsers - before')
+    console.log(state.usersArray)
     state.usersArray = users
+    console.log('storeUsers - after')
+    console.log(state.usersArray)
+  },
+  storeMoreUsers: (state, users) => {
+    state.usersArray.push(...users)
   },
   storeSelectedUser: (state, user) => {
     state.selectedUser = user
