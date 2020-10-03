@@ -65,7 +65,7 @@
               >Hide Details</b-button
             >
             <b-button
-              v-b-toggle="'edit-role-col'"
+              v-b-toggle="'edit-user-col'"
               @click="saveUser(row.item)"
               variant="outline-info"
               size="sm"
@@ -73,17 +73,17 @@
               >Edit</b-button
             >
             <b-button
-              v-b-toggle="'delete-role'"
+              v-b-toggle="'delete-user'"
               variant="outline-danger"
               @click="saveUser(row.item)"
               size="sm"
               class="mx-2 mt-2 mb-4 pass-btn px-5"
               >Delete</b-button
             >
-            <b-collapse accordion="role-update" id="edit-role-col">
+            <b-collapse accordion="user-update" id="edit-user-col">
               <edit-user></edit-user>
             </b-collapse>
-            <b-collapse accordion="role-update" id="delete-role">
+            <b-collapse accordion="user-update" id="delete-user">
               <delete-user></delete-user>
             </b-collapse>
           </b-card>

@@ -11,8 +11,6 @@ const getters = {
     return state.roles
   },
   roleInfo: state => {
-    console.log('roleInfo')
-    console.log(state.role)
     return state.role
   }
 }

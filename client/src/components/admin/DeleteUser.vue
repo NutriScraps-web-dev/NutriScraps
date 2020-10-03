@@ -14,13 +14,14 @@
     <b-button
       variant="outline-danger"
       class="ml-5 my-4"
+      v-b-toggle="'delete-user'"
       @click="deleteUser"
       >YES! I Am Sure</b-button
     >
     <b-button
       variant="outline-success"
       class="ml-5 my-4"
-      v-b-toggle="'delete-role'"
+      v-b-toggle="'delete-user'"
       >NO! My Bad</b-button
     >
   </b-card>
