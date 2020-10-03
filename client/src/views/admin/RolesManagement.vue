@@ -59,7 +59,9 @@
               variant="outline-info"
               size="sm"
               class="mx-2 mt-2 mb-4 pass-btn px-5"
-              >Edit</b-button
+            >
+              <font-awesome-icon icon="edit" class="mr-2" />
+              Edit</b-button
             >
             <b-button
               v-b-toggle="'delete-role'"
@@ -67,7 +69,9 @@
               @click="saveRole(row.item)"
               size="sm"
               class="mx-2 mt-2 mb-4 pass-btn px-5"
-              >Delete</b-button
+            >
+              <font-awesome-icon icon="trash-alt" class="mr-2" />
+              Delete</b-button
             >
             <b-collapse accordion="role-update" id="edit-role-col">
               <edit-role></edit-role>

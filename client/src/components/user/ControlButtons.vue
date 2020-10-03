@@ -21,13 +21,6 @@
             <span class="dropdown-text">Profile</span>
           </b-dropdown-item-button>
         </b-link>
-        <b-dropdown-divider></b-dropdown-divider>
-        <b-link to="/users/mypass">
-          <b-dropdown-item-button>
-            <font-awesome-icon icon="key" class="mr-2" />
-            <span class="dropdown-text">Change Password</span>
-          </b-dropdown-item-button>
-        </b-link>
       </b-dropdown>
     </div>
     <div class="signUp-btns" v-else>

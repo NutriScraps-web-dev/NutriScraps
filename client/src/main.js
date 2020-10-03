@@ -4,7 +4,7 @@ import router from './router'
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 import vueCountryRegionSelect from 'vue-country-region-select'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faKey, faUserEdit, faUserCircle, faUsersCog, faPlus, faTasks, faUsers } from '@fortawesome/free-solid-svg-icons'
+import { faKey, faUserEdit, faUserCircle, faUsersCog, faPlus, faTasks, faUsers, faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { store } from './store/store'
 import Vuelidate from 'vuelidate'
@@ -19,7 +19,7 @@ Vue.use(BootstrapVueIcons)
 Vue.use(Vuelidate)
 Vue.use(VueFormulate)
 
-library.add(faKey, faUserEdit, faUserCircle, faUsersCog, faPlus, faTasks, faUsers)
+library.add(faKey, faUserEdit, faUserCircle, faUsersCog, faPlus, faTasks, faUsers, faTrashAlt, faEdit)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false

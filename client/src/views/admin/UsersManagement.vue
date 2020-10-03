@@ -70,7 +70,8 @@
               variant="outline-info"
               size="sm"
               class="mx-2 mt-2 mb-4 pass-btn px-5"
-              >Edit</b-button
+              ><font-awesome-icon icon="user-edit" class="mr-2" />
+              Edit</b-button
             >
             <b-button
               v-b-toggle="'delete-user'"
@@ -78,7 +79,9 @@
               @click="saveUser(row.item)"
               size="sm"
               class="mx-2 mt-2 mb-4 pass-btn px-5"
-              >Delete</b-button
+            >
+              <font-awesome-icon icon="trash-alt" class="mr-2" />
+              Delete</b-button
             >
             <b-collapse accordion="user-update" id="edit-user-col">
               <edit-user></edit-user>
