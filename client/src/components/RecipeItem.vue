@@ -1,85 +1,24 @@
 <template>
-  <b-jumbotron class="jumbo">
-    <template v-slot:header>
-      <h4>{{recipe.name}}</h4>
-    </template>
-    <br>
-    <template v-slot:lead>
-      <b-row>
-        <h5>Cuisine: </h5><h5>{{recipe.cuisine}}</h5>
-      </b-row>
-          <!--<h4>Preparation:</h4>
-          <div class=preparation>
-                <ol>
-                    <li v-for="preparation in recipe.preparation" :key="preparation">
-                        <h4>{{preparation}}</h4>
-                    </li>
-                </ol>
-            </div>
-          <h4>Cooking Process:</h4>
-          <div class=cooking>
-                <ol>
-                    <li v-for="cooking in recipe.cookingProcess" :key="cooking">
-                        <h4>{{cooking}}</h4>
-                    </li>
-                </ol>
-            </div>
-          <h4>To Serve:</h4>
-          <div class=serve>
-                <ol>
-                    <li v-for="item in recipe.toServe" :key="item">
-                        <h4>{{item}}</h4>
-                    </li>
-                </ol>
-            </div>-->
-      <b-row>
-        <h5>Type:</h5><h5>{{ recipe.type }}</h5>
-      </b-row>
-    </template>
-    <b-form-row>
-      <b-button
-        variant="outline-primary"
-        v-b-toggle="'edit-recipe-col'"
-        >Edit Recipe</b-button
-      >
-      <b-button
-        variant="outline-primary"
-        v-b-toggle="'view-comments-col'"
-        >View Comments</b-button
-      >
-      <b-button
-        variant="outline-danger"
-        v-b-toggle="'delete-col'"
-        v-on:click="deleteRecipe()"
-        >Delete Recipe</b-button
-      >
-    </b-form-row>
-    <b-row>
-      <b-col>
-        <b-collapse accordion="recipe-update" id="delete-col">
-          <delete-account></delete-account>
-        </b-collapse>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col>
-        <b-collapse accordion="recipe-update" id="view-comments-col">
-          <b-card>
-            <comments-form></comments-form>
-          </b-card>
-        </b-collapse>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col>
-        <b-collapse accordion="recipe-update" id="edit-recipe-col">
-          <b-card>
-            <update-profile></update-profile>
-          </b-card>
-        </b-collapse>
-      </b-col>
-    </b-row>
-  </b-jumbotron>
+  <div>
+  <b-card
+    img-src="https://st.depositphotos.com/1692343/5094/i/450/depositphotos_50945415-stock-photo-healthy-homemade-fried-rice.jpg"
+    img-alt="Image"
+    img-top
+    tag="article"
+    footer="options"
+    style="max-width: 20rem;"
+    class="mb-2"
+  >
+    <b-card-text class=text-body>
+      <h4 class="recipe-name"><b>{{recipe.name}}</b></h4>
+      <h6><i>Cuisine: {{recipe.cuisine}}</i></h6>
+      <h6><i>Type: {{recipe.type}}</i></h6>
+    </b-card-text>
+    <b-card-body class="text-center">
+      <b-button href="#" variant="primary" style="margin:auto">View Recipe</b-button>
+    </b-card-body>
+  </b-card>
+</div>
 </template>
 
 <script>
@@ -99,10 +38,13 @@ export default {
 </script>
 
 <style scoped>
-
-.jumbo {
-  text-align: left;
-
+.text-body{
+  width: 100%;
+  height: fit-content;
+  text-overflow: ellipsis;
 }
-
+.recipe-name {
+  text-overflow: ellipsis;
+  max-width: 20ch;
+}
 </style>
