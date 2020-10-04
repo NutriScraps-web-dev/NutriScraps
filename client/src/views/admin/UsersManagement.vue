@@ -1,5 +1,5 @@
 <template>
-  <b-container class="mt-5" v-if="users">
+  <b-container class="mt-5" v-if="users.lenght !== 0">
     <b-jumbotron class="jumbo">
       <b-table
         head-row-variant="info"
@@ -92,13 +92,34 @@
           </b-card>
         </template>
       </b-table>
-      <b-button
-        variant="outline-info"
-        @click="moreUsers(page++)"
-        class="mx-2 mt-2 mb-4 more-btn px-5"
-      >
-        More</b-button
-      >
+      <div class="pagination-container d-lg-flex">
+        <b-button
+          variant="outline-info"
+          @click="moreUsers()"
+          class="mx-2 mt-2 mb-4 more-btn px-5"
+        >
+          Show More</b-button
+        >
+        <FormulateInput
+          @ValueChange="usersPagination.limit = $event.target.value"
+          :options="[
+            { value: '5', label: '5' },
+            { value: '10', label: '10' },
+            { value: '15', label: '15' },
+            { value: '20', label: '20' },
+            { value: '25', label: '25' }
+          ]"
+          type="select"
+          placeholder="How Many More: "
+        />
+        <b-button
+          variant="outline-info"
+          @click="lessUsers()"
+          class="mx-2 mt-2 mb-4 more-btn px-5"
+        >
+          Show Less</b-button
+        >
+      </div>
     </b-jumbotron>
   </b-container>
 </template>
@@ -115,7 +136,7 @@ export default {
   },
   data() {
     return {
-      page: 1,
+      usersPagination: { page: 1, limit: 5 },
       fields: [
         {
           key: 'username',
@@ -145,15 +166,21 @@ export default {
     }
   },
   created() {
-    this.getAllUsers()
+    this.getAllUsers(this.usersPagination)
+    this.getAllRoles()
   },
   methods: {
-    ...mapActions(['getAllUsers', 'getMoreUsers']),
+    ...mapActions(['getAllUsers', 'getMoreUsers', 'getAllRoles']),
     saveUser(user) {
       this.$store.commit('storeSelectedUser', user)
     },
-    moreUsers(page) {
-      this.getMoreUsers(page)
+    moreUsers() {
+      this.usersPagination.page++
+      this.getAllUsers(this.usersPagination)
+    },
+    lessUsers() {
+      this.usersPagination.page = 1
+      this.$store.commit('lessUsers')
     }
   }
 }
@@ -169,5 +196,9 @@ export default {
 }
 .more-btn {
   align-self: center;
+}
+.pagination-container {
+  align-items: baseline;
+  justify-content: space-between;
 }
 </style>

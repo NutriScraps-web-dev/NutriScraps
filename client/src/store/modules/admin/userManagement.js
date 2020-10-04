@@ -2,7 +2,7 @@ import { Api } from '@/Api'
 import auth from '../auth'
 
 const state = {
-  usersArray: null,
+  usersArray: [],
   selectedUser: null
 }
 
@@ -16,32 +16,18 @@ const getters = {
 }
 
 const actions = {
-  getMoreUsers: ({ commit }, payload) => {
+  getAllUsers: ({ commit }, payload) => {
     if (!auth.state.authToken) {
       return
     }
-    Api.get(`/admins/users?page=${payload}&limit=5`, {
+    Api.get(`/admins/users?page=${payload.page}&limit=${payload.limit}`, {
       headers: {
         Authorization: `Bearer ${auth.state.authToken}`
       }
     })
       .then(result => {
-        console.log(result.data)
-        commit('storeMoreUsers', result.data.userDocs)
-      })
-      .catch(err => console.log(err))
-  },
-  getAllUsers: ({ commit }) => {
-    if (!auth.state.authToken) {
-      return
-    }
-    Api.get('/admins/users', {
-      headers: {
-        Authorization: `Bearer ${auth.state.authToken}`
-      }
-    })
-      .then(result => {
-        console.log(result.data)
+        console.log('get All USers')
+        console.log(result.data.userDocs)
         commit('storeUsers', result.data.userDocs)
       })
       .catch(err => console.log(err))
@@ -78,14 +64,10 @@ const actions = {
 
 const mutations = {
   storeUsers: (state, users) => {
-    console.log('storeUsers - before')
-    console.log(state.usersArray)
-    state.usersArray = users
-    console.log('storeUsers - after')
-    console.log(state.usersArray)
-  },
-  storeMoreUsers: (state, users) => {
     state.usersArray.push(...users)
+  },
+  lessUsers: (state) => {
+    state.usersArray.splice(5, (state.usersArray.length - 5))
   },
   storeSelectedUser: (state, user) => {
     state.selectedUser = user
