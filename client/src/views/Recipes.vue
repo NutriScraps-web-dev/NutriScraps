@@ -2,14 +2,18 @@
     <b-container>
       <p class="red">{{message}}</p>
       <b-row>
-        <b-col cols="7" offset="1" offset-md="2">
-          <b-form-input v-model="text" placeholder="Search Recipe"></b-form-input>
-        </b-col>
-        <b-col cols="3">
-          <b-button v-on:click="createRecipe">Create New</b-button>
+        <b-col cols="7" offset="1" offset-md="2" style="margin:auto">
+          <b-input-group size="sm" class="mb-2">
+            <b-input-group-append is-text>
+              <b-icon icon="search"></b-icon>
+            </b-input-group-append>
+            <b-form-input type="search" placeholder="Search Recipes"></b-form-input>
+          </b-input-group>
         </b-col>
       </b-row>
-      <b-row align-h="center">
+      <br>
+      <br>
+      <b-row align-h="center" style="margin:auto">
         <b-col cols="12" sm="6" md="4" v-for="recipe in recipes" v-bind:key="recipe._id">
             <recipe-item v-bind:recipe="recipe" v-on:del-recipe="deleteRecipe"/>
         </b-col>
