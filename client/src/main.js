@@ -63,7 +63,7 @@ Api.interceptors.response.use(
       return Promise.reject(error)
     }
     if (error.response) {
-      toast.error(error.response.data.error)
+      toast.error(error.response.data.message, `${error.response.status}`)
     }
     return Promise.reject(error)
   }

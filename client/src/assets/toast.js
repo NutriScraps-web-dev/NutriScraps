@@ -6,17 +6,25 @@ const toast = {
     return iziToast.error({
       title: title,
       message: message,
-      position: 'topCenter'
+      position: 'topCenter',
+      overlayClose: true,
+      overlay: true,
+      closeOnEscape: true,
+      closeOnClick: true
     })
   },
   success: (message, title = 'Success') => {
     return iziToast.success({
       title: title,
       message: message,
-      position: 'topCenter'
+      position: 'topCenter',
+      overlayClose: true,
+      overlay: true,
+      closeOnEscape: true,
+      closeOnClick: true
     })
   },
-  warn: (message, title = 'warn') => {
+  warn: (message, title = 'Warning') => {
     return iziToast.warning({
       title: title,
       position: 'topCenter',

@@ -21,7 +21,6 @@ const actions = {
       .then(result => {
         commit('createRole', result)
       })
-      .catch(err => console.log(err))
   },
   getAllRoles: ({ commit }) => {
     if (!auth.state.authToken) {
@@ -33,10 +32,8 @@ const actions = {
       }
     })
       .then(result => {
-        console.log(result.data)
         commit('storeRoles', result.data)
       })
-      .catch(err => console.log(err))
   },
   updateRole({ commit, state }, payload) {
     console.log('updateRole')
@@ -53,7 +50,6 @@ const actions = {
           // commit('storeUser')
         }
       })
-      .catch(err => console.log(err))
   },
   deleteRole({ commit, state }) {
     Api.delete(`admins/roles/${state.role._id}`, {
@@ -64,7 +60,6 @@ const actions = {
       .then(res => {
         commit('DeleteRole', state.role._id)
       })
-      .catch(err => console.log(err))
   }
 }
 

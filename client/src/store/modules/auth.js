@@ -32,14 +32,13 @@ const mutations = {
     state.isAdmin = false
   },
   isAdmin(state, adminData) {
-    console.log('isadmin mutation', adminData.isAdmin)
     state.isAdmin = adminData.isAdmin
   }
 }
 
 const actions = {
   signUp({ commit }, payload) {
-    Api.post('/users/signup', payload)
+    Api.post('/users/signup', payload, { errorHandle: false })
       .then(res => {
         Router.push('/users/login')
       })
@@ -82,7 +81,6 @@ const actions = {
           Router.push('/')
         }
       })
-      .catch(err => console.log(err))
   },
   logOut({ commit }) {
     commit('clearToken')
@@ -110,7 +108,6 @@ const actions = {
         console.log(res.data)
         commit('isAdmin', res.data)
       })
-      .catch(err => console.log(err))
   }
 }
 

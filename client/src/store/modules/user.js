@@ -38,7 +38,6 @@ const actions = {
       .then(res => {
         commit('storeUser', res.data)
       })
-      .catch(err => console.log(err))
   },
   changePassword({ commit }, payload) {
     console.log(payload)
@@ -50,7 +49,6 @@ const actions = {
       .then(res => {
         console.log(res)
       })
-      .catch(err => console.log(err))
   },
   updateProfile({ commit }, payload) {
     console.log(payload)
@@ -65,7 +63,6 @@ const actions = {
           commit('storeUser')
         }
       })
-      .catch(err => console.log(err))
   },
   deleteUser({ commit }) {
     Api.delete(`users/${auth.state.userId}`, {
@@ -78,7 +75,6 @@ const actions = {
         Router.replace('/')
         commit('deleteUser')
       })
-      .catch(err => console.log(err))
   }
 }
 
