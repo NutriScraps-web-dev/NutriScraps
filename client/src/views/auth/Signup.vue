@@ -1,6 +1,6 @@
 <template>
   <b-container class="mt-3 form-container">
-    <b-form>
+   <b-form>
       <FormulateForm @submit="onSubmit">
           <FormulateInput
             element-class=""

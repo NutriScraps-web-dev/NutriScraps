@@ -12,6 +12,7 @@ import VueFormulate from '@braid/vue-formulate'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'izitoast/dist/css/iziToast.min.css'
 
 Vue.use(BootstrapVue)
 Vue.use(vueCountryRegionSelect)

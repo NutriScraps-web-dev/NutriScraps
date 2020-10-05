@@ -1,5 +1,6 @@
 import { Api } from '@/Api'
 import Router from '@/router'
+import iziToast from 'izitoast'
 
 const state = {
   authToken: null,
@@ -34,13 +35,22 @@ const mutations = {
 }
 
 const actions = {
-  signUp(context, payload) {
+  signUp({ commit }, payload) {
     Api.post('/users/signup', payload)
       .then(res => {
         Router.push('/users/login')
-        console.log(res, context)
       })
-      .catch(err => console.log(err))
+      .catch((error) => {
+        iziToast.warning({
+          title: `${error.response.status}`,
+          position: 'topCenter',
+          overlayClose: true,
+          overlay: true,
+          closeOnEscape: true,
+          closeOnClick: true,
+          message: error.response.data.error
+        })
+      })
   },
   autoLogIn({ commit }) {
     const token = localStorage.getItem('token')
@@ -88,8 +98,9 @@ const actions = {
   },
   logOutTimer({ commit }) {
     setTimeout(() => {
-      Router.push('/')
       commit('clearToken')
+      localStorage.clear()
+      Router.push('/')
     }, 3600000)
   }
 }
