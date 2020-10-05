@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-card bg-variant="light">
-        <FormulateForm @submit="submitHandler">
+        <FormulateForm @submit="submitHandler" @validation="hasError = $event.hasErrors">
           <b-form-group
             label-cols-lg="3"
             label="Update Profile:"
@@ -78,6 +78,7 @@
             variant="primary"
             class="ml-2 my-4 pass-btn px-5"
             type="submit"
+            :disabled="hasError"
             v-b-toggle="'update-user-col'"
             >Update</b-button
           >
@@ -108,5 +109,10 @@ export default {
 }
 .pass-btn {
   float: right;
+}
+.pass-btn[disabled] {
+  background-color: #666666 !important;
+  opacity: 0.2;
+  cursor: not-allowed;
 }
 </style>

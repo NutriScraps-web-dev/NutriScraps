@@ -1,7 +1,8 @@
 <template>
   <div>
     <b-card v-if="roleInfo" bg-variant="light">
-        <FormulateForm @submit="submitHandler">
+        <FormulateForm @submit="submitHandler"         @validation="hasError = $event.hasErrors"
+>
           <b-form-group
             label-cols-lg="3"
             label="Update Role:"
@@ -50,6 +51,7 @@
             variant="primary"
             class="ml-2 my-4 pass-btn px-5"
             type="submit"
+            :disabled="hasError"
             >Update</b-button
           >
         </FormulateForm>
@@ -69,6 +71,11 @@ import { mapGetters } from 'vuex'
 import '../../assets/formulate.css'
 
 export default {
+  data() {
+    return {
+      hasError: false
+    }
+  },
   methods: {
     submitHandler() {
       this.$store.dispatch('updateRole', this.roleInfo)
@@ -86,5 +93,10 @@ export default {
 }
 .pass-btn {
   float: right;
+}
+.pass-btn[disabled] {
+  background-color: #666666 !important;
+  opacity: 0.2;
+  cursor: not-allowed;
 }
 </style>
