@@ -1,11 +1,13 @@
 import { Api } from '@/Api'
 import Router from '@/router'
 import iziToast from 'izitoast'
+import auth from './auth'
 
 const state = {
   authToken: null,
   userRole: null,
-  userId: null
+  userId: null,
+  isAdmin: false
 }
 
 const getters = {
@@ -13,24 +15,25 @@ const getters = {
     return state.authToken !== null
   },
   isAdmin: state => {
-    return state.userRole === 'admin'
+    return state.isAdmin
   }
 }
 
 const mutations = {
-  // changeLogInStatus: state => {
-  //   state.isLoggedIn = !state.isLoggedIn
-  // },
   authUser(state, userData) {
     state.authToken = userData.token
     state.userId = userData.userId
     state.userRole = userData.userRole
-    console.log(userData)
   },
   clearToken(state) {
     state.authToken = null
     state.userId = null
     state.userRole = null
+    state.isAdmin = false
+  },
+  isAdmin(state, adminData) {
+    console.log('isadmin mutation', adminData.isAdmin)
+    state.isAdmin = adminData.isAdmin
   }
 }
 
@@ -70,7 +73,6 @@ const actions = {
   logIn(context, payload) {
     Api.post('/users/login', payload)
       .then(res => {
-        // console.log(res)
         if (res.status === 200) {
           context.commit('authUser', {
             token: res.data.token,
@@ -83,9 +85,8 @@ const actions = {
           localStorage.setItem('expiresIn', expireDate)
           localStorage.setItem('userRole', res.data.userRole)
           localStorage.setItem('userId', res.data.userId)
-
-          // context.commit('changeLogInStatus')
           context.dispatch('logOutTimer')
+          context.dispatch('isAdmin')
           Router.push('/')
         }
       })
@@ -102,6 +103,22 @@ const actions = {
       localStorage.clear()
       Router.push('/')
     }, 3600000)
+  },
+  isAdmin({ commit }) {
+    if (!auth.state.authToken) {
+      return
+    }
+    Api.get(`users/${auth.state.userId}/role`, {
+      headers: {
+        Authorization: `Bearer ${auth.state.authToken}`
+      }
+    })
+      .then(res => {
+        console.log('res.data')
+        console.log(res.data)
+        commit('isAdmin', res.data)
+      })
+      .catch(err => console.log(err))
   }
 }
 

@@ -18,4 +18,6 @@ router.post(
   authController.postSignup
 );
 
+router.get('/:id/role', authController.isAdmin);
+
 module.exports = router;
