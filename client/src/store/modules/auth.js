@@ -1,7 +1,7 @@
 import { Api } from '@/Api'
 import Router from '@/router'
-import iziToast from 'izitoast'
 import auth from './auth'
+import toast from '../../assets/toast'
 
 const state = {
   authToken: null,
@@ -43,16 +43,8 @@ const actions = {
       .then(res => {
         Router.push('/users/login')
       })
-      .catch((error) => {
-        iziToast.warning({
-          title: `${error.response.status}`,
-          position: 'topCenter',
-          overlayClose: true,
-          overlay: true,
-          closeOnEscape: true,
-          closeOnClick: true,
-          message: error.response.data.error
-        })
+      .catch(error => {
+        toast.warn(error.response.data.error, error.response.status)
       })
   },
   autoLogIn({ commit }) {

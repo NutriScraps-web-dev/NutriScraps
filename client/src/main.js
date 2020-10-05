@@ -20,10 +20,10 @@ import { store } from './store/store'
 import Vuelidate from 'vuelidate'
 import VueFormulate from '@braid/vue-formulate'
 import { Api } from './Api'
+import toast from './assets/toast'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import 'izitoast/dist/css/iziToast.min.css'
 
 Vue.use(BootstrapVue)
 Vue.use(vueCountryRegionSelect)
@@ -49,13 +49,22 @@ Vue.config.productionTip = false
 Api.interceptors.response.use(
   response => {
     if (response.status >= 200 && response.status < 300) {
-      console.log('Api.interceptors.response.use')
       return Promise.resolve(response)
     } else {
       return Promise.reject(response)
     }
   },
   error => {
+    if (
+      // eslint-disable-next-line no-prototype-builtins
+      error.config.hasOwnProperty('errorHandle') &&
+      error.config.errorHandle === false
+    ) {
+      return Promise.reject(error)
+    }
+    if (error.response) {
+      toast.error(error.response.data.error)
+    }
     return Promise.reject(error)
   }
 )
