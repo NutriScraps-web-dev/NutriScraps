@@ -19,6 +19,8 @@ const mutations = {
   deleteUser: state => {
     state.user = null
     auth.state.authToken = null
+    auth.state.userId = null
+    auth.state.userRole = null
     localStorage.clear()
   }
 }
@@ -34,9 +36,7 @@ const actions = {
       }
     })
       .then(res => {
-        this.user = res.data
         commit('storeUser', res.data)
-        console.log(this.user)
       })
       .catch(err => console.log(err))
   },

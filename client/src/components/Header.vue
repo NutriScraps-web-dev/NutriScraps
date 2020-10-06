@@ -11,13 +11,17 @@
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class="ml-auto">
         <b-nav-form>
+          <li class="nav-item">
+              <b-link class="nav-item nav-link mx-2 px-2" to="/recipes">Recipe</b-link>
+            </li>
             <li class="nav-item">
               <b-link class="nav-item nav-link mx-2 px-2" to="/about">About</b-link>
             </li>
             <li class="nav-item">
-              <b-link class="nav-item nav-link mx-2 px-2" to="/contact">Contact</b-link>
+              <b-link class="nav-item nav-link mx-2 px-2" to="/contact-us">Contact</b-link>
             </li>
-            <account-btns></account-btns>
+            <admin-ctrl-btns></admin-ctrl-btns>
+            <control-btns></control-btns>
         </b-nav-form>
       </b-navbar-nav>
     </b-collapse>
@@ -25,11 +29,13 @@
 </template>
 
 <script>
-import AccountBtns from './user/ControlButtons.vue'
+import controlBtns from './user/ControlButtons.vue'
+import AdminControlBtns from './admin/AdminControlbtn.vue'
 
 export default {
   components: {
-    'account-btns': AccountBtns
+    'admin-ctrl-btns': AdminControlBtns,
+    'control-btns': controlBtns
   }
 }
 </script>

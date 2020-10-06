@@ -68,7 +68,7 @@
                 error-behavior="live"
                 rows="4"
                 :help="
-                  `Keep it under 100 characters. ${100 -
+                  `Keep it under 100 characters. ${50 -
                     userInfo.bio.length} left.`
                 "
               />

@@ -99,7 +99,9 @@ exports.changePassword = (req, res, next) => {
         .compare(oldPassword, user.password)
         .then((doMatch) => {
           if (!doMatch) {
-            res.status(401).json({ message: 'Please Enter Correct Password' });
+            const error = new Error('Please Enter Correct Current Password');
+            error.statusCode = 401;
+            throw error;
           }
           return bcrypt.hash(newPassword, 12);
         })

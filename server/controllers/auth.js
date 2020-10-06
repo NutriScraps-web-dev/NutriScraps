@@ -71,7 +71,7 @@ exports.postSignup = (req, res, next) => {
   const username = req.body.username;
   const country = req.body.country;
   const bio = req.body.bio;
-  const roleType = req.body.roleType;
+  const roleType = req.body.roleType || "user";
 
   let userRole;
 

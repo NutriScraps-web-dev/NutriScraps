@@ -1,5 +1,89 @@
 <template>
-  <b-form
+  <b-container class="mt-3 form-container">
+    <b-form>
+      <FormulateForm @submit="onSubmit">
+          <FormulateInput
+            element-class=""
+            type="text"
+            name="first Name"
+            placeholder="First name"
+            v-model="firstName"
+            label="First Name"
+            validation="bail|required|alpha"
+          />
+
+          <FormulateInput
+            element-class=""
+            type="text"
+            name="last Name"
+            placeholder="Last name"
+            v-model="lastName"
+            label="Last Name"
+            validation="bail|required|alpha"
+          />
+          <FormulateInput
+            element-class=""
+            type="text"
+            name="username"
+            placeholder="Username"
+            v-model="username"
+            label="Username"
+            validation="bail|required|alphanumeric"
+          />
+          <FormulateInput
+            element-class=""
+            type="email"
+            name="email"
+            placeholder="Email"
+            v-model="email"
+            label="Email"
+            validation="bail|required|email"
+          />
+        <FormulateInput
+          element-class=""
+          type="password"
+          name="password"
+          placeholder="Password"
+          v-model="password"
+          label="Password"
+          validation="bail|required|alphanumeric|min:8,length"
+          help="Must be 8 characters long"
+        />
+        <FormulateInput
+          element-class=""
+          type="password"
+          name="confirm Password"
+          placeholder="Confirm Password"
+          v-model="confirmPassword"
+          label="Confirm Password"
+          validation="bail|required|alphanumeric|confirm:password"
+        />
+        <div class="form-group">
+          <label>Country</label>
+          <country-select
+            class="form-control"
+            v-model="country"
+            :country="country"
+            topCountry="SE"
+            :autocomplete="true"
+            :countryName="true"
+            placeholder="Sweden"
+          />
+        </div>
+        <FormulateInput
+          element-class=""
+          type="textarea"
+          name="bio"
+          placeholder="Bio"
+          v-model="bio"
+          label="Bio:"
+          validation="max:50"
+        />
+        <button class="btn btn-info mx-1 px-5" type="submit">Sign Up</button>
+      </FormulateForm>
+    </b-form>
+  </b-container>
+  <!-- <b-form
     class="needs-validation"
     id="form"
     novalidate
@@ -131,33 +215,12 @@
       ></textarea>
     </div>
     <button class="btn btn-info mx-1 px-5" type="submit">Sign Up</button>
-  </b-form>
+  </b-form> -->
 </template>
 
 <script>
-;(function () {
-  'use strict'
-  window.addEventListener(
-    'load',
-    function () {
-      const forms = document.getElementsByClassName('needs-validation')
-      Array.prototype.filter.call(forms, function (form) {
-        form.addEventListener(
-          'submit',
-          function (event) {
-            if (form.checkValidity() === false) {
-              event.preventDefault()
-              event.stopPropagation()
-            }
-            form.classList.add('was-validated')
-          },
-          false
-        )
-      })
-    },
-    false
-  )
-})()
+import '../../assets/formulate.css'
+
 export default {
   data() {
     return {
@@ -168,7 +231,7 @@ export default {
       password: '',
       confirmPassword: '',
       bio: '',
-      country: ''
+      country: 'Sweden'
     }
   },
   methods: {
@@ -183,8 +246,7 @@ export default {
         password: this.password,
         confirmPassword: this.confirmPassword,
         country: this.country,
-        bio: this.bio,
-        roleType: 'user'
+        bio: this.bio
       }
       this.$store.dispatch('signUp', formData)
     }
@@ -193,9 +255,18 @@ export default {
 </script>
 
 <style scoped>
-#form {
-  width: 40%;
-  margin: 0rem auto;
-  margin-top: 3rem;
+.form-container {
+  width: 50vw !important;
 }
+@media screen and (max-width: 600px) {
+  .form-container {
+  width: 65vw !important;
+}
+}
+@media screen and (max-width: 430px) {
+  .form-container {
+  width: 80vw !important;
+}
+}
+
 </style>
