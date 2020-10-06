@@ -1,6 +1,7 @@
 <template>
-  <b-container class="mt-5" v-if="comments.length !== 0">
+  <b-container class="mt-5" >
     <b-jumbotron class="jumbo">
+      <div v-if="comments.length !== 0">
       <h2>Your Comments:</h2>
       <b-table
         sticky-header="400px"
@@ -76,6 +77,10 @@
           >Delete All My comments</b-button
         >
       </b-row>
+      </div>
+      <div v-else>
+        <p>You Do Not Have Any Comment!</p>
+      </div>
     </b-jumbotron>
   </b-container>
 </template>
