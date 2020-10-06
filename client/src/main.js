@@ -55,6 +55,10 @@ Api.interceptors.response.use(
     }
   },
   error => {
+    if (error.response.status >= 500) {
+      toast.error('Something Went Terribly Wrong. Please Try Again', '500')
+      return Promise.reject(error)
+    }
     if (
       // eslint-disable-next-line no-prototype-builtins
       error.config.hasOwnProperty('errorHandle') &&
