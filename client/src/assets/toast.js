@@ -34,6 +34,41 @@ const toast = {
       closeOnClick: true,
       message: message
     })
+  },
+  confirm: (message, title = 'Confirm', callback) => {
+    return iziToast.show({
+      color: 'red',
+      title: title,
+      message: message,
+      position: 'center',
+      progressBarColor: 'red',
+      buttons: [
+        [
+          '<button>Yes</button>',
+          function (instance, toast) {
+            instance.hide(
+              {
+                transitionOut: 'fadeOutUp'
+              },
+              toast
+            )
+            callback()
+          },
+          true
+        ],
+        [
+          '<button>Close</button>',
+          function (instance, toast) {
+            instance.hide(
+              {
+                transitionOut: 'fadeOutUp'
+              },
+              toast
+            )
+          }
+        ]
+      ]
+    })
   }
 }
 

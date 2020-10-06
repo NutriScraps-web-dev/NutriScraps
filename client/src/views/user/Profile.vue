@@ -10,9 +10,7 @@
         </div>
         <b-row class="mx-4 border-bottom border-light">
           <b-col class="my-4 d-flex info-container">
-            <span class="h4 info-container-01 "
-              >Name:</span
-            >
+            <span class="h4 info-container-01 ">Name:</span>
             <span class="h4 text-left info-container-02 "
               >{{ userInfo.name.firstName }} {{ userInfo.name.lastName }}</span
             >
@@ -20,45 +18,47 @@
         </b-row>
         <b-row class="mx-4 border-bottom border-light">
           <b-col class="my-4 d-flex info-container">
-            <span class="h4 info-container-01 "
-              >Username:</span
-            >
-            <span class="h4 text-left info-container-02 ">{{ userInfo.username }}</span>
+            <span class="h4 info-container-01 ">Username:</span>
+            <span class="h4 text-left info-container-02 ">{{
+              userInfo.username
+            }}</span>
           </b-col>
         </b-row>
         <b-row class="mx-4 border-bottom border-light">
           <b-col class="my-4 d-flex info-container">
-            <span class="h4 info-container-01 "
-              >Email:</span
-            >
-            <span class="h4 text-left info-container-02 ">{{ userInfo.email }}</span>
+            <span class="h4 info-container-01 ">Email:</span>
+            <span class="h4 text-left info-container-02 ">{{
+              userInfo.email
+            }}</span>
           </b-col>
         </b-row>
         <b-row class="mx-4 border-bottom border-light">
           <b-col class="my-4 d-flex info-container">
-            <span class="h4 info-container-01 "
-              >Country:</span
-            >
-            <span class="h4 text-left info-container-02 ">{{ userInfo.country }}</span>
+            <span class="h4 info-container-01 ">Country:</span>
+            <span class="h4 text-left info-container-02 ">{{
+              userInfo.country
+            }}</span>
           </b-col>
         </b-row>
         <b-row class="mx-4 border-bottom border-light">
           <b-col class="my-4 d-flex info-container">
-            <span class="h4 info-container-01 "
-              >Role:</span
-            >
-            <span class="h4 text-left info-container-02 ">{{ userInfo.roleType }}</span>
+            <span class="h4 info-container-01 ">Role:</span>
+            <span class="h4 text-left info-container-02 ">{{
+              userInfo.roleType
+            }}</span>
           </b-col>
         </b-row>
         <b-row class="mx-4 border-bottom border-light">
           <b-col class="my-4 d-flex info-container">
             <span class="h4 info-container-01 ">Bio:</span>
-            <span class="h4 text-left info-container-02 ">{{ userInfo.bio }}</span>
+            <span class="h4 text-left info-container-02 ">{{
+              userInfo.bio
+            }}</span>
           </b-col>
         </b-row>
 
         <b-row class="mx-4">
-          <b-col class="d-flex profile-btn border border-dark">
+          <b-col class="d-flex profile-btn">
             <b-button
               variant="outline-primary"
               class="my-2 mx-md-4 my-lg-4 px-3"
@@ -124,14 +124,8 @@
     </b-row>
     <b-row class="mt-3">
       <b-col>
-        <h2>Your Comments:</h2>
-        <div>your Comments</div>
+        <user-comments></user-comments>
       </b-col>
-    </b-row>
-    <b-row>
-      <b-button variant="outline-primary" class="mr-5 my-4"
-        >Delete All My comments</b-button
-      >
     </b-row>
     <b-row class="mt-3">
       <b-col>
@@ -152,12 +146,14 @@
 import ChangePasswordForm from '../../components/user/ChangePasswordForm.vue'
 import UpdateProfile from '../../components/user/UpdateProfile.vue'
 import DeleteAccount from '../../components/user/DeleteAccount.vue'
+import UserComments from '../../components/user/UserComments'
 
 export default {
   components: {
     'pass-form': ChangePasswordForm,
     'update-profile': UpdateProfile,
-    'delete-account': DeleteAccount
+    'delete-account': DeleteAccount,
+    'user-comments': UserComments
   },
   computed: {
     userInfo() {
@@ -190,9 +186,9 @@ export default {
 }
 @media screen and (max-width: 768px) {
   .profile-btn {
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 1rem !important;
-}
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1rem !important;
+  }
 }
 </style>

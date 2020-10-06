@@ -52,6 +52,9 @@ exports.updateProfile = (req, res, next) => {
 exports.getInfo = (req, res, next) => {
   const id = req.params.id;
   User.findOne({ _id: id })
+    .populate('posts')
+    .populate('ratings')
+    .populate('comments', 'content createdAt')
     .then((user) => {
       if (user) {
         res.status(202).json(user);
