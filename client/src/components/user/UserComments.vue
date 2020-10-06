@@ -104,7 +104,7 @@ export default {
     }
   },
   methods: {
-    deleteAllComment() {
+    deleteAllComments() {
       console.log('the logic is not completed UserComments.vue')
     },
     deleteComment(row) {
