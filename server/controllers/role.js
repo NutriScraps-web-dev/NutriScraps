@@ -1,4 +1,5 @@
 const Role = require('../models/role');
+const User = require('../models/user');
 
 exports.createRole = (req, res, next) => {
   const roleName = req.body.role;
@@ -11,7 +12,7 @@ exports.createRole = (req, res, next) => {
       const role = new Role({
         role: roleName,
         description: description,
-        users: []
+        users: [],
       });
       return role.save();
     })
@@ -98,7 +99,10 @@ exports.deleteRole = (req, res, next) => {
         error.statusCode = 404;
         throw error;
       }
-      res.status(200).json({ message: `The ${role.role} Is Deleted` });
+      return User.deleteMany({ _id: { $in: role.users } });
+    })
+    .then((result) => {
+      res.status(200).json({ message: `The Role is Deleted` });
     })
     .catch((err) => {
       if (!err.statusCode) {
