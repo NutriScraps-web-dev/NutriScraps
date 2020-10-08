@@ -1,4 +1,5 @@
 const Role = require('../models/role');
+const User = require('../models/user');
 
 exports.createRole = (req, res, next) => {
   const roleName = req.body.role;
@@ -91,23 +92,22 @@ exports.editRole = (req, res, next) => {
 
 exports.deleteRole = (req, res, next) => {
   const roleId = req.params.id;
-  Role.findById(roleId, (err, role) => {
-    if (err) {
-      const error = new Error('The role does NOT Exist');
-      error.statusCode = 404;
-      throw error;
-    } else {
-      role
-        .deleteOne()
-        .then((result) => {
-          res.status(200).json({ message: `The Role is Deleted` });
-        })
-        .catch((err) => {
-          if (!err.statusCode) {
-            err.statusCode = 500;
-          }
-          next(err);
-        });
-    }
-  })
+  Role.findByIdAndDelete(roleId)
+    .then((role) => {
+      if (!role) {
+        const error = new Error('The role does NOT Exist');
+        error.statusCode = 404;
+        throw error;
+      }
+      return User.deleteMany({ _id: { $in: role.users } });
+    })
+    .then((result) => {
+      res.status(200).json({ message: `The Role is Deleted` });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
 };
