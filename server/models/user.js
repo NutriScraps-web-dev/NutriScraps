@@ -89,7 +89,7 @@ const userSchema = new Schema(
 
 userSchema.pre('deleteOne', { document: true, query: false }, function (next) {
   console.log("----------invoked-----------")
-  Comment.deleteMany({ _id: { $in: [this.comments] } }).exec();
+  Comment.deleteMany({ _id: { $in: this.comments } }).exec();
   // uncomment at the end
   // Recipe.deleteMany({ _id: { $in: [this.posts] } }).exec();
   // Rating.deleteMany({ _id: { $in: [this.ratings] } }).exec();
