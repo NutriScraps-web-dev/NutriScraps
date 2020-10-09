@@ -8,7 +8,7 @@ const router = express.Router();
 router.post('/roles', isAuth, isAdmin, roleController.createRole);
 //router.post('/roles', roleController.createRole);
 router.get('/roles', isAuth, isAdmin, roleController.getAllRoles);
-router.get('/roles/:type', isAuth, isAdmin, roleController.getRole);
+router.get('/roles/:id', isAuth, isAdmin, roleController.getRole);
 router.patch('/roles/:id', isAuth, isAdmin, roleController.editRole);
 router.delete('/roles/:id', isAuth, isAdmin, roleController.deleteRole);
 

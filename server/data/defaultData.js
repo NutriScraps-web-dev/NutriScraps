@@ -1,9 +1,11 @@
 const User = require('../models/user');
 const Role = require('../models/role');
+const bcrypt = require('bcryptjs');
 
 exports.createDefaultData = () => {
   return new Promise((resolve, reject) => {
     let userRole;
+    const password = 'superAdmin';
     const role = new Role({
       role: 'admin',
       description: 'Controls The Webpage',
@@ -11,8 +13,11 @@ exports.createDefaultData = () => {
     });
     return role
       .save()
-      .then((result) => {
-        userRole = result;
+      .then((role) => {
+        userRole = role;
+        return bcrypt.hash(password, 12);
+      })
+      .then((hashedPass) => {
         const user = new User({
           name: {
             firstName: 'Page',
@@ -20,10 +25,10 @@ exports.createDefaultData = () => {
           },
           username: 'super-admin',
           email: 'admin@test.com',
-          password: 'superAdmin',
+          password: hashedPass,
           country: 'sweden',
           bio: '',
-          roleId: [result._id],
+          roleId: [userRole._id],
           roleType: 'admin',
           posts: [],
           rating: [],

@@ -48,8 +48,7 @@ exports.getAllRoles = (req, res, next) => {
 };
 
 exports.getRole = (req, res, next) => {
-  const roleType = req.params.type;
-  Role.findOne({ role: roleType })
+  Role.findById(req.params.id)
     .then((role) => {
       if (!role) {
         const error = new Error('The role does NOT Exist');
