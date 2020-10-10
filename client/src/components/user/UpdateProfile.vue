@@ -77,14 +77,16 @@
             />
           </b-form-group>
         </b-form-group>
+        <div class="pass-btn-con">
         <b-button
           variant="primary"
-          class="ml-2 my-4 pass-btn px-5"
+          class="ml-2 my-4 pass-btn px-5 align-self-center"
           type="submit"
           :disabled="hasError"
           v-b-toggle="'update-user-col'"
           >Update</b-button
         >
+        </div>
       </FormulateForm>
     </b-card>
   </div>
@@ -122,5 +124,11 @@ export default {
   background-color: #666666 !important;
   opacity: 0.2;
   cursor: not-allowed;
+}
+@media screen and (max-width: 768px) {
+  .pass-btn-con {
+    display: flex;
+    flex-direction: column !important;
+  }
 }
 </style>

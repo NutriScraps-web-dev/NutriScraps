@@ -20,9 +20,7 @@
           >
             <FormulateInput
               v-model="selectedUserInfo.roleType"
-              :options="
-                this.roleOptions
-              "
+              :options="this.roleOptions"
               type="select"
               element-class=""
               id="role-name"
@@ -49,22 +47,23 @@
             />
           </b-form-group>
         </b-form-group>
-        <b-button
-          variant="primary"
-          class="ml-2 my-4 pass-btn px-5"
-          v-b-toggle="'edit-user-col'"
-          type="submit"
-          :disabled="hasError"
-          >Update</b-button
-        >
+        <div class="d-flex con-btn d-md-block">
+          <b-button
+            variant="primary"
+            class="pass-btn my-2 mx-md-2 mx-lg-4 my-lg-4 px-5"
+            v-b-toggle="'edit-user-col'"
+            type="submit"
+            :disabled="hasError"
+            >Update</b-button
+          >
+          <b-button
+            variant="outline-primary"
+            class="pass-btn my-2 mx-md-2 mx-lg-4 my-lg-4 px-5"
+            v-b-toggle="'edit-user-col'"
+            >Close</b-button
+          >
+        </div>
       </FormulateForm>
-      <b-button
-        variant="outline-primary"
-        class="ml-2 my-4 pass-btn px-5"
-        type="submit"
-        v-b-toggle="'edit-user-col'"
-        >Close</b-button
-      >
     </b-card>
   </div>
 </template>
@@ -109,5 +108,17 @@ export default {
   background-color: #666666 !important;
   opacity: 0.2;
   cursor: not-allowed;
+}
+.con-btn {
+  justify-content: start;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+  .con-btn {
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1rem !important;
+  }
 }
 </style>

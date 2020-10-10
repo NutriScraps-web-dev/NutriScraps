@@ -43,21 +43,22 @@
             />
           </b-form-group>
         </b-form-group>
-        <b-button
-          variant="primary"
-          class="ml-2 my-4 pass-btn px-5"
-          type="submit"
-          v-b-toggle="'create-role-col'"
-          >Create</b-button
-        >
+        <div class="d-flex con-btn d-md-block">
+          <b-button
+            variant="primary"
+            class="pass-btn my-2 mx-md-4 my-lg-4 px-5"
+            type="submit"
+            v-b-toggle="'create-role-col'"
+            >Create</b-button
+          >
+          <b-button
+            variant="outline-primary"
+            class="pass-btn my-2 mx-md-4 my-lg-4 px-5"
+            v-b-toggle="'create-role-col'"
+            >Close</b-button
+          >
+        </div>
       </FormulateForm>
-      <b-button
-        variant="outline-primary"
-        class="ml-2 my-4 pass-btn px-5"
-        type="submit"
-        v-b-toggle="'create-role-col'"
-        >Close</b-button
-      >
     </b-card>
   </div>
 </template>
@@ -91,4 +92,28 @@ export default {
 .pass-btn {
   float: right;
 }
+
+ .con-btn {
+  justify-content: start;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+  .con-btn {
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1rem !important;
+  }
+  .data-tbl{
+   overflow-x: hidden;
+  }
+  .content-col{
+    min-width: 19rem;
+    margin-right: 20rem;
+  }
+  .con-b-card{
+    display: none;
+  }
+}
+
 </style>

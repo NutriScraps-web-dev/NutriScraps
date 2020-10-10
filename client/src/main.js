@@ -13,7 +13,8 @@ import {
   faTasks,
   faUsers,
   faTrashAlt,
-  faEdit
+  faEdit,
+  faCaretSquareDown
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { store } from './store/store'
@@ -40,7 +41,8 @@ library.add(
   faTasks,
   faUsers,
   faTrashAlt,
-  faEdit
+  faEdit,
+  faCaretSquareDown
 )
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

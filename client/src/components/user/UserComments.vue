@@ -4,6 +4,7 @@
       <div v-if="comments.length !== 0">
       <h2>Your Comments:</h2>
       <b-table
+      class="data-tbl"
         sticky-header="400px"
         head-row-variant="info"
         table-variant="light"
@@ -13,8 +14,15 @@
         :fields="fields"
         borderless
         sort-icon-left
+        responsive="sm"
       >
+      <template v-slot:cell(content)="row">
+        <div class="content-col">
+          {{ row.item.content }}
+        </div>
+      </template>
         <template v-slot:cell(show_details)="row">
+          <div class=" detail-btn">
           <b-button
             style="min-width: 120px"
             size="sm"
@@ -24,10 +32,10 @@
           >
             {{ row.detailsShowing ? 'Hide' : 'Show' }} Details
           </b-button>
+          </div>
         </template>
-
         <template v-slot:row-details="row">
-          <b-card>
+          <b-card class="con-b-card">
             <b-row class="mb-2">
               <b-col sm="3" class="text-sm-right"><b>ID :</b></b-col>
               <b-col>{{ row.item._id }}</b-col>
@@ -45,7 +53,7 @@
               <b-col>recipe Title</b-col>
             </b-row>
             <b-row>
-              <b-col class="d-flex profile-btn">
+              <b-col class="d-flex con-btn">
                 <b-button
                   variant="outline-info"
                   size="sm"
@@ -124,15 +132,27 @@ export default {
 </script>
 
 <style scoped>
-.profile-btn {
+.con-btn {
   justify-content: start;
   flex-wrap: wrap;
 }
+
 @media screen and (max-width: 768px) {
-  .profile-btn {
+  .con-btn {
     flex-direction: column;
     justify-content: space-between;
     margin: 1rem !important;
   }
+  .data-tbl{
+   overflow-x: hidden;
+  }
+  .content-col{
+    min-width: 19rem;
+    margin-right: 20rem;
+  }
+  .con-b-card{
+    display: none;
+  }
 }
+
 </style>
