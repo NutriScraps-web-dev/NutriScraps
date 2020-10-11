@@ -7,7 +7,9 @@ exports.createRole = (req, res, next) => {
   Role.findOne({ role: roleName })
     .then((roleDoc) => {
       if (roleDoc) {
-        return res.status(403).json({ error: 'Role Already Exist' });
+        const error = new Error('Role Already Exist');
+        error.statusCode = 403;
+        throw error;
       }
       const role = new Role({
         role: roleName,

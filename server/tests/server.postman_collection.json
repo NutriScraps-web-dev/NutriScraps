@@ -1875,13 +1875,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/users/login",
+					"raw": "{{host}}/api/auth/login",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"users",
+						"auth",
 						"login"
 					]
 				}
@@ -1929,7 +1929,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"role\" : \"admin01\",\r\n    \"description\": \"some random text\",\r\n    \"users\": []\r\n}",
+					"raw": "{\r\n    \"role\" : \"admin01\",\r\n    \"description\": \"some random text\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1937,14 +1937,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/admins/roles",
+					"raw": "{{host}}/api/roles/",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"admins",
-						"roles"
+						"roles",
+						""
 					]
 				}
 			},
@@ -1999,13 +1999,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/admins/roles",
+					"raw": "{{host}}/api/roles",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"admins",
 						"roles"
 					]
 				}
@@ -2063,13 +2062,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/users/signup",
+					"raw": "{{host}}/api/auth/signup",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"users",
+						"auth",
 						"signup"
 					]
 				}
@@ -2131,13 +2130,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/users/signup",
+					"raw": "{{host}}/api/auth/signup",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"users",
+						"auth",
 						"signup"
 					]
 				}
@@ -2194,13 +2193,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/users/signup",
+					"raw": "{{host}}/api/auth/signup",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"users",
+						"auth",
 						"signup"
 					]
 				}
@@ -2260,13 +2259,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/users/signup",
+					"raw": "{{host}}/api/auth/signup",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"users",
+						"auth",
 						"signup"
 					]
 				}
@@ -2327,13 +2326,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/users/signup",
+					"raw": "{{host}}/api/auth/signup",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"users",
+						"auth",
 						"signup"
 					]
 				}
@@ -2375,13 +2374,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/users/login",
+					"raw": "{{host}}/api/auth/login",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"users",
+						"auth",
 						"login"
 					]
 				}
@@ -2423,13 +2422,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/users/login",
+					"raw": "{{host}}/api/auth/login",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"users",
+						"auth",
 						"login"
 					]
 				}
@@ -2469,13 +2468,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/users/login",
+					"raw": "{{host}}/api/auth/login",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"users",
+						"auth",
 						"login"
 					]
 				}
@@ -2794,14 +2793,54 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/users/login",
+					"raw": "{{host}}/api/auth/login",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"users",
+						"auth",
 						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "isAdmin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f8658e2e-f4a0-4c66-9947-a34942cd1a7c",
+						"exec": [
+							"pm.test(\"isAdmin\", ()=> {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{tokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/auth/{{idAdmin}}/role",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"{{idAdmin}}",
+						"role"
 					]
 				}
 			},
@@ -2858,13 +2897,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/admins/roles",
+					"raw": "{{host}}/api/roles",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"admins",
 						"roles"
 					]
 				}
@@ -2897,13 +2935,12 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/api/admins/roles",
+					"raw": "{{host}}/api/roles",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"admins",
 						"roles"
 					]
 				}
@@ -2936,13 +2973,12 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/api/admins/roles?sort=-role",
+					"raw": "{{host}}/api/roles?sort=-role",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"admins",
 						"roles"
 					],
 					"query": [
@@ -2988,13 +3024,12 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/api/admins/roles/{{roleId01}}",
+					"raw": "{{host}}/api/roles/{{roleId01}}",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"admins",
 						"roles",
 						"{{roleId01}}"
 					],
@@ -3058,13 +3093,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/admins/roles/{{roleId}}",
+					"raw": "{{host}}/api/roles/{{roleId}}",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"admins",
 						"roles",
 						"{{roleId}}"
 					]
@@ -3104,13 +3138,12 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/api/admins/roles/5f806c1af5500119381de31c",
+					"raw": "{{host}}/api/roles/5f806c1af5500119381de31c",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"admins",
 						"roles",
 						"5f806c1af5500119381de31c"
 					]
@@ -3147,13 +3180,12 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/api/admins/roles/{{roleId}}",
+					"raw": "{{host}}/api/roles/{{roleId}}",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"admins",
 						"roles",
 						"{{roleId}}"
 					]
@@ -3353,13 +3385,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/users/signup",
+					"raw": "{{host}}/api/auth/signup",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"users",
+						"auth",
 						"signup"
 					]
 				}
@@ -3381,9 +3413,8 @@
 							"})\r",
 							"\r",
 							"pm.test(\"admin edits user - json check\", function(){\r",
-							"    pm.expect(jsonData.updatedUser.name.firstName).to.eql(\"jack\");\r",
-							"   pm.expect(jsonData.updatedUser.name.lastName).to.eql(\"Bower\");\r",
-							"    pm.expect(jsonData.updatedUser.country).to.equals(\"USA\");\r",
+							"    pm.expect(jsonData.updatedUser.roleType).to.eql(\"admin01\");\r",
+							"   pm.expect(jsonData.updatedUser.bio).to.eql(\"some random text\");\r",
 							"})\r",
 							""
 						],
@@ -3402,7 +3433,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":{\r\n        \"firstName\": \"jack\",\r\n        \"lastName\": \"Bower\"\r\n    },\r\n    \"country\": \"USA\"\r\n}",
+					"raw": "{\r\n    \"roleType\": \"admin01\",\r\n    \"bio\": \"some random text\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -3475,46 +3506,6 @@
 						"admins",
 						"users",
 						"{{idUser2}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "isAdmin",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "f8658e2e-f4a0-4c66-9947-a34942cd1a7c",
-						"exec": [
-							"pm.test(\"isAdmin\", ()=> {\r",
-							"    pm.response.to.have.status(200)\r",
-							"})"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "bearer {{tokenAdmin}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "{{host}}/api/users/{{idAdmin}}/role",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"users",
-						"{{idAdmin}}",
-						"role"
 					]
 				}
 			},

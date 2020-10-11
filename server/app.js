@@ -20,7 +20,7 @@ const defaultData = require('./data/defaultData');
 
 // Variables
 var mongoURI =
-  process.env.MONGODB_URI || 'mongodb+srv://idreesGu:mongodb12345@cluster0.drfwp.mongodb.net/nutriScraps?retryWrites=true&w=majority';
+  process.env.MONGODB_URI || 'mongodb://localhost:27017/serverTestDB';
 var port = process.env.PORT || 3000;
 //  'mongodb+srv://idreesGu:mongodb12345@cluster0.drfwp.mongodb.net/nutriScraps?retryWrites=true&w=majority';
 //mongodb://localhost:27017/serverTestDB
@@ -66,7 +66,7 @@ app.get('/api', function (req, res) {
 
 app.use('/api/auth', authRouter);
 app.use('/api/users', userRouter);
-app.use('/api/role', roleRouter);
+app.use('/api/roles', roleRouter);
 app.use('/api/admins', adminRouter);
 
 app.use('/api/comments', commentRouter);
