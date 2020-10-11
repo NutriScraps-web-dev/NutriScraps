@@ -57,16 +57,10 @@ exports.editUser = (req, res, next) => {
     .then((user) => {
       if (!user) {
         const error = new Error('User With Specified ID Does NOT Exist');
-        error.statusCode = 404;
+        error.statusCode = 400;
         throw error;
       }
-      user.name.firstName = req.body.name.firstName || user.name.firstName;
-      user.name.lastName = req.body.name.lastName || user.name.lastName;
-      user.country = req.body.country || user.country;
       user.bio = req.body.bio || user.bio;
-      user.username = req.body.username || user.username;
-      user.email = req.body.email || user.email;
-      user.password = req.body.password || user.password;
       user.roleType = req.body.roleType || user.roleType;
 
       return user.save();

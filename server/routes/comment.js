@@ -4,10 +4,10 @@ const isAuth = require('../middleware/isAuthorized');
 
 const router = express.Router();
 
-router.post('/api/comments', isAuth, commentController.createComment);
-router.get('/api/comments',isAuth, commentController.getAllComments);
-router.get('/api/comments/:id', isAuth, commentController.getComment);
-router.post('/api/comments/:parent_id', isAuth, commentController.addSubcomment);
-router.delete('/api/comments/:id', isAuth, commentController.deleteComment);
+router.post(isAuth, commentController.createComment);
+router.get(isAuth, commentController.getAllComments);
+router.get('/:id', isAuth, commentController.getComment);
+router.post('/:parent_id', isAuth, commentController.addSubcomment);
+router.delete('/:id', isAuth, commentController.deleteComment);
 
 module.exports = router;

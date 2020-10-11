@@ -71,6 +71,7 @@ exports.postSignup = (req, res, next) => {
   const username = req.body.username;
   const country = req.body.country;
   const bio = req.body.bio;
+  //remove the req.body.roleType in final version
   const roleType = req.body.roleType || 'user';
 
   let userRole;
@@ -79,7 +80,7 @@ exports.postSignup = (req, res, next) => {
     .then((roleDoc) => {
       if (!roleDoc) {
         const error = new Error('Specified Role Dose NOT exist');
-        error.statusCode = 404;
+        error.statusCode = 400;
         throw error;
       }
       userRole = roleDoc;

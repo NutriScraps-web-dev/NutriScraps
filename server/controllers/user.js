@@ -32,7 +32,7 @@ exports.updateProfile = (req, res, next) => {
     .then((user) => {
       if (!user) {
         const error = new Error('User not Found');
-        error.statusCode = 404;
+        error.statusCode = 400;
         throw error;
       }
       // user.username = req.body.username || user.username;

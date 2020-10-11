@@ -64,12 +64,12 @@ app.get('/api', function (req, res) {
   res.json({ message: 'Welcome to your DIT341 backend ExpressJS project!' });
 });
 
-app.use('/api/users', authRouter);
+app.use('/api/auth', authRouter);
 app.use('/api/users', userRouter);
-app.use('/api/admins', roleRouter);
+app.use('/api/role', roleRouter);
 app.use('/api/admins', adminRouter);
 
-app.use(commentRouter);
+app.use('/api/comments', commentRouter);
 app.use('/rating', ratingRouter);
 
 app.use(recipesRouter);
