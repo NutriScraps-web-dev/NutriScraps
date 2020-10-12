@@ -1,29 +1,29 @@
 <template>
   <div>
     <div v-if="isLoggedIn && isAdmin">
-      <b-dropdown variant="outline-info" class="drapdown">
+      <b-nav-item-dropdown>
         <template v-slot:button-content>
-        <font-awesome-icon icon="users-cog" class="mr-2 icon-size" />
+          <font-awesome-icon icon="users-cog" class="f-a-i-u" />
           <span class="account-text">Manage</span>
         </template>
         <b-dropdown-group id="manage-roles" header="Manage Roles">
+          <b-dropdown-item>
             <b-link to="/admins/roles">
-            <b-dropdown-item-button>
-              <font-awesome-icon icon="tasks" class="mr-2 icon-size" />
+              <font-awesome-icon icon="tasks" class="mr-2 icon-clr" />
               <span class="dropdown-text">Manage Roles</span>
-            </b-dropdown-item-button>
-          </b-link>
+            </b-link>
+          </b-dropdown-item>
         </b-dropdown-group>
         <b-dropdown-divider></b-dropdown-divider>
         <b-dropdown-group id="manage-users" header="Manage Users">
-          <b-link to="/admins/users">
-            <b-dropdown-item-button>
-              <font-awesome-icon icon="users" class="mr-2 icon-size" />
+          <b-dropdown-item>
+            <b-link to="/admins/users">
+              <font-awesome-icon icon="users" class="mr-2 icon-clr" />
               <span class="dropdown-text">Manage Users</span>
-            </b-dropdown-item-button>
-          </b-link>
+            </b-link>
+          </b-dropdown-item>
         </b-dropdown-group>
-      </b-dropdown>
+      </b-nav-item-dropdown>
     </div>
   </div>
 </template>
@@ -57,15 +57,15 @@ export default {
 }
 .account-text {
   margin-left: 0.7rem;
-  margin-right: 1rem;
 }
 .dropdown-text {
   color: rgba(0, 0, 0, 0.7) !important;
 }
-.dropdown {
-  margin-right: 2rem;
-}
-.icon-size {
+.f-a-i-u {
   font-size: 1.2rem;
+  margin-left: 0.8rem;
+}
+.icon-clr {
+  color: rgba(0, 0, 0, 0.7) !important;
 }
 </style>
