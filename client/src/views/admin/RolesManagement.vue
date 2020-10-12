@@ -126,6 +126,12 @@ export default {
   created() {
     this.$store.dispatch('getAllRoles')
   },
+  watch: {
+    roles() {
+      this.$store.dispatch('getAllRoles')
+      this.$forceUpdate()
+    }
+  },
   methods: {
     saveRole(role) {
       this.$store.commit('storeRole', role)
@@ -142,7 +148,7 @@ export default {
   display: flex;
   flex-direction: column;
 }
- .con-btn {
+.con-btn {
   justify-content: start;
   flex-wrap: wrap;
 }

@@ -1,7 +1,10 @@
 <template>
   <div>
     <b-card bg-variant="light">
-      <FormulateForm @submit="submitHandler">
+      <FormulateForm
+        @submit="submitHandler"
+        @validation="hasError = $event.hasErrors"
+      >
         <b-form-group
           label-cols-lg="3"
           label="Create Role:"
@@ -49,6 +52,7 @@
             class="pass-btn my-2 mx-md-4 my-lg-4 px-5"
             type="submit"
             v-b-toggle="'create-role-col'"
+            :disabled="hasError"
             >Create</b-button
           >
           <b-button
@@ -69,6 +73,7 @@ import '../../assets/formulate.css'
 export default {
   data() {
     return {
+      hasError: false,
       role: '',
       description: ''
     }
@@ -93,27 +98,31 @@ export default {
   float: right;
 }
 
- .con-btn {
+.con-btn {
   justify-content: start;
   flex-wrap: wrap;
 }
 
+.pass-btn[disabled] {
+  background-color: #666666 !important;
+  opacity: 0.2;
+  cursor: not-allowed;
+}
 @media screen and (max-width: 768px) {
   .con-btn {
     flex-direction: column;
     justify-content: space-between;
     margin: 1rem !important;
   }
-  .data-tbl{
-   overflow-x: hidden;
+  .data-tbl {
+    overflow-x: hidden;
   }
-  .content-col{
+  .content-col {
     min-width: 19rem;
     margin-right: 20rem;
   }
-  .con-b-card{
+  .con-b-card {
     display: none;
   }
 }
-
 </style>

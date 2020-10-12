@@ -37,6 +37,9 @@ export default {
   },
   methods: {
     ...mapActions(['logOut'])
+  },
+  created() {
+    this.$store.dispatch('isAdmin')
   }
 }
 </script>

@@ -38,9 +38,9 @@ const mutations = {
 
 const actions = {
   signUp({ commit }, payload) {
-    Api.post('/users/signup', payload, { errorHandle: false })
+    Api.post('/auth/signup', payload, { errorHandle: false })
       .then(res => {
-        Router.push('/users/login')
+        Router.push('/auth/login')
       })
       .catch(error => {
         toast.warn(error.response.data.error, error.response.status)
@@ -62,7 +62,7 @@ const actions = {
     })
   },
   logIn(context, payload) {
-    Api.post('/users/login', payload)
+    Api.post('/auth/login', payload)
       .then(res => {
         if (res.status === 200) {
           context.commit('authUser', {
@@ -98,7 +98,7 @@ const actions = {
     if (!auth.state.authToken) {
       return
     }
-    Api.get(`users/${auth.state.userId}/role`, {
+    Api.get(`auth/${auth.state.userId}/role`, {
       headers: {
         Authorization: `Bearer ${auth.state.authToken}`
       }

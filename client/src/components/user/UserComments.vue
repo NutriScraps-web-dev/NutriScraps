@@ -77,14 +77,6 @@
           </b-card>
         </template>
       </b-table>
-      <b-row>
-        <b-button
-          variant="outline-danger"
-          class="mr-5 mt-4"
-          @click="deleteAllComments"
-          >Delete All My comments</b-button
-        >
-      </b-row>
       </div>
       <div v-else>
         <p>You Do Not Have Any Comment!</p>
@@ -117,9 +109,6 @@ export default {
     }
   },
   methods: {
-    deleteAllComments() {
-      console.log('the logic is not completed UserComments.vue')
-    },
     deleteComment(row) {
       console.log(row.item._id)
       toast.confirm('Are You Sure', '', () => {

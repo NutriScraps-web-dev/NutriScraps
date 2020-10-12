@@ -20,7 +20,7 @@ const defaultData = require('./data/defaultData');
 
 // Variables
 var mongoURI =
-  process.env.MONGODB_URI || 'mongodb://localhost:27017/serverTestDB';
+  process.env.MONGODB_URI || 'mongodb+srv://idreesGu:mongodb12345@cluster0.drfwp.mongodb.net/nutriScraps?retryWrites=true&w=majority';
 var port = process.env.PORT || 3000;
 //  'mongodb+srv://idreesGu:mongodb12345@cluster0.drfwp.mongodb.net/nutriScraps?retryWrites=true&w=majority';
 //mongodb://localhost:27017/serverTestDB
