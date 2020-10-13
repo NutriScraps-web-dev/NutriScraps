@@ -64,26 +64,12 @@ export default new Router({
     {
       path: '/admins/roles',
       name: 'Roles Management',
-      component: Roles,
-      beforeEnter: (to, from, next) => {
-        if (Store.state.authToken) {
-          next()
-        } else {
-          next('users/login')
-        }
-      }
+      component: Roles
     },
     {
       path: '/admins/users',
       name: 'Users Management',
-      component: Users,
-      beforeEnter: (to, from, next) => {
-        if (Store.state.authToken) {
-          next()
-        } else {
-          next('users/login')
-        }
-      }
+      component: Users
     }
   ]
 })

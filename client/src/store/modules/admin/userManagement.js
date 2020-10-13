@@ -2,90 +2,82 @@ import { Api } from '@/Api'
 import auth from '../auth'
 
 const state = {
-  users: null,
-  user: null
+  usersArray: [],
+  selectedUser: null
 }
 
 const getters = {
   allUsers: state => {
-    return state.users
+    return state.usersArray
   },
-  userInfo: state => {
-    console.log('roleInfo')
-    console.log(state.user)
-    return state.user
+  selectedUserInfo: state => {
+    return state.selectedUser
   }
 }
 
 const actions = {
-  // createRole({ commit }, payload) {
-  //   Api.post('/admins/roles', payload)
-  //     .then(result => {
-  //       commit('createRole', result)
-  //     })
-  //     .catch(err => console.log(err))
-  // },
-  getAllUsers: ({ commit }) => {
+  getAllUsers: ({ commit }, payload) => {
     if (!auth.state.authToken) {
       return
     }
-    Api.get('/admins/users', {
+    Api.get(`/admins/users?page=${payload.page}&limit=${payload.limit}`, {
       headers: {
         Authorization: `Bearer ${auth.state.authToken}`
       }
     })
       .then(result => {
-        console.log(result.data)
+        console.log('get All USers')
+        console.log(result.data.userDocs)
         commit('storeUsers', result.data.userDocs)
       })
       .catch(err => console.log(err))
+  },
+  updateUser({ commit, state }, payload) {
+    console.log('updateRole')
+    console.log(payload)
+    console.log(state.selectedUser._id)
+    Api.patch(`admins/users/${state.selectedUser._id}`, payload, {
+      headers: {
+        Authorization: `Bearer ${auth.state.authToken}`
+      }
+    })
+      .then(res => {
+        if (res.state === 200) {
+          console.log(res)
+          // commit('storeUser')
+        }
+      })
+      .catch(err => console.log(err))
+  },
+  deleteSelectedUser({ commit, state }) {
+    Api.delete(`admins/users/${state.selectedUser._id}`, {
+      headers: {
+        Authorization: `Bearer ${auth.state.authToken}`
+      }
+    })
+      .then(res => {
+        commit('DeleteSelectedUser', state.selectedUser._id)
+      })
+      .catch(err => console.log(err))
   }
-  // updateRole({ commit, state }, payload) {
-  //   console.log('updateRole')
-  //   console.log(payload)
-  //   console.log(state.role._id)
-  //   Api.patch(`admins/roles/${state.role._id}`, payload, {
-  //     headers: {
-  //       Authorization: `Bearer ${auth.state.authToken}`
-  //     }
-  //   })
-  //     .then(res => {
-  //       if (res.state === 200) {
-  //         console.log(res)
-  //         // commit('storeUser')
-  //       }
-  //     })
-  //     .catch(err => console.log(err))
-  // },
-  // deleteRole({ commit, state }) {
-  //   Api.delete(`admins/roles/${state.role._id}`, {
-  //     headers: {
-  //       Authorization: `Bearer ${auth.state.authToken}`
-  //     }
-  //   })
-  //     .then(res => {
-  //       commit('DeleteRole', state.role._id)
-  //     })
-  //     .catch(err => console.log(err))
-  // }
 }
 
 const mutations = {
   storeUsers: (state, users) => {
-    state.users = users
+    state.usersArray.push(...users)
+  },
+  lessUsers: (state) => {
+    state.usersArray.splice(5, (state.usersArray.length - 5))
+  },
+  storeSelectedUser: (state, user) => {
+    state.selectedUser = user
+  },
+  DeleteSelectedUser: (state, userId) => {
+    // eslint-disable-next-line eqeqeq
+    const index = state.usersArray.findIndex(r => r._id == userId)
+    state.usersArray.splice(index, 1)
+    // state.role = state.roles.filter(r => r._id != roleId)
   }
-  // storeRole: (state, role) => {
-  //   state.role = role
-  // },
-  // DeleteRole: (state, roleId) => {
-  //   // eslint-disable-next-line eqeqeq
-  //   const index = state.roles.findIndex(r => r._id == roleId)
-  //   state.roles.splice(index, 1)
-  //   // state.role = state.roles.filter(r => r._id != roleId)
-  // },
-  // createRole: (state, role) => {
-  //   state.roles.push(role)
-  // }
 }
 
 export default {

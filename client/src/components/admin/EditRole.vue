@@ -1,7 +1,8 @@
 <template>
   <div>
     <b-card v-if="roleInfo" bg-variant="light">
-        <FormulateForm @submit="submitHandler">
+        <FormulateForm @submit="submitHandler"         @validation="hasError = $event.hasErrors"
+>
           <b-form-group
             label-cols-lg="3"
             label="Update Role:"
@@ -46,20 +47,22 @@
               />
             </b-form-group>
           </b-form-group>
+          <div class="d-flex con-btn d-md-block">
           <b-button
             variant="primary"
-            class="ml-2 my-4 pass-btn px-5"
+            class="pass-btn my-2 mx-md-2 mx-lg-4 my-lg-4 px-5"
             type="submit"
+            :disabled="hasError"
             >Update</b-button
           >
-        </FormulateForm>
-        <b-button
+                  <b-button
             variant="outline-primary"
-            class="ml-2 my-4 pass-btn px-5"
-            type="submit"
+            class="pass-btn my-2 mx-md-2 mx-lg-4 my-lg-4 px-5"
             v-b-toggle="'edit-role-col'"
             >Close</b-button
           >
+          </div>
+        </FormulateForm>
     </b-card>
   </div>
 </template>
@@ -69,6 +72,11 @@ import { mapGetters } from 'vuex'
 import '../../assets/formulate.css'
 
 export default {
+  data() {
+    return {
+      hasError: false
+    }
+  },
   methods: {
     submitHandler() {
       this.$store.dispatch('updateRole', this.roleInfo)
@@ -86,5 +94,22 @@ export default {
 }
 .pass-btn {
   float: right;
+}
+.pass-btn[disabled] {
+  background-color: #666666 !important;
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+ .con-btn {
+  justify-content: start;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+  .con-btn {
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1rem !important;
+  }
 }
 </style>

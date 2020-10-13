@@ -1,22 +1,29 @@
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator/check');
+const user = require('../models/user');
 
 exports.deleteProfile = (req, res, next) => {
   const id = req.params.id;
-  User.findByIdAndDelete(id)
-    .then((user) => {
-      if (!user) {
-        res.status(404).json({ error: `User Does not Exist` });
-      }
-      res.status(200).json({ message: `The User is Deleted` });
-    })
-    .catch((err) => {
-      if (!err.statusCode) {
-        err.statusCode = 500;
-      }
-      next(err);
-    });
+  User.findById(id, (err, user) => {
+    if (err) {
+      const error = new Error('User Does not Exist');
+      error.statusCode = 404;
+      throw error;
+    } else {
+      user
+        .deleteOne()
+        .then((result) => {
+          res.status(200).json({ message: `The User is Deleted` });
+        })
+        .catch((err) => {
+          if (!err.statusCode) {
+            err.statusCode = 500;
+          }
+          next(err);
+        });
+    }
+  });
 };
 
 exports.updateProfile = (req, res, next) => {
@@ -25,7 +32,7 @@ exports.updateProfile = (req, res, next) => {
     .then((user) => {
       if (!user) {
         const error = new Error('User not Found');
-        error.statusCode = 404;
+        error.statusCode = 400;
         throw error;
       }
       // user.username = req.body.username || user.username;
@@ -52,6 +59,9 @@ exports.updateProfile = (req, res, next) => {
 exports.getInfo = (req, res, next) => {
   const id = req.params.id;
   User.findOne({ _id: id })
+    .populate('posts')
+    .populate('ratings')
+    .populate('comments', 'content createdAt')
     .then((user) => {
       if (user) {
         res.status(202).json(user);

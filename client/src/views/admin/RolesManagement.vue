@@ -45,30 +45,35 @@
               <b-col sm="3" class="text-sm-right"><b>Users: </b></b-col>
               <b-col>{{ row.item.users.length }} active users</b-col>
             </b-row>
-
-            <b-button
-              variant="outline-info"
-              size="sm"
-              @click="row.toggleDetails"
-              class="mx-2 mt-2 mb-4 pass-btn px-4"
-              >Hide Details</b-button
-            >
-            <b-button
-              v-b-toggle="'edit-role-col'"
-              @click="saveRole(row.item)"
-              variant="outline-info"
-              size="sm"
-              class="mx-2 mt-2 mb-4 pass-btn px-5"
-              >Edit</b-button
-            >
-            <b-button
-              v-b-toggle="'delete-role'"
-              variant="outline-danger"
-              @click="saveRole(row.item)"
-              size="sm"
-              class="mx-2 mt-2 mb-4 pass-btn px-5"
-              >Delete</b-button
-            >
+            <div class="d-flex con-btn d-md-block">
+              <b-button
+                variant="outline-info"
+                size="sm"
+                @click="row.toggleDetails"
+                class="pass-btn my-2 mx-md-2 mx-lg-4 my-lg-4 px-5"
+                >Hide Details</b-button
+              >
+              <b-button
+                v-b-toggle="'edit-role-col'"
+                @click="saveRole(row.item)"
+                variant="outline-info"
+                size="sm"
+                class="pass-btn my-2 mx-md-2 mx-lg-4 my-lg-4 px-5"
+              >
+                <font-awesome-icon icon="edit" class="mr-2" />
+                Edit</b-button
+              >
+              <b-button
+                v-b-toggle="'delete-role'"
+                variant="outline-danger"
+                @click="saveRole(row.item)"
+                size="sm"
+                class="pass-btn my-2 mx-md-2 mx-lg-4 my-lg-4 px-5"
+              >
+                <font-awesome-icon icon="trash-alt" class="mr-2" />
+                Delete</b-button
+              >
+            </div>
             <b-collapse accordion="role-update" id="edit-role-col">
               <edit-role></edit-role>
             </b-collapse>
@@ -121,6 +126,12 @@ export default {
   created() {
     this.$store.dispatch('getAllRoles')
   },
+  watch: {
+    roles() {
+      this.$store.dispatch('getAllRoles')
+      this.$forceUpdate()
+    }
+  },
   methods: {
     saveRole(role) {
       this.$store.commit('storeRole', role)
@@ -136,5 +147,17 @@ export default {
 .role-container {
   display: flex;
   flex-direction: column;
+}
+.con-btn {
+  justify-content: start;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+  .con-btn {
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1rem !important;
+  }
 }
 </style>

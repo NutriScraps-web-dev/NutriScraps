@@ -1,4 +1,5 @@
 const Role = require('../models/role');
+const User = require('../models/user');
 
 exports.createRole = (req, res, next) => {
   const roleName = req.body.role;
@@ -6,12 +7,14 @@ exports.createRole = (req, res, next) => {
   Role.findOne({ role: roleName })
     .then((roleDoc) => {
       if (roleDoc) {
-        return res.status(403).json({ error: 'Role Already Exist' });
+        const error = new Error('Role Already Exist');
+        error.statusCode = 403;
+        throw error;
       }
       const role = new Role({
         role: roleName,
         description: description,
-        users: []
+        users: [],
       });
       return role.save();
     })
@@ -47,8 +50,7 @@ exports.getAllRoles = (req, res, next) => {
 };
 
 exports.getRole = (req, res, next) => {
-  const roleType = req.params.type;
-  Role.findOne({ role: roleType })
+  Role.findById(req.params.id)
     .then((role) => {
       if (!role) {
         const error = new Error('The role does NOT Exist');
@@ -98,7 +100,10 @@ exports.deleteRole = (req, res, next) => {
         error.statusCode = 404;
         throw error;
       }
-      res.status(200).json({ message: `The ${role.role} Is Deleted` });
+      return User.deleteMany({ _id: { $in: role.users } });
+    })
+    .then((result) => {
+      res.status(200).json({ message: `The Role is Deleted` });
     })
     .catch((err) => {
       if (!err.statusCode) {
@@ -107,3 +112,4 @@ exports.deleteRole = (req, res, next) => {
       next(err);
     });
 };
+

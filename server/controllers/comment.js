@@ -70,13 +70,14 @@ exports.getAllComments = (req, res, next) => {
 };
 
 exports.deleteComment = (req, res, next) => {
-  Comment.deleteOne({ _id: req.params.id })
+  Comment.findByIdAndDelete(req.params.id)
     .then((comment) => {
-      if (!comment) {
-        const error = new Error('The comment does NOT exist');
-        error.statusCode = 404;
-        throw error;
-      }
+      return User.updateOne(
+        { comments: req.params.id },
+        { $pull: { comments: req.params.id } }
+      );
+    })
+    .then((result) => {
       res.status(200).json({ message: `The comment is deleted` });
     })
     .catch((err) => {

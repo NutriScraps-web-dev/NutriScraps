@@ -13,17 +13,17 @@ const authRouter = require('./routes/auth');
 const userRouter = require('./routes/user');
 const roleRouter = require('./routes/role');
 const adminRouter = require('./routes/admin');
-
-
 const commentRouter = require('./routes/comment');
 const ratingRouter = require('./routes/rating');
 
+const defaultData = require('./data/defaultData');
+
 // Variables
 var mongoURI =
-  process.env.MONGODB_URI ||
-  'mongodb+srv://idreesGu:mongodb12345@cluster0.drfwp.mongodb.net/nutriScraps?retryWrites=true&w=majority';
+  process.env.MONGODB_URI || 'mongodb+srv://idreesGu:mongodb12345@cluster0.drfwp.mongodb.net/nutriScraps?retryWrites=true&w=majority';
 var port = process.env.PORT || 3000;
-
+//  'mongodb+srv://idreesGu:mongodb12345@cluster0.drfwp.mongodb.net/nutriScraps?retryWrites=true&w=majority';
+//mongodb://localhost:27017/serverTestDB
 // Connect to MongoDB
 mongoose.connect(
   mongoURI,
@@ -37,7 +37,18 @@ mongoose.connect(
     console.log(`Connected to MongoDB with URI: ${mongoURI}`);
   }
 );
-
+mongoose.connection.on('open', function () {
+  mongoose.connection.db
+    .listCollections({ name: 'roles' })
+    .next(async (err, collInfo) => {
+      if(err){
+        next(err)
+      }
+      if (!collInfo) {
+        await defaultData.createDefaultData();
+      }
+    });
+});
 // Create Express app
 const app = express();
 // Parse requests of content-type 'application/json'
@@ -53,13 +64,13 @@ app.get('/api', function (req, res) {
   res.json({ message: 'Welcome to your DIT341 backend ExpressJS project!' });
 });
 
-app.use('/api/users', authRouter);
+app.use('/api/auth', authRouter);
 app.use('/api/users', userRouter);
-app.use('/api/admins', roleRouter);
+app.use('/api/roles', roleRouter);
 app.use('/api/admins', adminRouter);
 
-app.use(commentRouter);
-app.use(ratingRouter);
+app.use('/api/comments', commentRouter);
+app.use('/rating', ratingRouter);
 
 app.use(recipesRouter);
 app.use(ingredientsRouter);

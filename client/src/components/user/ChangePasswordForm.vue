@@ -68,14 +68,22 @@
             </p>
           </b-form-group>
         </b-form-group>
+        <div class="d-flex pass-btn-con d-lg-block d-md-block">
         <b-button
           variant="primary"
-          class="ml-2 my-4 pass-btn px-5"
+          class=" pass-btn my-2 mx-md-4 my-lg-4 px-3 px-md-5"
           v-b-toggle="'update-pass-col'"
           :disabled="$v.$invalid"
           type="submit"
           >Update</b-button
         >
+         <b-button
+          variant="outline-primary"
+          class="my-2 mx-md-4 my-lg-4 px-3 pass-btn px-md-5"
+          v-b-toggle="'update-pass-col'"
+          >Close</b-button
+        >
+        </div>
       </b-form>
     </b-card>
   </div>
@@ -131,5 +139,17 @@ export default {
 }
 p {
   color: red;
+}
+.pass-btn[disabled] {
+  background-color: #666666 !important;
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+@media screen and (max-width: 768px) {
+  .pass-btn-con {
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1rem !important;
+  }
 }
 </style>

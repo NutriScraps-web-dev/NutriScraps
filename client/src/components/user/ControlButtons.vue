@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="isLoggedIn">
-      <b-dropdown variant="outline-info" class="drapdown">
+      <b-nav-item-dropdown variant="primary">
         <template v-slot:button-content>
           <b-icon
             icon="person-fill"
@@ -10,25 +10,18 @@
           ></b-icon>
           <span class="account-text">Account</span>
         </template>
-        <b-dropdown-item-button @click="logOut">
+        <b-dropdown-item @click="logOut">
           <b-icon icon="power" aria-hidden="true" class="mr-2"></b-icon>
           <span class="dropdown-text">Log Out</span>
-        </b-dropdown-item-button>
+        </b-dropdown-item>
         <b-dropdown-divider></b-dropdown-divider>
+        <b-dropdown-item>
         <b-link to="/users/profile">
-          <b-dropdown-item-button>
             <font-awesome-icon icon="user-circle" class="mr-2 icon-size" />
             <span class="dropdown-text">Profile</span>
-          </b-dropdown-item-button>
         </b-link>
-        <b-dropdown-divider></b-dropdown-divider>
-        <b-link to="/users/mypass">
-          <b-dropdown-item-button>
-            <font-awesome-icon icon="key" class="mr-2" />
-            <span class="dropdown-text">Change Password</span>
-          </b-dropdown-item-button>
-        </b-link>
-      </b-dropdown>
+        </b-dropdown-item>
+      </b-nav-item-dropdown>
     </div>
     <div class="signUp-btns" v-else>
       <li class="nav-item">
@@ -75,7 +68,6 @@ export default {
 }
 .account-text {
   margin-left: 0.7rem;
-  margin-right: 1rem;
 }
 .dropdown-text {
   color: rgba(0, 0, 0, 0.7) !important;
@@ -85,5 +77,6 @@ export default {
 }
 .icon-size {
   font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.7) !important;
 }
 </style>

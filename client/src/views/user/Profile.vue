@@ -1,86 +1,115 @@
 <template>
-  <b-container v-if="userInfo" class="profile-container">
+  <b-container v-if="userInfo" class="mt-5">
     <b-jumbotron class="jumbo">
-      <b-row offset="1">
-        <h1>Your Profile</h1>
-      </b-row>
-      <b-row cols="6">
-        <b-col cols="6" offset="2">
-          <h2>Name:</h2>
-          <h4>{{ userInfo.name.firstName }} {{ userInfo.name.lastName }}</h4>
-        </b-col>
-        <b-col>
-          <h2 class="h2">Username:</h2>
-          <h4>{{ userInfo.username }}</h4>
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col cols="6" offset="2">
-          <h2>Email:</h2>
-          <h4>{{ userInfo.email }}</h4>
-        </b-col>
-        <b-col>
-          <h2>Country:</h2>
-          <h4>{{ userInfo.country }}</h4>
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col cols="6" offset="2">
-          <h2>Bio:</h2>
-          <h4>{{ userInfo.bio }}</h4>
-        </b-col>
-        <b-col>
-          <h2>Your Role:</h2>
-          <h4>{{ userInfo.roleType }}</h4>
-        </b-col>
-      </b-row>
-      <b-row offset="4">
-        <b-col cols="8" offset="2">
-          <b-button
-            variant="outline-primary"
-            class="mr-5 my-4"
-            v-b-toggle="'update-user-col'"
-            >Update Profile</b-button
-          >
-          <b-button
-            variant="outline-primary"
-            class="mx-2 my-4"
-            v-b-toggle="'update-pass-col'"
-            >Update Password</b-button
-          >
-          <b-button
-            variant="outline-danger"
-            class="ml-5 my-4"
-            v-b-toggle="'delete-col'"
-            >Delete Account</b-button
-          >
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col>
-          <b-collapse accordion="user-update" id="delete-col">
-            <delete-account></delete-account>
-          </b-collapse>
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col>
-          <b-collapse accordion="user-update" id="update-pass-col">
-            <b-card>
-              <pass-form></pass-form>
-            </b-card>
-          </b-collapse>
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col>
-          <b-collapse accordion="user-update" id="update-user-col">
-            <b-card>
-              <update-profile></update-profile>
-            </b-card>
-          </b-collapse>
-        </b-col>
-      </b-row>
+      <div class="text-center">
+        <h1 class="text-center mb-5">Personal info</h1>
+      </div>
+      <div class="border border-light">
+        <div class="mx-4 border-bottom border-light">
+          <h2 class="mx-2 mt-3 mb-4">Profile</h2>
+        </div>
+        <b-row class="mx-4 border-bottom border-light">
+          <b-col class="my-4 d-flex info-container">
+            <span class="h4 info-container-01 ">Name:</span>
+            <span class="h4 text-left info-container-02 "
+              >{{ userInfo.name.firstName }} {{ userInfo.name.lastName }}</span
+            >
+          </b-col>
+        </b-row>
+        <b-row class="mx-4 border-bottom border-light">
+          <b-col class="my-4 d-flex info-container">
+            <span class="h4 info-container-01 ">Username:</span>
+            <span class="h4 text-left info-container-02 ">{{
+              userInfo.username
+            }}</span>
+          </b-col>
+        </b-row>
+        <b-row class="mx-4 border-bottom border-light">
+          <b-col class="my-4 d-flex info-container">
+            <span class="h4 info-container-01 ">Email:</span>
+            <span class="h4 text-left info-container-02 ">{{
+              userInfo.email
+            }}</span>
+          </b-col>
+        </b-row>
+        <b-row class="mx-4 border-bottom border-light">
+          <b-col class="my-4 d-flex info-container">
+            <span class="h4 info-container-01 ">Country:</span>
+            <span class="h4 text-left info-container-02 ">{{
+              userInfo.country
+            }}</span>
+          </b-col>
+        </b-row>
+        <b-row class="mx-4 border-bottom border-light">
+          <b-col class="my-4 d-flex info-container">
+            <span class="h4 info-container-01 ">Role:</span>
+            <span class="h4 text-left info-container-02 ">{{
+              userInfo.roleType
+            }}</span>
+          </b-col>
+        </b-row>
+        <b-row class="mx-4 border-bottom border-light">
+          <b-col class="my-4 d-flex info-container">
+            <span class="h4 info-container-01 ">Bio:</span>
+            <span class="h4 text-left info-container-02 ">{{
+              userInfo.bio
+            }}</span>
+          </b-col>
+        </b-row>
+
+        <b-row class="mx-4">
+          <b-col class="d-flex profile-btn">
+            <b-button
+              variant="outline-primary"
+              class="my-2 mx-md-4 my-lg-4 px-3"
+              v-b-toggle="'update-user-col'"
+            >
+              <font-awesome-icon icon="user-edit" class="mr-2" /> Update
+              Profile</b-button
+            >
+            <b-button
+              variant="outline-primary"
+              class="my-2 mx-md-4 my-lg-4 px-3"
+              v-b-toggle="'update-pass-col'"
+            >
+              <font-awesome-icon icon="key" class="mr-2" /> Update
+              Password</b-button
+            >
+            <b-button
+              variant="outline-danger"
+              class="my-2 mx-md-4 my-lg-4 px-3"
+              v-b-toggle="'delete-col'"
+              ><font-awesome-icon icon="trash-alt" class="mr-2" /> Delete
+              Account</b-button
+            >
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col>
+            <b-collapse accordion="user-update" id="delete-col">
+              <delete-account></delete-account>
+            </b-collapse>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col>
+            <b-collapse accordion="user-update" id="update-pass-col">
+              <b-card>
+                <pass-form></pass-form>
+              </b-card>
+            </b-collapse>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col>
+            <b-collapse accordion="user-update" id="update-user-col">
+              <b-card>
+                <update-profile></update-profile>
+              </b-card>
+            </b-collapse>
+          </b-col>
+        </b-row>
+      </div>
     </b-jumbotron>
     <b-row class="mt-3">
       <b-col>
@@ -95,14 +124,8 @@
     </b-row>
     <b-row class="mt-3">
       <b-col>
-        <h2>Your Comments:</h2>
-        <div>your Comments</div>
+        <user-comments></user-comments>
       </b-col>
-    </b-row>
-    <b-row>
-      <b-button variant="outline-primary" class="mr-5 my-4"
-        >Delete All My comments</b-button
-      >
     </b-row>
     <b-row class="mt-3">
       <b-col>
@@ -123,12 +146,14 @@
 import ChangePasswordForm from '../../components/user/ChangePasswordForm.vue'
 import UpdateProfile from '../../components/user/UpdateProfile.vue'
 import DeleteAccount from '../../components/user/DeleteAccount.vue'
+import UserComments from '../../components/user/UserComments'
 
 export default {
   components: {
     'pass-form': ChangePasswordForm,
     'update-profile': UpdateProfile,
-    'delete-account': DeleteAccount
+    'delete-account': DeleteAccount,
+    'user-comments': UserComments
   },
   computed: {
     userInfo() {
@@ -144,7 +169,26 @@ export default {
 </script>
 
 <style scoped>
-.profile-container {
-  margin-top: 2rem;
+.info-container {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.info-container-01 {
+  width: 30%;
+}
+.info-container-02 {
+  width: 30%;
+  min-width: 300px;
+}
+.profile-btn {
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 768px) {
+  .profile-btn {
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1rem !important;
+  }
 }
 </style>

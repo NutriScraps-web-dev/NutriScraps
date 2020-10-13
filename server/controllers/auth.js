@@ -71,7 +71,8 @@ exports.postSignup = (req, res, next) => {
   const username = req.body.username;
   const country = req.body.country;
   const bio = req.body.bio;
-  const roleType = req.body.roleType || "user";
+  //remove the req.body.roleType in final version
+  const roleType = req.body.roleType || 'user';
 
   let userRole;
 
@@ -79,7 +80,7 @@ exports.postSignup = (req, res, next) => {
     .then((roleDoc) => {
       if (!roleDoc) {
         const error = new Error('Specified Role Dose NOT exist');
-        error.statusCode = 404;
+        error.statusCode = 400;
         throw error;
       }
       userRole = roleDoc;
@@ -129,6 +130,23 @@ exports.postSignup = (req, res, next) => {
             }
             next(err);
           });
+      }
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
+
+exports.isAdmin = (req, res, next) => {
+  User.findOne({ _id: req.params.id, roleType: 'admin' })
+    .then((admin) => {
+      if (!admin) {
+        res.status(401).json({ isAdmin: false });
+      } else {
+        res.status(200).json({isAdmin: true});
       }
     })
     .catch((err) => {

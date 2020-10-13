@@ -1,10 +1,13 @@
 import { Api } from '@/Api'
 import Router from '@/router'
+import auth from './auth'
+import toast from '../../assets/toast'
 
 const state = {
   authToken: null,
   userRole: null,
-  userId: null
+  userId: null,
+  isAdmin: false
 }
 
 const getters = {
@@ -12,35 +15,36 @@ const getters = {
     return state.authToken !== null
   },
   isAdmin: state => {
-    return state.userRole === 'admin'
+    return state.isAdmin
   }
 }
 
 const mutations = {
-  // changeLogInStatus: state => {
-  //   state.isLoggedIn = !state.isLoggedIn
-  // },
   authUser(state, userData) {
     state.authToken = userData.token
     state.userId = userData.userId
     state.userRole = userData.userRole
-    console.log(userData)
   },
   clearToken(state) {
     state.authToken = null
     state.userId = null
     state.userRole = null
+    state.isAdmin = false
+  },
+  isAdmin(state, adminData) {
+    state.isAdmin = adminData.isAdmin
   }
 }
 
 const actions = {
-  signUp(context, payload) {
-    Api.post('/users/signup', payload)
+  signUp({ commit }, payload) {
+    Api.post('/auth/signup', payload, { errorHandle: false })
       .then(res => {
-        Router.push('/users/login')
-        console.log(res, context)
+        Router.push('/auth/login')
       })
-      .catch(err => console.log(err))
+      .catch(error => {
+        toast.warn(error.response.data.error, error.response.status)
+      })
   },
   autoLogIn({ commit }) {
     const token = localStorage.getItem('token')
@@ -58,9 +62,8 @@ const actions = {
     })
   },
   logIn(context, payload) {
-    Api.post('/users/login', payload)
+    Api.post('/auth/login', payload)
       .then(res => {
-        // console.log(res)
         if (res.status === 200) {
           context.commit('authUser', {
             token: res.data.token,
@@ -73,13 +76,11 @@ const actions = {
           localStorage.setItem('expiresIn', expireDate)
           localStorage.setItem('userRole', res.data.userRole)
           localStorage.setItem('userId', res.data.userId)
-
-          // context.commit('changeLogInStatus')
           context.dispatch('logOutTimer')
+          context.dispatch('isAdmin')
           Router.push('/')
         }
       })
-      .catch(err => console.log(err))
   },
   logOut({ commit }) {
     commit('clearToken')
@@ -88,9 +89,25 @@ const actions = {
   },
   logOutTimer({ commit }) {
     setTimeout(() => {
-      Router.push('/')
       commit('clearToken')
+      localStorage.clear()
+      Router.push('/')
     }, 3600000)
+  },
+  isAdmin({ commit }) {
+    if (!auth.state.authToken) {
+      return
+    }
+    Api.get(`auth/${auth.state.userId}/role`, {
+      headers: {
+        Authorization: `Bearer ${auth.state.authToken}`
+      }
+    })
+      .then(res => {
+        console.log('res.data')
+        console.log(res.data)
+        commit('isAdmin', res.data)
+      })
   }
 }
 

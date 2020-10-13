@@ -1,6 +1,7 @@
 const express = require('express');
 const authController = require('../controllers/auth');
 const { body } = require('express-validator');
+const isAuth = require('../middleware/isAuthorized');
 
 const router = express.Router();
 
@@ -17,5 +18,7 @@ router.post(
   ],
   authController.postSignup
 );
+
+router.get('/:id/role', isAuth, authController.isAdmin);
 
 module.exports = router;

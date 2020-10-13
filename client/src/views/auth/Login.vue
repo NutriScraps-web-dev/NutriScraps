@@ -1,6 +1,9 @@
 <template>
   <b-container class="login-container">
     <b-card class="login-card" bg-variant="light">
+      <b-link to="/" class="close colse-blink" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </b-link>
       <h2>Log In</h2>
       <b-form @submit.prevent="onSubmit">
         <div class="form-group">
@@ -78,5 +81,8 @@ export default {
   position: absolute;
   top: 0;
   right: 0;
+}
+.colse-blink {
+  font-size: 2rem;
 }
 </style>
