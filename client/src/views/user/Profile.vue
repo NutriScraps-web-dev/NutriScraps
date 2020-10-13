@@ -164,11 +164,6 @@ export default {
   },
   created() {
     this.$store.dispatch('getUserInfo')
-  },
-  watch: {
-    userInfo() {
-      this.$store.dispatch('getUserInfo')
-    }
   }
 }
 </script>
