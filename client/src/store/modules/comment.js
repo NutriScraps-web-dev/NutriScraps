@@ -6,13 +6,13 @@ const state = {}
 const getters = {}
 
 const actions = {
-  deleteComment({ commit }, payload) {
+  deleteComment({ commit, dispatch }, payload) {
     Api.delete(`comments/${payload}`, {
       headers: {
         Authorization: `Bearer ${auth.state.authToken}`
       }
     }).then(res => {
-      console.log(res)
+      dispatch('getUserInfo')
     })
   }
 }

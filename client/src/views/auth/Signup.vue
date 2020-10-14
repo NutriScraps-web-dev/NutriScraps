@@ -78,11 +78,13 @@
         label="Bio:"
         validation="max:50"
       />
+      <div class="d-flex flex-column d-md-block">
       <b-button
-        class="btn btn-info mx-1 px-5 pass-btn"
+        class="btn btn-info mx-1 px-5"
         type="submit"
         >Sign Up</b-button
       >
+      </div>
     </FormulateForm>
   </b-container>
 </template>
@@ -127,6 +129,7 @@ export default {
 .form-container {
   width: 50vw !important;
 }
+
 @media screen and (max-width: 600px) {
   .form-container {
     width: 65vw !important;
