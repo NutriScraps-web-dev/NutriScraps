@@ -15,7 +15,10 @@
       <h6><i>Type: {{recipe.type}}</i></h6>
     </b-card-text>
     <b-card-body class="text-center">
-      <b-button href="#" variant="primary" style="margin:auto">View Recipe</b-button>
+      <b-button variant="primary" style="margin:auto" @click="goToRecipe(recipe._id)">
+        View Recipe
+      </b-button>
+      <b-button href="#" variant="danger" style="margin:auto" v-on:click="deleteRecipe()">Delete Recipe</b-button>
     </b-card-body>
   </b-card>
 </div>
@@ -30,6 +33,9 @@ export default {
     deleteRecipe() {
       this.$emit('del-recipe', this.recipe._id)
       console.log('del-recipe with id:' + this.recipe._id)
+    },
+    goToRecipe() {
+      this.$router.push({ name: 'recipe', params: { id: this.recipe._id } })
     }
   }
 

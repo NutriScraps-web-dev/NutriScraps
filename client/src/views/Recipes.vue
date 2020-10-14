@@ -18,6 +18,8 @@
             <recipe-item v-bind:recipe="recipe" v-on:del-recipe="deleteRecipe"/>
         </b-col>
       </b-row>
+      <br>
+      <br>
     </b-container>
 </template>
 
@@ -65,9 +67,6 @@ export default {
         .catch(error => {
           console.error(error)
         })
-    },
-    createRecipe() {
-      console.log(this.text)
     }
   }
 }

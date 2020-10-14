@@ -11,9 +11,9 @@ import Comment from './components/comment/Comment.vue'
 
 import Roles from './views/admin/RolesManagement.vue'
 import Users from './views/admin/UsersManagement.vue'
-
+import CreateRecipe from './components/CreateRecipe.vue'
+import Recipe from './views/Recipe.vue'
 Vue.use(Router)
-
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
@@ -33,6 +33,16 @@ export default new Router({
       path: '/recipes',
       name: 'recipes',
       component: Recipes
+    },
+    {
+      path: '/recipes/:id',
+      name: 'recipe',
+      component: Recipe
+    },
+    {
+      path: '/create-recipe',
+      name: 'createRecipe',
+      component: CreateRecipe
     },
     {
       path: '/users/signup',
@@ -71,5 +81,8 @@ export default new Router({
       name: 'Users Management',
       component: Users
     }
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })
