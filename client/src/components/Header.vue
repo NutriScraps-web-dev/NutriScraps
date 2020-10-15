@@ -38,7 +38,7 @@
               <b-link class="nav-item nav-link mx-2 px-2" to="/recipes">Recipe</b-link>
             </li>
             <li class="nav-item">
-              <b-link class="nav-item nav-link mx-2 px-2" to="/about">About</b-link>
+              <b-link class="nav-item nav-link mx-2 px-2" to="/about-us">About</b-link>
             </li>
             <li class="nav-item">
               <b-link class="nav-item nav-link mx-2 px-2" to="/contact-us">Contact</b-link>
