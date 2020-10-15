@@ -13,7 +13,6 @@
             label="Recipe Name"
             validation="required"
           />
-
           <FormulateInput
             element-class=""
             type="text"
@@ -74,8 +73,8 @@
           :options="[
           {value: 'Unspecified', label: 'Unspecified'},
           {value: 'Vegetarian', label: 'Vegetarian'},
-          {value: 'Non-Vegetarian', value: 'Non-Vegetarian'},
-          {value: 'Vegan', value: 'Vegan'}
+          {value: 'Non-Vegetarian', label: 'Non-Vegetarian'},
+          {value: 'Vegan', label: 'Vegan'}
           ]"
           type="select"
           placeholder="Unspecified"
@@ -119,22 +118,30 @@ export default {
   methods: {
     onSubmit() {
       console.log(this.recipes)
+      const preparations = this.recipes.preparation.map(a => a.preparation)
+      console.log(preparations)
+      const cookingProcesses = this.recipes.cookingProcess.map(a => a.cookingProcess)
+      console.log(cookingProcesses)
+      const toServes = this.recipes.toServe.map(a => a.toServe)
+      console.log(toServes)
       const recipe = {
         name: this.recipes.name,
         cuisine: this.recipes.cuisine,
-        preparation: this.recipes.preparation,
-        cookingProcess: this.recipes.cookingProcess,
-        toServe: this.recipes.toServe,
+        preparation: preparations,
+        cookingProcess: cookingProcesses,
+        toServe: toServes,
         type: this.recipes.type,
         image: this.recipes.image
       }
       console.log(recipe)
-      Api.post('/recipes', this.recipes)
+      Api.post('/recipes', recipe)
         .then(response => {
           console.log(response)
         }).catch(error => {
           console.error(error)
         })
+      alert('Your Recipe has been Created!')
+      this.$router.push({ name: 'recipes' })
     }
   }
 }
