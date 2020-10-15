@@ -4,13 +4,12 @@
     <h1><b>Create Your Recipe!</b></h1>
     <br>
     <b-form>
-      <FormulateForm @submit="onSubmit">
+      <FormulateForm v-model="recipes"  @submit="onSubmit">
           <FormulateInput
             element-class=""
             type="text"
-            name="Recipe Name"
+            name="name"
             placeholder="Recipe name"
-            v-model="name"
             label="Recipe Name"
             validation="required"
           />
@@ -18,15 +17,14 @@
           <FormulateInput
             element-class=""
             type="text"
-            name="Cuisine"
+            name="cuisine"
             placeholder="International, Mexican, Thai, Italian....."
-            v-model="cuisine"
             label="Cuisine"
           />
           <FormulateInput
             element-class=""
             type="group"
-            name="preparations"
+            name="preparation"
             :repeatable="true"
             label="Preparation"
             add-label="+ Add Step"
@@ -36,13 +34,12 @@
             type="text"
             name="preparation"
             placeholder="Preparation steps before cooking"
-            v-model="preparation"
           />
           </FormulateInput>
           <FormulateInput
             element-class=""
             type="group"
-            name="cooking"
+            name="cookingProcess"
             :repeatable="true"
             label="Cooking Process"
             add-label="+ Add Step"
@@ -51,9 +48,8 @@
           <FormulateInput
             element-class=""
             type="text"
-            name="cooking-process"
+            name="cookingProcess"
             placeholder="Cooking Steps"
-            v-model="cookingProcess"
             label="Cooking Process"
             help="Must have atleast one step"
           />
@@ -61,7 +57,7 @@
           <FormulateInput
             element-class=""
             type="group"
-            name="serve"
+            name="toServe"
             :repeatable="true"
             label="To Serve"
             add-label="+ Add Step"
@@ -71,23 +67,26 @@
           type="text"
           name="toServe"
           placeholder="Help make the dish look pretty"
-          v-model="toServe"
           label="To Serve"
         />
         </FormulateInput>
         <FormulateInput
-          v-model="type"
-          :options="{first: 'Unspecified', second: 'Vegetarian', third: 'Non-Vegetarian', fourth: 'Vegan'}"
+          :options="[
+          {value: 'Unspecified', label: 'Unspecified'},
+          {value: 'Vegetarian', label: 'Vegetarian'},
+          {value: 'Non-Vegetarian', value: 'Non-Vegetarian'},
+          {value: 'Vegan', value: 'Vegan'}
+          ]"
           type="select"
           placeholder="Unspecified"
           label="Type"
+          name="type"
         />
         <FormulateInput
             element-class=""
             type="text"
             name="image"
             placeholder="Imgur, Dropbox,etc"
-            v-model="image"
             label="Image Link"
           />
           <br>
@@ -106,27 +105,31 @@ export default {
   props: ['recipe'],
   data() {
     return {
-      name: '',
-      cuisine: '',
-      preparation: [''],
-      cookingProcess: [''],
-      toServe: [''],
-      type: '',
-      image: ''
+      recipes: {
+        name: '',
+        cuisine: '',
+        preparation: [''],
+        cookingProcess: [''],
+        toServe: [''],
+        type: '',
+        image: ''
+      }
     }
   },
   methods: {
     onSubmit() {
+      console.log(this.recipes)
       const recipe = {
-        name: this.name,
-        cuisine: this.cuisine,
-        preparation: this.preparation,
-        cookingProcess: this.cookingProcess,
-        toServe: this.toServe,
-        type: this.type.value,
-        image: this.image
+        name: this.recipes.name,
+        cuisine: this.recipes.cuisine,
+        preparation: this.recipes.preparation,
+        cookingProcess: this.recipes.cookingProcess,
+        toServe: this.recipes.toServe,
+        type: this.recipes.type,
+        image: this.recipes.image
       }
-      Api.post('/recipes', recipe)
+      console.log(recipe)
+      Api.post('/recipes', this.recipes)
         .then(response => {
           console.log(response)
         }).catch(error => {
