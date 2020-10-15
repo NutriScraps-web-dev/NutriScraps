@@ -4,11 +4,12 @@ const axios = require('axios');
 require('dotenv').config();
 
 exports.createRecipe = (req, res, next) => {
-    const recipe = new Recipe(req.body);
+    const recipe = new Recipe(req.body);    
     recipe.save((err, recipe) => {
         if (err) { return next(err); }
         res.status(201).json(recipe);
     });
+    
 };
 
 exports.getAllRecipes = (req, res, next) => {
@@ -44,6 +45,7 @@ exports.editRecipe = (req, res, next) => {
         recipe.cookingProcess = req.body.cookingProcess;
         recipe.toServe = req.body.toServe;
         recipe.type = req.body.type;
+        recipe.image = req.body.image;
         recipe.ingredients = req.body.ingredients;
         recipe.save();
         res.status(200).json(recipe);
@@ -63,6 +65,7 @@ exports.updateRecipe = (req, res, next) => {
         recipe.cookingProcess = (req.body.cookingProcess || recipe.cookingProcess);
         recipe.toServe = (req.body.toServe || recipe.toServe);
         recipe.type = (req.body.type || recipe.type);
+        recipe.image = (req.body.image || recipe.image);
         recipe.ingredients = (req.body.ingredients || recipe.ingredients);
         recipe.save();
         res.status(200).json(recipe);
