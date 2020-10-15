@@ -18,6 +18,7 @@
             placeholder="International, Mexican, Thai, Italian....."
             label="Cuisine"
           />
+          <!--
           <FormulateInput
             element-class=""
             type="group"
@@ -66,6 +67,7 @@
           label="To Serve"
         />
         </FormulateInput>
+        -->
         <FormulateInput
           :options="[
           {value: 'Unspecified', label: 'Unspecified'},
