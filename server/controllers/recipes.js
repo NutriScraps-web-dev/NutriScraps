@@ -1,16 +1,71 @@
 
 const Recipe = require('../models/recipe');
+const Comment = require('../models/comment');
+const User = require('../models/user');
 const axios = require('axios');
+const mongoose = require('mongoose');
 require('dotenv').config();
 
 exports.createRecipe = (req, res, next) => {
-    const recipe = new Recipe(req.body);    
+    const recipePublisher = mongoose.Types.ObjectId(req.userId);
+    console.log('req', req)
+    console.log('userID: ' , req.userId)
+    console.log(recipePublisher)
+    const recipeName = req.body.name;
+    const recipeCuisine = req.body.cuisine;
+    const recipePreparation = req.body.preparation;
+    const recipeCookingProcess = req.body.cookingProcess;
+    const recipeToServe = req.body.toServe;
+    const recipeType = req.body.type;
+    const recipeImage = req.body.image;
+    let tem_recipe = null;
+    const recipe = new Recipe({
+        name: recipeName,
+        cuisine: recipeCuisine,
+        preparation: recipePreparation,
+        cookingProcess: recipeCookingProcess,
+        toServe: recipeToServe,
+        type: recipeType,
+        image: recipeImage,
+        publisher: recipePublisher
+    });
+    console.log(recipe)
+    return recipe
+    .save()
+    .then((result) => {
+      tem_recipe = result;
+      console.log(recipePublisher)
+     return User.findById(recipePublisher);
+    })
+    .then((user) => {
+      console.log('abcde')  
+      console.log(user)
+      user.posts.push(tem_recipe);
+      return user.save();
+    })
+    .then((result) => {
+      res.status(200).json(tem_recipe);
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
+
+/*
+exports.createRecipe = (req, res, next) => {
+    const recipePublisher = req.userId;
+    const recipe = new Recipe(req.body); 
+    recipe.publisher = {recipePublisher}; 
     recipe.save((err, recipe) => {
         if (err) { return next(err); }
         res.status(201).json(recipe);
     });
     
 };
+*/
 
 exports.getAllRecipes = (req, res, next) => {
     const sortBy = req.query.sort || '';
