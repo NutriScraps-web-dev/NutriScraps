@@ -3,7 +3,7 @@
     <div>
       <h3>Contact Us</h3>
       <br>
-      <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+      <b-form @submit="sendEmail" @reset="onReset" v-if="show">
         <b-form-group
           id="input-group-1"
           label="Email address:"
@@ -12,19 +12,21 @@
         >
           <b-form-input
             id="input-1"
-            v-model="form.email"
+            v-model="form.user_email"
+            name="user_email"
             type="email"
             required
             placeholder="Enter email"
           ></b-form-input>
         </b-form-group>
 
-        <b-form-group id="input-group-2" label="Your Name:" label-for="input-2" class="name">
+        <b-form-group id="input-group-2" label="Name:" label-for="input-2" class="subject">
           <b-form-input
             id="input-2"
-            v-model="form.name"
+            v-model="form.user_name"
+            name="user_name"
             required
-            placeholder="Enter name"
+            placeholder="Enter Your Name"
           ></b-form-input>
         </b-form-group>
 
@@ -33,6 +35,7 @@
             id="textarea"
             v-model="form.message"
             required
+            name="message"
             placeholder="Enter something..."
             rows="3"
             max-rows="6"
@@ -42,29 +45,32 @@
         <b-button type="submit" variant="primary">Submit</b-button>
         <b-button type="reset" variant="danger">Reset</b-button>
       </b-form>
-      <b-card class="mt-3" header="Form Data Result">
-        <pre class="m-0">{{ form }}</pre>
-      </b-card>
     </div>
   </b-container>
 </template>
 
 <script>
+import emailjs from 'emailjs-com'
+
 export default {
   data() {
     return {
       form: {
-        email: '',
-        name: '',
+        user_email: '',
+        user_name: '',
         message: ''
       },
       show: true
     }
   },
   methods: {
-    onSubmit(evt) {
-      evt.preventDefault()
-      alert(JSON.stringify(this.form))
+    sendEmail: (e) => {
+      emailjs.sendForm('contact_service', 'contact_form', e.target, 'user_14Bjs7n5tcUqKS6QSmOrr')
+        .then((result) => {
+          console.log('SUCCESS', result.status, result.text)
+        }, (error) => {
+          console.log('FAILED...', error)
+        })
     },
     onReset(evt) {
       evt.preventDefault()
@@ -86,7 +92,6 @@ export default {
 
 .contact-container {
   margin: auto;
-  width: 50%;
   padding: 20px;
 }
 
