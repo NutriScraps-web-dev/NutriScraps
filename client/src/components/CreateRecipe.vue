@@ -49,7 +49,6 @@
             type="text"
             name="cookingProcess"
             placeholder="Cooking Steps"
-            label="Cooking Process"
             help="Must have atleast one step"
           />
           </FormulateInput>
@@ -66,7 +65,6 @@
           type="text"
           name="toServe"
           placeholder="Help make the dish look pretty"
-          label="To Serve"
         />
         </FormulateInput>
         <FormulateInput
@@ -99,6 +97,7 @@
 
 <script>
 import { Api } from '@/Api'
+import auth from '../store/modules/auth'
 
 export default {
   props: ['recipe'],
@@ -134,13 +133,16 @@ export default {
         image: this.recipes.image
       }
       console.log(recipe)
-      Api.post('/recipes', recipe)
+      Api.post('/recipes', recipe, {
+        headers: {
+          Authorization: `Bearer ${auth.state.authToken}`
+        }
+      })
         .then(response => {
           console.log(response)
         }).catch(error => {
           console.error(error)
         })
-      alert('Your Recipe has been Created!')
       this.$router.push({ name: 'recipes' })
     }
   }

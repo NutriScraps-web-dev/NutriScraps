@@ -7,14 +7,14 @@
             <b-input-group-append is-text>
               <b-icon icon="search"></b-icon>
             </b-input-group-append>
-            <b-form-input type="search" placeholder="Search Recipes"></b-form-input>
+            <b-form-input type="text" v-model="search" placeholder="Search Recipes"></b-form-input>
           </b-input-group>
         </b-col>
       </b-row>
       <br>
       <br>
       <b-row align-h="center" style="margin:auto">
-        <b-col cols="12" sm="6" md="4" v-for="recipe in recipes" v-bind:key="recipe._id">
+        <b-col cols="12" sm="6" md="4" v-for="recipe in filteredRecipes" v-bind:key="recipe._id">
             <recipe-item v-bind:recipe="recipe" v-on:del-recipe="deleteRecipe"/>
         </b-col>
       </b-row>
@@ -54,7 +54,8 @@ export default {
     return {
       recipes: [],
       message: '',
-      text: ''
+      text: '',
+      search: ''
     }
   },
   methods: {
@@ -67,6 +68,13 @@ export default {
         .catch(error => {
           console.error(error)
         })
+    }
+  },
+  computed: {
+    filteredRecipes: function () {
+      return this.recipes.filter((recipe) => {
+        return recipe.name.toLowerCase().match(this.search.toLowerCase())
+      })
     }
   }
 }

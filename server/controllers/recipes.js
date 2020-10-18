@@ -8,7 +8,7 @@ require('dotenv').config();
 
 exports.createRecipe = (req, res, next) => {
     const recipePublisher = mongoose.Types.ObjectId(req.userId);
-    console.log('req', req)
+    console.log('role', req.role)
     console.log('userID: ' , req.userId)
     console.log(recipePublisher)
     const recipeName = req.body.name;
@@ -73,6 +73,22 @@ exports.getAllRecipes = (req, res, next) => {
         if (err) { return next(err); }
         res.status(200).json({ 'recipes': recipes });
     }).sort(sortBy)
+};
+
+exports.getRecipeByTitle = (req, res, next) => {
+    const title = req.query.title;
+    var condition = title ? {title: { $regex: new RegExp(title), $options: "i"}} : {};
+
+    Recipe.find(err, condition)
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        if (!err.statusCode) {
+          err.statusCode = 500;
+        }
+          next(err);
+      });
 };
 
 exports.getRecipe = (req, res, next) => {
