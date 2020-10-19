@@ -17,7 +17,6 @@ const recipeSchema = new Schema({
     },
     cookingProcess: {
         type: [String], 
-        required: true
     },
     toServe: {
         type: [String],

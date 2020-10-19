@@ -1,55 +1,23 @@
 import { Api } from '@/Api'
 import auth from './auth'
 
-const state = {
-  comment: null
-}
+const state = {}
 
-const getters = {
-  getComments(state) {
-    return state.comment
-  }
-}
+const getters = {}
 
 const actions = {
-  getCommentsForReceipe({ commit }, payload) {
-  },
-  getComment({ commit }, payload) {
-    Api.get(`comments/${payload}`, {
-      headers: {
-        Authorization: `Bearer ${auth.state.authToken}`
-      }
-    }).then(response => {
-      console.log(response)
-      commit('storeComment', response)
-    })
-  },
-  createComment({ commit }, payload) {
-    console.log('payload ', payload)
-    Api.post('comments', payload, {
-      headers: {
-        Authorization: `Bearer ${auth.state.authToken}`
-      }
-    }).then(response => {
-      console.log(response)
-      commit('storeComment', response)
-    })
-  },
-  deleteComment({ commit }, payload) {
+  deleteComment({ commit, dispatch }, payload) {
     Api.delete(`comments/${payload}`, {
       headers: {
         Authorization: `Bearer ${auth.state.authToken}`
       }
     }).then(res => {
-      console.log(res)
+      dispatch('getUserInfo')
     })
   }
 }
 
 const mutations = {
-  storeComment(state, payload) {
-    state.comment = payload
-  }
 }
 
 export default {

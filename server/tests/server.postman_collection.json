@@ -1,17 +1,17 @@
 {
-  "info": {
-    "_postman_id": "e4960c89-7dd8-4ab2-b418-344c853b4dfa",
-    "name": "server",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "item": [
+	"info": {
+		"_postman_id": "ca24055b-049a-4fc6-89bb-3446a3a39ec4",
+		"name": "server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
 		{
 			"name": "Create Ingredient",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "9c6b7c55-8fa7-48ba-8bdb-e7848e0c7929",
+						"id": "681f8365-dcc7-4e9c-bd1b-a07f019f7e28",
 						"exec": [
 							""
 						],
@@ -21,7 +21,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "5f3281a0-d690-4962-a1d0-def731d47ef8",
+						"id": "3bcc840e-ae4d-46a6-9f07-5248d208a431",
 						"exec": [
 							"var jsonData = pm.response.json();\r",
 							"var ingredientId = jsonData._id;\r",
@@ -79,7 +79,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "52e9b20a-39ae-4a99-86dd-28e31efda09f",
+						"id": "d953d7bb-c0a2-4441-993e-a7020c5a7595",
 						"exec": [
 							""
 						],
@@ -89,7 +89,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "ae4eec61-bdbe-4af2-8605-10f2011170ef",
+						"id": "27a9b772-7dac-418b-9757-a178f12c68a6",
 						"exec": [
 							"var jsonData = pm.response.json();\r",
 							"var ingredientId = jsonData._id;\r",
@@ -147,7 +147,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "b48aeb06-35a7-43b6-9584-2f7a5295078d",
+						"id": "b1f0b8c9-aaff-4ff3-b9ab-3252a0dcac3b",
 						"exec": [
 							""
 						],
@@ -157,7 +157,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "fc307216-7c53-48da-bbec-a2482f434f61",
+						"id": "c9c552ad-d89d-4a85-805c-e0a13b3ef7bf",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -197,7 +197,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "2951fc8a-b104-4db8-8414-22afc2ddb381",
+						"id": "abd19efb-8079-4b07-9995-af017b6ad826",
 						"exec": [
 							""
 						],
@@ -207,7 +207,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "7a875501-5eba-4f91-a3d7-666c5bf617bb",
+						"id": "f827f746-74f9-4dd2-b6d1-999a05a4dd70",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -255,7 +255,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "e71203c7-df52-411b-a035-335b84e79690",
+						"id": "bcf00ac9-3158-47cc-911d-576a18eb48fc",
 						"exec": [
 							""
 						],
@@ -265,7 +265,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d0a75001-203a-4163-80df-abf18d18d2c4",
+						"id": "2041b859-363e-4f8e-b527-53da0f223913",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -314,7 +314,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "1d7caf3c-cf01-443f-acec-73627832aaf4",
+						"id": "18acdba2-196b-48ca-b8a8-837cc70aff40",
 						"exec": [
 							""
 						],
@@ -324,7 +324,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "894f7b9e-6214-408b-ba23-c5346f9c6f63",
+						"id": "c733ed35-dbdb-45e3-93d7-53a2f16dd03e",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -373,7 +373,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "deeffba3-daea-44bf-abc2-d753d0ece6cd",
+						"id": "f83c031d-d9ac-4de5-bbcc-29f047a7f973",
 						"exec": [
 							""
 						],
@@ -383,7 +383,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "1f066187-1cd2-43db-87e5-7dcbd59c9a4a",
+						"id": "77e43a1b-57f5-4cd5-9865-9ec306f9230e",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -442,7 +442,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "954f3d9c-af40-41a1-9f4a-ce1130ca19f6",
+						"id": "fa3c7673-3c36-4659-8551-40df6dd15ef0",
 						"exec": [
 							""
 						],
@@ -452,7 +452,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "7a524657-4a04-45d4-81c4-d68636a29fc5",
+						"id": "aac18705-8378-43d0-a08a-97a778e44785",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -511,7 +511,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "adb63cb7-1b6f-4979-aa21-982250bfb6e5",
+						"id": "64fbced9-ec68-444c-ad7c-322380be2497",
 						"exec": [
 							""
 						],
@@ -521,7 +521,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d3fc5473-7a5d-42bc-a35d-c2d42424b7ce",
+						"id": "4c3e5fca-9474-4f36-91aa-b7f6218a88f3",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -580,7 +580,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "8a68dde1-c9e5-45f3-860b-37fcb4a21f17",
+						"id": "29a54c87-64b7-48d4-9bd0-0981fc424c56",
 						"exec": [
 							""
 						],
@@ -590,7 +590,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "5899da61-9622-4c9d-bb5b-f95e32cbdf3a",
+						"id": "d5113708-8131-4413-b625-75a31a70f3f5",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -649,7 +649,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "4b98ff62-f2c6-4353-a40d-0580cac0e6a7",
+						"id": "bfb7e69b-5386-44a7-aa9f-0897d543c57c",
 						"exec": [
 							""
 						],
@@ -659,7 +659,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c6076689-8ec5-4e14-b690-7aa0b32977f3",
+						"id": "d4e44c1d-5576-4ecc-bedb-291391ae0f05",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -718,7 +718,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "57b75cba-8bee-4647-bca1-0e8e90710b87",
+						"id": "049515c8-8e18-49a4-8060-bf98f2cc8945",
 						"exec": [
 							""
 						],
@@ -728,7 +728,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "704cc6f5-9f59-4755-84a2-7698bcc744c1",
+						"id": "46705a27-9bbf-4c8d-b147-e2b96631d068",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -777,7 +777,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "a3a1ef9f-2523-40bd-903b-a26d72bc3af1",
+						"id": "e8e762f0-72f4-407a-8e37-3f5597b7ad35",
 						"exec": [
 							""
 						],
@@ -787,7 +787,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "a0e2a03e-fe10-4d1d-8172-f88c4ab635ce",
+						"id": "e08273ca-5bde-4c64-8592-ca4e9520a334",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -836,7 +836,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "426373ab-0d02-4e74-985f-f562d2edb41c",
+						"id": "366a6e39-f783-4c3d-9188-1e9a7e0d91de",
 						"exec": [
 							""
 						],
@@ -846,7 +846,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "ba1ed000-fdb2-41e5-9584-bc5491a5527f",
+						"id": "5950c03e-df09-4dab-87ec-7aea4113c4df",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -891,7 +891,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "8d735383-d31c-4039-9524-0ecef396513b",
+						"id": "84cbe6a9-d654-432a-bacb-d13b6ec475ae",
 						"exec": [
 							""
 						],
@@ -901,7 +901,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "15148781-ee13-4ee8-8172-ba3bfe4d3d85",
+						"id": "d3763e13-0893-4347-801b-ff7233d2fe47",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -951,7 +951,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "b2507e8a-e9b6-4bbf-8970-b7aa834ce863",
+						"id": "252ccf0b-e8a3-4198-bcb1-b419c26e9f30",
 						"exec": [
 							""
 						],
@@ -961,7 +961,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "0e9875b7-81f9-4539-bbb1-d0a4055fba85",
+						"id": "04b2b28c-4154-4b93-bc12-0ae4ff4c87d3",
 						"exec": [
 							"var jsonData = pm.response.json();\r",
 							"var ingredientId = jsonData._id;\r",
@@ -1019,7 +1019,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "fcf029b7-be29-4a5c-affd-f507aaada20b",
+						"id": "27dec967-6304-49f6-bc32-ba27281bd4f4",
 						"exec": [
 							""
 						],
@@ -1029,7 +1029,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "fea710e6-92fa-43fe-b8ab-d7e88f51608f",
+						"id": "149cfb80-2f97-409b-9c01-1690b4814c42",
 						"exec": [
 							"var jsonData = pm.response.json();\r",
 							"var ingredientId = jsonData._id;\r",
@@ -1082,737 +1082,12 @@
 			"response": []
 		},
 		{
-			"name": "Create Recipe",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "8e3a9ba1-c036-4ab4-9b29-bdd0db19a1ea",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "c5a802d4-dd48-42e8-a423-f789b6d47d69",
-						"exec": [
-							"var jsonData = pm.response.json();\r",
-							"var recipeId = jsonData._id;\r",
-							"pm.environment.set(\"recipe_id\", recipeId);\r",
-							"\r",
-							"pm.test(\"Correct status code\",\r",
-							"    function(){\r",
-							"    pm.response.to.have.status(201);  \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Correct recipe response\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.name).to.eql(\"Fried Rice\");\r",
-							"    pm.expect(jsonData.cuisine).to.eql(\"International\");\r",
-							"    pm.expect(jsonData.preparation).to.eql([\"soak rice in water\", \"beat eggs in a bowl\"]);\r",
-							"    pm.expect(jsonData.cookingProcess).to.eql([\"stir the rice and egg batter in the frying pan\"]);\r",
-							"    pm.expect(jsonData.toServe).to.eql([\"serve with a drink\"]);\r",
-							"    pm.expect(jsonData.type).to.eql(\"Non-Vegetarian\");\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"type": "text",
-						"value": "application/json"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Fried Rice\",\r\n    \"cuisine\": \"International\",\r\n    \"preparation\":[\"soak rice in water\", \"beat eggs in a bowl\"],\r\n    \"cookingProcess\":[\"stir the rice and egg batter in the frying pan\"],\r\n    \"toServe\": [\"serve with a drink\"],\r\n    \"type\": \"Non-Vegetarian\",\r\n    \"ingredients\" : [\"{{rice_id}}\", \"{{eggs_id}}\"]\r\n}"
-				},
-				"url": {
-					"raw": "{{host}}/api/recipes",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"recipes"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create Recipe 2",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "f297595d-4a67-4794-9129-38a36920d3e4",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "f1544d97-8469-470e-aeba-169f0cab87e6",
-						"exec": [
-							"var jsonData = pm.response.json();\r",
-							"var recipeId2 = jsonData._id;\r",
-							"pm.environment.set(\"recipe_id2\", recipeId2);\r",
-							"\r",
-							"pm.test(\"Correct status code\",\r",
-							"    function(){\r",
-							"    pm.response.to.have.status(201);  \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Correct recipe response\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.name).to.eql(\"Alternate Fried Rice\");\r",
-							"    pm.expect(jsonData.cuisine).to.eql(\"International\");\r",
-							"    pm.expect(jsonData.preparation).to.eql([\"soak rice in water\"]);\r",
-							"    pm.expect(jsonData.cookingProcess).to.eql([\"stir the rice and add freshly cracked eggs in the frying pan\"]);\r",
-							"    pm.expect(jsonData.toServe).to.eql([\"serve with a drink\"]);\r",
-							"    pm.expect(jsonData.type).to.eql(\"Non-Vegetarian\");\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"type": "text",
-						"value": "application/json"
-					},
-					{
-						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Alternate Fried Rice\",\r\n    \"cuisine\": \"International\",\r\n    \"preparation\":[\"soak rice in water\"],\r\n    \"cookingProcess\":[\"stir the rice and add freshly cracked eggs in the frying pan\"],\r\n    \"toServe\": [\"serve with a drink\"],\r\n    \"type\": \"Non-Vegetarian\",\r\n    \"ingredients\" : [\"{{rice_id}}\", \"{{eggs_id}}\"]\r\n}"
-				},
-				"url": {
-					"raw": "{{host}}/api/recipes",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"recipes"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get all recipes",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "0233f14f-2ac9-4c95-824a-a8a625afa560",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "c5a9b98a-0d35-464b-865c-2f5eb1aa0668",
-						"exec": [
-							"pm.test(\"Correct status code\",\r",
-							"    function(){\r",
-							"    pm.response.to.have.status(200);  \r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"url": {
-					"raw": "{{host}}/api/recipes",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"recipes"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Recipe Fried Rice",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "e6861034-6e4a-43ed-b9d6-3a651941811d",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "83cc705e-26e3-4b8b-82ea-58ec70dc3326",
-						"exec": [
-							"pm.test(\"Correct status code\",\r",
-							"    function(){\r",
-							"    pm.response.to.have.status(200);  \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Correct recipe response\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.name).to.eql(\"Fried Rice\");\r",
-							"    pm.expect(jsonData.cuisine).to.eql(\"International\");\r",
-							"    pm.expect(jsonData.preparation).to.eql([\"soak rice in water\", \"beat eggs in a bowl\"]);\r",
-							"    pm.expect(jsonData.cookingProcess).to.eql([\"stir the rice and egg batter in the frying pan\"]);\r",
-							"    pm.expect(jsonData.toServe).to.eql([\"serve with a drink\"]);\r",
-							"    pm.expect(jsonData.type).to.eql(\"Non-Vegetarian\");\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"url": {
-					"raw": "{{host}}/api/recipes/{{recipe_id}}",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"recipes",
-						"{{recipe_id}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get non-existing recipe",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "8896e841-e9f2-4d6f-85a5-2a24a4856925",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "d33ea58b-661f-47ec-8672-67fa32678d9f",
-						"exec": [
-							"pm.test(\"Correct status code\",\r",
-							"    function(){\r",
-							"    pm.response.to.have.status(404);  \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Correct recipe response\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.message).to.eql(\"Recipe not found!\");\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"url": {
-					"raw": "{{host}}/api/recipes/5f63a1b67edd7626d83d4088",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"recipes",
-						"5f63a1b67edd7626d83d4088"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Edit non-existing recipe",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "8bf56a97-b7ac-402f-9061-3e2635090d24",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "cdeb786e-68e9-478a-aa1f-d93917e06441",
-						"exec": [
-							"pm.test(\"Correct status code\",\r",
-							"    function(){\r",
-							"    pm.response.to.have.status(404);  \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Correct recipe response\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.message).to.eql(\"Recipe not found!\");\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Accept",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"url": {
-					"raw": "{{host}}/api/recipes/5f63a1b67edd7626d83d4088",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"recipes",
-						"5f63a1b67edd7626d83d4088"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Edit Fried Rice Recipe",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "5ab32f8b-a473-4490-899f-9e88e29f279a",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "69756248-e26d-4ae5-aeef-6e1a3655ff70",
-						"exec": [
-							"pm.test(\"Correct status code\",\r",
-							"    function(){\r",
-							"    pm.response.to.have.status(200);  \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Correct recipe response\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.name).to.eql(\"Fried Rice\");\r",
-							"    pm.expect(jsonData.cuisine).to.eql(\"Japanese\");\r",
-							"    pm.expect(jsonData.preparation).to.eql([\"soak rice in water\", \"beat eggs in a bowl\"]);\r",
-							"    pm.expect(jsonData.cookingProcess).to.eql([\"stir the rice and egg batter in the frying pan\",  \"let it cool for 5 minutes\"]);\r",
-							"    pm.expect(jsonData.toServe).to.eql([\"serve with a drink\", \"serve with sauce\"]);\r",
-							"    pm.expect(jsonData.type).to.eql(\"Non-Vegetarian\");\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Accept",
-						"type": "text",
-						"value": "application/json"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Fried Rice\",\r\n    \"cuisine\": \"Japanese\",\r\n    \"preparation\":[\"soak rice in water\", \"beat eggs in a bowl\"],\r\n    \"cookingProcess\":[\"stir the rice and egg batter in the frying pan\", \"let it cool for 5 minutes\"],\r\n    \"toServe\": [\"serve with a drink\", \"serve with sauce\"],\r\n    \"type\": \"Non-Vegetarian\",\r\n    \"ingredients\" : [\"{{rice_id}}\", \"{{eggs_id}}\"]\r\n}"
-				},
-				"url": {
-					"raw": "{{host}}/api/recipes/{{recipe_id}}",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"recipes",
-						"{{recipe_id}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Fried Rice Recipe",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "7c5bc04f-28c6-4bfb-93fc-6760fda5c9d7",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "8956c490-6fd2-40c0-9956-8e420b21d970",
-						"exec": [
-							"pm.test(\"Correct status code\",\r",
-							"    function(){\r",
-							"    pm.response.to.have.status(200);  \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Correct recipe response\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.name).to.eql(\"Fried Rice Supreme\");\r",
-							"    pm.expect(jsonData.cuisine).to.eql(\"Japanese\");\r",
-							"    pm.expect(jsonData.preparation).to.eql([\"soak rice in water\", \"beat eggs in a bowl\"]);\r",
-							"    pm.expect(jsonData.cookingProcess).to.eql([\"stir the rice and egg batter in the frying pan\", \"add spices while stirring\", \"leave it in pan for 5 minutes without heat\"]);\r",
-							"    pm.expect(jsonData.toServe).to.eql([\"serve with a drink\", \"serve with sauce\"]);\r",
-							"    pm.expect(jsonData.type).to.eql(\"Vegetarian\");\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "Accept",
-						"type": "text",
-						"value": "application/json"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Fried Rice Supreme\",\r\n    \"cuisine\": \"Japanese\",\r\n    \"preparation\":[\"soak rice in water\", \"beat eggs in a bowl\"],\r\n    \"cookingProcess\":[\"stir the rice and egg batter in the frying pan\", \"add spices while stirring\", \"leave it in pan for 5 minutes without heat\"],\r\n    \"toServe\": [\"serve with a drink\", \"serve with sauce\"],\r\n    \"type\": \"Vegetarian\",\r\n    \"ingredients\" : [\"{{rice_id}}\", \"{{eggs_id}}\"]\r\n}"
-				},
-				"url": {
-					"raw": "{{host}}/api/recipes/{{recipe_id}}",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"recipes",
-						"{{recipe_id}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update non-existing recipe",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "40f25ca3-f675-4210-8878-59c1a3aa1e49",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "fd2a99ea-a418-40ae-ae20-94b2e985a72d",
-						"exec": [
-							"pm.test(\"Correct status code\",\r",
-							"    function(){\r",
-							"    pm.response.to.have.status(404);  \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Correct recipe response\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.message).to.eql(\"Recipe not found!\");\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "Accept",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"url": {
-					"raw": "{{host}}/api/recipes/5f63a1b67edd7626d83d4088",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"recipes",
-						"5f63a1b67edd7626d83d4088"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete non-existing recipe",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "2e89f42e-007c-4bc4-9a19-cc6b850def42",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "7171d5c0-ae8c-4b05-bb6a-a177ab9110f8",
-						"exec": [
-							"pm.test(\"Correct status code\",\r",
-							"    function(){\r",
-							"    pm.response.to.have.status(404);  \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Correct recipe response\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.message).to.eql(\"Recipe not found!\");\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Accept",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"url": {
-					"raw": "{{host}}/api/recipes/5f63a1b67edd7626d83d4088",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"recipes",
-						"5f63a1b67edd7626d83d4088"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Recipe 2",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "98f0d416-5b0e-40d8-988b-512d8b01725e",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "4904913a-955a-4eb9-9d67-55b508cd518e",
-						"exec": [
-							"pm.test(\"Correct status code\",\r",
-							"    function(){\r",
-							"    pm.response.to.have.status(200);  \r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Accept",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"url": {
-					"raw": "{{host}}/api/recipes/{{recipe_id2}}",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"recipes",
-						"{{recipe_id2}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Recipe2",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "00966ade-8c74-43fc-a682-1eeb953a78e7",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "105a612e-21e8-493e-9953-5b8587004f59",
-						"exec": [
-							"pm.test(\"Correct status code\",\r",
-							"    function(){\r",
-							"    pm.response.to.have.status(404);  \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Correct recipe response\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.message).to.eql(\"Recipe not found!\");\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"url": {
-					"raw": "{{host}}/api/recipes/{{recipe_id2}}",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"recipes",
-						"{{recipe_id2}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "GET /api",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "70c122f0-342c-4296-bd7c-eaf624f7e5bd",
+						"id": "8ba3f651-6199-4e4c-a2b4-563030df36b7",
 						"exec": [
 							""
 						],
@@ -1847,7 +1122,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "b868ec4b-8490-455a-b532-09e88c935cfd",
+						"id": "08644a79-ae7b-45ea-9984-36a74c2cefa1",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -1894,7 +1169,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "e5506b04-bd25-4646-a900-2cd4795628cd",
+						"id": "b486d832-a00a-44e2-871b-8a16c040d046",
 						"exec": [
 							""
 						],
@@ -1904,7 +1179,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "fa507498-e742-4623-9741-0fa9ef61d162",
+						"id": "b395dee4-b879-4519-9d7e-392d5cf22546",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -1956,7 +1231,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "52c66f33-8915-4284-991b-d605a98897a6",
+						"id": "1f16cb96-b42d-4485-bb67-6c4c193e76d6",
 						"exec": [
 							""
 						],
@@ -1966,7 +1241,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "89568735-6a1e-466c-bf74-8f77b1d62369",
+						"id": "0e87a35b-1726-493f-a552-85ab1b2a0f44",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2017,7 +1292,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "ed10ea50-9455-4044-baa2-6d1d8c3eac45",
+						"id": "8146f819-a9dc-4bba-a6a8-93b0d4936a06",
 						"exec": [
 							""
 						],
@@ -2027,7 +1302,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "2578c5e6-dfbe-4cef-a1be-358ef8065b33",
+						"id": "daa12b76-0068-4f12-b767-2c2f949e8369",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2081,7 +1356,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "149c8ab2-3c9e-493f-826d-f194102f7484",
+						"id": "26c720ae-94cc-4a1d-a881-5be355a7be38",
 						"exec": [
 							""
 						],
@@ -2091,7 +1366,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "ee6b7fda-a3ce-430d-a65d-4113664d1f2e",
+						"id": "64906514-3b03-4554-b68d-6241e03267e0",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"pm.environment.set(\"usernameUser\", jsonData.username);\r",
@@ -2149,7 +1424,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "ddcf6a02-e2ab-49fb-b272-74502a534f82",
+						"id": "e40ce4a9-547e-40a8-8385-d0e0d2f78783",
 						"exec": [
 							""
 						],
@@ -2159,7 +1434,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "569fb995-66e3-4486-8016-361d828ad8cf",
+						"id": "aadb7b31-7134-4e82-ad70-0c5c205e1b8c",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2212,7 +1487,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "4a48c61c-e093-43a5-b53d-e05b560523e1",
+						"id": "25b37d03-32df-4708-9754-4c75bcddef40",
 						"exec": [
 							""
 						],
@@ -2222,7 +1497,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "7aa9c60e-4bd4-45ea-84b0-1a988565ce4f",
+						"id": "18206c76-ce19-480a-a8a4-904341c7856e",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2278,7 +1553,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "5ded36d7-7dc8-416a-8913-708541ea463f",
+						"id": "36b85ccf-ab9f-4a78-8abe-fc4e3d545754",
 						"exec": [
 							""
 						],
@@ -2288,7 +1563,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "5f6c3cdd-bfdd-458e-8244-3883fb0fd55c",
+						"id": "84c57831-33e7-4bd5-8da6-a9c27b57d387",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2345,7 +1620,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "36254d77-cd27-420c-aa88-aa4d41c922d1",
+						"id": "f1f80a9f-2947-4d59-ad3b-cf334aee92ac",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2393,7 +1668,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d0374ed3-b904-406c-adf1-718808348947",
+						"id": "55e6269c-feff-490e-a2e1-d69a40ffcb90",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2441,7 +1716,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "030f0a6a-3986-4886-a892-8b6cfa51f453",
+						"id": "6944297f-80fd-404b-bfae-6a64a47f37f6",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2487,7 +1762,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "df57ebb5-7dd8-4c14-a7d2-6ad7109a2b20",
+						"id": "ee0300ef-6739-4780-ae75-b51bf5a25308",
 						"exec": [
 							"pm.test(\"getting a single user info by ID - getInfo\", ()=>{\r",
 							"    pm.response.to.have.status(202);\r",
@@ -2526,7 +1801,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "809d3add-ddc1-46fa-8e68-72fca4113b79",
+						"id": "adc9ec3c-8517-4471-8231-d6a4c593b0be",
 						"exec": [
 							"pm.environment.set(\"updatedBio\", \"I Like cooking Indian foods\")"
 						],
@@ -2536,7 +1811,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "eb4851ff-6361-4b25-b39b-fadffda0e44e",
+						"id": "578c1985-a1f2-4045-ae57-17db418c400f",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2592,7 +1867,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "8b8d72a8-7bed-4dd8-b987-51df412a05d4",
+						"id": "a5aebc6b-5043-424c-8629-73bcb2db6105",
 						"exec": [
 							""
 						],
@@ -2602,7 +1877,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "0cee1c55-04c2-4258-a04a-8851624c12d4",
+						"id": "c8f9314f-d022-4c63-9f37-3884f129611d",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2656,7 +1931,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "f80642b4-5852-45e0-866a-00b878d43d45",
+						"id": "38dfd282-4f74-418d-a975-5e7248bb1140",
 						"exec": [
 							""
 						],
@@ -2666,7 +1941,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "77ce5b10-3912-4724-9ddd-899e750f6e19",
+						"id": "278b1e70-2d51-4e05-8335-432a248015ff",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2720,7 +1995,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "3c137662-2092-4f86-9f12-1bfce9a0ecda",
+						"id": "1addcb05-2bb6-4378-9563-29ea8bb7181b",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2765,7 +2040,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "b4a28c48-7a16-43b5-b9fe-326d17176e11",
+						"id": "8eca535e-2a82-4004-a58a-3f4ddc112b7b",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2812,7 +2087,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "f8658e2e-f4a0-4c66-9947-a34942cd1a7c",
+						"id": "90d2aae7-fef7-4041-8f57-8b4c5338c20c",
 						"exec": [
 							"pm.test(\"isAdmin\", ()=> {\r",
 							"    pm.response.to.have.status(200)\r",
@@ -2852,7 +2127,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "6718c06b-4bd2-4a14-bf3c-a9ebd3cc421a",
+						"id": "ba1d007c-137a-4a80-bf58-5100e630b5da",
 						"exec": [
 							""
 						],
@@ -2862,7 +2137,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "e66d28bb-dab9-4889-a414-29458348a018",
+						"id": "d37d357e-792f-4df0-89c7-4ebeb8da9bd6",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2915,7 +2190,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c97ab993-dad8-460b-bb14-b5778e3e8754",
+						"id": "90dddbf3-a89e-48e4-ba0b-7811e1294cb2",
 						"exec": [
 							"pm.test(\"admin fetch all roles\", ()=>{\r",
 							"    pm.response.to.have.status(202)\r",
@@ -2953,7 +2228,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "52260daf-392d-452f-ae39-29e8deed08d7",
+						"id": "8dacee6f-a442-426e-8f26-def6312ebf51",
 						"exec": [
 							"pm.test(\"admin fetch all roles\", ()=>{\r",
 							"    pm.response.to.have.status(202)\r",
@@ -2997,7 +2272,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "f81e42de-51b2-4763-94dc-af59ae2a531d",
+						"id": "47e25bd2-8d68-437b-94a1-4c9e9b18a77e",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -3050,7 +2325,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "9f68ead2-039c-4987-bb85-e9d25dde7eb7",
+						"id": "8da623bf-7fe6-4f2e-b61a-b36174d27d64",
 						"exec": [
 							"const newRoleType = \"newRoleType\""
 						],
@@ -3060,7 +2335,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "da88e4a0-c6e2-4033-841c-e38d0e114105",
+						"id": "53920d43-ca1a-4d5a-af93-1d8d2abe1d33",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"pm.environment.set(\"roleType\", jsonData.updatedRole.role)\r",
@@ -3112,7 +2387,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d82af431-185c-447b-8a8c-90ab21bfc207",
+						"id": "b218005c-b19e-4c28-a78a-242bd166b8b3",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -3157,7 +2432,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "7eb04b24-c679-4eea-9ecf-9a7bb34578c6",
+						"id": "86c770a4-84d0-472a-beb5-c899674b47c5",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -3199,7 +2474,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "9202e79e-f864-4905-94d7-0e42c31f64a8",
+						"id": "a87e45bc-5429-48cc-9672-08673b6c5be3",
 						"exec": [
 							"let perPage = Math.floor(Math.random() * Math.floor(10));\r",
 							"\r",
@@ -3211,7 +2486,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "a3d6005a-1781-4f97-af09-49bf83155fe2",
+						"id": "86adba58-5ca2-4513-b82d-abc41802c8b6",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -3273,7 +2548,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "e5e373c7-38ab-490b-89ad-d4789b7cecd8",
+						"id": "3d52e181-82ff-4638-9bff-331dec4b1911",
 						"exec": [
 							"let perPage = Math.floor(Math.random() * Math.floor(6));\r",
 							"\r",
@@ -3285,7 +2560,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "391aca79-6c74-4473-8613-5e593e9c90d4",
+						"id": "044bd595-9d7b-41b4-947c-645c1eb2209d",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -3338,7 +2613,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "b9d34112-7e02-4d29-a9f4-20937479b19c",
+						"id": "9bd7cd91-fdc1-45ec-80b1-674344ac47a0",
 						"exec": [
 							""
 						],
@@ -3348,7 +2623,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "5dd6706d-78d5-47ed-9654-d3c9f26ed934",
+						"id": "03c4484f-8a67-4587-9d1c-cd82983d2bf7",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -3404,7 +2679,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "5db048a9-0961-451b-8e94-f0abed261200",
+						"id": "978f3cf1-1c29-4710-a973-2eb9fa108d4e",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -3468,7 +2743,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "cf79acb5-54a0-44cd-b959-15b44c7d54e2",
+						"id": "a3139f61-4fd8-4cf7-a1a1-50a2a78dfd7f",
 						"exec": [
 							"pm.test(\"admin deletes a user\", ()=>{\r",
 							"    pm.response.to.have.status(200)\r",
@@ -3517,7 +2792,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "88be8e27-5f9e-4ba8-9b5d-2613e73efd37",
+						"id": "4dd0af7c-070f-4de9-8b5c-88a19cec234a",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -3568,7 +2843,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "bf730285-4572-4520-9fb6-3d305889bfb4",
+						"id": "639223a7-ae3d-460f-afea-36c04454d61f",
 						"exec": [
 							"pm.test(\"get Comment\", ()=>{\r",
 							"    pm.response.to.have.status(200)\r",
@@ -3607,7 +2882,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "bb48f981-cb77-4993-ace3-f4230f0f6691",
+						"id": "3565cb10-4a7a-42d4-86c9-5523ed8173a1",
 						"exec": [
 							"pm.test(\"get All comments\", ()=>{\r",
 							"    pm.response.to.have.status(200)\r",
@@ -3645,7 +2920,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d686ee3b-8f6b-4136-ad5d-969cddb5f3fb",
+						"id": "16abee76-8285-4e5c-8179-79c058336851",
 						"exec": [
 							"pm.test(\"delete Comment\", ()=>{\r",
 							"    pm.response.to.have.status(200)\r",
@@ -3684,7 +2959,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "868016f9-a6b6-44dd-bdbb-7405726aae8f",
+						"id": "6cfd4407-99e1-47d0-bb9e-e7d0d92889cd",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -3735,7 +3010,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "98eca26a-072d-4728-ac46-c644111fb8e7",
+						"id": "d4899f71-2860-4bee-8cfd-a24bd8f14ead",
 						"exec": [
 							"pm.test(\"add Sub Comment\", ()=>{\r",
 							"    pm.response.to.have.status(200)\r",
@@ -3776,33 +3051,766 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Create Recipe",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "56e635d1-0eb5-4cc7-9546-8b0802375de2",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "eed2b890-3dbb-4040-8493-4386ca3ad475",
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"var recipeId = jsonData._id;\r",
+							"pm.environment.set(\"recipe_id\", recipeId);\r",
+							"\r",
+							"pm.test(\"Correct status code\",\r",
+							"    function(){\r",
+							"    pm.response.to.have.status(201);  \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Correct recipe response\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.name).to.eql(\"Fried Rice\");\r",
+							"    pm.expect(jsonData.cuisine).to.eql(\"International\");\r",
+							"    pm.expect(jsonData.preparation).to.eql([\"soak rice in water\", \"beat eggs in a bowl\"]);\r",
+							"    pm.expect(jsonData.cookingProcess).to.eql([\"stir the rice and egg batter in the frying pan\"]);\r",
+							"    pm.expect(jsonData.toServe).to.eql([\"serve with a drink\"]);\r",
+							"    pm.expect(jsonData.type).to.eql(\"Non-Vegetarian\");\r",
+							"    pm.expect(jsonData.image).to.eql(\"google.com\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Fried Rice\",\r\n    \"cuisine\": \"International\",\r\n    \"preparation\":[\"soak rice in water\", \"beat eggs in a bowl\"],\r\n    \"cookingProcess\":[\"stir the rice and egg batter in the frying pan\"],\r\n    \"toServe\": [\"serve with a drink\"],\r\n    \"type\": \"Non-Vegetarian\",\r\n    \"image\": \"google.com\",\r\n    \"ingredients\": [{\r\n        \"name\": \"Rice\",\r\n        \"quantity\": 500,\r\n        \"unit\": \"grams\"\r\n    }]\r\n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/recipes",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"recipes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Recipe 2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "121dc0a9-d29e-48d8-9296-6e6fcc137b11",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "c3b12268-ec83-4127-ab80-3bac1ebad239",
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"var recipeId2 = jsonData._id;\r",
+							"pm.environment.set(\"recipe_id2\", recipeId2);\r",
+							"\r",
+							"pm.test(\"Correct status code\",\r",
+							"    function(){\r",
+							"    pm.response.to.have.status(201);  \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Correct recipe response\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.name).to.eql(\"Alternate Fried Rice\");\r",
+							"    pm.expect(jsonData.cuisine).to.eql(\"International\");\r",
+							"    pm.expect(jsonData.preparation).to.eql([\"soak rice in water\"]);\r",
+							"    pm.expect(jsonData.cookingProcess).to.eql([\"stir the rice and add freshly cracked eggs in the frying pan\"]);\r",
+							"    pm.expect(jsonData.toServe).to.eql([\"serve with a drink\"]);\r",
+							"    pm.expect(jsonData.type).to.eql(\"Non-Vegetarian\");\r",
+							"    pm.expect(jsonData.image).to.eql(\"google.com\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Alternate Fried Rice\",\r\n    \"cuisine\": \"International\",\r\n    \"preparation\":[\"soak rice in water\"],\r\n    \"cookingProcess\":[\"stir the rice and add freshly cracked eggs in the frying pan\"],\r\n    \"toServe\": [\"serve with a drink\"],\r\n    \"type\": \"Non-Vegetarian\",\r\n    \"image\": \"google.com\"    \r\n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/recipes",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"recipes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all recipes",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d2e84e46-866c-4cfc-b2fd-ff2d9a413a91",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "41a371fd-4319-441d-8586-00f55197757f",
+						"exec": [
+							"pm.test(\"Correct status code\",\r",
+							"    function(){\r",
+							"    pm.response.to.have.status(200);  \r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/recipes",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"recipes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Recipe Fried Rice",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "959ddca9-a043-4aad-b716-ba685d0b9ebd",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a0ece210-df91-4f73-a481-e7c7b0056b5f",
+						"exec": [
+							"pm.test(\"Correct status code\",\r",
+							"    function(){\r",
+							"    pm.response.to.have.status(200);  \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Correct recipe response\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.name).to.eql(\"Fried Rice\");\r",
+							"    pm.expect(jsonData.cuisine).to.eql(\"International\");\r",
+							"    pm.expect(jsonData.preparation).to.eql([\"soak rice in water\", \"beat eggs in a bowl\"]);\r",
+							"    pm.expect(jsonData.cookingProcess).to.eql([\"stir the rice and egg batter in the frying pan\"]);\r",
+							"    pm.expect(jsonData.toServe).to.eql([\"serve with a drink\"]);\r",
+							"    pm.expect(jsonData.type).to.eql(\"Non-Vegetarian\");\r",
+							"    pm.expect(jsonData.image).to.eql(\"google.com\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/recipes/{{recipe_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"{{recipe_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get non-existing recipe",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "8ee3391a-ffc6-4dde-9fba-52ff06c641d1",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "5df78922-00bf-4ad6-9912-59031ed4275d",
+						"exec": [
+							"pm.test(\"Correct status code\",\r",
+							"    function(){\r",
+							"    pm.response.to.have.status(404);  \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Correct recipe response\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"Recipe not found!\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/recipes/5f63a1b67edd7626d83d4088",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"5f63a1b67edd7626d83d4088"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit non-existing recipe",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f505c751-7ef8-49eb-82fd-3c6aa3391f58",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "8ba9fdd7-54db-4814-be75-87304683f9c3",
+						"exec": [
+							"pm.test(\"Correct status code\",\r",
+							"    function(){\r",
+							"    pm.response.to.have.status(404);  \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Correct recipe response\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"Recipe not found!\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/recipes/5f63a1b67edd7626d83d4088",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"5f63a1b67edd7626d83d4088"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Fried Rice Recipe",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "8c83dc98-e62b-466e-997a-3e1227144a5c",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "95d6aeaf-e7ff-4a84-9b97-48bd96d5ce4c",
+						"exec": [
+							"pm.test(\"Correct status code\",\r",
+							"    function(){\r",
+							"    pm.response.to.have.status(200);  \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Correct recipe response\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.name).to.eql(\"Fried Rice\");\r",
+							"    pm.expect(jsonData.cuisine).to.eql(\"Japanese\");\r",
+							"    pm.expect(jsonData.preparation).to.eql([\"soak rice in water\", \"beat eggs in a bowl\"]);\r",
+							"    pm.expect(jsonData.cookingProcess).to.eql([\"stir the rice and egg batter in the frying pan\",  \"let it cool for 5 minutes\"]);\r",
+							"    pm.expect(jsonData.toServe).to.eql([\"serve with a drink\", \"serve with sauce\"]);\r",
+							"    pm.expect(jsonData.type).to.eql(\"Non-Vegetarian\");\r",
+							"    pm.expect(jsonData.image).to.eql(\"imgur.com\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Fried Rice\",\r\n    \"cuisine\": \"Japanese\",\r\n    \"preparation\":[\"soak rice in water\", \"beat eggs in a bowl\"],\r\n    \"cookingProcess\":[\"stir the rice and egg batter in the frying pan\", \"let it cool for 5 minutes\"],\r\n    \"toServe\": [\"serve with a drink\", \"serve with sauce\"],\r\n    \"type\": \"Non-Vegetarian\",\r\n    \"image\": \"imgur.com\"\r\n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/recipes/{{recipe_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"{{recipe_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Fried Rice Recipe",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "06c37140-2d9f-4afd-90ba-965538286da1",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b74d202b-4236-4675-b638-f34cd593ca7f",
+						"exec": [
+							"pm.test(\"Correct status code\",\r",
+							"    function(){\r",
+							"    pm.response.to.have.status(200);  \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Correct recipe response\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.name).to.eql(\"Fried Rice Supreme\");\r",
+							"    pm.expect(jsonData.cuisine).to.eql(\"Japanese\");\r",
+							"    pm.expect(jsonData.preparation).to.eql([\"soak rice in water\", \"beat eggs in a bowl\"]);\r",
+							"    pm.expect(jsonData.cookingProcess).to.eql([\"stir the rice and egg batter in the frying pan\", \"add spices while stirring\", \"leave it in pan for 5 minutes without heat\"]);\r",
+							"    pm.expect(jsonData.toServe).to.eql([\"serve with a drink\", \"serve with sauce\"]);\r",
+							"    pm.expect(jsonData.type).to.eql(\"Vegetarian\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Fried Rice Supreme\",\r\n    \"cuisine\": \"Japanese\",\r\n    \"preparation\":[\"soak rice in water\", \"beat eggs in a bowl\"],\r\n    \"cookingProcess\":[\"stir the rice and egg batter in the frying pan\", \"add spices while stirring\", \"leave it in pan for 5 minutes without heat\"],\r\n    \"toServe\": [\"serve with a drink\", \"serve with sauce\"],\r\n    \"type\": \"Vegetarian\"\r\n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/recipes/{{recipe_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"{{recipe_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update non-existing recipe",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2db509c9-dfbe-4def-862d-1651f28fc641",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "fff529ee-b0df-496e-bbeb-c54fab8557ba",
+						"exec": [
+							"pm.test(\"Correct status code\",\r",
+							"    function(){\r",
+							"    pm.response.to.have.status(404);  \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Correct recipe response\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"Recipe not found!\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/recipes/5f63a1b67edd7626d83d4088",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"5f63a1b67edd7626d83d4088"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete non-existing recipe",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e6723409-8d27-432e-9937-31e25dbbe94a",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "938f19ca-60f2-4d22-b04f-64dc93a6981a",
+						"exec": [
+							"pm.test(\"Correct status code\",\r",
+							"    function(){\r",
+							"    pm.response.to.have.status(404);  \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Correct recipe response\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"Recipe not found!\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/recipes/5f63a1b67edd7626d83d4088",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"5f63a1b67edd7626d83d4088"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Recipe 2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9ec0cb40-e5ff-4f72-8648-a3e0de97f30f",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "ee91d0ae-ed2e-4931-a170-0caeb7916e14",
+						"exec": [
+							"pm.test(\"Correct status code\",\r",
+							"    function(){\r",
+							"    pm.response.to.have.status(200);  \r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/recipes/{{recipe_id2}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"{{recipe_id2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Recipe2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ac9a9884-00e9-441c-aea2-fcbd2fda1ffa",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "5e9f7e97-8dea-4185-a7c5-4aca48a3a8e8",
+						"exec": [
+							"pm.test(\"Correct status code\",\r",
+							"    function(){\r",
+							"    pm.response.to.have.status(404);  \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Correct recipe response\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"Recipe not found!\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/recipes/{{recipe_id2}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"{{recipe_id2}}"
+					]
+				}
+			},
+			"response": []
 		}
 	],
-  "event": [
-    {
-      "listen": "prerequest",
-      "script": {
-        "id": "ee39ef98-7e40-4c9a-9727-c10b3f2d609a",
-        "type": "text/javascript",
-        "exec": [""]
-      }
-    },
-    {
-      "listen": "test",
-      "script": {
-        "id": "4eb81008-6f74-41fe-95c4-ee5e2a651ace",
-        "type": "text/javascript",
-        "exec": [""]
-      }
-    }
-  ],
-  "variable": [
-    {
-      "id": "cd185905-a834-4211-8030-583d17702534",
-      "key": "host",
-      "value": "{{host}}",
-      "type": "string"
-    }
-  ],
-  "protocolProfileBehavior": {}
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "a11b5caf-7003-47ee-81ef-e3cec20da66f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "8c183c6b-e303-4764-a046-3c96cc64b001",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "cd185905-a834-4211-8030-583d17702534",
+			"key": "host",
+			"value": "{{host}}",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
 }

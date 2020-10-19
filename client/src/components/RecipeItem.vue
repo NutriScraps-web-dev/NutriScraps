@@ -18,9 +18,13 @@
       <b-button variant="primary" style="margin:auto" @click="goToRecipe(recipe._id)">
         View Recipe
       </b-button>
+      <b-button variant="primary" style="margin:auto" @click="editRecipe(recipe._id)">
+        Edit Recipe
+      </b-button>
       <b-button href="#" variant="danger" style="margin:auto" v-on:click="deleteRecipe()">Delete Recipe</b-button>
     </b-card-body>
   </b-card>
+  <br>
 </div>
 </template>
 
@@ -36,6 +40,9 @@ export default {
     },
     goToRecipe() {
       this.$router.push({ name: 'recipe', params: { id: this.recipe._id } })
+    },
+    editRecipe() {
+      this.$router.push({ name: 'editRecipe', params: { id: this.recipe._id } })
     }
   }
 

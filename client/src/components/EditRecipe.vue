@@ -1,8 +1,6 @@
 <template>
   <b-container class="mt-3 form-container">
     <br>
-    <h1><b>Create Your Recipe!</b></h1>
-    <br>
     <b-form>
       <FormulateForm v-model="recipes"  @submit="onSubmit">
           <FormulateInput
@@ -20,6 +18,7 @@
             placeholder="International, Mexican, Thai, Italian....."
             label="Cuisine"
           />
+          <!--
           <FormulateInput
             element-class=""
             type="group"
@@ -32,7 +31,6 @@
             element-class=""
             type="text"
             name="preparation"
-            placeholder="Preparation steps before cooking"
           />
           </FormulateInput>
           <FormulateInput
@@ -69,6 +67,7 @@
           label="To Serve"
         />
         </FormulateInput>
+        -->
         <FormulateInput
           :options="[
           {value: 'Unspecified', label: 'Unspecified'},
@@ -89,77 +88,64 @@
             label="Image Link"
           />
           <br>
-        <button class="btn btn-info mx-1 px-5" type="submit">Create Recipe!</button>
+        <button class="btn btn-info mx-1 px-5" type="submit">Update Recipe!</button>
       </FormulateForm>
     </b-form>
     <br>
     <br>
   </b-container>
 </template>
-
 <script>
 import { Api } from '@/Api'
 
 export default {
-  props: ['recipe'],
+  name: 'recipe',
   data() {
     return {
-      recipes: {
-        name: '',
-        cuisine: '',
-        preparation: [''],
-        cookingProcess: [''],
-        toServe: [''],
-        type: '',
-        image: ''
-      }
+      recipes: [],
+      message: '',
+      text: ''
     }
+  },
+  mounted() {
+    Api.get(`/recipes/${this.$route.params.id}`)
+      .then(response => {
+        // console.log(response.data)
+        this.recipes = response.data
+      })
+      .catch(error => {
+        this.message = error.message
+        console.error(error)
+        this.recipes = []
+        // TODO: display error message
+      })
+      .then(() => {
+        //   This code is always executed at the end. After success or failure.
+      })
   },
   methods: {
     onSubmit() {
       console.log(this.recipes)
-      const preparations = this.recipes.preparation.map(a => a.preparation)
+      /* const preparations = this.recipes.preparation.map(a => a.preparation)
       console.log(preparations)
       const cookingProcesses = this.recipes.cookingProcess.map(a => a.cookingProcess)
       console.log(cookingProcesses)
       const toServes = this.recipes.toServe.map(a => a.toServe)
-      console.log(toServes)
+      console.log(toServes) */
       const recipe = {
         name: this.recipes.name,
         cuisine: this.recipes.cuisine,
-        preparation: preparations,
-        cookingProcess: cookingProcesses,
-        toServe: toServes,
         type: this.recipes.type,
         image: this.recipes.image
       }
       console.log(recipe)
-      Api.post('/recipes', recipe)
+      Api.patch(`/recipes/${this.$route.params.id}`, recipe)
         .then(response => {
           console.log(response)
         }).catch(error => {
           console.error(error)
         })
-      alert('Your Recipe has been Created!')
-      this.$router.push({ name: 'recipes' })
     }
   }
 }
 </script>
-
-<style scoped>
-.form-container {
-  width: 50vw !important;
-}
-@media screen and (max-width: 600px) {
-  .form-container {
-  width: 65vw !important;
-}
-}
-@media screen and (max-width: 430px) {
-  .form-container {
-  width: 80vw !important;
-}
-}
-
-</style>

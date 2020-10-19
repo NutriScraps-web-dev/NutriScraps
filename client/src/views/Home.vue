@@ -92,9 +92,4 @@ export default {
 .header{
   text-align: center;
 }
-.carousel{
-  width: 90%;
-  height: 90%;
-  margin: auto;
-}
 </style>

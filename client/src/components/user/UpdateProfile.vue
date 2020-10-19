@@ -77,14 +77,20 @@
             />
           </b-form-group>
         </b-form-group>
-        <div class="pass-btn-con">
+        <div class="d-flex pass-btn-con d-lg-block d-md-block">
         <b-button
           variant="primary"
-          class="ml-2 my-4 pass-btn px-5 align-self-center"
+          class="pass-btn my-2 mx-md-4 my-lg-4 px-3 px-md-5"
           type="submit"
           :disabled="hasError"
           v-b-toggle="'update-user-col'"
           >Update</b-button
+        >
+        <b-button
+          variant="outline-primary"
+          class="pass-btn my-2 mx-md-4 my-lg-4 px-3 px-md-5"
+          v-b-toggle="'update-user-col'"
+          >Close</b-button
         >
         </div>
       </FormulateForm>
