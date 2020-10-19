@@ -21,7 +21,6 @@ const actions = {
         Authorization: `Bearer ${auth.state.authToken}`
       }
     }).then(res => {
-      console.log(res)
     })
   }
 }

@@ -92,13 +92,26 @@ exports.getRecipeByTitle = (req, res, next) => {
 };
 
 exports.getRecipe = (req, res, next) => {
-    const id = req.params.id;
-    Recipe.findById(id, (err, recipe) => {
-        if (err) { return next(err); }
-        if (recipe === null) {
-            return res.status(404).json({ 'message': 'Recipe not found!' });
-        }
-        res.status(200).json(recipe);
+  const id = req.params.id;
+  Recipe.findById(id)
+    .populate({
+      path: 'comments',
+      model: 'Comment',
+      populate: {
+          path: 'reviewer',
+          model: "User",
+          select: 'username'
+      }
+    })
+    .exec((err, recipe) => {
+      if (err) {
+        return next(err);
+      }
+      if (recipe === null) {
+        return res.status(404).json({ message: 'Recipe not found!' });
+      }
+      console.log(recipe.comments);
+      res.status(200).json(recipe);
     });
 };
 

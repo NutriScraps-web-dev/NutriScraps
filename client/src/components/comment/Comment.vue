@@ -1,23 +1,27 @@
 <template>
-    <FormulateForm @submit="onSubmit" v-if="isLoggedIn">
-      <FormulateInput
-        element-class=""
-        v-model="content"
-        type="textarea"
-        placeholder="Your Comment Here"
-        validation="max:200,length"
-        error-behavior="live"
-        :help="`Keep it under 200 characters. ${200 - content.length} left.`"
-      />
-
-      <b-button
-        variant="primary"
-        class="pass-btn my-2 my-lg-0 px-3 px-md-5 float-right"
-        type="submit"
-      >
-        Post
-      </b-button>
-    </FormulateForm>
+  <div>
+    <b-card class="mb-3">
+      <FormulateForm @submit="onSubmit" v-if="isLoggedIn">
+        <FormulateInput
+          element-class=""
+          v-model="content"
+          type="textarea"
+          placeholder="Your Comment Here"
+          validation="max:200,length"
+          error-behavior="live"
+          :help="`Keep it under 200 characters. ${200 - content.length} left.`"
+        />
+        <b-button
+          size="sm"
+          variant="primary"
+          class="pass-btn px-3 px-md-2 float-right"
+          type="submit"
+        >
+          Post Comment
+        </b-button>
+      </FormulateForm>
+    </b-card>
+  </div>
 </template>
 
 <script>
@@ -47,3 +51,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.pass-btn{
+  margin-top: 0 !important;
+}
+</style>
