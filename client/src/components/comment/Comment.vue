@@ -1,51 +1,36 @@
 <template>
-    <div>
-        <b-button v-b-modal.commentsDialog>Comments</b-button>
-        <b-modal id="commentsDialog" size="lg" scrollable centered title="Comments">
-            <b-container>
-                <b-list-group-item>
-                    <b-row>
-                        <h5 class="mt-2 ml-1">This dish is spicy!!</h5>
-                        <div class="ml-auto">
-                            <b-button class="mr-1" pill variant="outline-primary" @click="likeComments">
-                                <b-icon icon="hand-thumbs-up" aria-hidden="true"></b-icon>Likes
-                            </b-button>
-                            <b-button class="mr-1" pill variant="outline-success" @click="replyComments">
-                                <b-icon icon="reply" aria-hidden="true"></b-icon>Reply
-                            </b-button>
-                        </div>
-                    </b-row>
-                </b-list-group-item>
-            </b-container>
-            <template v-slot:modal-footer>
-                <div class="w-100">
-                    <b-button variant="danger" pill size="sm" class="float-right" @click="hideModal"> Close </b-button>
-                </div>
-            </template>
-        </b-modal>
-    </div>
+  <FormulateForm @submit="onSubmit">
+    <FormulateInput
+      element-class=""
+      v-model="content"
+      type="textarea"
+      label="Comment:"
+      validation="max:200,length"
+      error-behavior="live"
+      :help="`Keep it under 200 characters. ${200 - content.length} left.`"
+    />
+
+    <b-button
+      variant="primary"
+      class="pass-btn my-2 my-lg-0 px-3 px-md-5 float-right"
+      type="submit"
+    >
+      Post
+    </b-button>
+  </FormulateForm>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      content: ''
+    }
+  },
   methods: {
-    showModal() {
-      this.$bvModal.show('commentsDialog')
-    },
-    hideModal() {
-      this.$bvModal.hide('commentsDialog')
-    },
-    toggleModal() {
-      this.$bvModal.toggle('#toggle-btn')
-    },
-    likeComments() {
-    },
-    replyComments() {
+    onSubmit() {
+      this.$store.dispatch('createComment', { content: this.content })
     }
   }
 }
 </script>
-
-<style>
-
-</style>

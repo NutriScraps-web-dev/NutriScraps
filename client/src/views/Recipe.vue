@@ -51,12 +51,13 @@
       <br>
       <hr>
       <br>
+      <comment></comment>
   </b-container>
 </template>
 
 <script>
 import { Api } from '@/Api'
-
+import comment from '../components/comment/Comment'
 export default {
   name: 'recipe',
   data() {
@@ -81,6 +82,9 @@ export default {
       .then(() => {
         //   This code is always executed at the end. After success or failure.
       })
+  },
+  components: {
+    comment
   }
 }
 </script>

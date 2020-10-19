@@ -7,7 +7,6 @@ import Recipes from './views/Recipes.vue'
 import Signup from './views/auth/Signup.vue'
 import Login from './views/auth/Login.vue'
 import Profile from './views/user/Profile.vue'
-import Comment from './components/comment/Comment.vue'
 
 import Roles from './views/admin/RolesManagement.vue'
 import Users from './views/admin/UsersManagement.vue'
@@ -70,11 +69,6 @@ export default new Router({
           next('users/login')
         }
       }
-    },
-    {
-      path: '/comments',
-      name: 'comments',
-      component: Comment
     },
     {
       path: '/admins/roles',

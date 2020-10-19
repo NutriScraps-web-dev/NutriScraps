@@ -14,6 +14,15 @@ const actions = {
     }).then(res => {
       dispatch('getUserInfo')
     })
+  },
+  createComment({ commit, dispatch }, payload) {
+    Api.post('comments', payload, {
+      headers: {
+        Authorization: `Bearer ${auth.state.authToken}`
+      }
+    }).then(res => {
+      console.log(res)
+    })
   }
 }
 
