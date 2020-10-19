@@ -12,6 +12,8 @@ import Users from './views/admin/UsersManagement.vue'
 import CreateRecipe from './components/CreateRecipe.vue'
 import Recipe from './views/Recipe.vue'
 import EditRecipe from './components/EditRecipe.vue'
+import AboutUs from './views/AboutUs.vue'
+
 Vue.use(Router)
 export default new Router({
   mode: 'history',
@@ -26,6 +28,11 @@ export default new Router({
       path: '/contact-us',
       name: 'contactUs',
       component: ContactUs
+    },
+    {
+      path: '/about-us',
+      name: 'aboutUs',
+      component: AboutUs
     },
     {
       path: '/recipes',

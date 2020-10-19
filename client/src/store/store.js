@@ -6,7 +6,6 @@ import user from './modules/user'
 import role from './modules/admin/role'
 import comment from './modules/comment'
 import userManagement from './modules/admin/userManagement'
-import comment from './modules/comment'
 import rating from './modules/rating'
 
 Vue.use(Vuex)
