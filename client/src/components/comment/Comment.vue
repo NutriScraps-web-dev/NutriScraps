@@ -47,6 +47,7 @@ export default {
         comment: { content: this.content },
         recipeId: this.recipeId
       })
+      this.content = ''
     }
   }
 }
@@ -55,5 +56,6 @@ export default {
 <style scoped>
 .pass-btn{
   margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 </style>
