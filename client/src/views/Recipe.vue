@@ -62,11 +62,8 @@
     <br />
     <h3>Comments:</h3>
     <br />
-    <comment :recipeId="recipes._id"></comment>
-    <show-comments
-      :comments="recipes.comments"
-    ></show-comments>
-
+    <comment :recipeId="recipes._id" v-on:addComment="updateComments($event)"></comment>
+    <show-comments :comments="recipeComments"></show-comments>
   </b-container>
 </template>
 
@@ -80,7 +77,8 @@ export default {
     return {
       recipes: [],
       message: '',
-      text: ''
+      text: '',
+      recipeComments: []
     }
   },
   mounted() {
@@ -88,6 +86,7 @@ export default {
       .then(response => {
         console.log('response.data', response.data.comments)
         this.recipes = response.data
+        this.recipeComments = response.data.comments
       })
       .catch(error => {
         this.message = error.message
@@ -102,6 +101,12 @@ export default {
   components: {
     comment,
     ShowComments
+  },
+  methods: {
+    updateComments(event) {
+      this.recipeComments.push(event)
+      console.log('updateCommentsafter', this.recipeComments)
+    }
   }
 }
 </script>

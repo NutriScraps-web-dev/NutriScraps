@@ -34,7 +34,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['isLoggedIn'])
+    ...mapGetters(['isLoggedIn', 'getComment'])
   },
   data() {
     return {
@@ -43,18 +43,28 @@ export default {
   },
   methods: {
     onSubmit() {
-      this.$store.dispatch('createComment', {
-        comment: { content: this.content },
-        recipeId: this.recipeId
-      })
-      this.content = ''
+      this.$store
+        .dispatch('createComment', {
+          comment: { content: this.content },
+          recipeId: this.recipeId
+        }).then(() => {
+          console.log('getComment', { content: this.content, reviewer: 'annonemey', createdAt: 'date' })
+          this.$emit('addComment', {
+            content: this.content,
+            reviewer: {
+              username: ''
+            },
+            createdAt: ''
+          })
+          this.content = ''
+        })
     }
   }
 }
 </script>
 
 <style scoped>
-.pass-btn{
+.pass-btn {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
