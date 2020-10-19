@@ -51,7 +51,9 @@
       <br>
       <hr>
       <br>
-      <comment></comment>
+      <h3>Comments:</h3>
+      <br>
+      <comment :recipeId="recipes._id"></comment>
   </b-container>
 </template>
 

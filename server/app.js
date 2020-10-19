@@ -69,7 +69,7 @@ app.use('/api/users', userRouter);
 app.use('/api/roles', roleRouter);
 app.use('/api/admins', adminRouter);
 
-app.use('/api/comments', commentRouter);
+app.use('/api/recipe', commentRouter);
 app.use('/rating', ratingRouter);
 
 app.use(recipesRouter);

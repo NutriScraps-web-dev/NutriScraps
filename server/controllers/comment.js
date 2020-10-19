@@ -1,10 +1,12 @@
 const Comment = require('../models/comment');
 const User = require('../models/user');
+const Recipe = require('../models/recipe');
 const mongoose = require('mongoose');
 
 exports.createComment = (req, res, next) => {
   const commentReviewer = mongoose.Types.ObjectId(req.userId);
   const commentContent = req.body.content;
+  const recipeId = req.params.id
   let tem_comment = null;
   const comment = new Comment({
     reviewer: commentReviewer,
@@ -21,6 +23,11 @@ exports.createComment = (req, res, next) => {
     .then((user) => {
       user.comments.push(tem_comment);
       return user.save();
+    }).then(result=>{
+      return Recipe.findById(recipeId)
+    }).then(recipe => {
+      recipe.comments.push(tem_comment)
+      return recipe.save();
     })
     .then((result) => {
       res.status(200).json(tem_comment);
@@ -76,6 +83,11 @@ exports.deleteComment = (req, res, next) => {
         { comments: req.params.id },
         { $pull: { comments: req.params.id } }
       );
+    }).then(result => {
+      return Recipe.updateOne (
+        { comments: req.params.id },
+        { $pull: { comments: req.params.id } }
+      )
     })
     .then((result) => {
       res.status(200).json({ message: `The comment is deleted` });

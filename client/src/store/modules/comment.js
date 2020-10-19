@@ -16,7 +16,7 @@ const actions = {
     })
   },
   createComment({ commit, dispatch }, payload) {
-    Api.post('comments', payload, {
+    Api.post(`recipe/${payload.recipeId}/comments`, payload.comment, {
       headers: {
         Authorization: `Bearer ${auth.state.authToken}`
       }
