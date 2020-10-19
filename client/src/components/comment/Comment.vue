@@ -48,14 +48,6 @@ export default {
           comment: { content: this.content },
           recipeId: this.recipeId
         }).then(() => {
-          console.log('getComment', { content: this.content, reviewer: 'annonemey', createdAt: 'date' })
-          this.$emit('addComment', {
-            content: this.content,
-            reviewer: {
-              username: ''
-            },
-            createdAt: ''
-          })
           this.content = ''
         })
     }

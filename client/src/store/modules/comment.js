@@ -2,14 +2,9 @@ import { Api } from '@/Api'
 import auth from './auth'
 
 const state = {
-  comment: null
 }
 
 const getters = {
-  getComment(state) {
-    console.log('getCommentGetter', state.comment)
-    return state.comment
-  }
 }
 
 const actions = {
@@ -28,17 +23,12 @@ const actions = {
         Authorization: `Bearer ${auth.state.authToken}`
       }
     }).then(res => {
-      console.log('comment', res.data)
-      commit('createComment', res.data)
+      dispatch('getRecipe', payload.recipeId)
     })
   }
 }
 
 const mutations = {
-  createComment(state, payload) {
-    state.comment = payload
-    console.log('state.comment', state.comment)
-  }
 }
 
 export default {

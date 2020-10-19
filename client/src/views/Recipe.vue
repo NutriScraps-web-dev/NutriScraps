@@ -1,8 +1,8 @@
 <template>
-  <b-container class="mt-3 form-container">
+  <b-container class="mt-3 form-container" v-if="recipes">
     <br />
     <h1>
-      <b>{{ this.recipes.name }}</b>
+      <b>{{ recipes.name }}</b>
     </h1>
     <br />
     <b-img
@@ -15,11 +15,11 @@
     <br />
     <br />
     <h3>
-      <b>Cuisine: </b><i>{{ this.recipes.cuisine }}</i>
+      <b>Cuisine: </b><i>{{ recipes.cuisine }}</i>
     </h3>
     <br />
     <h3>
-      <b>Type: </b><i>{{ this.recipes.type }}</i>
+      <b>Type: </b><i>{{ recipes.type }}</i>
     </h3>
     <br />
     <hr />
@@ -62,51 +62,29 @@
     <br />
     <h3>Comments:</h3>
     <br />
-    <comment :recipeId="recipes._id" v-on:addComment="updateComments($event)"></comment>
-    <show-comments :comments="recipeComments"></show-comments>
+    <comment :recipeId="recipes._id"></comment>
+    <show-comments :comments="recipes.comments"></show-comments>
   </b-container>
 </template>
 
 <script>
-import { Api } from '@/Api'
 import comment from '../components/comment/Comment'
 import ShowComments from '../components/comment/ShowComments'
+
 export default {
-  name: 'recipe',
-  data() {
-    return {
-      recipes: [],
-      message: '',
-      text: '',
-      recipeComments: []
+  computed: {
+    recipes() {
+      return !this.$store.getters.recipeState
+        ? false
+        : this.$store.getters.recipeState
     }
   },
-  mounted() {
-    Api.get(`/recipes/${this.$route.params.id}`)
-      .then(response => {
-        console.log('response.data', response.data.comments)
-        this.recipes = response.data
-        this.recipeComments = response.data.comments
-      })
-      .catch(error => {
-        this.message = error.message
-        console.error(error)
-        this.recipes = []
-        // TODO: display error message
-      })
-      .then(() => {
-        //   This code is always executed at the end. After success or failure.
-      })
+  created() {
+    this.$store.dispatch('getRecipe', this.$route.params.id)
   },
   components: {
     comment,
     ShowComments
-  },
-  methods: {
-    updateComments(event) {
-      this.recipeComments.push(event)
-      console.log('updateCommentsafter', this.recipeComments)
-    }
   }
 }
 </script>

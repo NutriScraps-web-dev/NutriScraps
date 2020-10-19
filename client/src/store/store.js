@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import auth from './modules/auth'
-import error from './modules/error'
+import recipe from './modules/recipe'
 import user from './modules/user'
 import role from './modules/admin/role'
 import comment from './modules/comment'
@@ -26,7 +26,7 @@ export const store = new Vuex.Store({
     auth,
     user,
     role,
-    error,
+    recipe,
     comment,
     userManagement
   }
