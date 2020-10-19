@@ -22,7 +22,7 @@
       <b-link to="/">
         <img
           class="navbar-logo"
-          src="../assets/foodlogo.png"
+          src="../assets/NutriScrapslogo.png"
           alt="NutriScraps"
         />
       </b-link>
@@ -38,7 +38,7 @@
               <b-link class="nav-item nav-link mx-2 px-2" to="/recipes">Recipe</b-link>
             </li>
             <li class="nav-item">
-              <b-link class="nav-item nav-link mx-2 px-2" to="/about">About</b-link>
+              <b-link class="nav-item nav-link mx-2 px-2" to="/about-us">About</b-link>
             </li>
             <li class="nav-item">
               <b-link class="nav-item nav-link mx-2 px-2" to="/contact-us">Contact</b-link>
@@ -81,6 +81,6 @@ export default {
   background-color: #e3f2fd;
 }
 .navbar-logo {
-  width: 35px;
+  width: 70px;
 }
 </style>
