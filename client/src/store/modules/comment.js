@@ -9,7 +9,7 @@ const getters = {
 
 const actions = {
   deleteComment({ commit, dispatch }, payload) {
-    Api.delete(`recipe/comments/${payload}`, {
+    Api.delete(`recipes/comments/${payload}`, {
       headers: {
         Authorization: `Bearer ${auth.state.authToken}`
       }
@@ -18,7 +18,7 @@ const actions = {
     })
   },
   createComment({ commit, dispatch }, payload) {
-    Api.post(`recipe/${payload.recipeId}/comments`, payload.comment, {
+    Api.post(`recipes/${payload.recipeId}/comments`, payload.comment, {
       headers: {
         Authorization: `Bearer ${auth.state.authToken}`
       }
