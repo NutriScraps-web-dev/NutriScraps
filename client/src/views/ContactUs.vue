@@ -67,11 +67,6 @@ export default {
   methods: {
     sendEmail: (e) => {
       emailjs.sendForm('contact_service', 'contact_form', e.target, 'user_14Bjs7n5tcUqKS6QSmOrr')
-        .then((result) => {
-          console.log('SUCCESS', result.status, result.text)
-        }, (error) => {
-          console.log('FAILED...', error)
-        })
     },
     onReset() {
       this.$router.push({ name: 'home' })

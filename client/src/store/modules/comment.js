@@ -30,7 +30,6 @@ const actions = {
         Authorization: `Bearer ${auth.state.authToken}`
       }
     }).then(res => {
-      console.log('subcomment', res)
       dispatch('getRecipe', payload.recipeId)
     })
   }

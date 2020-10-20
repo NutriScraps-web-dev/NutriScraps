@@ -7,16 +7,13 @@ const state = {
 
 const getters = {
   recipeState(state) {
-    console.log('state.recipe', state.recipe)
     return state.recipe
   }
 }
 
 const mutations = {
   setRecipe(state, payload) {
-    console.log(payload)
     state.recipe = payload
-    console.log('state.recipe', state.recipe)
   }
 }
 
@@ -33,7 +30,6 @@ const actions = {
   getRecipe({ commit }, payload) {
     Api.get(`/recipes/${payload}`)
       .then(response => {
-        console.log('response.data', response.data)
         commit('setRecipe', response.data)
       })
   }

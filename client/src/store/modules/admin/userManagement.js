@@ -26,16 +26,10 @@ const actions = {
       }
     })
       .then(result => {
-        console.log('get All USers')
-        console.log(result.data.userDocs)
         commit('storeUsers', result.data.userDocs)
       })
-      .catch(err => console.log(err))
   },
   updateUser({ commit, state }, payload) {
-    console.log('updateRole')
-    console.log(payload)
-    console.log(state.selectedUser._id)
     Api.patch(`admins/users/${state.selectedUser._id}`, payload, {
       headers: {
         Authorization: `Bearer ${auth.state.authToken}`
@@ -43,11 +37,9 @@ const actions = {
     })
       .then(res => {
         if (res.state === 200) {
-          console.log(res)
           // commit('storeUser')
         }
       })
-      .catch(err => console.log(err))
   },
   deleteSelectedUser({ commit, state }) {
     Api.delete(`admins/users/${state.selectedUser._id}`, {
@@ -58,7 +50,6 @@ const actions = {
       .then(res => {
         commit('DeleteSelectedUser', state.selectedUser._id)
       })
-      .catch(err => console.log(err))
   }
 }
 

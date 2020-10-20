@@ -24,13 +24,10 @@ const actions = {
     })
       .then(result => {
         commit('createRole', result)
-        console.log('getAllRoles beofere')
         dispatch('getAllRoles')
-        console.log('getAllRoles after')
       })
   },
   getAllRoles: ({ commit }) => {
-    console.log('getAllRoles insite 01')
     if (!auth.state.authToken) {
       return
     }
@@ -40,14 +37,10 @@ const actions = {
       }
     })
       .then(result => {
-        console.log('getAllRoles inside')
         commit('storeRoles', result.data)
       })
   },
   updateRole({ commit, state }, payload) {
-    console.log('updateRole')
-    console.log(payload)
-    console.log(state.role._id)
     Api.patch(`roles/${state.role._id}`, payload, {
       headers: {
         Authorization: `Bearer ${auth.state.authToken}`
@@ -55,7 +48,6 @@ const actions = {
     })
       .then(res => {
         if (res.state === 200) {
-          console.log(res)
           // commit('storeUser')
         }
       })

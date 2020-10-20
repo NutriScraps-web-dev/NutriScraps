@@ -47,10 +47,6 @@
                 <b-col>{{ row.item.createdAt.split('T')[0] }}</b-col>
               </b-row>
               <b-row class="mb-2">
-                <b-col sm="3" class="text-sm-right"><b>Likes :</b></b-col>
-                <b-col>amont of likes</b-col>
-              </b-row>
-              <b-row class="mb-2">
                 <b-col sm="3" class="text-sm-right"
                   ><b>Commented At :</b></b-col
                 >
@@ -114,7 +110,6 @@ export default {
   },
   methods: {
     deleteComment(row) {
-      console.log(row.item._id)
       toast.confirm('Are You Sure', '', () => {
         this.$store.dispatch('deleteComment', row.item._id)
       })

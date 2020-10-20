@@ -34,15 +34,6 @@
                 <b-col sm="3" class="text-sm-right"><b>Type:</b></b-col>
                 <b-col>{{ row.item.type }}</b-col>
               </b-row>
-
-              <b-row class="mb-2">
-                <b-col sm="3" class="text-sm-right"><b>Likes: </b></b-col>
-                <b-col>likes</b-col>
-              </b-row>
-              <b-row class="mb-2">
-                <b-col sm="3" class="text-sm-right"><b>disLikes: </b></b-col>
-                <b-col>dislikes</b-col>
-              </b-row>
               <div class="d-flex con-btn d-md-block">
                 <b-button
                   variant="outline-info"
@@ -102,7 +93,6 @@ export default {
   },
   methods: {
     deletePost(row) {
-      console.log(row.item._id)
       toast.confirm('Are You Sure', '', () => {
         this.$store.dispatch('deletePost', row.item._id)
       })

@@ -40,18 +40,15 @@ const actions = {
       })
   },
   changePassword({ commit }, payload) {
-    console.log(payload)
     Api.patch(`users/${auth.state.userId}/password`, payload, {
       headers: {
         Authorization: `Bearer ${auth.state.authToken}`
       }
     })
       .then(res => {
-        console.log(res)
       })
   },
   updateProfile({ commit }, payload) {
-    console.log(payload)
     Api.patch(`users/${auth.state.userId}`, payload, {
       headers: {
         Authorization: `Bearer ${auth.state.authToken}`
@@ -59,7 +56,6 @@ const actions = {
     })
       .then(res => {
         if (res.state === 200) {
-          console.log(res)
           commit('storeUser')
         }
       })
@@ -71,7 +67,6 @@ const actions = {
       }
     })
       .then(res => {
-        console.log(res)
         Router.replace('/')
         commit('deleteUser')
       })
