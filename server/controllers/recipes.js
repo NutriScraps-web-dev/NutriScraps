@@ -185,8 +185,6 @@ module.exports.getRecipeByIngredients = (req, res, next) => {
 module.exports.getRecipeComplexQuery  = (req, res, next) => {
     const foodName = req.query.query;
     console.log(foodName)
-    res.json(foodName);
-    return
     API_KEY = process.env.API_KEY;
     const spoonacularLink = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${foodName}`;
     axios
@@ -202,9 +200,26 @@ module.exports.getRecipeComplexQuery  = (req, res, next) => {
         });
 };
 
+module.exports.getRecipeInfoById  = (req, res, next) => {
+    const foodId = req.params.id;
+    API_KEY = process.env.API_KEY;
+    const spoonacularLink = `https://api.spoonacular.com/recipes/${foodId}/information?apiKey=${API_KEY}`;
+    axios
+        .get(spoonacularLink)
+        .then((result) => {
+            res.json({ recipes: result.data });
+        })
+        .catch((err) => {
+            if (!err.statusCode) {
+                err.statusCode = 500;
+            }
+            next(err);
+        });
+};
+
 module.exports.getRandomRecipe  = (req, res, next) => {
     API_KEY = process.env.API_KEY;
-    const spoonacularLink = `https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=5`;
+    const spoonacularLink = `https://api.spoonacular.com/recipes/random?apiKey=00496db2a59e4fe48c39f996c7b06c46&number=5`;
     axios
         .get(spoonacularLink)
         .then((result) => {

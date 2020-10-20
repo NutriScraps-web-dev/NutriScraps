@@ -12,8 +12,9 @@ import Comment from './components/comment/Comment.vue'
 import Roles from './views/admin/RolesManagement.vue'
 import Users from './views/admin/UsersManagement.vue'
 import CreateRecipe from './components/CreateRecipe.vue'
-import Recipe from './views/Recipe.vue'
 import EditRecipe from './components/EditRecipe.vue'
+import Recipe from './views/Recipe.vue'
+import WebRecipe from './views/WebRecipe.vue'
 Vue.use(Router)
 export default new Router({
   mode: 'history',
@@ -38,6 +39,11 @@ export default new Router({
       path: '/recipes/:id',
       name: 'recipe',
       component: Recipe
+    },
+    {
+      path: '/web-recipe/:id',
+      name: 'webRecipe',
+      component: WebRecipe
     },
     {
       path: '/create-recipe',
