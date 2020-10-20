@@ -62,7 +62,6 @@ export default {
   mounted() {
     Api.get(`/external/recipes/info/${this.$route.params.id}`)
       .then(response => {
-        console.log(response.data.recipes)
         this.recipe = response.data.recipes
       })
   }
