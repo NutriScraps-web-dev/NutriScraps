@@ -48,14 +48,12 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
 Vue.config.errorHandler = (msg, vm, info) => {
-  console.log('msg', msg)
   toast.error(`${msg}! \r\n Please Try Again`)
 }
 
 Api.interceptors.response.use(
   response => {
     if (response.status >= 200 && response.status < 300) {
-      console.log(response)
       return Promise.resolve(response)
     } else {
       toast.error('Something Went Wrong. Please Try Again')

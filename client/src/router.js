@@ -53,7 +53,14 @@ export default new Router({
     {
       path: '/create-recipe',
       name: 'createRecipe',
-      component: CreateRecipe
+      component: CreateRecipe,
+      beforeEnter: (to, from, next) => {
+        if (Store.state.authToken) {
+          next()
+        } else {
+          next('users/login')
+        }
+      }
     },
     {
       path: '/recipes/:id/edit',

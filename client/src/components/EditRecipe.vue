@@ -146,31 +146,24 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log(this.recipes)
       /* const preparations = this.recipes.preparation.map(a => a.preparation)
-      console.log(preparations)
       const cookingProcesses = this.recipes.cookingProcess.map(a => a.cookingProcess)
-      console.log(cookingProcesses)
       const toServes = this.recipes.toServe.map(a => a.toServe)
-      console.log(toServes) */
+      */
       const recipe = {
         name: this.recipes.name,
         cuisine: this.recipes.cuisine,
         type: this.recipes.type,
         image: this.recipes.image
       }
-      console.log(recipe)
       Api.patch(`/recipes/${this.$route.params.id}`, recipe, {
         headers: {
           Authorization: `Bearer ${auth.state.authToken}`
         }
       })
         .then(response => {
-          console.log(response)
           toast.success('Your Recipe has been updated!')
           this.$router.push({ name: 'recipe', params: { id: this.recipes._id } })
-        }).catch(error => {
-          console.error(error)
         })
     }
   }

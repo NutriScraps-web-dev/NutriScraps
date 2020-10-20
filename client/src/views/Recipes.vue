@@ -66,16 +66,13 @@ export default {
     webRecipeItems
   },
   mounted() {
-    console.log('PAGE is loaded')
     // Load the real recipes from the server
     Api.get('/recipes')
       .then(response => {
-        // console.log(response.data)
         this.recipes = response.data.recipes
       })
       .catch(error => {
         this.message = error.message
-        console.error(error)
         this.recipes = []
         // TODO: display error message
       })
@@ -105,15 +102,11 @@ export default {
           this.recipes.splice(index, 1)
           toast.success('Recipe has been deleted')
         })
-        .catch(error => {
-          console.error(error)
-        })
     },
     getExternalRecipe() {
       if (this.checked) {
         Api.get(`/external/recipes?query=${this.search}`).then(res => {
           this.webRecipes = res.data.recipes.results
-          console.log('running', this.webRecipes)
         })
       } else {
         this.webRecipes = []

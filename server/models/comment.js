@@ -54,7 +54,6 @@ commentSchema
 //       }
 //       next(err);
 //     });
-//   console.log(this)
 // });
 
 module.exports = mongoose.model('Comment', commentSchema);

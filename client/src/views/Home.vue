@@ -16,6 +16,7 @@
     >
       <b-carousel-slide
         style="max-height:490px !important;"
+        v-if="getRecipeTitle"
         :caption="getRecipeTitle(0)"
         :img-src="getRecipeImage(0)"
       ></b-carousel-slide>
@@ -66,13 +67,10 @@ export default {
   mounted() {
     Api.get('/search')
       .then(response => {
-        console.log(response.data)
         this.recipes = response.data.recipes
-        console.log(this.recipes)
       })
       .catch(error => {
         this.message = error.message
-        console.error(error)
         this.recipes = []
         // TODO: display error message
       })
@@ -91,7 +89,7 @@ export default {
       this.sliding = false
     },
     getRecipeTitle(id) {
-      return this.recipes.recipes[id].title
+      return !this.recipes.recipes[id].title ? false : this.recipes.recipes[id].title
     },
     getRecipeImage(id) {
       return 'https://spoonacular.com/recipeImages/' + this.recipes.recipes[id].id + '-636x393.jpg'

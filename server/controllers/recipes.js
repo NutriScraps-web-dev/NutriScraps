@@ -8,9 +8,6 @@ require('dotenv').config();
 
 exports.createRecipe = (req, res, next) => {
     const recipePublisher = mongoose.Types.ObjectId(req.userId);
-    console.log('role', req.role)
-    console.log('userID: ' , req.userId)
-    console.log(recipePublisher)
     const recipeName = req.body.name;
     const recipeCuisine = req.body.cuisine;
     const recipePreparation = req.body.preparation;
@@ -29,17 +26,13 @@ exports.createRecipe = (req, res, next) => {
         image: recipeImage,
         publisher: recipePublisher
     });
-    console.log(recipe)
     return recipe
     .save()
     .then((result) => {
       tem_recipe = result;
-      console.log(recipePublisher)
      return User.findById(recipePublisher);
     })
     .then((user) => {
-      console.log('abcde')  
-      console.log(user)
       user.posts.push(tem_recipe);
       return user.save();
     })
@@ -110,7 +103,6 @@ exports.getRecipe = (req, res, next) => {
       if (recipe === null) {
         return res.status(404).json({ message: 'Recipe not found!' });
       }
-      console.log(recipe.comments);
       res.status(200).json(recipe);
     });
 };
@@ -197,7 +189,6 @@ module.exports.getRecipeByIngredients = (req, res, next) => {
 
 module.exports.getRecipeComplexQuery  = (req, res, next) => {
     const foodName = req.query.query;
-    console.log(foodName)
     API_KEY = process.env.API_KEY;
     const spoonacularLink = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${foodName}`;
     axios
