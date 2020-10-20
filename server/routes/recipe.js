@@ -12,7 +12,7 @@ router.patch('/api/recipes/:id', isAuth, recipeController.updateRecipe);
 router.put('/api/recipes/:id', isAuth, recipeController.editRecipe);
 router.delete('/api/recipes/:id', isAuth, recipeController.deleteRecipe);
 
-//router.get('/api/search', recipeController.getRecipeFromAPI);
-
+router.get('/api/search', recipeController.getRecipeByIngredients);
+router.get('/api/external/recipes', recipeController.getRecipeComplexQuery);
 
 module.exports = router;
