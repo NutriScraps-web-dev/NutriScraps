@@ -150,9 +150,19 @@ exports.deleteRecipe = (req, res, next) => {
         if (recipe === null) {
             return res.status(404).json({ 'message': 'Recipe not found!' });
         }
-        res.status(200).json(recipe);
+    })
+    .then ((recipe) => {
+        return User.updateOne(
+            { posts: req.params.id },
+            { $pull: { posts: req.params.id } }
+        );
+    })
+    .then((result) => {
+        res.status(200).json({ message: `The recipe is deleted` });
     });
 };
+     
+
 
 module.exports.getRecipeByIngredients = (req, res, next) => {
     const ingredients = req.body.ingredients;

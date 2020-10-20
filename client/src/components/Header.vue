@@ -35,7 +35,7 @@
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
             <li class="nav-item">
-              <b-link class="nav-item nav-link mx-2 px-2" to="/recipes">Recipe</b-link>
+              <b-link class="nav-item nav-link mx-2 px-2" to="/create-recipe">Create Recipe</b-link>
             </li>
             <li class="nav-item">
               <b-link class="nav-item nav-link mx-2 px-2" to="/about">About</b-link>

@@ -49,7 +49,6 @@
             type="text"
             name="cookingProcess"
             placeholder="Cooking Steps"
-            help="Must have atleast one step"
           />
           </FormulateInput>
           <FormulateInput
@@ -86,8 +85,21 @@
             placeholder="Imgur, Dropbox,etc"
             label="Image Link"
           />
-          <br>
-        <button class="btn btn-info mx-1 px-5" type="submit">Create Recipe!</button>
+      <div class="d-flex pass-btn-con d-lg-block d-md-block">
+        <b-button
+          variant="primary"
+          class="pass-btn my-2 mx-md-4 my-lg-4 px-3 px-md-5"
+          type="submit"
+          >Create Recipe!</b-button
+        >
+        <b-button
+          variant="outline-primary"
+          class="pass-btn my-2 mx-md-4 my-lg-4 px-3 px-md-5"
+          action="action"
+          onclick="window.history.go(-1); return false;"
+          >Back</b-button
+        >
+      </div>
       </FormulateForm>
     </b-form>
     <br>
@@ -98,6 +110,7 @@
 <script>
 import { Api } from '@/Api'
 import auth from '../store/modules/auth'
+import toast from '../assets/toast'
 
 export default {
   props: ['recipe'],
@@ -143,7 +156,8 @@ export default {
         }).catch(error => {
           console.error(error)
         })
-      this.$router.push({ name: 'recipes' })
+      toast.success('Your Recipe has been created!')
+      this.$router.push({ name: 'home' })
     }
   }
 }
@@ -162,6 +176,20 @@ export default {
   .form-container {
   width: 80vw !important;
 }
+}
+.pass-btn {
+  float: left;
+}
+.pass-btn[disabled] {
+  background-color: #666666 !important;
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+@media screen and (max-width: 768px) {
+  .pass-btn-con {
+    display: flex;
+    flex-direction: column !important;
+  }
 }
 
 </style>

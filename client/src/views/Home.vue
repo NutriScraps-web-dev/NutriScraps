@@ -56,26 +56,22 @@
     <br>
     <h1 class="header"><b>Find your recipe</b></h1>
     <br>
-    <b-col cols="7" offset="1" offset-md="2" style="margin:auto">
-          <b-input-group size="sm" class="mb-2">
-            <b-input-group-append is-text>
-              <b-icon icon="search"></b-icon>
-            </b-input-group-append>
-            <b-form-input type="search" placeholder="Search Recipes"></b-form-input>
-          </b-input-group>
-        </b-col>
-        <br>
-        <br>
+    <br>
+    <recipes></recipes>
   </div>
 </template>
 
 <script>
+import Recipes from './Recipes'
 export default {
   data() {
     return {
       slide: 0,
       sliding: null
     }
+  },
+  components: {
+    Recipes
   },
   methods: {
     onSlideStart(slide) {
