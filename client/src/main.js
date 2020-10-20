@@ -55,30 +55,40 @@ Vue.config.errorHandler = (msg, vm, info) => {
 Api.interceptors.response.use(
   response => {
     if (response.status >= 200 && response.status < 300) {
+      console.log(response)
       return Promise.resolve(response)
     } else {
+      toast.error('Something Went Wrong. Please Try Again')
       return Promise.reject(response)
     }
   },
   error => {
-    if (error.response.status >= 500) {
-      toast.error('Something Went Terribly Wrong. Please Try Again', '500')
-      return Promise.reject(error)
-    }
-    if (
-      // eslint-disable-next-line no-prototype-builtins
-      error.config.hasOwnProperty('errorHandle') &&
-      error.config.errorHandle === false
-    ) {
-      return Promise.reject(error)
-    }
     if (error.response) {
-      toast.error(error.response.data.message, `${error.response.status}`)
+      if (error.response.status >= 500) {
+        toast.error('Something Went Terribly Wrong. Please Try Again', '500')
+        return Promise.reject(error)
+      }
+      if (
+        // eslint-disable-next-line no-prototype-builtins
+        error.config.hasOwnProperty('errorHandle') &&
+        error.config.errorHandle === false
+      ) {
+        return Promise.reject(error)
+      }
+      if (error.response) {
+        toast.error(error.response.data.message, `${error.response.status}`)
+        return Promise.reject(error)
+      }
     }
+    toast.error(error.message, '500')
     return Promise.reject(error)
   }
 )
 
+window.onerror = (msg, src, linenum, colnum, err) => {
+  toast.error(msg.toLowerCase(), '500')
+  return false
+}
 new Vue({
   router,
   store,

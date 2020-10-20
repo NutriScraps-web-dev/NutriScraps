@@ -3,7 +3,7 @@
       <br>
       <h1><b>{{this.recipes.name}}</b></h1>
       <br>
-      <b-img src="https://st.depositphotos.com/1692343/5094/i/450/depositphotos_50945415-stock-photo-healthy-homemade-fried-rice.jpg"
+      <b-img :src="this.recipes.image"
       rounded
       fluid alt="Responsive image">
       </b-img>

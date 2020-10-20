@@ -16,7 +16,7 @@ const getters = {
 }
 
 const actions = {
-  createRole({ commit }, payload) {
+  createRole({ commit, dispatch }, payload) {
     Api.post('/roles', payload, {
       headers: {
         Authorization: `Bearer ${auth.state.authToken}`
@@ -24,9 +24,13 @@ const actions = {
     })
       .then(result => {
         commit('createRole', result)
+        console.log('getAllRoles beofere')
+        dispatch('getAllRoles')
+        console.log('getAllRoles after')
       })
   },
   getAllRoles: ({ commit }) => {
+    console.log('getAllRoles insite 01')
     if (!auth.state.authToken) {
       return
     }
@@ -36,6 +40,7 @@ const actions = {
       }
     })
       .then(result => {
+        console.log('getAllRoles inside')
         commit('storeRoles', result.data)
       })
   },
