@@ -69,4 +69,4 @@ Chopping Board: Users can create a dish they want using a virtual chopping board
 
 ## Teaser (MS3)
 
-![Teaser](./images/comingSoon.png)
+![Teaser](./images/Teaser.png)
