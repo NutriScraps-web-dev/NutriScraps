@@ -49,6 +49,6 @@ export default {
   background-color: #e3f2fd;
 }
 .navbar-logo {
-  width: 70px;
+  width: 40px;
 }
 </style>
