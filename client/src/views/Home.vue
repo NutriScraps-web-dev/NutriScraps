@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="carousel">
+  <div class="carouselContainer">
     <b-carousel
       id="carousel-1"
       v-model="slide"
@@ -10,33 +10,38 @@
       background="#ababab"
       img-width="1024"
       img-height="480"
-      style="text-shadow: 1px 1px 2px #333;"
+      style="text-shadow: 1px 1px 2px #333; max-height:490px;"
       @sliding-start="onSlideStart"
       @sliding-end="onSlideEnd"
     >
       <b-carousel-slide
+        style="max-height:490px;"
         :caption="getRecipeTitle(0)"
         :img-src="getRecipeImage(0)"
       ></b-carousel-slide>
       <b-carousel-slide
+        style="max-height:490px;"
         :caption="getRecipeTitle(1)"
         :img-src="getRecipeImage(1)"
       ></b-carousel-slide>
       <b-carousel-slide
         :caption="getRecipeTitle(2)"
         :img-src="getRecipeImage(2)"
+        style="max-height:490px;"
       ></b-carousel-slide>
       <b-carousel-slide
         :caption="getRecipeTitle(3)"
         :img-src="getRecipeImage(3)"
+        style="max-height:490px;"
       ></b-carousel-slide>
       <b-carousel-slide
         :caption="getRecipeTitle(4)"
         :img-src="getRecipeImage(4)"
+        style="max-height:490px;"
       ></b-carousel-slide>
 
     </b-carousel>
-  </div>
+    </div>
     <br>
     <br>
     <h1 class="header"><b>Find your recipe</b></h1>
@@ -99,9 +104,8 @@ export default {
 .header{
   text-align: center;
 }
-.carousel {
-  margin:auto;
-  min-height:90%;
+.carouselContainer {
+  max-height:490px;
 }
 
 </style>
