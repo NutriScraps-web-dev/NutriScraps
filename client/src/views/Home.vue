@@ -53,6 +53,7 @@ import { Api } from '@/Api'
 export default {
   data() {
     return {
+      slide: 0,
       sliding: null,
       recipes: []
     }

@@ -69,7 +69,7 @@ export default {
   mounted() {
     Api.get(`/recipes/${this.$route.params.id}`)
       .then(response => {
-        // console.log(response.data)
+        console.log(response.data)
         this.recipes = response.data
       })
       .catch(error => {
