@@ -198,3 +198,19 @@ module.exports.getRecipeComplexQuery  = (req, res, next) => {
             next(err);
         });
 };
+
+module.exports.getRandomRecipe  = (req, res, next) => {
+    API_KEY = process.env.API_KEY;
+    const spoonacularLink = `https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=5`;
+    axios
+        .get(spoonacularLink)
+        .then((result) => {
+            res.json({ recipes: result.data });
+        })
+        .catch((err) => {
+            if (!err.statusCode) {
+                err.statusCode = 500;
+            }
+            next(err);
+        });
+};

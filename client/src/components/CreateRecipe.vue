@@ -136,6 +136,9 @@ export default {
       console.log(cookingProcesses)
       const toServes = this.recipes.toServe.map(a => a.toServe)
       console.log(toServes)
+      if (this.recipes.image === '') {
+        this.recipes.image = 'https://media.istockphoto.com/vectors/black-linear-photo-camera-like-no-image-available-vector-id1055079680?k=6&m=1055079680&s=170667a&w=0&h=ZYi91hhX3U00QK-aVuBLlFGqNAsTrO_LtuhUqMJfxWY='
+      }
       const recipe = {
         name: this.recipes.name,
         cuisine: this.recipes.cuisine,

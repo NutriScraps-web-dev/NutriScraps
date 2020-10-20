@@ -14,7 +14,7 @@
       <br>
       <b-row align-h="center" style="margin:auto">
         <b-col cols="12" sm="6" md="4" v-for="recipe in filteredRecipes" v-bind:key="recipe._id" style="margin:auto">
-            <recipe-item v-bind:recipe="recipe" v-on:del-recipe="deleteRecipe"/>
+            <recipe-item v-bind:recipe="recipe" />
         </b-col>
       </b-row>
       <br>
