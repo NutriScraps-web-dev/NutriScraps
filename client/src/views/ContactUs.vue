@@ -41,9 +41,10 @@
             max-rows="6"
           ></b-form-textarea>
         </b-form-group>
-
-        <b-button type="submit" variant="primary">Submit</b-button>
-        <b-button type="reset" variant="danger">Reset</b-button>
+        <div class="d-flex pass-btn-con d-lg-block d-md-block">
+        <b-button class="pass-btn my-2 mx-md-4 my-lg-4 px-3 px-md-5" type="submit" variant="primary">Submit</b-button>
+        <b-button class="pass-btn my-2 mx-md-4 my-lg-4 px-3 px-md-5" type="reset" variant="danger">Cancel</b-button>
+        </div>
       </b-form>
     </div>
   </b-container>
@@ -72,17 +73,8 @@ export default {
           console.log('FAILED...', error)
         })
     },
-    onReset(evt) {
-      evt.preventDefault()
-      // Reset our form values
-      this.form.email = ''
-      this.form.name = ''
-      this.form.message = ''
-      // Trick to reset/clear native browser form validation state
-      this.show = false
-      this.$nextTick(() => {
-        this.show = true
-      })
+    onReset() {
+      this.$router.push({ name: 'home' })
     }
   }
 }
@@ -106,5 +98,13 @@ export default {
 .message{
   text-align: left;
 }
-
+.pass-btn {
+  float: left;
+}
+@media screen and (max-width: 768px) {
+  .pass-btn-con {
+    display: flex;
+    flex-direction: column !important;
+  }
+}
 </style>

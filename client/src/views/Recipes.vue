@@ -1,36 +1,69 @@
 <template>
-    <b-container>
-      <p class="red">{{message}}</p>
-      <b-row>
-        <b-col cols="7" offset="1" offset-md="2" style="margin:auto">
-          <b-input-group size="sm" class="mb-2">
-            <b-input-group-append is-text>
-              <b-icon icon="search"></b-icon>
-            </b-input-group-append>
-            <b-form-input type="text" v-model="search" placeholder="Search Recipes"></b-form-input>
+  <b-container>
+    <b-row>
+      <b-col cols="8" offset="1" offset-md="2" style="margin:auto">
+        <b-form @submit.prevent="getExternalRecipe">
+          <b-input-group class="mb-2">
+            <b-form-input
+              type="search"
+              v-model="search"
+              placeholder="Search Recipes"
+            ></b-form-input>
+            <b-input-group-prepend>
+              <b-button type="submit" variant="outline-secondary">
+                <b-icon icon="search" aria-label="Help"></b-icon>
+              </b-button>
+            </b-input-group-prepend>
           </b-input-group>
-        </b-col>
-      </b-row>
-      <br>
-      <br>
-      <b-row align-h="center" style="margin:auto">
-        <b-col cols="12" sm="6" md="4" v-for="recipe in filteredRecipes" v-bind:key="recipe._id">
-            <recipe-item v-bind:recipe="recipe" v-on:del-recipe="deleteRecipe"/>
-        </b-col>
-      </b-row>
-      <br>
-      <br>
-    </b-container>
+          <b-form-checkbox v-model="checked" switch>
+            Include Recipes From The Web
+          </b-form-checkbox>
+        </b-form>
+      </b-col>
+    </b-row>
+    <br />
+    <br />
+    <b-row align-h="center" style="margin:auto">
+      <b-col
+        cols="12"
+        sm="6"
+        md="4"
+        v-for="recipe in filteredRecipes"
+        v-bind:key="recipe._id"
+        style="margin:auto"
+      >
+        <recipe-item v-bind:recipe="recipe" />
+      </b-col>
+    </b-row>
+    <b-row align-h="center" style="margin:auto">
+      <b-col
+        cols="12"
+        sm="6"
+        md="4"
+        v-for="webrecipe in webRecipes"
+        v-bind:key="webrecipe._id"
+        style="margin:auto"
+      >
+        <web-recipe-items :recipe="webrecipe" />
+      </b-col>
+    </b-row>
+    <br />
+    <br />
+  </b-container>
 </template>
 
 <script>
 import { Api } from '@/Api'
 import RecipeItem from '@/components/RecipeItem.vue'
+import webRecipeItems from '@/components/webRecipeItems.vue'
+import auth from '../store/modules/auth'
+import toast from '../assets/toast'
 
 export default {
   name: 'recipes',
   components: {
-    RecipeItem
+    RecipeItem,
+    webRecipeItems
   },
   mounted() {
     console.log('PAGE is loaded')
@@ -55,24 +88,41 @@ export default {
       recipes: [],
       message: '',
       text: '',
-      search: ''
+      search: '',
+      checked: false,
+      webRecipes: []
     }
   },
   methods: {
     deleteRecipe(id) {
-      Api.delete(`/recipes/${id}`)
+      Api.delete(`/recipes/${id}`, {
+        headers: {
+          Authorization: `Bearer ${auth.state.authToken}`
+        }
+      })
         .then(reponse => {
           const index = this.recipes.findIndex(recipe => recipe._id === id)
           this.recipes.splice(index, 1)
+          toast.success('Recipe has been deleted')
         })
         .catch(error => {
           console.error(error)
         })
+    },
+    getExternalRecipe() {
+      if (this.checked) {
+        Api.get(`/external/recipes?query=${this.search}`).then(res => {
+          this.webRecipes = res.data.recipes.results
+          console.log('running', this.webRecipes)
+        })
+      } else {
+        this.webRecipes = []
+      }
     }
   },
   computed: {
     filteredRecipes: function () {
-      return this.recipes.filter((recipe) => {
+      return this.recipes.filter(recipe => {
         return recipe.name.toLowerCase().match(this.search.toLowerCase())
       })
     }
@@ -81,7 +131,7 @@ export default {
 </script>
 
 <style scoped>
-.red {
-    color: red;
+.f-in-put {
+  margin-bottom: 5rem;
 }
 </style>

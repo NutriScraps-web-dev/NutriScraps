@@ -18,6 +18,27 @@
             placeholder="International, Mexican, Thai, Italian....."
             label="Cuisine"
           />
+          <FormulateInput
+            element-class=""
+            type="textarea"
+            name="preparation"
+            label="Preparation"
+            disabled
+          />
+          <FormulateInput
+            element-class=""
+            type="textarea"
+            name="cookingProcess"
+            label="Cooking Process"
+            disabled
+          />
+          <FormulateInput
+            element-class=""
+            type="textarea"
+            name="toServe"
+            label="To Serve"
+            disabled
+          />
           <!--
           <FormulateInput
             element-class=""
@@ -97,6 +118,8 @@
 </template>
 <script>
 import { Api } from '@/Api'
+import auth from '../store/modules/auth'
+import toast from '../assets/toast'
 
 export default {
   name: 'recipe',
@@ -139,9 +162,15 @@ export default {
         image: this.recipes.image
       }
       console.log(recipe)
-      Api.patch(`/recipes/${this.$route.params.id}`, recipe)
+      Api.patch(`/recipes/${this.$route.params.id}`, recipe, {
+        headers: {
+          Authorization: `Bearer ${auth.state.authToken}`
+        }
+      })
         .then(response => {
           console.log(response)
+          toast.success('Your Recipe has been updated!')
+          this.$router.push({ name: 'recipe', params: { id: this.recipes._id } })
         }).catch(error => {
           console.error(error)
         })

@@ -163,9 +163,19 @@ exports.deleteRecipe = (req, res, next) => {
         if (recipe === null) {
             return res.status(404).json({ 'message': 'Recipe not found!' });
         }
-        res.status(200).json(recipe);
+    })
+    .then ((recipe) => {
+        return User.updateOne(
+            { posts: req.params.id },
+            { $pull: { posts: req.params.id } }
+        );
+    })
+    .then((result) => {
+        res.status(200).json({ message: `The recipe is deleted` });
     });
 };
+     
+
 
 module.exports.getRecipeByIngredients = (req, res, next) => {
     const ingredients = req.body.ingredients;
@@ -186,9 +196,43 @@ module.exports.getRecipeByIngredients = (req, res, next) => {
 };
 
 module.exports.getRecipeComplexQuery  = (req, res, next) => {
-    const foodName = req.body.foodName;
+    const foodName = req.query.query;
+    console.log(foodName)
     API_KEY = process.env.API_KEY;
     const spoonacularLink = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${foodName}`;
+    axios
+        .get(spoonacularLink)
+        .then((result) => {
+            res.json({ recipes: result.data });
+        })
+        .catch((err) => {
+            if (!err.statusCode) {
+                err.statusCode = 500;
+            }
+            next(err);
+        });
+};
+
+module.exports.getRecipeInfoById  = (req, res, next) => {
+    const foodId = req.params.id;
+    API_KEY = process.env.API_KEY;
+    const spoonacularLink = `https://api.spoonacular.com/recipes/${foodId}/information?apiKey=${API_KEY}`;
+    axios
+        .get(spoonacularLink)
+        .then((result) => {
+            res.json({ recipes: result.data });
+        })
+        .catch((err) => {
+            if (!err.statusCode) {
+                err.statusCode = 500;
+            }
+            next(err);
+        });
+};
+
+module.exports.getRandomRecipe  = (req, res, next) => {
+    API_KEY = process.env.API_KEY;
+    const spoonacularLink = `https://api.spoonacular.com/recipes/random?apiKey=00496db2a59e4fe48c39f996c7b06c46&number=5`;
     axios
         .get(spoonacularLink)
         .then((result) => {

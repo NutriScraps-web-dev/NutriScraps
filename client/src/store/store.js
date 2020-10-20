@@ -6,6 +6,7 @@ import user from './modules/user'
 import role from './modules/admin/role'
 import comment from './modules/comment'
 import userManagement from './modules/admin/userManagement'
+import rating from './modules/rating'
 
 Vue.use(Vuex)
 
@@ -27,7 +28,8 @@ export const store = new Vuex.Store({
     user,
     role,
     recipe,
+    userManagement,
     comment,
-    userManagement
+    rating
   }
 })
