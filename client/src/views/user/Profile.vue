@@ -121,17 +121,6 @@
         <user-comments></user-comments>
       </b-col>
     </b-row>
-    <b-row class="mt-3">
-      <b-col>
-        <h2>Post You Have Liked:</h2>
-        <div>Post You Have Liked:</div>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-button variant="outline-primary" class="mr-5 my-4"
-        >Remove My Likes</b-button
-      >
-    </b-row>
   </b-container>
 </template>
 

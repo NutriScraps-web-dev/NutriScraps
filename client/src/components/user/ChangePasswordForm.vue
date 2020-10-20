@@ -119,7 +119,6 @@ export default {
         newPassword: this.newPassword,
         confirmNewPassword: this.confirmPassword
       }
-      console.log('working')
       this.$store.dispatch('changePassword', formData)
     }
   }

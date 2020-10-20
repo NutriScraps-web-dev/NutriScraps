@@ -31,7 +31,6 @@ export default {
   props: ['recipe'],
   methods: {
     goToRecipe() {
-      console.log('this.recipe.id', this.recipe.id)
       this.$router.push({ name: 'webRecipe', params: { id: this.recipe.id } })
     }
   }

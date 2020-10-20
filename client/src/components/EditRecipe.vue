@@ -133,12 +133,10 @@ export default {
   mounted() {
     Api.get(`/recipes/${this.$route.params.id}`)
       .then(response => {
-        // console.log(response.data)
         this.recipes = response.data
       })
       .catch(error => {
         this.message = error.message
-        console.error(error)
         this.recipes = []
         // TODO: display error message
       })

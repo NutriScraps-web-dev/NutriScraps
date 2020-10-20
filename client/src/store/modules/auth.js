@@ -40,7 +40,7 @@ const actions = {
   signUp({ commit }, payload) {
     Api.post('/auth/signup', payload, { errorHandle: false })
       .then(res => {
-        Router.push('/auth/login')
+        Router.push('/users/login')
       })
       .catch(error => {
         toast.warn(error.response.data.error, error.response.status)
@@ -104,8 +104,6 @@ const actions = {
       }
     })
       .then(res => {
-        console.log('res.data')
-        console.log(res.data)
         commit('isAdmin', res.data)
       })
   }
