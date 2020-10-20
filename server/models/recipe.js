@@ -47,4 +47,13 @@ const recipeSchema = new Schema({
     }
 });
 
+function autoPopulateSubs(next) {
+    this.populate('comments');
+    next();
+    }
+
+recipeSchema
+    .pre('findOne', autoPopulateSubs)
+    .pre('find', autoPopulateSubs);
+
 module.exports = mongoose.model('recipes', recipeSchema);

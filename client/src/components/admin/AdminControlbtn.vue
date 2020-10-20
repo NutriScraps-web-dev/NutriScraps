@@ -29,14 +29,11 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   computed: {
     ...mapGetters(['isLoggedIn', 'isAdmin'])
-  },
-  methods: {
-    ...mapActions(['logOut'])
   },
   created() {
     this.$store.dispatch('isAdmin')

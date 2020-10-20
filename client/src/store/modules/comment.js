@@ -7,18 +7,36 @@ const getters = {}
 
 const actions = {
   deleteComment({ commit, dispatch }, payload) {
-    Api.delete(`comments/${payload}`, {
+    Api.delete(`recipe/comments/${payload}`, {
       headers: {
         Authorization: `Bearer ${auth.state.authToken}`
       }
     }).then(res => {
       dispatch('getUserInfo')
     })
+  },
+  createComment({ commit, dispatch }, payload) {
+    Api.post(`recipe/${payload.recipeId}/comments`, payload.comment, {
+      headers: {
+        Authorization: `Bearer ${auth.state.authToken}`
+      }
+    }).then(res => {
+      dispatch('getRecipe', payload.recipeId)
+    })
+  },
+  createSubComment({ commit, dispatch }, payload) {
+    Api.post(`recipe/subcomments/${payload.parentId}`, payload.comment, {
+      headers: {
+        Authorization: `Bearer ${auth.state.authToken}`
+      }
+    }).then(res => {
+      console.log('subcomment', res)
+      dispatch('getRecipe', payload.recipeId)
+    })
   }
 }
 
-const mutations = {
-}
+const mutations = {}
 
 export default {
   actions,

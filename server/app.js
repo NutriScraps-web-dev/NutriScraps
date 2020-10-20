@@ -68,12 +68,10 @@ app.use('/api/auth', authRouter);
 app.use('/api/users', userRouter);
 app.use('/api/roles', roleRouter);
 app.use('/api/admins', adminRouter);
-
-app.use('/api/comments', commentRouter);
-app.use('/rating', ratingRouter);
-
 app.use(recipesRouter);
 app.use(ingredientsRouter);
+app.use('/rating', ratingRouter);
+app.use('/api/recipe', commentRouter);
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {

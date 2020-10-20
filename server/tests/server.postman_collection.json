@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ca24055b-049a-4fc6-89bb-3446a3a39ec4",
+		"_postman_id": "7ea13bc9-5a4d-4f1d-972a-5063406008ec",
 		"name": "server",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,7 +11,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "681f8365-dcc7-4e9c-bd1b-a07f019f7e28",
+						"id": "ea1bec53-6477-4644-9172-c2b64be20b70",
 						"exec": [
 							""
 						],
@@ -21,7 +21,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "3bcc840e-ae4d-46a6-9f07-5248d208a431",
+						"id": "5f3487e4-a598-4d3b-a118-54ba2b3d4d14",
 						"exec": [
 							"var jsonData = pm.response.json();\r",
 							"var ingredientId = jsonData._id;\r",
@@ -79,7 +79,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "d953d7bb-c0a2-4441-993e-a7020c5a7595",
+						"id": "1247905f-3352-46ad-9ce8-e53b25c85801",
 						"exec": [
 							""
 						],
@@ -89,7 +89,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "27a9b772-7dac-418b-9757-a178f12c68a6",
+						"id": "9b1a2429-3e53-4990-8acb-1cd924af1753",
 						"exec": [
 							"var jsonData = pm.response.json();\r",
 							"var ingredientId = jsonData._id;\r",
@@ -147,7 +147,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "b1f0b8c9-aaff-4ff3-b9ab-3252a0dcac3b",
+						"id": "1f8c626b-c374-46b0-860e-f05a8cb9f660",
 						"exec": [
 							""
 						],
@@ -157,7 +157,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c9c552ad-d89d-4a85-805c-e0a13b3ef7bf",
+						"id": "9327ab90-4b2a-47e1-a036-23470985aea9",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -197,7 +197,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "abd19efb-8079-4b07-9995-af017b6ad826",
+						"id": "4bf8c91d-f1b6-4cce-9727-2f546f4e624f",
 						"exec": [
 							""
 						],
@@ -207,7 +207,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "f827f746-74f9-4dd2-b6d1-999a05a4dd70",
+						"id": "0cf2c053-afb8-4e21-81f7-9b022795e959",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -255,7 +255,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "bcf00ac9-3158-47cc-911d-576a18eb48fc",
+						"id": "f692b8ca-0a42-4045-bf57-9c7c6f4d8199",
 						"exec": [
 							""
 						],
@@ -265,7 +265,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "2041b859-363e-4f8e-b527-53da0f223913",
+						"id": "e2b2fddd-8002-4b3e-9c7e-ae51a7c2e24a",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -314,7 +314,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "18acdba2-196b-48ca-b8a8-837cc70aff40",
+						"id": "0b2d23a9-eff0-4d44-b209-f217fdc42ede",
 						"exec": [
 							""
 						],
@@ -324,7 +324,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c733ed35-dbdb-45e3-93d7-53a2f16dd03e",
+						"id": "42daa845-9adf-49b1-8431-2de813271908",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -373,7 +373,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "f83c031d-d9ac-4de5-bbcc-29f047a7f973",
+						"id": "92dc3133-65d2-4c60-ba3b-cfffed19af5c",
 						"exec": [
 							""
 						],
@@ -383,7 +383,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "77e43a1b-57f5-4cd5-9865-9ec306f9230e",
+						"id": "428b8956-131c-423c-b7fb-5b3b4d0dd59d",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -442,7 +442,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "fa3c7673-3c36-4659-8551-40df6dd15ef0",
+						"id": "05955ca7-24c2-4e08-b080-e6178a7aad05",
 						"exec": [
 							""
 						],
@@ -452,7 +452,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "aac18705-8378-43d0-a08a-97a778e44785",
+						"id": "f738b982-6365-42c7-9371-5bf241ba53e3",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -511,7 +511,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "64fbced9-ec68-444c-ad7c-322380be2497",
+						"id": "00ddd7b5-b50c-4e8f-bc39-c38eb43ffdb9",
 						"exec": [
 							""
 						],
@@ -521,7 +521,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "4c3e5fca-9474-4f36-91aa-b7f6218a88f3",
+						"id": "220b959a-eb85-44b6-9aa6-5839287b8067",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -580,7 +580,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "29a54c87-64b7-48d4-9bd0-0981fc424c56",
+						"id": "f1a37ad4-b5ad-4dd7-91f7-a994e645c55d",
 						"exec": [
 							""
 						],
@@ -590,7 +590,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d5113708-8131-4413-b625-75a31a70f3f5",
+						"id": "0301ff9a-fd35-45c2-97af-d29993691f9e",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -649,7 +649,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "bfb7e69b-5386-44a7-aa9f-0897d543c57c",
+						"id": "1adf8825-a832-4442-ac9c-11401a940652",
 						"exec": [
 							""
 						],
@@ -659,7 +659,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d4e44c1d-5576-4ecc-bedb-291391ae0f05",
+						"id": "115bb988-c321-4410-8d2c-c90cf5b12ef4",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -718,7 +718,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "049515c8-8e18-49a4-8060-bf98f2cc8945",
+						"id": "dffaf235-5023-4d9d-a180-7fe617018786",
 						"exec": [
 							""
 						],
@@ -728,7 +728,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "46705a27-9bbf-4c8d-b147-e2b96631d068",
+						"id": "e4e69666-9d61-479d-aab3-8798cc27959d",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -777,7 +777,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "e8e762f0-72f4-407a-8e37-3f5597b7ad35",
+						"id": "d5a7e68c-a34f-429a-902e-01726b7ab3ef",
 						"exec": [
 							""
 						],
@@ -787,7 +787,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "e08273ca-5bde-4c64-8592-ca4e9520a334",
+						"id": "341a0ba8-da6c-4161-8080-2dcdadf5e160",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -836,7 +836,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "366a6e39-f783-4c3d-9188-1e9a7e0d91de",
+						"id": "ec231a07-4789-4638-bace-20e82884056a",
 						"exec": [
 							""
 						],
@@ -846,7 +846,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "5950c03e-df09-4dab-87ec-7aea4113c4df",
+						"id": "cd9a5c39-a858-4d26-bdd9-7ec03bf2f063",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -891,7 +891,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "84cbe6a9-d654-432a-bacb-d13b6ec475ae",
+						"id": "f195fc70-7293-4c72-b469-7b69d4d67e36",
 						"exec": [
 							""
 						],
@@ -901,7 +901,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d3763e13-0893-4347-801b-ff7233d2fe47",
+						"id": "520fa64b-3c78-4389-baf8-fcbaf4854dd9",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -951,7 +951,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "252ccf0b-e8a3-4198-bcb1-b419c26e9f30",
+						"id": "9c3b8552-df89-4051-bc0a-427285bac273",
 						"exec": [
 							""
 						],
@@ -961,7 +961,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "04b2b28c-4154-4b93-bc12-0ae4ff4c87d3",
+						"id": "b8792dbe-0863-4f77-9615-4b35c2096fbd",
 						"exec": [
 							"var jsonData = pm.response.json();\r",
 							"var ingredientId = jsonData._id;\r",
@@ -1019,7 +1019,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "27dec967-6304-49f6-bc32-ba27281bd4f4",
+						"id": "dcd82492-d56a-450b-89f4-a6746b13286c",
 						"exec": [
 							""
 						],
@@ -1029,7 +1029,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "149cfb80-2f97-409b-9c01-1690b4814c42",
+						"id": "fa49fe24-50f5-4b82-804c-7f49c9bb57f2",
 						"exec": [
 							"var jsonData = pm.response.json();\r",
 							"var ingredientId = jsonData._id;\r",
@@ -1087,7 +1087,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "8ba3f651-6199-4e4c-a2b4-563030df36b7",
+						"id": "c2599ab8-3e96-4778-a7b6-d33c738f2a50",
 						"exec": [
 							""
 						],
@@ -1122,7 +1122,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "08644a79-ae7b-45ea-9984-36a74c2cefa1",
+						"id": "379480bf-740e-472e-9e1f-5416e81eaaae",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -1169,7 +1169,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "b486d832-a00a-44e2-871b-8a16c040d046",
+						"id": "4d40cef2-159a-4762-a150-2e18b9a734f9",
 						"exec": [
 							""
 						],
@@ -1179,7 +1179,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "b395dee4-b879-4519-9d7e-392d5cf22546",
+						"id": "21048e10-aec6-454a-bf87-bc919f215db4",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -1231,7 +1231,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "1f16cb96-b42d-4485-bb67-6c4c193e76d6",
+						"id": "a76922c4-0d5b-4bfa-97e0-2cf8b5b4c9fe",
 						"exec": [
 							""
 						],
@@ -1241,7 +1241,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "0e87a35b-1726-493f-a552-85ab1b2a0f44",
+						"id": "c61a3ba6-ff2c-47b9-9bfe-29743025f5b8",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -1292,7 +1292,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "8146f819-a9dc-4bba-a6a8-93b0d4936a06",
+						"id": "e2dfbcd4-9d9e-4a09-aef9-113b413e5bbf",
 						"exec": [
 							""
 						],
@@ -1302,7 +1302,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "daa12b76-0068-4f12-b767-2c2f949e8369",
+						"id": "4ef4dfcf-b526-49dc-ba87-b313527c8f1e",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -1356,7 +1356,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "26c720ae-94cc-4a1d-a881-5be355a7be38",
+						"id": "4db1648d-ef8b-4d1b-b380-09b77f98451b",
 						"exec": [
 							""
 						],
@@ -1366,7 +1366,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "64906514-3b03-4554-b68d-6241e03267e0",
+						"id": "9a086d13-7d89-4b73-9fd3-078d76157de0",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"pm.environment.set(\"usernameUser\", jsonData.username);\r",
@@ -1397,7 +1397,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{    \"bio\": \"some random text\",\r\n    \"name\": {\r\n        \"firstName\": \"tom\",\r\n        \"lastName\": \"jack\"\r\n    },\r\n    \"username\": \"jacks11\",\r\n    \"email\": \"jack@test.com\",\r\n    \"password\": \"password\",\r\n    \"country\": \"usa\",\r\n    \"confirmPassword\": \"password\",\r\n    \"roleType\" : \"user\"\r\n    \r\n}",
+					"raw": "{    \"bio\": \"some random text\",\r\n    \"name\": {\r\n        \"firstName\": \"tom\",\r\n        \"lastName\": \"jack\"\r\n    },\r\n    \"username\": \"jacks89\",\r\n    \"email\": \"jack89@test.com\",\r\n    \"password\": \"password\",\r\n    \"country\": \"usa\",\r\n    \"confirmPassword\": \"password\",\r\n    \"roleType\" : \"user\"\r\n    \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1424,7 +1424,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "e40ce4a9-547e-40a8-8385-d0e0d2f78783",
+						"id": "a8d80ec6-6bee-4bbf-ae93-8ad685cfe387",
 						"exec": [
 							""
 						],
@@ -1434,7 +1434,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "aadb7b31-7134-4e82-ad70-0c5c205e1b8c",
+						"id": "bcd0c94e-24ce-4428-952c-fda5ae8560c0",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -1487,7 +1487,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "25b37d03-32df-4708-9754-4c75bcddef40",
+						"id": "fda95816-82db-424d-935b-95439a41093f",
 						"exec": [
 							""
 						],
@@ -1497,7 +1497,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "18206c76-ce19-480a-a8a4-904341c7856e",
+						"id": "e92ac7a9-85e3-47a7-8c96-47b91dc3cd99",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -1553,7 +1553,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "36b85ccf-ab9f-4a78-8abe-fc4e3d545754",
+						"id": "5c55acfe-5b9c-47f1-bfe0-4fc7cd636e7e",
 						"exec": [
 							""
 						],
@@ -1563,7 +1563,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "84c57831-33e7-4bd5-8da6-a9c27b57d387",
+						"id": "b7c56bf0-234d-4dad-ae8b-2e51d6c661c2",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -1620,7 +1620,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "f1f80a9f-2947-4d59-ad3b-cf334aee92ac",
+						"id": "016c8156-4f72-48f5-b159-d0cf73e2e37b",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -1668,7 +1668,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "55e6269c-feff-490e-a2e1-d69a40ffcb90",
+						"id": "22590ae9-5391-4cc9-95e3-3731a4ca13eb",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -1716,7 +1716,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "6944297f-80fd-404b-bfae-6a64a47f37f6",
+						"id": "86675f80-da32-470a-a933-07e28b1beca7",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -1762,7 +1762,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "ee0300ef-6739-4780-ae75-b51bf5a25308",
+						"id": "d4baa875-173f-433b-99ef-ee9289f1271b",
 						"exec": [
 							"pm.test(\"getting a single user info by ID - getInfo\", ()=>{\r",
 							"    pm.response.to.have.status(202);\r",
@@ -1801,7 +1801,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "adc9ec3c-8517-4471-8231-d6a4c593b0be",
+						"id": "5c45ae33-4726-4f50-9381-946847b319ed",
 						"exec": [
 							"pm.environment.set(\"updatedBio\", \"I Like cooking Indian foods\")"
 						],
@@ -1811,7 +1811,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "578c1985-a1f2-4045-ae57-17db418c400f",
+						"id": "909d688d-4220-4848-9aac-0158c58a86f5",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -1867,7 +1867,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "a5aebc6b-5043-424c-8629-73bcb2db6105",
+						"id": "c1d376be-29af-4ff6-ad6b-098de0bc868e",
 						"exec": [
 							""
 						],
@@ -1877,7 +1877,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c8f9314f-d022-4c63-9f37-3884f129611d",
+						"id": "35589216-d094-42c1-8226-4351d14aab60",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -1931,7 +1931,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "38dfd282-4f74-418d-a975-5e7248bb1140",
+						"id": "20cb893c-c0ad-4e4c-b69f-e5d21bd1cb7f",
 						"exec": [
 							""
 						],
@@ -1941,7 +1941,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "278b1e70-2d51-4e05-8335-432a248015ff",
+						"id": "84d2f7d1-4540-4a9b-9e81-095740fb5e83",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -1995,7 +1995,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "1addcb05-2bb6-4378-9563-29ea8bb7181b",
+						"id": "b669ca78-1fcc-49d3-bfd5-cf8da7c6b888",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2040,7 +2040,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "8eca535e-2a82-4004-a58a-3f4ddc112b7b",
+						"id": "508648a7-f6bd-41e2-9bc2-4b26530d7820",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2087,7 +2087,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "90d2aae7-fef7-4041-8f57-8b4c5338c20c",
+						"id": "598da014-917f-4506-802c-489ac9edb38e",
 						"exec": [
 							"pm.test(\"isAdmin\", ()=> {\r",
 							"    pm.response.to.have.status(200)\r",
@@ -2127,7 +2127,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "ba1d007c-137a-4a80-bf58-5100e630b5da",
+						"id": "dc004994-3a13-4381-91d8-7130329b3c6f",
 						"exec": [
 							""
 						],
@@ -2137,7 +2137,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d37d357e-792f-4df0-89c7-4ebeb8da9bd6",
+						"id": "3ba7774a-dc94-4605-b967-c3f86a1a4be7",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2190,7 +2190,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "90dddbf3-a89e-48e4-ba0b-7811e1294cb2",
+						"id": "0efa1cf8-5d46-4ddd-8eae-8ecc37638876",
 						"exec": [
 							"pm.test(\"admin fetch all roles\", ()=>{\r",
 							"    pm.response.to.have.status(202)\r",
@@ -2228,7 +2228,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "8dacee6f-a442-426e-8f26-def6312ebf51",
+						"id": "5d5993cc-ea77-495b-9b2e-0da57a7be412",
 						"exec": [
 							"pm.test(\"admin fetch all roles\", ()=>{\r",
 							"    pm.response.to.have.status(202)\r",
@@ -2272,7 +2272,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "47e25bd2-8d68-437b-94a1-4c9e9b18a77e",
+						"id": "668b5cca-8e85-433f-a4a5-482404e6bc82",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2325,7 +2325,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "8da623bf-7fe6-4f2e-b61a-b36174d27d64",
+						"id": "f40d7c57-f4f5-41b7-ae4e-75c4041d0834",
 						"exec": [
 							"const newRoleType = \"newRoleType\""
 						],
@@ -2335,7 +2335,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "53920d43-ca1a-4d5a-af93-1d8d2abe1d33",
+						"id": "91a721c8-dbce-42ef-b94f-eb33bef72309",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"pm.environment.set(\"roleType\", jsonData.updatedRole.role)\r",
@@ -2387,7 +2387,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "b218005c-b19e-4c28-a78a-242bd166b8b3",
+						"id": "33feb4b7-6fc1-4dba-9c66-c1ac6c46fc68",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2432,7 +2432,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "86c770a4-84d0-472a-beb5-c899674b47c5",
+						"id": "11e3be9f-aeda-4021-9a4d-4c15feb7a2c3",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2474,7 +2474,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "a87e45bc-5429-48cc-9672-08673b6c5be3",
+						"id": "19d3b959-5895-463d-8495-bb46c90be3f4",
 						"exec": [
 							"let perPage = Math.floor(Math.random() * Math.floor(10));\r",
 							"\r",
@@ -2486,7 +2486,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "86adba58-5ca2-4513-b82d-abc41802c8b6",
+						"id": "0742d833-9461-4dbc-8917-4db5b7eab6d4",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2548,7 +2548,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "3d52e181-82ff-4638-9bff-331dec4b1911",
+						"id": "f23135fc-21df-40f2-9778-0ec059e42a14",
 						"exec": [
 							"let perPage = Math.floor(Math.random() * Math.floor(6));\r",
 							"\r",
@@ -2560,7 +2560,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "044bd595-9d7b-41b4-947c-645c1eb2209d",
+						"id": "878af330-baf7-4182-af64-ba2f1c7becc8",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2613,7 +2613,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "9bd7cd91-fdc1-45ec-80b1-674344ac47a0",
+						"id": "adfbd949-3d1e-444a-b4a3-810cc8c67ae9",
 						"exec": [
 							""
 						],
@@ -2623,7 +2623,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "03c4484f-8a67-4587-9d1c-cd82983d2bf7",
+						"id": "c0888154-23a4-4966-a03a-dd5be8da3db8",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2679,7 +2679,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "978f3cf1-1c29-4710-a973-2eb9fa108d4e",
+						"id": "2191331b-0aa8-44b9-bca2-f15d3cb38576",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2743,7 +2743,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "a3139f61-4fd8-4cf7-a1a1-50a2a78dfd7f",
+						"id": "79cb6266-c740-4da4-b973-01c6a744c84d",
 						"exec": [
 							"pm.test(\"admin deletes a user\", ()=>{\r",
 							"    pm.response.to.have.status(200)\r",
@@ -2787,278 +2787,12 @@
 			"response": []
 		},
 		{
-			"name": "createComment",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "4dd0af7c-070f-4de9-8b5c-88a19cec234a",
-						"exec": [
-							"const jsonData = pm.response.json();\r",
-							"\r",
-							"pm.test(\"create Comment\", ()=>{\r",
-							"    pm.response.to.have.status(200)\r",
-							"})\r",
-							"\r",
-							"pm.environment.set(\"commentId\", jsonData._id);"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{tokenAdmin}}",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"content\": \"et, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqui\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{host}}/api/comments",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"comments"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getComment",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "639223a7-ae3d-460f-afea-36c04454d61f",
-						"exec": [
-							"pm.test(\"get Comment\", ()=>{\r",
-							"    pm.response.to.have.status(200)\r",
-							"})"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{tokenAdmin}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "{{host}}/api/comments/{{commentId}}",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"comments",
-						"{{commentId}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getAllcomments",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "3565cb10-4a7a-42d4-86c9-5523ed8173a1",
-						"exec": [
-							"pm.test(\"get All comments\", ()=>{\r",
-							"    pm.response.to.have.status(200)\r",
-							"})"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{tokenAdmin}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "{{host}}/api/comments",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"comments"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "deleteComment",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "16abee76-8285-4e5c-8179-79c058336851",
-						"exec": [
-							"pm.test(\"delete Comment\", ()=>{\r",
-							"    pm.response.to.have.status(200)\r",
-							"})"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{tokenAdmin}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "{{host}}/api/comments/{{commentId}}",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"comments",
-						"{{commentId}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "createComment",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "6cfd4407-99e1-47d0-bb9e-e7d0d92889cd",
-						"exec": [
-							"const jsonData = pm.response.json();\r",
-							"\r",
-							"pm.test(\"create Comment\", ()=>{\r",
-							"    pm.response.to.have.status(200)\r",
-							"})\r",
-							"\r",
-							"pm.environment.set(\"commentId\", jsonData._id);"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{tokenAdmin}}",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"content\": \"et, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqui\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{host}}/api/comments",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"comments"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "addSubComment",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "d4899f71-2860-4bee-8cfd-a24bd8f14ead",
-						"exec": [
-							"pm.test(\"add Sub Comment\", ()=>{\r",
-							"    pm.response.to.have.status(200)\r",
-							"})"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{tokenAdmin}}",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"content\": \"Idrees et, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqui\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{host}}/api/comments/{{commentId}}",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"comments",
-						"{{commentId}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Create Recipe",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "56e635d1-0eb5-4cc7-9546-8b0802375de2",
+						"id": "bd8a9b2b-4ed2-4ce0-a8f9-20fd2e843393",
 						"exec": [
 							""
 						],
@@ -3068,7 +2802,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "eed2b890-3dbb-4040-8493-4386ca3ad475",
+						"id": "fd3e6d47-9a88-4474-b5b0-aa594c681987",
 						"exec": [
 							"var jsonData = pm.response.json();\r",
 							"var recipeId = jsonData._id;\r",
@@ -3076,7 +2810,7 @@
 							"\r",
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
-							"    pm.response.to.have.status(201);  \r",
+							"    pm.response.to.have.status(200);  \r",
 							"});\r",
 							"\r",
 							"pm.test(\"Correct recipe response\", function () {\r",
@@ -3106,6 +2840,11 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{tokenAdmin}}",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -3131,7 +2870,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "121dc0a9-d29e-48d8-9296-6e6fcc137b11",
+						"id": "88f95b8d-269c-430e-9bed-1f7b58430581",
 						"exec": [
 							""
 						],
@@ -3141,7 +2880,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c3b12268-ec83-4127-ab80-3bac1ebad239",
+						"id": "1062aa0e-7138-4a19-81fe-f3e41dd00127",
 						"exec": [
 							"var jsonData = pm.response.json();\r",
 							"var recipeId2 = jsonData._id;\r",
@@ -3149,7 +2888,7 @@
 							"\r",
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
-							"    pm.response.to.have.status(201);  \r",
+							"    pm.response.to.have.status(200);  \r",
 							"});\r",
 							"\r",
 							"pm.test(\"Correct recipe response\", function () {\r",
@@ -3179,6 +2918,11 @@
 						"key": "Content-Type",
 						"type": "text",
 						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{tokenAdmin}}",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -3204,7 +2948,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "d2e84e46-866c-4cfc-b2fd-ff2d9a413a91",
+						"id": "ae741e0a-635b-4514-b456-367e1c7f5584",
 						"exec": [
 							""
 						],
@@ -3214,7 +2958,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "41a371fd-4319-441d-8586-00f55197757f",
+						"id": "ff103967-9482-4e27-8a4e-43b1eb50bc91",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -3254,7 +2998,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "959ddca9-a043-4aad-b716-ba685d0b9ebd",
+						"id": "506e25c0-eb1b-4f63-bd57-c95c32944775",
 						"exec": [
 							""
 						],
@@ -3264,7 +3008,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "a0ece210-df91-4f73-a481-e7c7b0056b5f",
+						"id": "fac0ac31-bbf8-4ee6-b5c8-b8b61f1e149f",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -3315,7 +3059,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "8ee3391a-ffc6-4dde-9fba-52ff06c641d1",
+						"id": "d523eda3-926a-4ca7-a640-695526ec51ff",
 						"exec": [
 							""
 						],
@@ -3325,7 +3069,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "5df78922-00bf-4ad6-9912-59031ed4275d",
+						"id": "7996cbe7-d64a-491b-9ac6-c664a61855cc",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -3371,7 +3115,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "f505c751-7ef8-49eb-82fd-3c6aa3391f58",
+						"id": "23ae8cc3-03d4-4f76-a4d5-c4bc4a5947f1",
 						"exec": [
 							""
 						],
@@ -3381,7 +3125,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "8ba9fdd7-54db-4814-be75-87304683f9c3",
+						"id": "dc278f6c-0240-4709-9db1-b45349cb878d",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -3405,6 +3149,11 @@
 						"key": "Accept",
 						"type": "text",
 						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{tokenAdmin}}",
+						"type": "text"
 					}
 				],
 				"url": {
@@ -3416,6 +3165,13 @@
 						"api",
 						"recipes",
 						"5f63a1b67edd7626d83d4088"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
 					]
 				}
 			},
@@ -3427,7 +3183,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "8c83dc98-e62b-466e-997a-3e1227144a5c",
+						"id": "ea94f76f-eebf-4008-8ca1-55c3c7c97258",
 						"exec": [
 							""
 						],
@@ -3437,7 +3193,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "95d6aeaf-e7ff-4a84-9b97-48bd96d5ce4c",
+						"id": "0dee7c80-f392-40aa-bcd4-7b542ff3e61b",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -3472,6 +3228,11 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{tokenAdmin}}",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -3498,7 +3259,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "06c37140-2d9f-4afd-90ba-965538286da1",
+						"id": "ca82edd4-04c9-43ba-8aa4-bdb29cb428c5",
 						"exec": [
 							""
 						],
@@ -3508,7 +3269,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "b74d202b-4236-4675-b638-f34cd593ca7f",
+						"id": "c1124a18-9a16-4327-8d01-d4553cc11c08",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -3542,6 +3303,11 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{tokenAdmin}}",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -3568,7 +3334,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "2db509c9-dfbe-4def-862d-1651f28fc641",
+						"id": "2bf21e43-69d7-4241-b967-7130fbbd81b9",
 						"exec": [
 							""
 						],
@@ -3578,7 +3344,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "fff529ee-b0df-496e-bbeb-c54fab8557ba",
+						"id": "b465372a-721b-4d77-8f59-f05bd503972e",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -3602,6 +3368,11 @@
 						"key": "Accept",
 						"type": "text",
 						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{tokenAdmin}}",
+						"type": "text"
 					}
 				],
 				"url": {
@@ -3624,7 +3395,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "e6723409-8d27-432e-9937-31e25dbbe94a",
+						"id": "af7a2606-5094-4938-9464-8bfbb05844b7",
 						"exec": [
 							""
 						],
@@ -3634,7 +3405,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "938f19ca-60f2-4d22-b04f-64dc93a6981a",
+						"id": "ec734931-8377-4200-8a31-1ef21882f119",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -3658,6 +3429,11 @@
 						"key": "Accept",
 						"type": "text",
 						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{tokenAdmin}}",
+						"type": "text"
 					}
 				],
 				"url": {
@@ -3680,7 +3456,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "9ec0cb40-e5ff-4f72-8648-a3e0de97f30f",
+						"id": "d1b64c37-5ce2-41e3-a206-a5ebe580510c",
 						"exec": [
 							""
 						],
@@ -3690,7 +3466,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "ee91d0ae-ed2e-4931-a170-0caeb7916e14",
+						"id": "79dd85a4-c9d9-4da9-a7ae-7c4188164488",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -3709,6 +3485,11 @@
 						"key": "Accept",
 						"type": "text",
 						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{tokenAdmin}}",
+						"type": "text"
 					}
 				],
 				"url": {
@@ -3731,7 +3512,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "ac9a9884-00e9-441c-aea2-fcbd2fda1ffa",
+						"id": "3f010ea6-e7a6-4676-83aa-ec00822d275b",
 						"exec": [
 							""
 						],
@@ -3741,7 +3522,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "5e9f7e97-8dea-4185-a7c5-4aca48a3a8e8",
+						"id": "035a3740-7de6-45ee-b6f2-791bb5dbaab4",
 						"exec": [
 							"pm.test(\"Correct status code\",\r",
 							"    function(){\r",
@@ -3780,13 +3561,334 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "post - postLogin -  admin 02",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2a81e298-8189-40be-bd68-242ee19ab492",
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"user log in\", ()=>{\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"\r",
+							"pm.environment.set(\"tokenAdmin\", jsonData.token);\r",
+							"pm.environment.set(\"idAdmin\", jsonData.userId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"super-admin\",\r\n    \"password\": \"superAdmin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/auth/login",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createComment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a9027ed8-2846-4370-ae93-76ffb6633c99",
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"create Comment\", ()=>{\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"\r",
+							"pm.environment.set(\"commentId\", jsonData._id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{tokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content\": \"et, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqui\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/recipe/{{recipe_id}}/comments",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"recipe",
+						"{{recipe_id}}",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getComment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6a4e13af-89c3-4f6f-88fe-418b283ee9d1",
+						"exec": [
+							"pm.test(\"get Comment\", ()=>{\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{tokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/recipe/{{commentId}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"recipe",
+						"{{commentId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllcomments",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d4cc0141-61c1-48af-aead-a64483603d07",
+						"exec": [
+							"pm.test(\"get All comments\", ()=>{\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{tokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/recipe/{{recipe_id}}/comments",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"recipe",
+						"{{recipe_id}}",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteComment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9ee50b0d-038e-4a4a-a14b-5ea899c99d79",
+						"exec": [
+							"pm.test(\"delete Comment\", ()=>{\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{tokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/recipe/comments/{{commentId}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"recipe",
+						"comments",
+						"{{commentId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createComment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "78e6c7f4-8a1a-4cac-85e8-0e68a2ae8906",
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"create Comment\", ()=>{\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"\r",
+							"pm.environment.set(\"commentId\", jsonData._id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{tokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content\": \"et, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqui\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/recipe/{{recipe_id}}/comments",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"recipe",
+						"{{recipe_id}}",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addSubComment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "23d2e4e8-b1f3-4202-b15c-2eb15fec6a5e",
+						"exec": [
+							"pm.test(\"add Sub Comment\", ()=>{\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{tokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content\": \"Idrees et, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqui\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/recipe/subcomments/{{commentId}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"recipe",
+						"subcomments",
+						"{{commentId}}"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "a11b5caf-7003-47ee-81ef-e3cec20da66f",
+				"id": "56714e72-6fc3-4a06-a97b-a635d8173b6c",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -3796,7 +3898,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "8c183c6b-e303-4764-a046-3c96cc64b001",
+				"id": "b841b864-d09a-4cd5-b5ae-9ab164feb709",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -3806,10 +3908,9 @@
 	],
 	"variable": [
 		{
-			"id": "cd185905-a834-4211-8030-583d17702534",
+			"id": "6ca8dfa4-13cb-49dd-8684-ad5f39cf9fe6",
 			"key": "host",
-			"value": "{{host}}",
-			"type": "string"
+			"value": "{{host}}"
 		}
 	],
 	"protocolProfileBehavior": {}

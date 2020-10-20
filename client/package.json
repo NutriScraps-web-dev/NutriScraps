@@ -15,6 +15,7 @@
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
     "bootstrap-vue": "^2.16.0",
+    "emailjs-com": "^2.6.3",
     "izitoast": "^1.4.0",
     "vue": "^2.6.12",
     "vue-country-region-select": "^2.0.14",

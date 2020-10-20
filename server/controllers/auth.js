@@ -144,7 +144,7 @@ exports.isAdmin = (req, res, next) => {
   User.findOne({ _id: req.params.id, roleType: 'admin' })
     .then((admin) => {
       if (!admin) {
-        res.status(401).json({ isAdmin: false });
+        res.status(200).json({ isAdmin: false });
       } else {
         res.status(200).json({isAdmin: true});
       }

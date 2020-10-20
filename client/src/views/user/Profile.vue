@@ -113,14 +113,8 @@
     </b-jumbotron>
     <b-row class="mt-3">
       <b-col>
-        <h2>Your Posts:</h2>
-        <b-col>your Posts</b-col>
+        <user-posts></user-posts>
       </b-col>
-    </b-row>
-    <b-row>
-      <b-button variant="outline-primary" class="mr-5 my-4"
-        >Delete All My Post</b-button
-      >
     </b-row>
     <b-row class="mt-3">
       <b-col>
@@ -147,13 +141,15 @@ import ChangePasswordForm from '../../components/user/ChangePasswordForm.vue'
 import UpdateProfile from '../../components/user/UpdateProfile.vue'
 import DeleteAccount from '../../components/user/DeleteAccount.vue'
 import UserComments from '../../components/user/UserComments'
+import UserPosts from '../../components/user/UserPost'
 
 export default {
   components: {
     'pass-form': ChangePasswordForm,
     'update-profile': UpdateProfile,
     'delete-account': DeleteAccount,
-    'user-comments': UserComments
+    'user-comments': UserComments,
+    'user-posts': UserPosts
   },
   computed: {
     userInfo() {
