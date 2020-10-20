@@ -12,8 +12,7 @@ exports.createComment = (req, res, next) => {
     reviewer: commentReviewer,
     content: commentContent,
     rating: [],
-    subcomments: [],
-    recipe: recipeId
+    subcomments: []
   });
   return comment
     .save()

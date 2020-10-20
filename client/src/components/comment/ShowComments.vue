@@ -5,7 +5,7 @@
       v-for="(comment) in comments"
       :key="comment._id"
       :footer="
-        ' | '
+      comment.reviewer.username + ' | ' + comment.createdAt.split('T')[0]
       "
     >
       <b-card-text class="py-3">{{ comment.content }}</b-card-text>

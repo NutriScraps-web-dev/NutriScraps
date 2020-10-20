@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const User = require('./user');
 
 function autoPopulateSubs(next) {
-  this.populate('subcomments');
+  this.populate('subcomments').populate('reviewer');
   next();
 }
 
@@ -28,11 +28,7 @@ const commentSchema = new Schema(
         type: Schema.Types.ObjectId,
         ref: 'Comment',
       },
-    ],
-    recipe: {
-      type: Schema.Types.ObjectId,
-      ref: 'recipes',
-    }
+    ]
   },
   { timestamps: true }
 );
