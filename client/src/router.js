@@ -92,6 +92,8 @@ export default new Router({
           next('users/login')
         }
       }
+    },
+    {
       path: '/comments',
       name: 'comments',
       component: Comment
