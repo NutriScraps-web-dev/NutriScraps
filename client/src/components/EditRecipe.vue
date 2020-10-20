@@ -18,6 +18,27 @@
             placeholder="International, Mexican, Thai, Italian....."
             label="Cuisine"
           />
+          <FormulateInput
+            element-class=""
+            type="textarea"
+            name="preparation"
+            label="Preparation"
+            disabled
+          />
+          <FormulateInput
+            element-class=""
+            type="textarea"
+            name="cookingProcess"
+            label="Cooking Process"
+            disabled
+          />
+          <FormulateInput
+            element-class=""
+            type="textarea"
+            name="toServe"
+            label="To Serve"
+            disabled
+          />
           <!--
           <FormulateInput
             element-class=""
