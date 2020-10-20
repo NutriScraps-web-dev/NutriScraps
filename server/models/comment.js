@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const User = require('./user');
 
+function autoPopulateSubs(next) {
+  this.populate('subcomments');
+  next();
+}
+
 const commentSchema = new Schema(
   {
     content: {
@@ -24,9 +29,19 @@ const commentSchema = new Schema(
         ref: 'Comment',
       },
     ],
+    recipe: {
+      type: Schema.Types.ObjectId,
+      ref: 'recipes',
+    }
   },
   { timestamps: true }
 );
+
+
+commentSchema
+  .pre('findOne', autoPopulateSubs)
+  .pre('find', autoPopulateSubs);
+
 
 // commentSchema.pre('deleteOne', { document: true, query: true }, function (next) {
 //   User.updateMany(

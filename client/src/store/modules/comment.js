@@ -1,11 +1,9 @@
 import { Api } from '@/Api'
 import auth from './auth'
 
-const state = {
-}
+const state = {}
 
-const getters = {
-}
+const getters = {}
 
 const actions = {
   deleteComment({ commit, dispatch }, payload) {
@@ -25,11 +23,30 @@ const actions = {
     }).then(res => {
       dispatch('getRecipe', payload.recipeId)
     })
+  },
+  createSubComment({ commit, dispatch }, payload) {
+    Api.post(`recipes/subcomments/${payload.parentId}`, payload.comment, {
+      headers: {
+        Authorization: `Bearer ${auth.state.authToken}`
+      }
+    }).then(res => {
+      console.log('subcomment', res)
+      // dispatch('getRecipe', payload.recipeId)
+    })
+  },
+  getRecipeComments({ commit, dispatch }, payload) {
+    Api.get(`recipes/subcomments/${payload.parentId}`, {
+      headers: {
+        Authorization: `Bearer ${auth.state.authToken}`
+      }
+    }).then(res => {
+      console.log('subcomment', res)
+      // dispatch('getRecipe', payload.recipeId)
+    })
   }
 }
 
-const mutations = {
-}
+const mutations = {}
 
 export default {
   actions,

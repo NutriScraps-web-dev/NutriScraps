@@ -1,6 +1,6 @@
 <template>
-  <div v-if="isLoggedIn">
-    <b-card class="mb-3">
+  <div>
+    <b-card class="mb-3" v-if="isLoggedIn">
       <FormulateForm @submit="onSubmit">
         <FormulateInput
           element-class=""
@@ -17,7 +17,7 @@
           class="pass-btn px-3 px-md-2 float-right"
           type="submit"
         >
-          Post Comment
+          Reply
         </b-button>
       </FormulateForm>
     </b-card>
@@ -29,7 +29,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   props: {
-    recipeId: {
+    parentId: {
       required: true
     }
   },
@@ -44,9 +44,9 @@ export default {
   methods: {
     onSubmit() {
       this.$store
-        .dispatch('createComment', {
+        .dispatch('createSubComment', {
           comment: { content: this.content },
-          recipeId: this.recipeId
+          parentId: this.parentId
         }).then(() => {
           this.content = ''
         })
