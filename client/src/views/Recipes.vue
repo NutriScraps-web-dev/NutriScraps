@@ -56,7 +56,12 @@ export default {
       recipes: [],
       message: '',
       text: '',
-      search: ''
+      search: '',
+      selected: 'internal',
+      options: [
+        { value: 'internal', text: 'Posted By User' },
+        { value: 'external', text: 'From The Web' }
+      ]
     }
   },
   methods: {
@@ -74,11 +79,18 @@ export default {
         .catch(error => {
           console.error(error)
         })
+    },
+    getExternalRecipe() {
+      console.log('running')
+      Api.get(`/external/recipes?query=${this.search}`
+      ).then(res => {
+        console.log(res.data)
+      })
     }
   },
   computed: {
     filteredRecipes: function () {
-      return this.recipes.filter((recipe) => {
+      return this.recipes.filter(recipe => {
         return recipe.name.toLowerCase().match(this.search.toLowerCase())
       })
     }
@@ -87,5 +99,7 @@ export default {
 </script>
 
 <style scoped>
-
+.f-in-put {
+  margin-bottom: 5rem;
+}
 </style>

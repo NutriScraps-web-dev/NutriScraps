@@ -183,7 +183,10 @@ module.exports.getRecipeByIngredients = (req, res, next) => {
 };
 
 module.exports.getRecipeComplexQuery  = (req, res, next) => {
-    const foodName = req.body.foodName;
+    const foodName = req.query.query;
+    console.log(foodName)
+    res.json(foodName);
+    return
     API_KEY = process.env.API_KEY;
     const spoonacularLink = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${foodName}`;
     axios
