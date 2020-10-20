@@ -7,17 +7,19 @@
       rounded
       fluid alt="Responsive image">
       </b-img>
+      <div>
       <h3><b>Dish Type:</b></h3>
       <br>
       <div class=preparation>
             <ol>
                 <li v-for="(dish, index) in this.recipe.dishTypes" :key="index">
-                    <h4>{{dish}}</h4>
+                    <h4>{{dish || ''}}</h4>
                 </li>
             </ol>
         </div>
       <br>
       <hr>
+      </div>
       <br>
       <h3><b>Ingredients:</b></h3>
       <br>
