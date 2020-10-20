@@ -1,4 +1,4 @@
-import { Api } from '@/Api'
+/* import { Api } from '@/Api'
 
 const state = {
   rating: null
@@ -27,4 +27,4 @@ export default {
   state,
   getters,
   mutations
-}
+} */

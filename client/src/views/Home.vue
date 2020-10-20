@@ -10,34 +10,34 @@
       background="#ababab"
       img-width="1024"
       img-height="480"
-      style="text-shadow: 1px 1px 2px #333; max-height:490px;"
+      style="text-shadow: 1px 1px 2px #333; max-height:490px !important;"
       @sliding-start="onSlideStart"
       @sliding-end="onSlideEnd"
     >
       <b-carousel-slide
-        style="max-height:490px;"
+        style="max-height:490px !important;"
         :caption="getRecipeTitle(0)"
         :img-src="getRecipeImage(0)"
       ></b-carousel-slide>
       <b-carousel-slide
-        style="max-height:490px;"
+        style="max-height:490px !important;"
         :caption="getRecipeTitle(1)"
         :img-src="getRecipeImage(1)"
       ></b-carousel-slide>
       <b-carousel-slide
         :caption="getRecipeTitle(2)"
         :img-src="getRecipeImage(2)"
-        style="max-height:490px;"
+        style="max-height:490px !important;"
       ></b-carousel-slide>
       <b-carousel-slide
         :caption="getRecipeTitle(3)"
         :img-src="getRecipeImage(3)"
-        style="max-height:490px;"
+        style="max-height:490px !important;"
       ></b-carousel-slide>
       <b-carousel-slide
         :caption="getRecipeTitle(4)"
         :img-src="getRecipeImage(4)"
-        style="max-height:490px;"
+        style="max-height:490px !important;"
       ></b-carousel-slide>
 
     </b-carousel>
@@ -105,7 +105,7 @@ export default {
   text-align: center;
 }
 .carouselContainer {
-  max-height:490px;
+  max-height:490px !important;
 }
 
 </style>
