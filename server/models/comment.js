@@ -24,6 +24,10 @@ const commentSchema = new Schema(
         ref: 'Comment',
       },
     ],
+    receipeID: {
+      type: Schema.Types.ObjectId,
+      ref: 'Receipe'
+    },
   },
   { timestamps: true }
 );
