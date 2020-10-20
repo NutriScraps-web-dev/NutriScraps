@@ -65,7 +65,14 @@ export default new Router({
     {
       path: '/recipes/:id/edit',
       name: 'editRecipe',
-      component: EditRecipe
+      component: EditRecipe,
+      beforeEnter: (to, from, next) => {
+        if (Store.state.authToken) {
+          next()
+        } else {
+          next('users/login')
+        }
+      }
     },
     {
       path: '/users/signup',
