@@ -46,7 +46,8 @@ export default {
       this.$store
         .dispatch('createSubComment', {
           comment: { content: this.content },
-          parentId: this.parentId
+          parentId: this.parentId,
+          recipeId: this.$route.params.id
         }).then(() => {
           this.content = ''
         })
