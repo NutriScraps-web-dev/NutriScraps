@@ -14,10 +14,10 @@
       <h6><i>Type: {{recipe.type}}</i></h6>
     </b-card-text>
     <b-card-body class="text-center">
-      <b-button variant="primary" style="margin:auto" @click="goToRecipe(recipe._id)">
+      <b-button block class="mb-3"  variant="primary" style="margin:auto" @click="goToRecipe(recipe._id)">
         View Recipe
       </b-button>
-      <b-button variant="primary" style="margin:auto" @click="editRecipe(recipe._id)">
+      <b-button block variant="outline-primary" style="margin:auto" @click="editRecipe(recipe._id)">
         Edit Recipe
       </b-button>
     </b-card-body>
