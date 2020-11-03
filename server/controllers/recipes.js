@@ -223,10 +223,11 @@ module.exports.getRecipeInfoById  = (req, res, next) => {
 
 module.exports.getRandomRecipe  = (req, res, next) => {
     API_KEY = process.env.API_KEY;
-    const spoonacularLink = `https://api.spoonacular.com/recipes/random?apiKey=00496db2a59e4fe48c39f996c7b06c46&number=5`;
+    const spoonacularLink = `https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=5`;
     axios
         .get(spoonacularLink)
         .then((result) => {
+            console.log(result.data)
             res.json({ recipes: result.data });
         })
         .catch((err) => {
