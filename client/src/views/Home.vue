@@ -41,7 +41,6 @@
           ></b-carousel-slide>
       </b-carousel>
     </div>
-    <p>{{recipes.length}}</p>
     <br />
     <br />
     <h1 class="header"><b>Find your recipe</b></h1>
