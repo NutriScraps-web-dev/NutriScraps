@@ -23,10 +23,10 @@ https://nutri-scraps.herokuapp.com/
 
 ```bash
 # Clone repository
-git clone git@git.ita.chalmers.se:courses/dit341/2020/group-07-web.git
+git clone git@github.com:NutriScraps-web-dev/NutriScraps.git
 
 # Change into the directory
-cd group-07-web
+cd NutriScraps
 
 # Setup backend
 cd server && npm install
